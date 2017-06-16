@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- project default level -->
+	<logger name="cn.lee.housing" level="info" />
+
+	<!-- 定义根日志级别 -->
+	<root level="info">
+		<appender-ref ref="console" />
+	</root>
+	
+	<!-- 
+		logger	description	since
+		jdbc.sqlonly	Logs only SQL. SQL executed within a prepared statement is automatically shown with it's bind arguments replaced with the data bound at that position, for greatly increased readability.	1.0
+		jdbc.sqltiming	Logs the SQL, post-execution, including timing statistics on how long the SQL took to execute.	1.0
+		jdbc.audit	Logs ALL JDBC calls except for ResultSets. This is a very voluminous output, and is not normally needed unless tracking down a specific JDBC problem.	1.0
+		jdbc.resultset	Even more voluminous, because all calls to ResultSet objects are logged.	1.0
+		jdbc.connection	Logs connection open and close events as well as dumping all open connection numbers. This is very useful for hunting down connection leak problems.	1.2alpha1
+	 -->
+	<logger name="jdbc.sqlonly" level="ERROR"/>
+	<logger name="jdbc.sqltiming" level="INFO"/>
+	<logger name="jdbc.audit" level="ERROR"/>
+	<logger name="jdbc.resultset" level="ERROR"/>
+</configuration>
