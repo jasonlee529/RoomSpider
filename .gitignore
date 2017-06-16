@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+**/.idea
+target
+=======
 .classpath
 !/.project
 .project
@@ -13,3 +17,4 @@ bin/
 *.iml
 *.log
 **/target
+>>>>>>> 13ec4897c7a60d314bda21677502333bb1e47529
