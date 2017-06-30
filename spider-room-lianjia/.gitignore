@@ -3,3 +3,4 @@ craw
 .idea
 *.log
 *.iml
+.gitignore
