@@ -9,10 +9,9 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import us.codecraft.webmagic.Page;
-import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.*;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
+import us.codecraft.webmagic.pipeline.Pipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.proxy.SimpleProxyProvider;
@@ -61,6 +60,12 @@ public class ErshoufangProcessor implements PageProcessor {
         Spider.create(new ErshoufangProcessor())
                 //从"https://github.com/code4craft"开始抓
                 .addUrl("https://bj.lianjia.com/ershoufang/")
+                .addPipeline(new Pipeline() {
+                    @Override
+                    public void process(ResultItems resultItems, Task task) {
+
+                    }
+                })
                 //开启5个线程抓取
                 .thread(5)
                 //启动爬虫
