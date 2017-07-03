@@ -58,14 +58,7 @@ public class ErshoufangProcessor implements PageProcessor {
         downloader.setProxyProvider(SimpleProxyProvider.from(proxyList.toArray(new Proxy[]{})));
         downloader.setProxyProvider(SimpleProxyProvider.from());
         Spider.create(new ErshoufangProcessor())
-                //从"https://github.com/code4craft"开始抓
                 .addUrl("https://bj.lianjia.com/ershoufang/")
-                .addPipeline(new Pipeline() {
-                    @Override
-                    public void process(ResultItems resultItems, Task task) {
-
-                    }
-                })
                 //开启5个线程抓取
                 .thread(5)
                 //启动爬虫
