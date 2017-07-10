@@ -1,23 +1,23 @@
 package cn.lee.housing.spider.lianjia;
 
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import us.codecraft.webmagic.Page;
+import us.codecraft.webmagic.Site;
+import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.downloader.HttpClientDownloader;
+import us.codecraft.webmagic.processor.PageProcessor;
+import us.codecraft.webmagic.proxy.Proxy;
+import us.codecraft.webmagic.proxy.SimpleProxyProvider;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import us.codecraft.webmagic.*;
-import us.codecraft.webmagic.downloader.HttpClientDownloader;
-import us.codecraft.webmagic.pipeline.Pipeline;
-import us.codecraft.webmagic.processor.PageProcessor;
-import us.codecraft.webmagic.proxy.Proxy;
-import us.codecraft.webmagic.proxy.SimpleProxyProvider;
-
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 
 
 /**
@@ -29,13 +29,19 @@ public class ErshoufangProcessor implements PageProcessor {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    private final static String PAGE_URL = "http://bj\\\\.lianjia\\\\.com/ershoufang/pg\\\\d*\\\\";
+
     @Override
     public void process(Page page) {
         logger.error("======================");
         logger.info(page.getHtml().$("div.leftContent").$("div.info div.title a").links().all().toString());
         logger.info(page.getHtml().links().regex("https://bj.lianjia.com/ershoufang/[\\d$].html").all().toString());
 
-        page.addTargetRequests(page.getHtml().$("div.leftContent div.info div.title a").links().all());
+        if (page.getUrl().regex(PAGE_URL).match()) {
+            page.addTargetRequests(page.getHtml().$("div.leftContent div.info div.title a").links().all());
+        } else {
+            page.putField("title", page.getHtml().xpath("div[@class=content]").xpath("div[@class=title]").xpath("h1"));
+        }
 
     }
 
@@ -50,7 +56,7 @@ public class ErshoufangProcessor implements PageProcessor {
         String inLine = null;
         List<Proxy> proxyList = new ArrayList<Proxy>();
         while ((inLine = fr.readLine()) != null) {
-            String[] cols = StringUtils.split(inLine,",");
+            String[] cols = StringUtils.split(inLine, ",");
             proxyList.add(new Proxy(cols[0], Integer.valueOf(cols[1])));
 
         }
