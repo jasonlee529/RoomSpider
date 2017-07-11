@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.management.JMException;
 
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
@@ -14,6 +15,8 @@ import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
+import us.codecraft.webmagic.monitor.SpiderMonitor;
+import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.pipeline.JsonFilePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.proxy.Proxy;
@@ -37,14 +40,14 @@ public class ErshoufangProcessor implements PageProcessor {
 
     @Override
     public void process(Page page) {
-        if (page.getUrl().regex(START_URL).match()) {
+        if (StringUtils.equalsIgnoreCase(START_URL, page.getUrl().get())) {
             //总共多少页的链接
             int total = Integer.parseInt(StringUtils.trim(page.getHtml().$("div.content div.leftContent h2.total ").xpath("span/text()").get()));
             int pageSize = 30;
             int maxPageNo = total / pageSize;
             List<String> pageList = Lists.newArrayList();
-            for (int i = 1; i < 100; i++) {
-                pageList.add(START_URL+"/pg"+i);
+            for (int i = 1; i < 3; i++) {
+                pageList.add(START_URL + "/pg" + i);
             }
             page.addTargetRequests(pageList);
         } else if (page.getUrl().regex(PAGE_URL).match()) {
@@ -52,9 +55,9 @@ public class ErshoufangProcessor implements PageProcessor {
             page.addTargetRequests(page.getHtml().$("div.leftContent div.info div.title a").links().all());
         } else {
             // 具体爬去字段
-            String title = page.getHtml().xpath("div[@class=content]").xpath("div[@class=title]").xpath("h1").get();
+            String title = page.getHtml().xpath("div[@class=content]").xpath("div[@class=title]").xpath("h1/text()").get();
             logger.info(title);
-            page.putField("title",title );
+            page.putField("title", title);
         }
 
     }
@@ -64,7 +67,7 @@ public class ErshoufangProcessor implements PageProcessor {
         return site;
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, JMException {
         Resource resource = new ClassPathResource("proxy.txt");
         BufferedReader fr = new BufferedReader(new FileReader(resource.getFile()));
         String inLine = null;
@@ -72,17 +75,17 @@ public class ErshoufangProcessor implements PageProcessor {
         while ((inLine = fr.readLine()) != null) {
             String[] cols = StringUtils.split(inLine, ",");
             proxyList.add(new Proxy(cols[0], Integer.valueOf(cols[1])));
-
         }
         HttpClientDownloader downloader = new HttpClientDownloader();
         downloader.setProxyProvider(SimpleProxyProvider.from(proxyList.toArray(new Proxy[]{})));
         downloader.setProxyProvider(SimpleProxyProvider.from());
-        Spider.create(new ErshoufangProcessor())
+        Spider spider = Spider.create(new ErshoufangProcessor())
                 .addUrl(START_URL)
                 .addPipeline(new JsonFilePipeline("target/ershoufang.json"))
-                //开启5个线程抓取
-                .thread(5)
-                //启动爬虫
-                .run();
+                .addPipeline(new ConsolePipeline());
+        SpiderMonitor.instance().register(spider);
+        spider.thread(5)//开启5个线程抓取
+                .run();//启动爬虫
+
     }
 }
