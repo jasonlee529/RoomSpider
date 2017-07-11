@@ -3,4 +3,4 @@ craw
 .idea
 *.log
 *.iml
-.gitignore
+src/test/
