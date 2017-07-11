@@ -1,23 +1,26 @@
 package cn.lee.housing.spider.lianjia;
 
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import us.codecraft.webmagic.Page;
-import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.downloader.HttpClientDownloader;
-import us.codecraft.webmagic.processor.PageProcessor;
-import us.codecraft.webmagic.proxy.Proxy;
-import us.codecraft.webmagic.proxy.SimpleProxyProvider;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+import org.assertj.core.util.Lists;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import us.codecraft.webmagic.Page;
+import us.codecraft.webmagic.Site;
+import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.downloader.HttpClientDownloader;
+import us.codecraft.webmagic.pipeline.JsonFilePipeline;
+import us.codecraft.webmagic.processor.PageProcessor;
+import us.codecraft.webmagic.proxy.Proxy;
+import us.codecraft.webmagic.proxy.SimpleProxyProvider;
+
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 
 /**
@@ -29,18 +32,29 @@ public class ErshoufangProcessor implements PageProcessor {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private final static String PAGE_URL = "http://bj\\\\.lianjia\\\\.com/ershoufang/pg\\\\d*\\\\";
+    private final static String START_URL = "https://bj.lianjia.com/ershoufang";
+    private final static String PAGE_URL = "https://bj\\.lianjia\\.com/ershoufang/pg\\d+";
 
     @Override
     public void process(Page page) {
-        logger.error("======================");
-        logger.info(page.getHtml().$("div.leftContent").$("div.info div.title a").links().all().toString());
-        logger.info(page.getHtml().links().regex("https://bj.lianjia.com/ershoufang/[\\d$].html").all().toString());
-
-        if (page.getUrl().regex(PAGE_URL).match()) {
+        if (page.getUrl().regex(START_URL).match()) {
+            //总共多少页的链接
+            int total = Integer.parseInt(StringUtils.trim(page.getHtml().$("div.content div.leftContent h2.total ").xpath("span/text()").get()));
+            int pageSize = 30;
+            int maxPageNo = total / pageSize;
+            List<String> pageList = Lists.newArrayList();
+            for (int i = 1; i < 100; i++) {
+                pageList.add(START_URL+"/pg"+i);
+            }
+            page.addTargetRequests(pageList);
+        } else if (page.getUrl().regex(PAGE_URL).match()) {
+            //列表页具体的爬去链接
             page.addTargetRequests(page.getHtml().$("div.leftContent div.info div.title a").links().all());
         } else {
-            page.putField("title", page.getHtml().xpath("div[@class=content]").xpath("div[@class=title]").xpath("h1"));
+            // 具体爬去字段
+            String title = page.getHtml().xpath("div[@class=content]").xpath("div[@class=title]").xpath("h1").get();
+            logger.info(title);
+            page.putField("title",title );
         }
 
     }
@@ -64,7 +78,8 @@ public class ErshoufangProcessor implements PageProcessor {
         downloader.setProxyProvider(SimpleProxyProvider.from(proxyList.toArray(new Proxy[]{})));
         downloader.setProxyProvider(SimpleProxyProvider.from());
         Spider.create(new ErshoufangProcessor())
-                .addUrl("https://bj.lianjia.com/ershoufang/")
+                .addUrl(START_URL)
+                .addPipeline(new JsonFilePipeline("target/ershoufang.json"))
                 //开启5个线程抓取
                 .thread(5)
                 //启动爬虫
