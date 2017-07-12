@@ -2,7 +2,6 @@ package cn.lee.housing.spider.lianjia.model;
 
 import java.util.UUID;
 
-import com.sun.istack.internal.NotNull;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.joda.time.DateTime;
 import us.codecraft.webmagic.model.annotation.ExtractBy;
@@ -13,8 +12,7 @@ import us.codecraft.webmagic.model.annotation.ExtractBy;
 public class Ershoufang {
 
     private String id;//数据保存标识
-    @NotNull
-    @ExtractBy("//div[@class=houseRecord]/span[@class=info]/text()")
+    @ExtractBy(value = "//div[@class=houseRecord]/span[@class=info]/text()",notNull = true)
     private String fwId; // 链家id
     private String dateTime; //爬取时间
     @ExtractBy("//div[@class=title-wrapper]/h1[@class=main]/text()")
