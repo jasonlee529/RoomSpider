@@ -1,17 +1,15 @@
 package cn.lee.housing.spider.lianjia;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import javax.management.JMException;
-
 import cn.lee.housing.spider.lianjia.model.Ershoufang;
+import cn.lee.housing.spider.lianjia.service.proxy.ProxyProcessor;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -23,10 +21,12 @@ import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.proxy.SimpleProxyProvider;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
+import javax.management.JMException;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -39,7 +39,7 @@ public class ErshoufangProcessor implements PageProcessor {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final static String START_URL = "https://bj.lianjia.com/ershoufang/changping/";
-    private final static String PAGE_URL = START_URL+"/pg\\d+";
+    private final static String PAGE_URL = START_URL + "/pg\\d+";
 
     @Override
     public void process(Page page) {
@@ -73,13 +73,14 @@ public class ErshoufangProcessor implements PageProcessor {
     public static void main(String[] args) throws IOException, JMException {
         ApplicationContext act = new ClassPathXmlApplicationContext("applicationContext.xml");
         PageModelPipeline pipeline = (PageModelPipeline) act.getBean("ershoufangPipline");
+        ProxyProcessor proxies = act.getBean(ProxyProcessor.class);
         List<Proxy> proxyList = getProxies();
         HttpClientDownloader downloader = new HttpClientDownloader();
-        downloader.setProxyProvider(SimpleProxyProvider.from(proxyList.toArray(new Proxy[]{})));
+        downloader.setProxyProvider(SimpleProxyProvider.from(proxies.refreshProxy().toArray(new Proxy[]{})));
         Spider spider = OOSpider.create(Site.me().setSleepTime(1000), pipeline, Ershoufang.class).addUrl(START_URL);
+        spider.setDownloader(downloader);
         SpiderMonitor.instance().register(spider);
-        spider.thread(1)//开启5个线程抓取
-                .start();//启动爬虫
+        //spider.thread(1).start();//启动爬虫
 
     }
 
