@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 **/.idea
 target
-=======
 .classpath
 !/.project
 .project
@@ -18,8 +15,6 @@ bin/
 *.iml
 *.log
 **/target
->>>>>>> 13ec4897c7a60d314bda21677502333bb1e47529
-=======
 # Compiled class file
 *.class
 
@@ -42,4 +37,3 @@ bin/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
->>>>>>> 9dbae4b7a16ff4a4d97c1985445c60ba76d04432
