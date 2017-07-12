@@ -1,6 +1,7 @@
 package cn.lee.housing.spider.lianjia.model;
 
-import java.util.UUID;
+import java.io.Serializable;
+import javax.persistence.*;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.joda.time.DateTime;
@@ -9,10 +10,13 @@ import us.codecraft.webmagic.model.annotation.ExtractBy;
 /**
  * Created by jason on 17-7-11.
  */
-public class Ershoufang {
+@Entity
+@Table(name = "ershoufang")
+public class Ershoufang implements Serializable {
 
-    private String id;//数据保存标识
-    @ExtractBy(value = "//div[@class=houseRecord]/span[@class=info]/text()",notNull = true)
+
+    private Long id;//数据保存标识
+    @ExtractBy(value = "//div[@class=houseRecord]/span[@class=info]/text()", notNull = true)
     private String fwId; // 链家id
     private String dateTime; //爬取时间
     @ExtractBy("//div[@class=title-wrapper]/h1[@class=main]/text()")
@@ -36,15 +40,17 @@ public class Ershoufang {
 
 
     public Ershoufang() {
-        this.id = UUID.randomUUID().toString();
         this.dateTime = new DateTime().toString("yyyy-MM-dd_HH:mm:ss");
     }
 
-    public String getId() {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

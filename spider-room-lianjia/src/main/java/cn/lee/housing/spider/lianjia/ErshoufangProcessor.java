@@ -18,11 +18,13 @@ import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.model.OOSpider;
 import us.codecraft.webmagic.monitor.SpiderMonitor;
-import us.codecraft.webmagic.pipeline.JsonFilePageModelPipeline;
+import us.codecraft.webmagic.pipeline.PageModelPipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.proxy.SimpleProxyProvider;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
@@ -69,6 +71,8 @@ public class ErshoufangProcessor implements PageProcessor {
     }
 
     public static void main(String[] args) throws IOException, JMException {
+        ApplicationContext act = new ClassPathXmlApplicationContext("applicationContext.xml");
+        PageModelPipeline pipeline = (PageModelPipeline) act.getBean("ershoufangPipline");
         Resource resource = new ClassPathResource("proxy.txt");
         BufferedReader fr = new BufferedReader(new FileReader(resource.getFile()));
         String inLine = null;
@@ -80,7 +84,7 @@ public class ErshoufangProcessor implements PageProcessor {
         HttpClientDownloader downloader = new HttpClientDownloader();
         downloader.setProxyProvider(SimpleProxyProvider.from(proxyList.toArray(new Proxy[]{})));
         downloader.setProxyProvider(SimpleProxyProvider.from());
-        Spider spider = OOSpider.create(Site.me().setSleepTime(1000), new JsonFilePageModelPipeline("target/ershoufang.json"), Ershoufang.class).addUrl(START_URL);
+        Spider spider = OOSpider.create(Site.me().setSleepTime(1000), pipeline, Ershoufang.class).addUrl(START_URL);
         SpiderMonitor.instance().register(spider);
         spider.thread(5)//开启5个线程抓取
                 .run();//启动爬虫
