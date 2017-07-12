@@ -8,11 +8,11 @@
     <artifactId>room.lianjia</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.4.RELEASE</version>
+        <groupId>cn.lee.spider</groupId>
+        <artifactId>room.lianjia-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
 

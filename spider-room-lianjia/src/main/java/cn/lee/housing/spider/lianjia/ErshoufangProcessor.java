@@ -22,6 +22,7 @@ import us.codecraft.webmagic.pipeline.PageModelPipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.proxy.SimpleProxyProvider;
+import us.codecraft.webmagic.scheduler.QueueScheduler;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -83,8 +84,8 @@ public class ErshoufangProcessor implements PageProcessor {
         }
         HttpClientDownloader downloader = new HttpClientDownloader();
         downloader.setProxyProvider(SimpleProxyProvider.from(proxyList.toArray(new Proxy[]{})));
-        downloader.setProxyProvider(SimpleProxyProvider.from());
         Spider spider = OOSpider.create(Site.me().setSleepTime(1000), pipeline, Ershoufang.class).addUrl(START_URL);
+        spider.setScheduler(new QueueScheduler());
         SpiderMonitor.instance().register(spider);
         spider.thread(5)//开启5个线程抓取
                 .run();//启动爬虫
