@@ -34,7 +34,7 @@ import org.springframework.core.io.Resource;
  */
 public class ErshoufangProcessor implements PageProcessor {
 
-    private Site site = Site.me().setRetryTimes(3).setSleepTime(1000);
+    private Site site = Site.me().setRetryTimes(2).setSleepTime(1000);
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -76,7 +76,7 @@ public class ErshoufangProcessor implements PageProcessor {
         List<Proxy> proxyList = getProxies();
         HttpClientDownloader downloader = new HttpClientDownloader();
         downloader.setProxyProvider(SimpleProxyProvider.from(proxyList.toArray(new Proxy[]{})));
-        Spider spider = OOSpider.create(Site.me(), pipeline, Ershoufang.class).addUrl(START_URL);
+        Spider spider = OOSpider.create(Site.me().setSleepTime(1000), pipeline, Ershoufang.class).addUrl(START_URL);
         SpiderMonitor.instance().register(spider);
         spider.thread(1)//开启5个线程抓取
                 .start();//启动爬虫
