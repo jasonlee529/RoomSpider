@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.management.JMException;
 
+import cn.lee.housing.spider.lianjia.model.Ershoufang;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
@@ -15,9 +16,9 @@ import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
+import us.codecraft.webmagic.model.OOSpider;
 import us.codecraft.webmagic.monitor.SpiderMonitor;
-import us.codecraft.webmagic.pipeline.ConsolePipeline;
-import us.codecraft.webmagic.pipeline.JsonFilePipeline;
+import us.codecraft.webmagic.pipeline.JsonFilePageModelPipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.proxy.SimpleProxyProvider;
@@ -46,7 +47,7 @@ public class ErshoufangProcessor implements PageProcessor {
             int pageSize = 30;
             int maxPageNo = total / pageSize;
             List<String> pageList = Lists.newArrayList();
-            for (int i = 1; i < 3; i++) {
+            for (int i = 1; i < 2; i++) {
                 pageList.add(START_URL + "/pg" + i);
             }
             page.addTargetRequests(pageList);
@@ -79,10 +80,7 @@ public class ErshoufangProcessor implements PageProcessor {
         HttpClientDownloader downloader = new HttpClientDownloader();
         downloader.setProxyProvider(SimpleProxyProvider.from(proxyList.toArray(new Proxy[]{})));
         downloader.setProxyProvider(SimpleProxyProvider.from());
-        Spider spider = Spider.create(new ErshoufangProcessor())
-                .addUrl(START_URL)
-                .addPipeline(new JsonFilePipeline("target/ershoufang.json"))
-                .addPipeline(new ConsolePipeline());
+        Spider spider = OOSpider.create(Site.me().setSleepTime(1000), new JsonFilePageModelPipeline("target/ershoufang.json"), Ershoufang.class).addUrl(START_URL);
         SpiderMonitor.instance().register(spider);
         spider.thread(5)//开启5个线程抓取
                 .run();//启动爬虫
