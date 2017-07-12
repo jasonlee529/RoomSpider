@@ -22,7 +22,6 @@ import us.codecraft.webmagic.pipeline.PageModelPipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.proxy.SimpleProxyProvider;
-import us.codecraft.webmagic.scheduler.QueueScheduler;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -39,8 +38,8 @@ public class ErshoufangProcessor implements PageProcessor {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private final static String START_URL = "https://bj.lianjia.com/ershoufang";
-    private final static String PAGE_URL = "https://bj\\.lianjia\\.com/ershoufang/pg\\d+";
+    private final static String START_URL = "https://bj.lianjia.com/ershoufang/changping/";
+    private final static String PAGE_URL = START_URL+"/pg\\d+";
 
     @Override
     public void process(Page page) {
@@ -50,7 +49,7 @@ public class ErshoufangProcessor implements PageProcessor {
             int pageSize = 30;
             int maxPageNo = total / pageSize;
             List<String> pageList = Lists.newArrayList();
-            for (int i = 1; i < 2; i++) {
+            for (int i = 1; i < maxPageNo; i++) {
                 pageList.add(START_URL + "/pg" + i);
             }
             page.addTargetRequests(pageList);
@@ -74,6 +73,17 @@ public class ErshoufangProcessor implements PageProcessor {
     public static void main(String[] args) throws IOException, JMException {
         ApplicationContext act = new ClassPathXmlApplicationContext("applicationContext.xml");
         PageModelPipeline pipeline = (PageModelPipeline) act.getBean("ershoufangPipline");
+        List<Proxy> proxyList = getProxies();
+        HttpClientDownloader downloader = new HttpClientDownloader();
+        downloader.setProxyProvider(SimpleProxyProvider.from(proxyList.toArray(new Proxy[]{})));
+        Spider spider = OOSpider.create(Site.me(), pipeline, Ershoufang.class).addUrl(START_URL);
+        SpiderMonitor.instance().register(spider);
+        spider.thread(1)//开启5个线程抓取
+                .start();//启动爬虫
+
+    }
+
+    private static List<Proxy> getProxies() throws IOException {
         Resource resource = new ClassPathResource("proxy.txt");
         BufferedReader fr = new BufferedReader(new FileReader(resource.getFile()));
         String inLine = null;
@@ -82,13 +92,6 @@ public class ErshoufangProcessor implements PageProcessor {
             String[] cols = StringUtils.split(inLine, ",");
             proxyList.add(new Proxy(cols[0], Integer.valueOf(cols[1])));
         }
-        HttpClientDownloader downloader = new HttpClientDownloader();
-        downloader.setProxyProvider(SimpleProxyProvider.from(proxyList.toArray(new Proxy[]{})));
-        Spider spider = OOSpider.create(Site.me().setSleepTime(1000), pipeline, Ershoufang.class).addUrl(START_URL);
-        spider.setScheduler(new QueueScheduler());
-        SpiderMonitor.instance().register(spider);
-        spider.thread(5)//开启5个线程抓取
-                .run();//启动爬虫
-
+        return proxyList;
     }
 }

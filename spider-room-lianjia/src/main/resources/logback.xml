@@ -7,7 +7,7 @@
 	</appender>
 
 	<!-- project default level -->
-	<logger name="cn.lee.housing" level="info" />
+	<logger name="cn.lee.housing" level="debug" />
 
 	<!-- 定义根日志级别 -->
 	<root level="info">
