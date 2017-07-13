@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
  * Created by jason on 17/7/12.
  */
 @Service
-public class ProxyPieline implements InitializingBean {
+public class ProxyService implements InitializingBean {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private List<Proxy> proxyList = Lists.newArrayList();

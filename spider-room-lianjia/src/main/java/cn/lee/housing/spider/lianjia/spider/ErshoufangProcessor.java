@@ -1,4 +1,4 @@
-package cn.lee.housing.spider.lianjia;
+package cn.lee.housing.spider.lianjia.spider;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,7 +8,6 @@ import java.util.List;
 import javax.management.JMException;
 
 import cn.lee.housing.spider.lianjia.model.Ershoufang;
-import cn.lee.housing.spider.lianjia.service.proxy.ProxyPieline;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
@@ -74,9 +73,8 @@ public class ErshoufangProcessor implements PageProcessor {
     public static void main(String[] args) throws IOException, JMException {
         ApplicationContext act = new ClassPathXmlApplicationContext("applicationContext.xml");
         PageModelPipeline pipeline = (PageModelPipeline) act.getBean("ershoufangPipline");
-        ProxyPieline proxies = act.getBean(ProxyPieline.class);
         HttpClientDownloader downloader = new HttpClientDownloader();
-        downloader.setProxyProvider(SimpleProxyProvider.from(proxies.getProxyList().toArray(new Proxy[]{})));
+        downloader.setProxyProvider(SimpleProxyProvider.from(getProxies().toArray(new Proxy[]{})));
         Spider spider = OOSpider.create(Site.me().setSleepTime(1000), pipeline, Ershoufang.class).addUrl(START_URL);
         spider.setDownloader(downloader);
         SpiderMonitor.instance().register(spider);
