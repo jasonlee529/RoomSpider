@@ -1,1 +1,3 @@
 基于webmagic做爬虫核心，代码组织还是需要spring大法
+
+* 代理直接使用jsoup爬的西刺的一页代理ip，webmagic的异步Spider爬这个并不是很好用

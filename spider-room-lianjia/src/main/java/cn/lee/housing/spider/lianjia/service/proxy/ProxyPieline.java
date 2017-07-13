@@ -2,6 +2,7 @@ package cn.lee.housing.spider.lianjia.service.proxy;
 
 import java.util.List;
 
+import cn.lee.housing.utils.web.CheckIPUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.jsoup.Jsoup;
@@ -35,17 +36,17 @@ public class ProxyPieline implements InitializingBean {
 
     public void refreshProxy() {
         try {
-            Document doc = Jsoup.connect("http://www.xicidaili.com/nn/")
+            Document doc = Jsoup.connect("http://www.xicidaili.com/wt/3")
                     .header("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36")
                     .get();
             Elements trs = doc.select("table#ip_list tr:gt(1)");
             for (Element ele : trs) {
                 String host = ele.select("td:eq(1)").text();
-                String port = ele.select("td:eq(2)").text();
-                String time = StringUtils.substring(ele.select("td:eq(7) div").attr("title"),0, -1);
+                int port = Integer.parseInt(ele.select("td:eq(2)").text());
+                String time = StringUtils.substring(ele.select("td:eq(7) div").attr("title"), 0, -1);
                 Double timeNum = Double.parseDouble(time);
-                if (timeNum < 1.00) {
-                    proxyList.add(new Proxy(host, Integer.parseInt(port)));
+                if (timeNum < 1.00 && CheckIPUtils.checkValidIP(host, port)) {
+                    proxyList.add(new Proxy(host, port));
                 }
             }
             logger.info("爬取代理IP结束，共爬取" + proxyList.size() + "个代理IP.");
