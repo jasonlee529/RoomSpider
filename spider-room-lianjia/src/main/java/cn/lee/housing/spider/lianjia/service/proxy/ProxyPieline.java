@@ -1,24 +1,56 @@
 package cn.lee.housing.spider.lianjia.service.proxy;
 
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
-import us.codecraft.webmagic.ResultItems;
-import us.codecraft.webmagic.Task;
-import us.codecraft.webmagic.pipeline.Pipeline;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import us.codecraft.webmagic.proxy.Proxy;
 
-import java.util.List;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by jason on 17/7/12.
  */
-public class ProxyPieline implements Pipeline {
+@Service
+public class ProxyPieline implements InitializingBean {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private List<Proxy> proxyList = Lists.newArrayList();
 
     @Override
-    public void process(ResultItems resultItems, Task task) {
-        proxyList = resultItems.get("proxy");
+    public void afterPropertiesSet() throws Exception {
+        refreshProxy();
     }
 
+    public List<Proxy> getProxyList() {
+        return proxyList;
+    }
 
+    public void refreshProxy() {
+        try {
+            Document doc = Jsoup.connect("http://www.xicidaili.com/nn/")
+                    .header("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36")
+                    .get();
+            Elements trs = doc.select("table#ip_list tr:gt(1)");
+            for (Element ele : trs) {
+                String host = ele.select("td:eq(1)").text();
+                String port = ele.select("td:eq(2)").text();
+                String time = StringUtils.substring(ele.select("td:eq(7) div").attr("title"),0, -1);
+                Double timeNum = Double.parseDouble(time);
+                if (timeNum < 1.00) {
+                    proxyList.add(new Proxy(host, Integer.parseInt(port)));
+                }
+            }
+            logger.info("爬取代理IP结束，共爬取" + proxyList.size() + "个代理IP.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

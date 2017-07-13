@@ -1,31 +1,28 @@
 package cn.lee.housing.spider.lianjia.service.proxy;
 
+import java.util.List;
+
 import org.assertj.core.util.Lists;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.selector.Selectable;
 
-import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by jason on 17-7-12.
- */
-
-/**
  * 启动前从代理爬取100个地址做代理池
+ *　webmagic异步爬去代理池放弃
  */
 @Service
-public class ProxyProcessor implements PageProcessor, InitializingBean {
+@Deprecated
+public class ProxyProcessor implements PageProcessor{
 
     private Site site = Site.me().setRetryTimes(2).setSleepTime(1000);
 
-    private Spider spider = Spider.create(this).setSpawnUrl(false).addUrl("http://www.xicidaili.com/nn");
+
 
     private List<Proxy> proxyList = Lists.newArrayList();
 
@@ -46,16 +43,5 @@ public class ProxyProcessor implements PageProcessor, InitializingBean {
         return site;
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        spider.start();
-    }
 
-    public void refreshProxy() {
-        if(spider.getThreadAlive() > 1){
-
-        }else{
-            spider.start();
-        }
-    }
 }

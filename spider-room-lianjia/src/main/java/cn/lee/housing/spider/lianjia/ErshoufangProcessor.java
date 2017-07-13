@@ -1,15 +1,18 @@
 package cn.lee.housing.spider.lianjia;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.management.JMException;
+
 import cn.lee.housing.spider.lianjia.model.Ershoufang;
-import cn.lee.housing.spider.lianjia.service.proxy.ProxyProcessor;
+import cn.lee.housing.spider.lianjia.service.proxy.ProxyPieline;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -21,12 +24,10 @@ import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.proxy.SimpleProxyProvider;
 
-import javax.management.JMException;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 
 /**
@@ -49,7 +50,7 @@ public class ErshoufangProcessor implements PageProcessor {
             int pageSize = 30;
             int maxPageNo = total / pageSize;
             List<String> pageList = Lists.newArrayList();
-            for (int i = 1; i < maxPageNo; i++) {
+            for (int i = 1; i < 2; i++) {
                 pageList.add(START_URL + "/pg" + i);
             }
             page.addTargetRequests(pageList);
@@ -73,14 +74,13 @@ public class ErshoufangProcessor implements PageProcessor {
     public static void main(String[] args) throws IOException, JMException {
         ApplicationContext act = new ClassPathXmlApplicationContext("applicationContext.xml");
         PageModelPipeline pipeline = (PageModelPipeline) act.getBean("ershoufangPipline");
-        ProxyProcessor proxies = act.getBean(ProxyProcessor.class);
-        List<Proxy> proxyList = getProxies();
+        ProxyPieline proxies = act.getBean(ProxyPieline.class);
         HttpClientDownloader downloader = new HttpClientDownloader();
-        downloader.setProxyProvider(SimpleProxyProvider.from(proxies.refreshProxy().toArray(new Proxy[]{})));
+        downloader.setProxyProvider(SimpleProxyProvider.from(proxies.getProxyList().toArray(new Proxy[]{})));
         Spider spider = OOSpider.create(Site.me().setSleepTime(1000), pipeline, Ershoufang.class).addUrl(START_URL);
         spider.setDownloader(downloader);
         SpiderMonitor.instance().register(spider);
-        //spider.thread(1).start();//启动爬虫
+        spider.thread(1).start();//启动爬虫
 
     }
 
