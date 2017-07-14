@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.management.JMException;
 
+import cn.lee.housing.spider.lianjia.model.Ershoufang;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
@@ -15,9 +16,8 @@ import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
+import us.codecraft.webmagic.model.OOSpider;
 import us.codecraft.webmagic.monitor.SpiderMonitor;
-import us.codecraft.webmagic.pipeline.ConsolePipeline;
-import us.codecraft.webmagic.pipeline.JsonFilePipeline;
 import us.codecraft.webmagic.pipeline.PageModelPipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.proxy.Proxy;
@@ -34,11 +34,11 @@ import org.springframework.core.io.Resource;
  */
 public class ErshoufangProcessor implements PageProcessor {
 
-    private Site site = Site.me().setRetryTimes(2).setSleepTime(1000).setDomain("https://bj.lianjia.com/");
+    private Site site = Site.me().setRetryTimes(2).setCycleRetryTimes(15000).setSleepTime(10000).setDomain("https://bj.lianjia.com/");
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private final static String START_URL = "https://bj.lianjia.com/ershoufang/changping";
+    private final static String START_URL = "https://bj.lianjia.com/ershoufang/changping/pg1";
     private final static String PAGE_URL = START_URL + "/pg\\d+";
 
     @Override
@@ -49,7 +49,7 @@ public class ErshoufangProcessor implements PageProcessor {
             int pageSize = 30;
             int maxPageNo = total / pageSize;
             List<String> pageList = Lists.newArrayList();
-            for (int i = 1; i < 2; i++) {
+            for (int i = 2; i <=maxPageNo; i++) {
                 pageList.add(START_URL + "/pg" + i);
             }
             page.addTargetRequests(pageList);
@@ -75,12 +75,8 @@ public class ErshoufangProcessor implements PageProcessor {
         PageModelPipeline pipeline = (PageModelPipeline) act.getBean("ershoufangPipline");
         HttpClientDownloader downloader = new HttpClientDownloader();
         downloader.setProxyProvider(SimpleProxyProvider.from(getProxies().toArray(new Proxy[]{})));
-        // Spider spider = OOSpider.create(Site.me().setSleepTime(1000), pipeline, Ershoufang.class).addUrl(START_URL);
-        Spider spider = Spider.create(new ErshoufangProcessor())
-                .addPipeline(new JsonFilePipeline("target/ershoufang"))
-                .addPipeline(new ConsolePipeline())
-                .addUrl("https://bj.lianjia.com/ershoufang/changping");
-        spider.setDownloader(downloader);
+         Spider spider = OOSpider.create(Site.me().setSleepTime(1000), pipeline, Ershoufang.class).addUrl(START_URL);
+//        spider.setDownloader(downloader);
         SpiderMonitor.instance().register(spider);
         spider.thread(1).run();//启动爬虫
 

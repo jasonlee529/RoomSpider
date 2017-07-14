@@ -15,7 +15,7 @@ import us.codecraft.webmagic.model.annotation.TargetUrl;
 @Entity
 @Table(name = "ershoufang")
 @TargetUrl("https://bj.lianjia.com/ershoufang/\\w+.html")
-@HelpUrl("https://bj.lianjia.com/ershoufang/changping/pg\\d+")
+@HelpUrl("https://bj.lianjia.com/ershoufang/changping/pg\\d+/")
 public class Ershoufang implements Serializable {
 
 
@@ -23,23 +23,30 @@ public class Ershoufang implements Serializable {
     @ExtractBy(value = "//div[@class=houseRecord]/span[@class=info]/text()", notNull = true)
     private String fwId; // 链家id
     private String dateTime; //爬取时间
-    @ExtractBy("//div[@class=title-wrapper]/h1[@class=main]/text()")
+    @ExtractBy("//div[@class=sellDetailHeader]//h1[@class=main]/text()")
     private String title;
     @ExtractBy("//div[@class=price]/span[@class=total]/text()")
     private String price;
-    @ExtractBy("//div[@class=price]/span[@class=unitPriceValue]/text()")
+    @ExtractBy("//div[@class=price]//span[@class=unitPriceValue]/text()")
     private String avgPrice;
-    @ExtractBy("//div[@class=area]/div[@class=mainInfo]/text()")
+    @ExtractBy("//div[@class=area]//div[@class=mainInfo]/text()")
     private String buildArea; //建筑面积
-    @ExtractBy("//div[@class=price]/span[@class=total]/text()")
+    @ExtractBy("//div[@class=price]//span[@class=total]/text()")
     private String useArea; // 使用面积
 
+    @ExtractBy("//div[@class=introContent]//div[@class=content]//ul//li[1]/text()")
     private String type;  //　户型
+    @ExtractBy("//div[@class=introContent]//div[@class=content]//ul//li[2]/text()")
     private String floor; // 楼层
+    @ExtractBy("//div[@class=introContent]//div[@class=content]//ul//li[9]/text()")
     private String decoration; //装修
+    @ExtractBy("//div[@class=introContent]//div[@class=content]//ul//li[7]/text()")
     private String drection;  //朝向
+    @ExtractBy("//div[@class=area]//div[@class=subInfo]/text()")
     private String buidYear; //建筑时间
+    @ExtractBy("//div[@class=introContent]//div[@class=content]//ul//li[6]/text()")
     private String buildType; // 建筑类型
+    @ExtractBy("//div[@class=aroundInfo]//div[@class=areaName]//span[@class=info]//tidyText()")
     private String region;  // 所在区域
 
 
