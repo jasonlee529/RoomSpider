@@ -36,7 +36,6 @@ public class ProxyProcessor implements PageProcessor {
             if (timeNum < 1.00 && CheckIPUtils.checkValidIP(host, port)) {
                 proxyList.add(new Proxy(host, port));
             }
-            proxyList.add(new Proxy(host, port));
         }
         page.putField("proxy", proxyList);
         logger.info("爬取代理IP结束，共爬取" + proxyList.size() + "个代理IP.");

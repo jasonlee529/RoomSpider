@@ -26,6 +26,7 @@ public class ProxyPipeline implements Pipeline {
             fw = new FileWriter(resource.getFile());
             for (Proxy p : proxyList) {
                 fw.write(p.getHost() + "," + p.getPort());
+                fw.write("\r\n");
             }
         } catch (IOException e) {
             e.printStackTrace();

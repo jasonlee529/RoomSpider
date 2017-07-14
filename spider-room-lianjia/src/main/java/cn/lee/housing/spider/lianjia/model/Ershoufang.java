@@ -6,12 +6,16 @@ import javax.persistence.*;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.joda.time.DateTime;
 import us.codecraft.webmagic.model.annotation.ExtractBy;
+import us.codecraft.webmagic.model.annotation.HelpUrl;
+import us.codecraft.webmagic.model.annotation.TargetUrl;
 
 /**
  * Created by jason on 17-7-11.
  */
 @Entity
 @Table(name = "ershoufang")
+@TargetUrl("https://bj.lianjia.com/ershoufang/\\w+.html")
+@HelpUrl("https://bj.lianjia.com/ershoufang/changping/pg\\d+")
 public class Ershoufang implements Serializable {
 
 
