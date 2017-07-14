@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * Created by jason on 17-7-12.
  */
 @Service
-public class ErshoufangPipline implements PageModelPipeline<Ershoufang> {
+public class ErshoufangPagePipline implements PageModelPipeline<Ershoufang> {
     @Autowired
     private ErshoufangDao dao;
 

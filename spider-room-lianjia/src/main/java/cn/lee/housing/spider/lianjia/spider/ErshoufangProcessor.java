@@ -1,32 +1,23 @@
 package cn.lee.housing.spider.lianjia.spider;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import javax.management.JMException;
-
 import cn.lee.housing.spider.lianjia.model.Ershoufang;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import us.codecraft.webmagic.Page;
-import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.downloader.HttpClientDownloader;
-import us.codecraft.webmagic.model.OOSpider;
-import us.codecraft.webmagic.monitor.SpiderMonitor;
-import us.codecraft.webmagic.pipeline.PageModelPipeline;
-import us.codecraft.webmagic.processor.PageProcessor;
-import us.codecraft.webmagic.proxy.Proxy;
-import us.codecraft.webmagic.proxy.SimpleProxyProvider;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import us.codecraft.webmagic.Page;
+import us.codecraft.webmagic.Site;
+import us.codecraft.webmagic.processor.PageProcessor;
+import us.codecraft.webmagic.proxy.Proxy;
+import us.codecraft.webmagic.selector.Html;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -38,7 +29,7 @@ public class ErshoufangProcessor implements PageProcessor {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private final static String START_URL = "https://bj.lianjia.com/ershoufang/changping/pg1";
+    public final static String START_URL = "https://bj.lianjia.com/ershoufang/changping";
     private final static String PAGE_URL = START_URL + "/pg\\d+";
 
     @Override
@@ -49,7 +40,7 @@ public class ErshoufangProcessor implements PageProcessor {
             int pageSize = 30;
             int maxPageNo = total / pageSize;
             List<String> pageList = Lists.newArrayList();
-            for (int i = 2; i <=maxPageNo; i++) {
+            for (int i = 2; i <= maxPageNo; i++) {
                 pageList.add(START_URL + "/pg" + i);
             }
             page.addTargetRequests(pageList);
@@ -57,10 +48,27 @@ public class ErshoufangProcessor implements PageProcessor {
             //列表页具体的爬去链接
             page.addTargetRequests(page.getHtml().$("div.leftContent div.info div.title a").links().all());
         } else {
-            // 具体爬去字段
-            String title = page.getHtml().xpath("div[@class=content]").xpath("div[@class=title]").xpath("h1/text()").get();
-            logger.info(title);
-            page.putField("title", title);
+            Html html = page.getHtml();
+            String fwId = html.xpath("//div[@class=houseRecord]/span[@class=info]/text()").get();
+            if(StringUtils.isNotBlank(fwId)){
+                Ershoufang ershoufang = new Ershoufang();
+                ershoufang.setFwId(fwId);
+                ershoufang.setTitle(html.xpath("div[@class=content]").xpath("div[@class=title]").xpath("h1/text()").get());
+                ershoufang.setPrice(html.xpath("//div[@class=price]/span[@class=total]/text()").get());
+                ershoufang.setAvgPrice(html.xpath("//div[@class=price]//span[@class=unitPriceValue]/text()").get());
+                ershoufang.setBuildArea(html.xpath("//div[@class=area]//div[@class=mainInfo]/text()").get());
+                ershoufang.setUseArea(html.xpath("//div[@class=price]//span[@class=total]/text()").get());
+                ershoufang.setType(html.xpath("//div[@class=introContent]//div[@class=content]//ul//li[1]/text()").get());
+                ershoufang.setFloor(html.xpath("//div[@class=introContent]//div[@class=content]//ul//li[2]/text()").get());
+                ershoufang.setDecoration(html.xpath("//div[@class=introContent]//div[@class=content]//ul//li[9]/text()").get());
+                ershoufang.setDrection(html.xpath("//div[@class=introContent]//div[@class=content]//ul//li[7]/text()").get());
+                ershoufang.setBuidYear(html.xpath("//div[@class=area]//div[@class=subInfo]/text()").get());
+                ershoufang.setRegion(html.xpath("//div[@class=aroundInfo]//div[@class=areaName]//span[@class=info]//tidyText()").get());
+                // 具体爬去字段
+                logger.info(ershoufang.toString());
+                page.putField("ershoufang", ershoufang);
+            }
+           logger.error("null page!");
         }
 
     }
@@ -68,18 +76,6 @@ public class ErshoufangProcessor implements PageProcessor {
     @Override
     public Site getSite() {
         return site;
-    }
-
-    public static void main(String[] args) throws IOException, JMException {
-        ApplicationContext act = new ClassPathXmlApplicationContext("applicationContext.xml");
-        PageModelPipeline pipeline = (PageModelPipeline) act.getBean("ershoufangPipline");
-        HttpClientDownloader downloader = new HttpClientDownloader();
-        downloader.setProxyProvider(SimpleProxyProvider.from(getProxies().toArray(new Proxy[]{})));
-         Spider spider = OOSpider.create(Site.me().setSleepTime(1000), pipeline, Ershoufang.class).addUrl(START_URL);
-//        spider.setDownloader(downloader);
-        SpiderMonitor.instance().register(spider);
-        spider.thread(1).run();//启动爬虫
-
     }
 
     private static List<Proxy> getProxies() throws IOException {

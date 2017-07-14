@@ -83,7 +83,6 @@
         <property name="minEvictableIdleTimeMillis" value="3600000" />
     </bean>
 
-    <!-- production环境 -->
         <context:property-placeholder ignore-unresolvable="true"
                                       location="classpath*:/application.properties" />
 

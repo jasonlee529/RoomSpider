@@ -1,7 +1,5 @@
 package cn.lee.housing.spider.lianjia.spider;
 
-import java.util.List;
-
 import cn.lee.housing.utils.web.CheckIPUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
@@ -9,10 +7,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.selector.Selectable;
+
+import java.util.List;
 
 /**
  * Created by jason on 17-7-13.
@@ -44,10 +43,6 @@ public class ProxyProcessor implements PageProcessor {
     @Override
     public Site getSite() {
         return site;
-    }
-
-    public static void main(String[] args) {
-        Spider.create(new ProxyProcessor()).addPipeline(new ProxyPipeline()).addUrl("http://www.xicidaili.com/wt/").thread(3).run();
     }
 
 }
