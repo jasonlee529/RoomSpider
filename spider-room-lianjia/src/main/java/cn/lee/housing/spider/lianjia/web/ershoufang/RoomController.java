@@ -20,8 +20,8 @@ public class RoomController {
 
     @Autowired
     private ErshoufangPipeline pipeline;
-    
-    @RequestMapping(value = "${area}")
+
+    @RequestMapping(value = "{area}")
     public String area(@PathVariable String area) {
         try {
             Spider spider = Spider.create(new ErshoufangProcessor())
