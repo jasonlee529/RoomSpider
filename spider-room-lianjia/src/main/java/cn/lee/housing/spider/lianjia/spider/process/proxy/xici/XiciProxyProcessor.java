@@ -33,13 +33,13 @@ public class XiciProxyProcessor extends AbstractProxyProcessor implements PagePr
             }
         }
         page.putField("proxy", proxyList);
-        logger.info("爬取代理IP结束，共爬取" + proxyList.size() + "个代理IP.");
+        logger.info("爬取代理IP" + page.getHtml() + "结束，共爬取" + proxyList.size() + "个代理IP.");
         page.addTargetRequests(page.getHtml().xpath("//div[@class=pagination]//a").links().all());
     }
 
-    public static Spider getSpder(){
+    public static Spider getSpder() {
         return Spider.create(new XiciProxyProcessor())
-                  .addPipeline(new ProxyPipeline())
+                .addPipeline(new ProxyPipeline())
                 .addUrl("http://www.xicidaili.com/wt/").thread(5);
     }
 }
