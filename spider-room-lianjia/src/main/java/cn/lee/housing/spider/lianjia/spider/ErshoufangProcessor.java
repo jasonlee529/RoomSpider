@@ -1,23 +1,24 @@
 package cn.lee.housing.spider.lianjia.spider;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import cn.lee.housing.spider.lianjia.model.Ershoufang;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.selector.Html;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 
 /**
@@ -25,7 +26,7 @@ import java.util.List;
  */
 public class ErshoufangProcessor implements PageProcessor {
 
-    private Site site = Site.me().setRetryTimes(2).setCycleRetryTimes(15000).setSleepTime(10000).setDomain("https://bj.lianjia.com/");
+    private Site site = Site.me().setRetryTimes(2).setCycleRetryTimes(15000).setSleepTime(5000).setDomain("https://bj.lianjia.com/");
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 

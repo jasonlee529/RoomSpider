@@ -17,7 +17,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
 
     public static void main(String[] args) {
-        proxySpider();
+        ershoufangSpider();
     }
 
     private static void ershoufangSpider() {
@@ -29,7 +29,7 @@ public class Main {
                     .addPipeline(pipeline)
                     .addUrl(ErshoufangProcessor.START_URL);
             SpiderMonitor.instance().register(spider);
-            spider.thread(5).start();//启动爬虫
+            spider.thread(3).start();//启动爬虫
         } catch (Exception e) {
             e.printStackTrace();
         }
