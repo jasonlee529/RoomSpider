@@ -12,6 +12,7 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.selector.Html;
+import us.codecraft.webmagic.selector.Selectable;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -36,21 +37,26 @@ public class ErshoufangProcessor implements PageProcessor {
     public void process(Page page) {
         if (StringUtils.equalsIgnoreCase(START_URL, page.getUrl().get())) {
             //总共多少页的链接
-            int total = Integer.parseInt(StringUtils.trim(page.getHtml().$("div.content div.leftContent h2.total ").xpath("span/text()").get()));
+            int total = Integer.parseInt(StringUtils.trim(page.getHtml().$("div.content div.leftContent h2.total").xpath("span/text()").get()));
             int pageSize = 30;
-            int maxPageNo = total / pageSize;
+            int maxPageNo = total / pageSize + 1;
             List<String> pageList = Lists.newArrayList();
             for (int i = 2; i <= maxPageNo; i++) {
                 pageList.add(START_URL + "/pg" + i);
             }
             page.addTargetRequests(pageList);
-        } else if (page.getUrl().regex(PAGE_URL).match()) {
+        }
+        if (page.getUrl().regex(PAGE_URL).match()) {
             //列表页具体的爬去链接
-            page.addTargetRequests(page.getHtml().$("div.leftContent div.info div.title a").links().all());
+            Selectable selectable = page.getHtml().xpath("//div[@class='page-box']//a");
+            Selectable links = selectable.links();
+            page.addTargetRequests(page.getHtml().xpath("//div[@class='page-box']//a").links().all());
+
+            page.addTargetRequests(page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all());
         } else {
             Html html = page.getHtml();
             String fwId = html.xpath("//div[@class=houseRecord]/span[@class=info]/text()").get();
-            if(StringUtils.isNotBlank(fwId)){
+            if (StringUtils.isNotBlank(fwId)) {
                 Ershoufang ershoufang = new Ershoufang();
                 ershoufang.setFwId(fwId);
                 ershoufang.setTitle(html.xpath("div[@class=content]").xpath("div[@class=title]").xpath("h1/text()").get());
@@ -68,7 +74,7 @@ public class ErshoufangProcessor implements PageProcessor {
                 logger.info(ershoufang.toString());
                 page.putField("ershoufang", ershoufang);
             }
-           logger.error("null page!");
+            logger.error("null page!");
         }
 
     }

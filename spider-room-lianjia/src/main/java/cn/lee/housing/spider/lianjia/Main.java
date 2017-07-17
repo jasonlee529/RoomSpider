@@ -27,7 +27,7 @@ public class Main {
             Spider spider = Spider.create(new ErshoufangProcessor())
                     .addPipeline(new ConsolePipeline())
                     .addPipeline(pipeline)
-                    .addUrl(ErshoufangProcessor.START_URL);
+                    .addUrl("https://bj.lianjia.com/ershoufang/changping");
             SpiderMonitor.instance().register(spider);
             spider.thread(1).start();//启动爬虫
         } catch (Exception e) {
