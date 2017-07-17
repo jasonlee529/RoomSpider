@@ -4,12 +4,13 @@ import cn.lee.housing.spider.lianjia.service.ErshoufangPipeline;
 import cn.lee.housing.spider.lianjia.spider.ErshoufangProcessor;
 import cn.lee.housing.spider.lianjia.spider.ProxyPipeline;
 import cn.lee.housing.spider.lianjia.spider.ProxyProcessor;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.monitor.SpiderMonitor;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.pipeline.Pipeline;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Created by jason on 17/7/14.
@@ -29,7 +30,7 @@ public class Main {
                     .addPipeline(pipeline)
                     .addUrl(ErshoufangProcessor.START_URL);
             SpiderMonitor.instance().register(spider);
-            spider.thread(1).start();//启动爬虫
+            spider.thread(5).start();//启动爬虫
         } catch (Exception e) {
             e.printStackTrace();
         }
