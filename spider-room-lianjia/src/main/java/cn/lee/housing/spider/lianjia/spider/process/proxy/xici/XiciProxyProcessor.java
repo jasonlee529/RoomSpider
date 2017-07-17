@@ -1,21 +1,23 @@
 package cn.lee.housing.spider.lianjia.spider.process.proxy.xici;
 
-import java.util.List;
-
 import cn.lee.housing.spider.lianjia.spider.process.proxy.AbstractProxyProcessor;
+import cn.lee.housing.spider.lianjia.spider.process.proxy.ProxyPipeline;
 import cn.lee.housing.utils.web.CheckIPUtils;
 import org.apache.commons.lang3.StringUtils;
 import us.codecraft.webmagic.Page;
+import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.selector.Selectable;
+
+import java.util.List;
 
 /**
  * 爬取西刺网的免费代理ip,
  * 代理都不可用，放弃
  * Created by jason on 17-7-13.
  */
-public class ProxyProcessor extends AbstractProxyProcessor implements PageProcessor {
+public class XiciProxyProcessor extends AbstractProxyProcessor implements PageProcessor {
 
     @Override
     public void process(Page page) {
@@ -35,4 +37,9 @@ public class ProxyProcessor extends AbstractProxyProcessor implements PageProces
         page.addTargetRequests(page.getHtml().xpath("//div[@class=pagination]//a").links().all());
     }
 
+    public static Spider getSpder(){
+        return Spider.create(new XiciProxyProcessor())
+                  .addPipeline(new ProxyPipeline())
+                .addUrl("http://www.xicidaili.com/wt/").thread(5);
+    }
 }
