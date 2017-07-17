@@ -1,4 +1,4 @@
-package cn.lee.housing.spider.lianjia.spider;
+package cn.lee.housing.spider.lianjia.spider.process.proxy;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class ProxyPipeline implements Pipeline {
         FileWriter fw = null;
         try {
             Resource resource = new ClassPathResource("proxy.txt");
-            fw = new FileWriter(resource.getFile());
+            fw = new FileWriter(resource.getFile(),true);
             for (Proxy p : proxyList) {
                 fw.write(p.getHost() + "," + p.getPort());
                 fw.write("\r\n");

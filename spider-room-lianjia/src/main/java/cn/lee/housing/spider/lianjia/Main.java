@@ -2,8 +2,7 @@ package cn.lee.housing.spider.lianjia;
 
 import cn.lee.housing.spider.lianjia.service.ErshoufangPipeline;
 import cn.lee.housing.spider.lianjia.spider.ErshoufangProcessor;
-import cn.lee.housing.spider.lianjia.spider.ProxyPipeline;
-import cn.lee.housing.spider.lianjia.spider.ProxyProcessor;
+import cn.lee.housing.spider.lianjia.spider.process.proxy.kuai.KuaiProxyProcessor;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.monitor.SpiderMonitor;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
@@ -18,7 +17,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
 
     public static void main(String[] args) {
-        ershoufangSpider();
+        proxySpider();
     }
 
     private static void ershoufangSpider() {
@@ -36,7 +35,7 @@ public class Main {
         }
     }
 
-    public static void proxySpider(String[] args) {
-        Spider.create(new ProxyProcessor()).addPipeline(new ProxyPipeline()).addUrl("http://www.xicidaili.com/wt/").thread(3).run();
+    public static void proxySpider() {
+        KuaiProxyProcessor.getSpider().run();
     }
 }
