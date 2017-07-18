@@ -43,7 +43,7 @@ public class KuaiProxyProcessor extends AbstractProxyProcessor implements PagePr
     public static Spider getSpider() {
         return Spider.create(new KuaiProxyProcessor())
                 .addPipeline(new ProxyPipeline())
-                .addUrl("http://www.kuaidaili.com/free/outtr/").thread(5);
+                .addUrl("http://www.kuaidaili.com/free/intr/").thread(5);
     }
 
 }

@@ -6,6 +6,7 @@ import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import us.codecraft.webmagic.Site;
+import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.proxy.Proxy;
 
@@ -23,4 +24,5 @@ public abstract class AbstractProxyProcessor implements PageProcessor {
     public Site getSite() {
         return site;
     }
+
 }
