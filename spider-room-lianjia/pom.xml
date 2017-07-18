@@ -152,7 +152,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.3.8.v20160314</version>
+                <version>9.2.22.v20170606</version>
                 <configuration>
                     <httpConnector>
                         <port>18080</port>

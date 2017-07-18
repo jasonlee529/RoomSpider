@@ -10,14 +10,15 @@
     <!-- 自动扫描且只扫描@Controller -->
     <context:component-scan base-package="cn.lee.housing" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+        <context:include-filter type="annotation"
+                                expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
 
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
             <!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-                <constructor-arg value="UTF-8" />
+                <constructor-arg value="UTF-8"/>
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
@@ -33,7 +34,7 @@
     <mvc:default-servlet-handler/>
 
     <!-- 定义无需Controller的url<->view直接映射 -->
-    <mvc:view-controller path="/" view-name="redirect:/sample/get"/>
+    <mvc:view-controller path="/" view-name="redirect:/proxy/xici"/>
 
     <!-- 将Controller抛出的异常转到特定View, 保持SiteMesh的装饰效果 -->
     <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
