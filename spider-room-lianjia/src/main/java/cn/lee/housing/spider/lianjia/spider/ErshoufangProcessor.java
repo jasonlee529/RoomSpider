@@ -1,16 +1,12 @@
 package cn.lee.housing.spider.lianjia.spider;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import cn.lee.housing.spider.lianjia.model.Ershoufang;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
@@ -18,8 +14,11 @@ import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
 
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -85,15 +84,5 @@ public class ErshoufangProcessor implements PageProcessor {
         return site;
     }
 
-    private static List<Proxy> getProxies() throws IOException {
-        Resource resource = new ClassPathResource("proxy.txt");
-        BufferedReader fr = new BufferedReader(new FileReader(resource.getFile()));
-        String inLine = null;
-        List<Proxy> proxyList = new ArrayList<Proxy>();
-        while ((inLine = fr.readLine()) != null) {
-            String[] cols = StringUtils.split(inLine, ",");
-            proxyList.add(new Proxy(cols[0], Integer.valueOf(cols[1])));
-        }
-        return proxyList;
-    }
+
 }

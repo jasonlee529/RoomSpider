@@ -13,7 +13,7 @@
 
     <context-param>
         <param-name>spring.profiles.default</param-name>
-        <param-value>company</param-value>
+        <param-value>home</param-value>
     </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
