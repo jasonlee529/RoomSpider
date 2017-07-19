@@ -1,6 +1,7 @@
 package cn.lee.housing.spider.lianjia.spider.process.proxy.kuai;
 
 import java.util.List;
+import javax.management.JMException;
 
 import cn.lee.housing.spider.lianjia.spider.process.proxy.AbstractProxyProcessor;
 import cn.lee.housing.spider.lianjia.spider.process.proxy.ProxyPipeline;
@@ -8,6 +9,7 @@ import cn.lee.housing.utils.web.CheckIPUtils;
 import org.apache.commons.lang3.StringUtils;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.monitor.SpiderMonitor;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.selector.Selectable;
@@ -41,9 +43,15 @@ public class KuaiProxyProcessor extends AbstractProxyProcessor implements PagePr
 
 
     public static Spider getSpider() {
-        return Spider.create(new KuaiProxyProcessor())
+        Spider spider = Spider.create(new KuaiProxyProcessor())
                 .addPipeline(new ProxyPipeline())
                 .addUrl("http://www.kuaidaili.com/free/intr/").thread(5);
+        try {
+            SpiderMonitor.instance().register(spider);
+        } catch (JMException e) {
+            e.printStackTrace();
+        }
+        return spider;
     }
 
 }

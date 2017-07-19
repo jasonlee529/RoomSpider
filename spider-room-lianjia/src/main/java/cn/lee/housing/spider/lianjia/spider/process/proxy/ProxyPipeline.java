@@ -23,7 +23,10 @@ public class ProxyPipeline implements Pipeline {
         FileWriter fw = null;
         try {
             Resource resource = new ClassPathResource("proxy.txt");
-            fw = new FileWriter(resource.getFile(),true);
+            if (!resource.exists()) {
+                resource.getFile().createNewFile();
+            }
+            fw = new FileWriter(resource.getFile(), true);
             for (Proxy p : proxyList) {
                 fw.write(p.getHost() + "," + p.getPort());
                 fw.write("\r\n");
