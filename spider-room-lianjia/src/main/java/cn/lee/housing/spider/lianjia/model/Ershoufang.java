@@ -13,7 +13,7 @@ import us.codecraft.webmagic.model.annotation.TargetUrl;
  * Created by jason on 17-7-11.
  */
 @Entity
-@Table(name = "ershoufang")
+@Table(name = "lianjia_ershoufang")
 @TargetUrl("https://bj.lianjia.com/ershoufang/\\w+.html")
 @HelpUrl("https://bj.lianjia.com/ershoufang/changping/pg\\d+/")
 public class Ershoufang implements Serializable {
