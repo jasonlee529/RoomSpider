@@ -12,4 +12,24 @@ import cn.lee.housing.spider.lianjia.model.IdEntity;
 @Entity
 @Table(name = "lianjia_chengjiao")
 public class Chengjiao extends IdEntity {
+
+    private String roomId;
+
+    private String totalPrice;
+
+    private String avgPrice;
+
+    private String listPrice;
+
+    private String cycle;
+
+    private String times;
+
+    private String inspectTimes;
+
+    private String attentionTimes;
+
+    private String viewTimes;
+
+
 }
