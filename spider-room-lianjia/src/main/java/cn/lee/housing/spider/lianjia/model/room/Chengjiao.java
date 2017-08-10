@@ -14,24 +14,27 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 @Table(name = "lianjia_chengjiao")
 public class Chengjiao extends IdEntity {
 
-    private String roomId;
+    private String roomId; // 房间编号
 
-    private String totalPrice;
+    private String totalPrice; // 总价
 
-    private String avgPrice;
+    private String avgPrice; //　平均价格
 
-    private String listPrice;
+    private String listPrice; // 挂牌价格
 
-    private String cycle;
+    private String cycle; //成交周期
 
-    private String times;
+    private String times; // 调价次数
 
-    private String inspectTimes;
+    private String inspectTimes; //带看次数
 
-    private String attentionTimes;
+    private String attentionTimes; // 关注
 
-    private String viewTimes;
+    private String viewTimes;//浏览
 
+    public Chengjiao(String roomId) {
+        this.roomId = roomId;
+    }
 
     public String getRoomId() {
         return roomId;
