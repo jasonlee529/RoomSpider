@@ -24,7 +24,7 @@ public class ChengjiaoProcessor implements PageProcessor {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public final static String START_URL = "https://bj.lianjia.com/ershoufang/changping";
+    public final static String START_URL = "https://bj.lianjia.com/chengjiao/changping";
     private final static String PAGE_URL = START_URL + "/pg\\d+";
 
     @Override
