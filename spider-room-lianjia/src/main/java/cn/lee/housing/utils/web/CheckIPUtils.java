@@ -27,7 +27,7 @@ public class CheckIPUtils {
             Proxy proxy = new Proxy(Proxy.Type.HTTP, proxyAddr);
             connection = (HttpURLConnection) url.openConnection(proxy);
             connection.setReadTimeout(200);
-            connection.setConnectTimeout(200);
+            connection.setConnectTimeout(2000);
             connection.setRequestMethod("GET");
 
             if (connection.getResponseCode() == 200) {

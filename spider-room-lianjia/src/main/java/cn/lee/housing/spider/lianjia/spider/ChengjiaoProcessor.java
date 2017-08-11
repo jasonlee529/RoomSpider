@@ -31,7 +31,7 @@ public class ChengjiaoProcessor implements PageProcessor {
     public void process(Page page) {
         if (StringUtils.equalsIgnoreCase(START_URL, page.getUrl().get())) {
             //总共多少页的链接
-            int total = Integer.parseInt(StringUtils.trim(page.getHtml().$("div.content div.leftContent h2.total").xpath("span/text()").get()));
+            int total = Integer.parseInt(StringUtils.trim(page.getHtml().xpath("//div[@class=resultDes]//div[@class=total]").xpath("//span/text()").get()));
             int pageSize = 30;
             int maxPageNo = total / pageSize + 1;
             List<String> pageList = Lists.newArrayList();

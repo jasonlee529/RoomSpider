@@ -12,10 +12,8 @@ import cn.lee.housing.utils.web.CheckIPUtils;
 import org.apache.commons.lang3.StringUtils;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
-import us.codecraft.webmagic.monitor.SpiderMonitor;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.proxy.Proxy;
-import us.codecraft.webmagic.proxy.SimpleProxyProvider;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -38,7 +36,7 @@ public class ChengjiaoController {
     public String area(@PathVariable String area) {
         try {
             HttpClientDownloader downloader = new HttpClientDownloader();
-            downloader.setProxyProvider(SimpleProxyProvider.from(getProxies().toArray(new Proxy[]{})));
+            //downloader.setProxyProvider(SimpleProxyProvider.from(getProxies().toArray(new Proxy[]{})));
             Spider spider = Spider.create(new ChengjiaoProcessor())
                     .addPipeline(new ConsolePipeline())
                     .addPipeline(pipeline)
