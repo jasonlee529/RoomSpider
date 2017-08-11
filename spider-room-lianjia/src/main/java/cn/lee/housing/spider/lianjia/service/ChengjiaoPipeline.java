@@ -1,5 +1,6 @@
 package cn.lee.housing.spider.lianjia.service;
 
+import cn.lee.housing.spider.lianjia.model.Ershoufang;
 import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
 import cn.lee.housing.spider.lianjia.repository.ChengjiaoDao;
 import cn.lee.housing.spider.lianjia.repository.ErshoufangDao;
@@ -23,9 +24,15 @@ public class ChengjiaoPipeline implements Pipeline {
 
     @Override
     public void process(ResultItems resultItems, Task task) {
-        Chengjiao entity = resultItems.get("Chengjiao");
+        Chengjiao entity = resultItems.get("chengjiao");
         if (entity != null) {
             cjDao.save(entity);
         }
+
+        Ershoufang ershoufang = resultItems.get("ershoufang");
+        if (ershoufang!= null && roomDao.findByFwId(ershoufang.getFwId()) == null) {
+            roomDao.save(ershoufang);
+        }
+
     }
 }

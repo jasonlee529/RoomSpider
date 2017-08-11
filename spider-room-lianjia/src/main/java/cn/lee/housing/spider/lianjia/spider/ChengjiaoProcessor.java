@@ -35,7 +35,7 @@ public class ChengjiaoProcessor implements PageProcessor {
             int pageSize = 30;
             int maxPageNo = total / pageSize + 1;
             List<String> pageList = Lists.newArrayList();
-            for (int i = 2; i <= maxPageNo; i++) {
+            for (int i = 2; i <= 2; i++) {
                 pageList.add(START_URL + "/pg" + i);
             }
             page.addTargetRequests(pageList);
@@ -48,21 +48,24 @@ public class ChengjiaoProcessor implements PageProcessor {
             page.addTargetRequests(page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all());
         } else {
             Html html = page.getHtml();
-            String fwId = html.xpath("//div[@class=houseRecord]/span[@class=info]/text()").get();
+            String fwId = html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[1]/text()").get();
             if (StringUtils.isNotBlank(fwId)) {
                 Ershoufang ershoufang = new Ershoufang();
                 ershoufang.setFwId(fwId);
-                ershoufang.setTitle(html.xpath("div[@class=content]").xpath("div[@class=title]").xpath("h1/text()").get());
+                ershoufang.setTitle(html.xpath("div[@class=house-title]").xpath("div/text()").get());
 
                 Chengjiao chengjiao = new Chengjiao(fwId);
-                chengjiao.setTotalPrice(html.xpath("").get());
-                chengjiao.setAvgPrice(html.xpath("").get());
-                chengjiao.setListPrice(html.xpath("").get());
-                chengjiao.setCycle(html.xpath("").get());
-                chengjiao.setTimes(html.xpath("").get());
-                chengjiao.setInspectTimes(html.xpath("").get());
-                chengjiao.setAttentionTimes(html.xpath("").get());
-                chengjiao.setViewTimes(html.xpath("").get());
+                String[] deal = StringUtils.split(html.xpath("div[@class=house-title]/div/span/text()").get()," ");
+                chengjiao.setDealDate(deal[0]);
+                chengjiao.setDealAgent(deal[1]);
+                chengjiao.setTotalPrice(html.xpath("//div[@class=price]//span/i/text()").get());
+                chengjiao.setAvgPrice(html.xpath("//div[@class=price]/b/text()").get());
+                chengjiao.setListPrice(html.xpath("//div[@class=msg]//span[1]/label/text()").get());
+                chengjiao.setCycle(html.xpath("//div[@class=msg]//span[2]/label/text()").get());
+                chengjiao.setTimes(html.xpath("//div[@class=msg]//span[3]/label/text()").get());
+                chengjiao.setInspectTimes(html.xpath("//div[@class=msg]//span[4]/label/text()").get());
+                chengjiao.setAttentionTimes(html.xpath("//div[@class=msg]//span[5]/label/text()").get());
+                chengjiao.setViewTimes(html.xpath("//div[@class=msg]//span[6]/label/text()").get());
                 // 具体爬去字段
                 logger.info(ershoufang.toString());
                 logger.info(chengjiao.toString());

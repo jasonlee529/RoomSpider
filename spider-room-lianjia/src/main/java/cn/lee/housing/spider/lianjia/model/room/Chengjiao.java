@@ -16,6 +16,10 @@ public class Chengjiao extends IdEntity {
 
     private String roomId; // 房间编号
 
+    private String dealDate;
+
+    private String dealAgent;
+
     private String totalPrice; // 总价
 
     private String avgPrice; //　平均价格
@@ -106,6 +110,22 @@ public class Chengjiao extends IdEntity {
 
     public void setViewTimes(String viewTimes) {
         this.viewTimes = viewTimes;
+    }
+
+    public String getDealDate() {
+        return dealDate;
+    }
+
+    public void setDealDate(String dealDate) {
+        this.dealDate = dealDate;
+    }
+
+    public String getDealAgent() {
+        return dealAgent;
+    }
+
+    public void setDealAgent(String dealAgent) {
+        this.dealAgent = dealAgent;
     }
 
     public String toString() {

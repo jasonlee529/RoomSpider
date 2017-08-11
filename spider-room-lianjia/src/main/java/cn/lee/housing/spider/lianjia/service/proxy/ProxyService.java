@@ -1,5 +1,9 @@
 package cn.lee.housing.spider.lianjia.service.proxy;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.lee.housing.utils.web.CheckIPUtils;
@@ -13,28 +17,55 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import us.codecraft.webmagic.proxy.Proxy;
 
-import org.springframework.beans.factory.InitializingBean;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 /**
  * Created by jason on 17/7/12.
  */
 @Service
-public class ProxyService implements InitializingBean {
+public class ProxyService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private List<Proxy> proxyList = Lists.newArrayList();
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        refreshProxy();
-    }
 
     public List<Proxy> getProxyList() {
+        if (proxyList == null || proxyList.size() <= 0) {
+            synchronized (proxyList) {
+                refreshProxy();
+            }
+        }
         return proxyList;
     }
 
     public void refreshProxy() {
+        refreshMipu();
+    }
+
+    private void refreshMipu() {
+        Resource resource = new ClassPathResource("proxy.txt");
+        BufferedReader fr = null;
+        try {
+            fr = new BufferedReader(new FileReader(resource.getFile()));
+            String inLine = null;
+            List<Proxy> proxyList = new ArrayList<Proxy>();
+            while ((inLine = fr.readLine()) != null) {
+                String[] cols = StringUtils.split(StringUtils.split(inLine, ",")[0], ":");
+                String ip = StringUtils.trim(cols[0]);
+                int port = Integer.parseInt(cols[1]);
+                if (CheckIPUtils.checkValidIP(ip, port)) {
+                    proxyList.add(new Proxy(ip, port));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void refreshXici() {
         try {
             Document doc = Jsoup.connect("http://www.xicidaili.com/wt/3")
                     .header("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36")
