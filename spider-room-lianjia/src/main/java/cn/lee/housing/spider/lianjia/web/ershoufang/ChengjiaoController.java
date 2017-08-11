@@ -1,5 +1,7 @@
 package cn.lee.housing.spider.lianjia.web.ershoufang;
 
+import java.util.List;
+
 import cn.lee.housing.spider.lianjia.service.ChengjiaoPipeline;
 import cn.lee.housing.spider.lianjia.service.proxy.ProxyService;
 import cn.lee.housing.spider.lianjia.spider.ChengjiaoProcessor;
@@ -31,7 +33,10 @@ public class ChengjiaoController {
     public String area(@PathVariable String area) {
         try {
             HttpClientDownloader downloader = new HttpClientDownloader();
-            downloader.setProxyProvider(SimpleProxyProvider.from(proxyService.getProxyList().toArray(new Proxy[]{})));
+            List<Proxy> proxies = proxyService.getProxyList();
+            if (proxies != null && proxies.size() > 0) {
+                downloader.setProxyProvider(SimpleProxyProvider.from(proxies.toArray(new Proxy[]{})));
+            }
             Spider spider = Spider.create(new ChengjiaoProcessor())
                     .addPipeline(new ConsolePipeline())
                     .addPipeline(pipeline)
