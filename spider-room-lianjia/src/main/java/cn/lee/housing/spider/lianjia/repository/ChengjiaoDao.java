@@ -8,4 +8,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * Created by jason on 17-7-12.
  */
 public interface ChengjiaoDao extends PagingAndSortingRepository<Chengjiao, Long> {
+
+    public Chengjiao findByRoomId(String roomId);
 }

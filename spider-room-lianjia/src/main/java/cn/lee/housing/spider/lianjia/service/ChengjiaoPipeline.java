@@ -25,12 +25,12 @@ public class ChengjiaoPipeline implements Pipeline {
     @Override
     public void process(ResultItems resultItems, Task task) {
         Chengjiao entity = resultItems.get("chengjiao");
-        if (entity != null) {
+        if (entity != null && roomDao.findByFwId(entity.getRoomId()) == null) {
             cjDao.save(entity);
         }
 
         Ershoufang ershoufang = resultItems.get("ershoufang");
-        if (ershoufang!= null && roomDao.findByFwId(ershoufang.getFwId()) == null) {
+        if (ershoufang != null && roomDao.findByFwId(ershoufang.getFwId()) == null) {
             roomDao.save(ershoufang);
         }
 
