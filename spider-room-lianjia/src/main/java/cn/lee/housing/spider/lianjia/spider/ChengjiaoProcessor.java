@@ -29,17 +29,10 @@ public class ChengjiaoProcessor implements PageProcessor {
 
     @Override
     public void process(Page page) {
-        if (StringUtils.equalsIgnoreCase(START_URL, page.getUrl().get())) {
-            //总共多少页的链接
-            int total = Integer.parseInt(StringUtils.trim(page.getHtml().xpath("//div[@class=resultDes]//div[@class=total]").xpath("//span/text()").get()));
-            int pageSize = 30;
-            int maxPageNo = total / pageSize + 1;
-            List<String> pageList = Lists.newArrayList();
-            for (int i = 2; i <= maxPageNo; i++) {
-                pageList.add(START_URL + "/pg" + i);
-            }
-            page.addTargetRequests(pageList);
-        }
+        Html html = page.getHtml();
+        List<String> pageHref = html.xpath("//div[@class=page-box]/a").links().all();
+        List<String> pageHrefs = html.xpath("//div[@class=pagination_group_a]").links().all();
+
         if (page.getUrl().regex(PAGE_URL).match()) {
             //列表页具体的爬去链接
             Selectable selectable = page.getHtml().xpath("//div[@class='page-box']//a");
@@ -47,7 +40,6 @@ public class ChengjiaoProcessor implements PageProcessor {
             page.addTargetRequests(page.getHtml().xpath("//div[@class='page-box']//a").links().all());
             page.addTargetRequests(page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all());
         } else {
-            Html html = page.getHtml();
             String fwId = html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[1]/text()").get();
             if (StringUtils.isNotBlank(fwId)) {
                 Ershoufang ershoufang = new Ershoufang();
@@ -55,9 +47,10 @@ public class ChengjiaoProcessor implements PageProcessor {
                 ershoufang.setTitle(html.xpath("div[@class=house-title]").xpath("div/text()").get());
 
                 Chengjiao chengjiao = new Chengjiao(fwId);
-                String[] deal = StringUtils.split(html.xpath("div[@class=house-title]/div/span/text()").get()," ");
+                String[] deal = StringUtils.split(html.xpath("div[@class=house-title]/div/span/text()").get(), " ");
                 chengjiao.setDealDate(deal[0]);
                 chengjiao.setDealAgent(deal[1]);
+                chengjiao.setTitle(ershoufang.getTitle());
                 chengjiao.setTotalPrice(html.xpath("//div[@class=price]//span/i/text()").get());
                 chengjiao.setAvgPrice(html.xpath("//div[@class=price]/b/text()").get());
                 chengjiao.setListPrice(html.xpath("//div[@class=msg]//span[1]/label/text()").get());
@@ -74,7 +67,17 @@ public class ChengjiaoProcessor implements PageProcessor {
             }
             logger.error("null page!");
         }
-
+        if (StringUtils.equalsIgnoreCase(START_URL, page.getUrl().get())) {
+            //总共多少页的链接
+            int total = Integer.parseInt(StringUtils.trim(page.getHtml().xpath("//div[@class=resultDes]//div[@class=total]").xpath("//span/text()").get()));
+            int pageSize = 30;
+            int maxPageNo = total / pageSize + 1;
+            List<String> pageList = Lists.newArrayList();
+            for (int i = 2; i <= 100  ; i++) {
+                pageList.add(START_URL + "/pg" + i);
+            }
+            page.addTargetRequests(pageList);
+        }
     }
 
     @Override

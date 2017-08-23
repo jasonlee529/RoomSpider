@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.lee.housing.utils.web.CheckIPUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -42,6 +44,20 @@ public class ProxyService {
 
     public void refreshProxy() {
         refreshMipu();
+    }
+
+    private void refreshMipuApi() {
+        StringBuilder api = new StringBuilder("http://proxy.mimvp.com/api/fetch.php?");
+        Map<String, String> params = new HashMap<>();
+        params.put("orderid", "860170823143754231");
+        params.put("http_type", "3");
+        params.put("ping_time", "1");
+        params.put("transer_time", "1");
+        params.put("result_fields", "1,2");
+        for(String key : params.keySet()){
+            api.append(key).append("=").append(params.get(key));
+        }
+
     }
 
     private void refreshMipu() {

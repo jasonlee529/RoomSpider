@@ -15,6 +15,10 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class Chengjiao extends IdEntity {
 
     private String roomId; // 房间编号
+    /**
+     * 标题
+     */
+    private String title;
 
     private String dealDate;
 
@@ -126,6 +130,14 @@ public class Chengjiao extends IdEntity {
 
     public void setDealAgent(String dealAgent) {
         this.dealAgent = dealAgent;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String toString() {
