@@ -1,7 +1,5 @@
 package cn.lee.housing.spider.lianjia.spider;
 
-import java.util.List;
-
 import cn.lee.housing.spider.lianjia.model.Ershoufang;
 import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
 import org.apache.commons.lang3.StringUtils;
@@ -13,6 +11,8 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
+
+import java.util.List;
 
 
 /**
@@ -73,7 +73,7 @@ public class ChengjiaoProcessor implements PageProcessor {
             int pageSize = 30;
             int maxPageNo = total / pageSize + 1;
             List<String> pageList = Lists.newArrayList();
-            for (int i = 1; i <= 2  ; i++) {
+            for (int i = 1; i <= 100  ; i++) {
                 pageList.add(START_URL + "/pg" + i);
             }
             page.addTargetRequests(pageList);

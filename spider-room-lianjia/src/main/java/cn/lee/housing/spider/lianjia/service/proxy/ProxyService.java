@@ -1,13 +1,5 @@
 package cn.lee.housing.spider.lianjia.service.proxy;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import cn.lee.housing.utils.web.CheckIPUtils;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,11 +16,18 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import us.codecraft.webmagic.proxy.Proxy;
-
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
+import us.codecraft.webmagic.proxy.Proxy;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jason on 17/7/12.
@@ -60,6 +59,7 @@ public class ProxyService {
         params.put("http_type", "3");
         params.put("ping_time", "1");
         params.put("transer_time", "1");
+        params.put("num", "1000");
         params.put("result_fields", "1,2");
         params.put("result_format", "json");
         for(String key : params.keySet()){
