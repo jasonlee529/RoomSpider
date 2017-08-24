@@ -14,12 +14,14 @@ import us.codecraft.webmagic.pipeline.Pipeline;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.proxy.SimpleProxyProvider;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Created by jason on 17/7/14.
  */
+@SpringBootApplication
 public class Main {
 
     public static void main(String[] args) {
