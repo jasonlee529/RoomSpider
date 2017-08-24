@@ -73,7 +73,7 @@ public class ChengjiaoProcessor implements PageProcessor {
             int pageSize = 30;
             int maxPageNo = total / pageSize + 1;
             List<String> pageList = Lists.newArrayList();
-            for (int i = 1; i <= 100  ; i++) {
+            for (int i = 1; i <= 30  ; i++) {
                 pageList.add(START_URL + "/pg" + i);
             }
             page.addTargetRequests(pageList);

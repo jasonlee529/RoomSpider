@@ -35,6 +35,7 @@ import java.util.Map;
 @Service
 public class ProxyService {
 
+
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private List<Proxy> proxyList = Lists.newArrayList();
 
@@ -62,25 +63,26 @@ public class ProxyService {
         params.put("num", "1000");
         params.put("result_fields", "1,2");
         params.put("result_format", "json");
-        for(String key : params.keySet()){
+        for (String key : params.keySet()) {
             api.append("&").append(key).append("=").append(params.get(key));
         }
         HttpClient client = HttpClientBuilder.create().build();
         HttpGet get = new HttpGet(api.toString());
-        try{
+        try {
             HttpResponse response = client.execute(get);
             ObjectMapper mapper = new ObjectMapper();
             String json = IOUtils.toString(response.getEntity().getContent());
-            Map<String,Object> result = mapper.readValue(json, new TypeReference<Map<String,Object>>(){});
-
-            List<Map<String,String>> data = (List<Map<String,String>>) result.get("result");
-            for(Map<String,String> m : data){
+            Map<String, Object> result = mapper.readValue(json, new TypeReference<Map<String, Object>>() {
+            });
+            logger.info(json);
+            List<Map<String, String>> data = (List<Map<String, String>>) result.get("result");
+            for (Map<String, String> m : data) {
                 String[] cols = StringUtils.split(m.get("ip:port"), ":");
                 String ip = StringUtils.trim(cols[0]);
                 int port = Integer.parseInt(cols[1]);
-                proxyList.add(new Proxy(ip,port));
+                proxyList.add(new Proxy(ip, port));
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
