@@ -9,7 +9,14 @@ import java.util.List;
 import java.util.Map;
 
 import cn.lee.housing.utils.web.CheckIPUtils;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.assertj.core.util.Lists;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -43,7 +50,7 @@ public class ProxyService {
     }
 
     public void refreshProxy() {
-        refreshMipu();
+        refreshMipuApi();
     }
 
     private void refreshMipuApi() {
@@ -54,8 +61,27 @@ public class ProxyService {
         params.put("ping_time", "1");
         params.put("transer_time", "1");
         params.put("result_fields", "1,2");
+        params.put("result_format", "json");
         for(String key : params.keySet()){
-            api.append(key).append("=").append(params.get(key));
+            api.append("&").append(key).append("=").append(params.get(key));
+        }
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpGet get = new HttpGet(api.toString());
+        try{
+            HttpResponse response = client.execute(get);
+            ObjectMapper mapper = new ObjectMapper();
+            String json = IOUtils.toString(response.getEntity().getContent());
+            Map<String,Object> result = mapper.readValue(json, new TypeReference<Map<String,Object>>(){});
+
+            List<Map<String,String>> data = (List<Map<String,String>>) result.get("result");
+            for(Map<String,String> m : data){
+                String[] cols = StringUtils.split(m.get("ip:port"), ":");
+                String ip = StringUtils.trim(cols[0]);
+                int port = Integer.parseInt(cols[1]);
+                proxyList.add(new Proxy(ip,port));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
     }
