@@ -1,6 +1,8 @@
 package cn.lee.housing.spider.lianjia.service.proxy;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import cn.lee.housing.spider.lianjia.model.proxy.MyProxy;
@@ -42,6 +44,12 @@ public class MyProxyService {
 
     public List<Proxy> findAll() {
         List<MyProxy> list = (List<MyProxy>) myProxyDao.findAll();
+        Collections.sort(list, new Comparator<MyProxy>() {
+            @Override
+            public int compare(MyProxy o1, MyProxy o2) {
+                return (int)(o1.getTimes() - o2.getTimes());
+            }
+        });
         List<Proxy> proxies = new ArrayList<Proxy>();
         for(MyProxy p : list){
             proxies.add(new Proxy(p.getHost(),p.getPort(),p.getUsername(),p.getPassword()));

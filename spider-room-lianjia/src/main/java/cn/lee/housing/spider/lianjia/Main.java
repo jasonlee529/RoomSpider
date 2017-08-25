@@ -49,7 +49,7 @@ public class Main {
                     .addUrl("https://bj.lianjia.com/chengjiao/changping");
             spider.setDownloader(downloader);
             SpiderMonitor.instance().register(spider);
-            spider.thread(3).start();//启动爬虫
+            spider.thread(5).start();//启动爬虫
         } catch (Exception e) {
             e.printStackTrace();
         }

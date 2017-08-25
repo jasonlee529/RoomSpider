@@ -71,16 +71,16 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
     private int incrForLoop() {
         int p = pointer.incrementAndGet();
         int size = proxies.size();
-        if (p < size) {
-            return p;
-        } else if (size > 60) {
-            p = p % size;
-        } else {
+        if(size < 60){
             synchronized (proxies) {
                 getProxy();
-                pointer.set(-1);
-                p = incrForLoop();
             }
+            size = proxies.size();
+        }
+        if (p < size ) {
+            return p;
+        } else  {
+            p = p % size;
         }
         return p;
     }
@@ -92,7 +92,7 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
         params.put("http_type", "2");
         params.put("ping_time", "1");
         params.put("transer_time", "1");
-        params.put("num", "100");
+        params.put("num", "40");
         params.put("result_fields", "1,2");
         params.put("result_format", "json");
         for (String key : params.keySet()) {
@@ -112,9 +112,7 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
                 String[] cols = StringUtils.split(m.get("ip:port"), ":");
                 String ip = StringUtils.trim(cols[0]);
                 int port = Integer.parseInt(cols[1]);
-                //  if (CheckIPUtils.checkValidIP(ip, port)) {
                 proxies.add(new Proxy(ip, port));
-                //}
             }
             myProxyService.save(proxies);
         } catch (Exception e) {
