@@ -15,16 +15,15 @@ public class MyProxy extends Proxy implements Serializable {
 
     private Long id;
     private boolean avaiable;
-    private long times;
+    private long times = 0;
 
-    public MyProxy(String host, int port) {
-        this(host, port, null, null);
+    public MyProxy(Proxy proxy, boolean avaiable) {
+        super(proxy.getHost(), proxy.getPort(), proxy.getUsername(), proxy.getPassword());
+        avaiable = avaiable;
     }
 
-    public MyProxy(String host, int port, String username, String password) {
-        super(host, port, username, password);
-        avaiable = true;
-        times = 0;
+    public MyProxy(Proxy proxy) {
+        this(proxy, true);
     }
 
     @Id
