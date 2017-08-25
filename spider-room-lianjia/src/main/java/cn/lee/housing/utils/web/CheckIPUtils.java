@@ -21,7 +21,7 @@ public class CheckIPUtils {
         URL url = null;
         HttpURLConnection connection = null;
         try {
-            url = new URL("https://bj.lianjia.com/ershoufang/changping");
+            url = new URL("https://bj.lianjia.com");
             //代理服务器
             InetSocketAddress proxyAddr = new InetSocketAddress(ip, port);
             Proxy proxy = new Proxy(Proxy.Type.HTTP, proxyAddr);
