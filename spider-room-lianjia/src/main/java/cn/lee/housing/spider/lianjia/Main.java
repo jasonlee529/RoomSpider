@@ -26,7 +26,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
-@ImportResource(locations = "classpath:applicationContext.xml")
+@ImportResource(locations = "classpath*:applicationContext.xml")
 public class Main {
 
     private static Logger logger = LoggerFactory.getLogger(Main.class);

@@ -1,5 +1,6 @@
 package cn.lee.housing.spider.lianjia.spider.page.proxy;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,7 @@ import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.proxy.ProxyProvider;
 
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,19 +30,24 @@ import org.springframework.stereotype.Service;
  * Created by jason on 17/8/24.
  */
 @Service
-public class MipuProxyProvider implements ProxyProvider {
+public class MipuProxyProvider implements ProxyProvider, InitializingBean {
 
     @Autowired
     public MyProxyService myProxyService;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private final List<Proxy> proxies;
+    private List<Proxy> proxies;
 
     private final AtomicInteger pointer;
 
-    public MipuProxyProvider() {
+    @Override
+    public void afterPropertiesSet() throws Exception {
         proxies = myProxyService.findAll();
+    }
+
+    public MipuProxyProvider() {
+        proxies = new ArrayList<Proxy>();
         this.pointer = new AtomicInteger(-1);
     }
 
