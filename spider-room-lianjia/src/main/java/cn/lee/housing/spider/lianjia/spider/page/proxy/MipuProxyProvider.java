@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import cn.lee.housing.utils.web.CheckIPUtils;
+import cn.lee.housing.spider.lianjia.service.proxy.MyProxyService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
@@ -22,6 +22,7 @@ import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.proxy.ProxyProvider;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -30,6 +31,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class MipuProxyProvider implements ProxyProvider {
 
+    @Autowired
+    public MyProxyService myProxyService;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final List<Proxy> proxies;
@@ -43,13 +46,18 @@ public class MipuProxyProvider implements ProxyProvider {
 
     @Override
     public void returnProxy(Proxy proxy, Page page, Task task) {
-        logger.info(page.isDownloadSuccess()+" ==========");
+        boolean isSuccess = page.isDownloadSuccess();
+        if (!isSuccess) {
+            synchronized (proxies) {
+                proxies.remove(proxy);
+            }
+        }
+        myProxyService.save(proxy, isSuccess);
     }
 
     @Override
     public Proxy getProxy(Task task) {
-        Proxy proxy = new Proxy("124.192.39.248",3128);//proxies.get(incrForLoop());
-        logger.info(proxy.toString());
+        Proxy proxy = proxies.get(incrForLoop());
         return proxy;
     }
 
@@ -95,10 +103,11 @@ public class MipuProxyProvider implements ProxyProvider {
                 String[] cols = StringUtils.split(m.get("ip:port"), ":");
                 String ip = StringUtils.trim(cols[0]);
                 int port = Integer.parseInt(cols[1]);
-                if (CheckIPUtils.checkValidIP(ip, port)) {
-                    proxies.add(new Proxy(ip, port));
-                }
+                //  if (CheckIPUtils.checkValidIP(ip, port)) {
+                proxies.add(new Proxy(ip, port));
+                //}
             }
+            myProxyService.save(proxies);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

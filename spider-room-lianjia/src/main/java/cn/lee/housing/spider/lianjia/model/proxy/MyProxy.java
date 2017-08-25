@@ -1,8 +1,9 @@
 package cn.lee.housing.spider.lianjia.model.proxy;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+import cn.lee.housing.spider.lianjia.model.IdEntity;
 import us.codecraft.webmagic.proxy.Proxy;
 
 /**
@@ -10,30 +11,62 @@ import us.codecraft.webmagic.proxy.Proxy;
  */
 @Entity
 @Table(name = "my_proxy")
-public class MyProxy extends Proxy implements Serializable {
+public class MyProxy extends IdEntity {
 
 
-    private Long id;
+    private String host;
+    private int port;
+    private String username;
+    private String password;
     private boolean avaiable;
     private long times = 0;
 
     public MyProxy(Proxy proxy, boolean avaiable) {
-        super(proxy.getHost(), proxy.getPort(), proxy.getUsername(), proxy.getPassword());
-        avaiable = avaiable;
+        this.host = proxy.getHost();
+        this.port = proxy.getPort();
+        this.username = proxy.getUsername();
+        this.password = proxy.getPassword();
+        this.avaiable = avaiable;
     }
 
     public MyProxy(Proxy proxy) {
         this(proxy, true);
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long getId() {
-        return id;
+    public MyProxy() {
+
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public boolean isAvaiable() {
@@ -50,5 +83,11 @@ public class MyProxy extends Proxy implements Serializable {
 
     public void setTimes(long times) {
         this.times = times;
+    }
+
+    public void addTimes() {
+        synchronized (this) {
+            this.times++;
+        }
     }
 }
