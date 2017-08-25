@@ -20,7 +20,7 @@ import us.codecraft.webmagic.selector.Selectable;
  */
 public class ChengjiaoProcessor implements PageProcessor {
 
-    private Site site = Site.me().setCharset("utf-8").setRetryTimes(2).setCycleRetryTimes(15000).setSleepTime(5000).setDomain("https://bj.lianjia.com/");
+    private Site site = Site.me().setCharset("utf-8").setRetryTimes(3).setCycleRetryTimes(15000).setSleepTime(5000).setDomain("https://bj.lianjia.com/");
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 

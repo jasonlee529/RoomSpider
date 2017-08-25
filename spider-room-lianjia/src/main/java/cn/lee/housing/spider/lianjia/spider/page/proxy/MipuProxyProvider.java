@@ -1,6 +1,5 @@
 package cn.lee.housing.spider.lianjia.spider.page.proxy;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +32,7 @@ public class MipuProxyProvider implements ProxyProvider {
 
     @Autowired
     public MyProxyService myProxyService;
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final List<Proxy> proxies;
@@ -40,7 +40,7 @@ public class MipuProxyProvider implements ProxyProvider {
     private final AtomicInteger pointer;
 
     public MipuProxyProvider() {
-        proxies = new ArrayList<Proxy>();
+        proxies = myProxyService.findAll();
         this.pointer = new AtomicInteger(-1);
     }
 
@@ -66,6 +66,8 @@ public class MipuProxyProvider implements ProxyProvider {
         int size = proxies.size();
         if (p < size) {
             return p;
+        } else if (size > 60) {
+            p = p % size;
         } else {
             synchronized (proxies) {
                 getProxy();

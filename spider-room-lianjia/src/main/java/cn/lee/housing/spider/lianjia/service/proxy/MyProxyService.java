@@ -1,5 +1,6 @@
 package cn.lee.housing.spider.lianjia.service.proxy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.lee.housing.spider.lianjia.model.proxy.MyProxy;
@@ -37,5 +38,14 @@ public class MyProxyService {
                 myProxyDao.save(p);
             }
         }
+    }
+
+    public List<Proxy> findAll() {
+        List<MyProxy> list = (List<MyProxy>) myProxyDao.findAll();
+        List<Proxy> proxies = new ArrayList<Proxy>();
+        for(MyProxy p : list){
+            proxies.add(new Proxy(p.getHost(),p.getPort(),p.getUsername(),p.getPassword()));
+        }
+        return proxies;
     }
 }
