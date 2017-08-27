@@ -36,7 +36,7 @@ public class ChengjiaoProcessor implements PageProcessor {
     @Autowired
     private ChengjiaoService chengjiaoService;
 
-    private final static String ROOM_ID = "\\d+\\.html";
+    private final static String ROOM_ID = "\\d*\\.html";
     @Override
     public void process(Page page) {
         Html html = page.getHtml();
