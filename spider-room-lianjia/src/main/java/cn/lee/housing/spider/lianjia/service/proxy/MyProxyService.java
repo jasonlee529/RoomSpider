@@ -47,7 +47,7 @@ public class MyProxyService {
         Collections.sort(list, new Comparator<MyProxy>() {
             @Override
             public int compare(MyProxy o1, MyProxy o2) {
-                return (int)(o1.getTimes() - o2.getTimes());
+                return (int)(o2.getTimes() - o1.getTimes());
             }
         });
         List<Proxy> proxies = new ArrayList<Proxy>();
