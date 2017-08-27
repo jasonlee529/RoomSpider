@@ -11,13 +11,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 /**
@@ -36,7 +37,7 @@ public class ChengjiaoProcessor implements PageProcessor {
     @Autowired
     private ChengjiaoService chengjiaoService;
 
-    private final static String ROOM_ID = "[1-9]\\d*";
+    private final static String ROOM_ID = "[1-9]\\d+";
     @Override
     public void process(Page page) {
         Html html = page.getHtml();
@@ -53,8 +54,7 @@ public class ChengjiaoProcessor implements PageProcessor {
             for(String str : urls){
                 Pattern  p = Pattern.compile(ROOM_ID);
                 Matcher m = p.matcher(str);
-                logger.info(str + " : "+m.matches());
-                if(m.matches()){
+                if(m.find()){
                     String roomId = m.group().replace(".html","");
                     if(chengjiaoService.isExist(roomId)){
                         page.addTargetRequest(str);

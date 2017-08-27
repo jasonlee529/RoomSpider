@@ -40,6 +40,10 @@ public class Chengjiao extends IdEntity {
 
     private String viewTimes;//浏览
 
+    public Chengjiao() {
+
+    }
+
     public Chengjiao(String roomId) {
         this.roomId = roomId;
     }
