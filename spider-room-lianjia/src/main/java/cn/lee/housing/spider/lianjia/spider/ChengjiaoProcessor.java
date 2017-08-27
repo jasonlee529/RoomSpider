@@ -53,9 +53,12 @@ public class ChengjiaoProcessor implements PageProcessor {
             for(String str : urls){
                 Pattern  p = Pattern.compile(ROOM_ID);
                 Matcher m = p.matcher(str);
-                String roomId = m.group().replace(".html","");
-                if(chengjiaoService.isExist(roomId)){
-                    page.addTargetRequest(str);
+                logger.info(str + " : "+m.matches());
+                if(m.matches()){
+                    String roomId = m.group().replace(".html","");
+                    if(chengjiaoService.isExist(roomId)){
+                        page.addTargetRequest(str);
+                    }
                 }
             }
         } else {
