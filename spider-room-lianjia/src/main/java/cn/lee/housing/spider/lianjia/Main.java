@@ -40,10 +40,11 @@ public class Main {
         try {
             ApplicationContext act = new ClassPathXmlApplicationContext("applicationContext.xml");
             ChengjiaoPipeline pipeline1 = act.getBean(ChengjiaoPipeline.class);
+            ChengjiaoProcessor cjProcessor = act.getBean(ChengjiaoProcessor.class);
             HttpClientDownloader downloader = new HttpClientDownloader();
             ProxyProvider mipuProxy = act.getBean(MipuProxyProvider.class);
             downloader.setProxyProvider(mipuProxy);
-            Spider spider = Spider.create(new ChengjiaoProcessor())
+            Spider spider = Spider.create(cjProcessor)
                     .addPipeline(new ConsolePipeline())
                     .addPipeline(pipeline1)
                     .addUrl("https://bj.lianjia.com/chengjiao/changping");

@@ -1,13 +1,18 @@
 package cn.lee.housing.spider.lianjia.spider;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import cn.lee.housing.spider.lianjia.model.Ershoufang;
 import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
+import cn.lee.housing.spider.lianjia.service.room.ChengjiaoService;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
@@ -18,6 +23,7 @@ import us.codecraft.webmagic.selector.Selectable;
 /**
  * Created by jason on 17-6-14.
  */
+@Service
 public class ChengjiaoProcessor implements PageProcessor {
 
     private Site site = Site.me().setCharset("utf-8").setRetryTimes(5).setCycleRetryTimes(15000).setSleepTime(5000).setDomain("https://bj.lianjia.com/");
@@ -27,6 +33,10 @@ public class ChengjiaoProcessor implements PageProcessor {
     public final static String START_URL = "https://bj.lianjia.com/chengjiao/changping";
     private final static String PAGE_URL = START_URL + "/pg\\d+";
 
+    @Autowired
+    private ChengjiaoService chengjiaoService;
+
+    private final static String ROOM_ID = "/\\d+\\.html";
     @Override
     public void process(Page page) {
         Html html = page.getHtml();
@@ -38,7 +48,16 @@ public class ChengjiaoProcessor implements PageProcessor {
             Selectable selectable = page.getHtml().xpath("//div[@class='page-box']//a");
             Selectable links = selectable.links();
             page.addTargetRequests(page.getHtml().xpath("//div[@class='page-box']//a").links().all());
-            page.addTargetRequests(page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all());
+           // page.addTargetRequests(page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all());
+            List<String> urls = page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all();
+            for(String str : urls){
+                Pattern  p = Pattern.compile(ROOM_ID);
+                Matcher m = p.matcher(str);
+                String roomId = m.group();
+                if(chengjiaoService.isExist(roomId)){
+                    page.addTargetRequest(str);
+                }
+            }
         } else {
             String fwId = html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[1]/text()").get();
             if (StringUtils.isNotBlank(fwId)) {
