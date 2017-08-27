@@ -36,7 +36,7 @@ public class ChengjiaoProcessor implements PageProcessor {
     @Autowired
     private ChengjiaoService chengjiaoService;
 
-    private final static String ROOM_ID = "/\\d+\\.html";
+    private final static String ROOM_ID = "\\d+\\.html";
     @Override
     public void process(Page page) {
         Html html = page.getHtml();
@@ -53,7 +53,7 @@ public class ChengjiaoProcessor implements PageProcessor {
             for(String str : urls){
                 Pattern  p = Pattern.compile(ROOM_ID);
                 Matcher m = p.matcher(str);
-                String roomId = m.group();
+                String roomId = m.group().replace(".html","");
                 if(chengjiaoService.isExist(roomId)){
                     page.addTargetRequest(str);
                 }
