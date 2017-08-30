@@ -6,6 +6,8 @@ import cn.lee.housing.spider.lianjia.spider.page.proxy.MipuProxyProvider;
 import cn.lee.housing.spider.lianjia.spider.process.proxy.kuai.KuaiProxyProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.monitor.SpiderMonitor;
@@ -27,13 +29,15 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 @ComponentScan
 @EnableAutoConfiguration
 @ImportResource(locations = "classpath*:applicationContext.xml")
+@RestController
+@EnableWebMvc
 public class Main {
 
     private static Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
-        ershoufangSpider();
+       // ershoufangSpider();
     }
 
     private static void ershoufangSpider() {
