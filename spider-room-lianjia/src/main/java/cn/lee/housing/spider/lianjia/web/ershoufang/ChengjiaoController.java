@@ -1,15 +1,12 @@
 package cn.lee.housing.spider.lianjia.web.ershoufang;
 
-import java.util.List;
-
 import cn.lee.housing.spider.lianjia.service.ChengjiaoPipeline;
 import cn.lee.housing.spider.lianjia.service.proxy.ProxyService;
 import cn.lee.housing.spider.lianjia.spider.ChengjiaoProcessor;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
-import us.codecraft.webmagic.proxy.Proxy;
-import us.codecraft.webmagic.proxy.SimpleProxyProvider;
+import us.codecraft.webmagic.proxy.ProxyProvider;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,24 +25,25 @@ public class ChengjiaoController {
     private ChengjiaoPipeline pipeline;
     @Autowired
     private ProxyService proxyService;
+    @Autowired
+    private ChengjiaoProcessor cjProcessor;
+    @Autowired
+    private ProxyProvider mipuProxy;
 
     @RequestMapping(value = "{area}")
     public String area(@PathVariable String area) {
         try {
             HttpClientDownloader downloader = new HttpClientDownloader();
-            List<Proxy> proxies = proxyService.getProxyList();
-            if (proxies != null && proxies.size() > 0) {
-                downloader.setProxyProvider(SimpleProxyProvider.from(proxies.toArray(new Proxy[]{})));
-            }
-            Spider spider = Spider.create(new ChengjiaoProcessor())
+            downloader.setProxyProvider(mipuProxy);
+            Spider spider = Spider.create(cjProcessor)
                     .addPipeline(new ConsolePipeline())
                     .addPipeline(pipeline)
                     .addUrl("https://bj.lianjia.com/chengjiao/changping");
             spider.setDownloader(downloader);
-            spider.thread(3).start();//启动爬虫
+            spider.thread(5).start();//启动爬虫
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "";
+        return "{success:true}";
     }
 }
