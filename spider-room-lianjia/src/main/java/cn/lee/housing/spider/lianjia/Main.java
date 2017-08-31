@@ -6,11 +6,8 @@ import cn.lee.housing.spider.lianjia.spider.page.proxy.MipuProxyProvider;
 import cn.lee.housing.spider.lianjia.spider.process.proxy.kuai.KuaiProxyProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
-import us.codecraft.webmagic.monitor.SpiderMonitor;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.proxy.ProxyProvider;
 
@@ -21,15 +18,15 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
  * Created by jason on 17/7/14.
  */
 @Configuration
-@ComponentScan
+@ComponentScan(value={"cn.lee.housing"})
 @EnableAutoConfiguration
 @ImportResource(locations = "classpath*:applicationContext.xml")
-@RestController
 @EnableWebMvc
 public class Main {
 
@@ -37,7 +34,7 @@ public class Main {
 
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
-       // ershoufangSpider();
+        // ershoufangSpider();
     }
 
     private static void ershoufangSpider() {
@@ -53,7 +50,6 @@ public class Main {
                     .addPipeline(pipeline1)
                     .addUrl("https://bj.lianjia.com/chengjiao/changping");
             spider.setDownloader(downloader);
-            SpiderMonitor.instance().register(spider);
             spider.thread(5).start();//启动爬虫
         } catch (Exception e) {
             e.printStackTrace();
