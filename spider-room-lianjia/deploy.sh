@@ -1,5 +1,7 @@
 #!/bin/bash
 
+git pull
+
 mvn clean package
 
 java -jar target/room.lianjia-1.0-SNAPSHOT.jar >>t.log &
