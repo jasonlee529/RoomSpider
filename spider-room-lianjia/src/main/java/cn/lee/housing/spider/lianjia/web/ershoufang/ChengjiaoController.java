@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import us.codecraft.webmagic.scheduler.FileCacheQueueScheduler;
 
 
 /**
@@ -36,11 +37,12 @@ public class ChengjiaoController {
             HttpClientDownloader downloader = new HttpClientDownloader();
             downloader.setProxyProvider(mipuProxy);
             Spider spider = Spider.create(cjProcessor)
+                    .setScheduler(new FileCacheQueueScheduler("urls"))
                     .addPipeline(new ConsolePipeline())
                     .addPipeline(pipeline)
                     .addUrl("https://bj.lianjia.com/chengjiao/changping");
             spider.setDownloader(downloader);
-            spider.thread(5).start();//启动爬虫
+            spider.thread(10).start();//启动爬虫
         } catch (Exception e) {
             e.printStackTrace();
         }
