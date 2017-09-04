@@ -1,9 +1,5 @@
 package cn.lee.housing.spider.lianjia.spider;
 
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import cn.lee.housing.spider.lianjia.model.Ershoufang;
 import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
 import cn.lee.housing.spider.lianjia.service.room.ChengjiaoService;
@@ -11,14 +7,17 @@ import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -27,7 +26,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ChengjiaoProcessor implements PageProcessor {
 
-    private Site site = Site.me().setCharset("utf-8").setRetryTimes(5).setCycleRetryTimes(15000).setSleepTime(5000).setDomain("https://bj.lianjia.com/");
+    private Site site = Site.me().setCharset("utf-8").setRetryTimes(5).setCycleRetryTimes(15000).setSleepTime(5000).setDomain("localhost:18080");
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
