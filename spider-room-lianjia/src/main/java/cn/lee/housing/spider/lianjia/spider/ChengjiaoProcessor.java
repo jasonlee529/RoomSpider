@@ -55,7 +55,7 @@ public class ChengjiaoProcessor implements PageProcessor {
                 Matcher m = p.matcher(str);
                 if(m.find()){
                     String roomId = m.group().replace(".html","");
-                    if(chengjiaoService.isExist(roomId)){
+                    if(!chengjiaoService.isExist(roomId)){
                         page.addTargetRequest(str);
                     }
                 }
