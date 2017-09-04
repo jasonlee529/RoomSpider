@@ -37,7 +37,7 @@ public class ChengjiaoController {
             HttpClientDownloader downloader = new HttpClientDownloader();
             downloader.setProxyProvider(mipuProxy);
             Spider spider = Spider.create(cjProcessor)
-                    .setScheduler(new FileCacheQueueScheduler(""))
+                    .setScheduler(new FileCacheQueueScheduler("/home/web"))
                     .addPipeline(new ConsolePipeline())
                     .addPipeline(pipeline)
                     .addUrl("https://bj.lianjia.com/chengjiao/changping");
