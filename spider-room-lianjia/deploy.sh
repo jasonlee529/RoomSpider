@@ -2,4 +2,8 @@
 
 mvn clean package
 
-scp target/room.lianjia-1.0-SNAPSHOT.jar jd:/home/web
+java -jar target/room.lianjia-1.0-SNAPSHOT.jar >>t.log
+
+curl localhost:18080/lianjia/chengjiao/changping
+
+tail -f t.log
