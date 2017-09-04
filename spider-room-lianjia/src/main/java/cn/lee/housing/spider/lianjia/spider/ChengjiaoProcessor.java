@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
 @Service
 public class ChengjiaoProcessor implements PageProcessor {
 
-    private Site site = Site.me().setCharset("utf-8").setRetryTimes(5).setCycleRetryTimes(15000).setSleepTime(5000).setDomain("localhost:18080");
+    private Site site = Site.me().setCharset("utf-8").setRetryTimes(5).setCycleRetryTimes(15000).setSleepTime(5000).setDomain("bj.lianjia.comg");
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
