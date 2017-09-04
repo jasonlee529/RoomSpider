@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Page;
+import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
@@ -37,6 +38,7 @@ public class ChengjiaoProcessor implements PageProcessor {
     private ChengjiaoService chengjiaoService;
 
     private final static String ROOM_ID = "[1-9]\\d+";
+
     @Override
     public void process(Page page) {
         Html html = page.getHtml();
@@ -48,15 +50,15 @@ public class ChengjiaoProcessor implements PageProcessor {
             Selectable selectable = page.getHtml().xpath("//div[@class='page-box']//a");
             Selectable links = selectable.links();
             page.addTargetRequests(page.getHtml().xpath("//div[@class='page-box']//a").links().all());
-           // page.addTargetRequests(page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all());
+            // page.addTargetRequests(page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all());
             List<String> urls = page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all();
-            for(String str : urls){
-                Pattern  p = Pattern.compile(ROOM_ID);
+            for (String str : urls) {
+                Pattern p = Pattern.compile(ROOM_ID);
                 Matcher m = p.matcher(str);
-                if(m.find()){
-                    String roomId = m.group().replace(".html","");
-                    if(!chengjiaoService.isExist(roomId)){
-                        page.addTargetRequest(str);
+                if (m.find()) {
+                    String roomId = m.group().replace(".html", "");
+                    if (!chengjiaoService.isExist(roomId)) {
+                        page.addTargetRequest(new Request(str).setPriority(100L));
                     }
                 }
             }
@@ -94,10 +96,10 @@ public class ChengjiaoProcessor implements PageProcessor {
             int pageSize = 30;
             int maxPageNo = total / pageSize + 1;
             List<String> pageList = Lists.newArrayList();
-            for (int i = 1; i <= 100  ; i++) {
+            for (int i = 1; i <= 100; i++) {
                 pageList.add(START_URL + "/pg" + i);
             }
-            page.addTargetRequests(pageList);
+            page.addTargetRequests(pageList, 0L);
         }
     }
 
