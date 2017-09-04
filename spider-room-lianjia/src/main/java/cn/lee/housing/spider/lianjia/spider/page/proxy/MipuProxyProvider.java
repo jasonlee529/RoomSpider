@@ -1,11 +1,5 @@
 package cn.lee.housing.spider.lianjia.spider.page.proxy;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import cn.lee.housing.spider.lianjia.service.proxy.MyProxyService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,14 +11,19 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.proxy.ProxyProvider;
 
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by jason on 17/8/24.
@@ -71,15 +70,15 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
     private int incrForLoop() {
         int p = pointer.incrementAndGet();
         int size = proxies.size();
-        if(size < 60){
+        if (size < 60) {
             synchronized (proxies) {
                 getProxy();
             }
             size = proxies.size();
         }
-        if (p < size ) {
+        if (p < size) {
             return p;
-        } else  {
+        } else {
             p = p % size;
         }
         return p;
