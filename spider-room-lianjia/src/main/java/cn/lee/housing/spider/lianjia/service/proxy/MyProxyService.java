@@ -24,11 +24,17 @@ public class MyProxyService {
     public void save(Proxy proxy, boolean avilable) {
         MyProxy p = myProxyDao.findByHostAndPort(proxy.getHost(), proxy.getPort());
         if (avilable) {
+            if (p == null) {
+                p = new MyProxy(proxy);
+            }
             p.resetLastUsed();
             p.addTimes();
             myProxyDao.save(p);
-        } else {
+        } else if (p != null) {
             myProxyDao.delete(p);
+        } else {
+            //do nothing
+
         }
     }
 
