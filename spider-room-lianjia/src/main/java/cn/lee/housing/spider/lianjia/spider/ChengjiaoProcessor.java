@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import cn.lee.housing.spider.lianjia.model.Ershoufang;
-import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
 import cn.lee.housing.spider.lianjia.service.room.ChengjiaoService;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
@@ -62,31 +60,32 @@ public class ChengjiaoProcessor implements PageProcessor {
         } else {
             String fwId = parseRoomId(page.getUrl().get());
             if (StringUtils.isNotBlank(fwId)) {
-                Ershoufang ershoufang = new Ershoufang();
-                ershoufang.setFwId(fwId);
-                ershoufang.setTitle(html.xpath("//div[@class=house-title]/div/text()").get());
-
-                Chengjiao chengjiao = new Chengjiao(fwId);
-                String t = html.xpath("//div[@class=house-title]/div/span/text()").get();
-                String[] deal = StringUtils.split(html.xpath("//div[@class=house-title]/div/span/text()").get(), " ");
-                chengjiao.setDealDate(deal[0]);
-                chengjiao.setDealAgent(deal[1]);
-                chengjiao.setTitle(ershoufang.getTitle());
-                chengjiao.setTotalPrice(html.xpath("//div[@class=price]//span/i/text()").get());
-                chengjiao.setAvgPrice(html.xpath("//div[@class=price]/b/text()").get());
-                chengjiao.setListPrice(html.xpath("//div[@class=msg]//span[1]/label/text()").get());
-                chengjiao.setCycle(html.xpath("//div[@class=msg]//span[2]/label/text()").get());
-                chengjiao.setTimes(html.xpath("//div[@class=msg]//span[3]/label/text()").get());
-                chengjiao.setInspectTimes(html.xpath("//div[@class=msg]//span[4]/label/text()").get());
-                chengjiao.setAttentionTimes(html.xpath("//div[@class=msg]//span[5]/label/text()").get());
-                chengjiao.setViewTimes(html.xpath("//div[@class=msg]//span[6]/label/text()").get());
-                // 具体爬去字段
-                logger.info(ershoufang.toString());
-                logger.info(chengjiao.toString());
-                page.putField("ershoufang", ershoufang);
-                page.putField("chengjiao", chengjiao);
+//                Ershoufang ershoufang = new Ershoufang();
+//                ershoufang.setFwId(fwId);
+//                ershoufang.setTitle(html.xpath("//div[@class=house-title]/div/text()").get());
+//
+//                Chengjiao chengjiao = new Chengjiao(fwId);
+//                String t = html.xpath("//div[@class=house-title]/div/span/text()").get();
+//                String[] deal = StringUtils.split(html.xpath("//div[@class=house-title]/div/span/text()").get(), " ");
+//                chengjiao.setDealDate(deal[0]);
+//                chengjiao.setDealAgent(deal[1]);
+//                chengjiao.setTitle(ershoufang.getTitle());
+//                chengjiao.setTotalPrice(html.xpath("//div[@class=price]//span/i/text()").get());
+//                chengjiao.setAvgPrice(html.xpath("//div[@class=price]/b/text()").get());
+//                chengjiao.setListPrice(html.xpath("//div[@class=msg]//span[1]/label/text()").get());
+//                chengjiao.setCycle(html.xpath("//div[@class=msg]//span[2]/label/text()").get());
+//                chengjiao.setTimes(html.xpath("//div[@class=msg]//span[3]/label/text()").get());
+//                chengjiao.setInspectTimes(html.xpath("//div[@class=msg]//span[4]/label/text()").get());
+//                chengjiao.setAttentionTimes(html.xpath("//div[@class=msg]//span[5]/label/text()").get());
+//                chengjiao.setViewTimes(html.xpath("//div[@class=msg]//span[6]/label/text()").get());
+//                // 具体爬去字段
+//                logger.info(ershoufang.toString());
+//                logger.info(chengjiao.toString());
+//                page.putField("ershoufang", ershoufang);
+//                page.putField("chengjiao", chengjiao);
+            } else {
+                logger.error(fwId + "null page!");
             }
-            logger.error("null page!");
         }
         if (StringUtils.equalsIgnoreCase(START_URL, page.getUrl().get())) {
             //总共多少页的链接

@@ -64,21 +64,15 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
         if (!isSuccess) {
             synchronized (proxies) {
                 removeProxy(proxy);
+                myProxyService.save(proxy, isSuccess);
             }
         }
-        myProxyService.save(proxy, isSuccess);
     }
 
     @Override
     public Proxy getProxy(Task task) {
         Proxy proxy = proxies.get(incrForLoop());
-        long t1 = System.currentTimeMillis();
-        long t2 = dates.get(proxy);
-        if (t1 - t2 > 1000 * 10) {
-            dates.put(proxy, t1);
-            return proxy;
-        }
-        return getProxy(task);
+        return proxy;
     }
 
     private int incrForLoop() {
@@ -90,9 +84,7 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
             }
             size = proxies.size();
         }
-        if (p < size) {
-            return p;
-        } else {
+        if (p >= size) {
             p = p % size;
         }
         logger.error("current: " + p + " size : " + size);
@@ -126,9 +118,8 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
                 String[] cols = StringUtils.split(m.get("ip:port"), ":");
                 String ip = StringUtils.trim(cols[0]);
                 int port = Integer.parseInt(cols[1]);
-                proxies.add(new Proxy(ip, port));
+                addProxy(new Proxy(ip, port));
             }
-            myProxyService.save(proxies);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -136,10 +127,20 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
         }
     }
 
+    private void addProxy(Proxy proxy) {
+        synchronized (proxies) {
+            proxies.add(proxy);
+            dates.put(proxy, 0L);
+            myProxyService.save(proxy, true);
+        }
+    }
+
     private void removeProxy(Proxy proxy) {
         synchronized (proxies) {
             proxies.remove(proxy);
             dates.remove(proxy);
+            myProxyService.save(proxy, false);
+
         }
     }
 }

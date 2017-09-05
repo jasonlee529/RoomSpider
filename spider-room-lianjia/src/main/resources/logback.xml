@@ -10,7 +10,7 @@
 	<logger name="cn.lee.housing" level="error" />
 
 	<!-- 定义根日志级别 -->
-	<root level="info">
+	<root level="warn">
 		<appender-ref ref="console" />
 	</root>
 	

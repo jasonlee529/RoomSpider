@@ -75,7 +75,6 @@
 
         <!-- Connection Pooling Info -->
         <property name="maxActive" value="${jdbc.pool.maxActive}"/>
-        <property name="maxIdle" value="${jdbc.pool.maxIdle}"/>
         <property name="minIdle" value="0"/>
         <property name="defaultAutoCommit" value="false"/>
         <property name="validationQuery" value="${jdbc.validationQuery}"/>
