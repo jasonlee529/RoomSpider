@@ -1,5 +1,9 @@
 package cn.lee.housing.spider.lianjia.spider;
 
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import cn.lee.housing.spider.lianjia.model.Ershoufang;
 import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
 import cn.lee.housing.spider.lianjia.service.room.ChengjiaoService;
@@ -7,8 +11,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
@@ -16,9 +18,8 @@ import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
 
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 /**
@@ -45,7 +46,7 @@ public class ChengjiaoProcessor implements PageProcessor {
         List<String> pageHref = html.xpath("//div[@class=page-box]/a").links().all();
         List<String> pageHrefs = html.xpath("//div[@class=pagination_group_a]").links().all();
 
-        if (page.getUrl().regex(PAGE_URL).match()) {
+        if (StringUtils.equalsIgnoreCase(START_URL, page.getUrl().get()) || page.getUrl().regex(PAGE_URL).match()) {
             //列表页具体的爬去链接
             Selectable selectable = page.getHtml().xpath("//div[@class='page-box']//a");
             Selectable links = selectable.links();
@@ -53,24 +54,21 @@ public class ChengjiaoProcessor implements PageProcessor {
             // page.addTargetRequests(page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all());
             List<String> urls = page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all();
             for (String str : urls) {
-                Pattern p = Pattern.compile(ROOM_ID);
-                Matcher m = p.matcher(str);
-                if (m.find()) {
-                    String roomId = m.group().replace(".html", "");
-                    if (!chengjiaoService.isExist(roomId)) {
-                        page.addTargetRequest(new Request(str).setPriority(100L));
-                    }
+                String roomId = parseRoomId(str);
+                if (StringUtils.isNotBlank(roomId) && !chengjiaoService.isExist(roomId)) {
+                    page.addTargetRequest(new Request(str).setPriority(10L));
                 }
             }
         } else {
-            String fwId = html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[1]/text()").get();
+            String fwId = parseRoomId(page.getUrl().get());
             if (StringUtils.isNotBlank(fwId)) {
                 Ershoufang ershoufang = new Ershoufang();
                 ershoufang.setFwId(fwId);
-                ershoufang.setTitle(html.xpath("div[@class=house-title]/div/text()").get());
+                ershoufang.setTitle(html.xpath("//div[@class=house-title]/div/text()").get());
 
                 Chengjiao chengjiao = new Chengjiao(fwId);
-                String[] deal = StringUtils.split(html.xpath("div[@class=house-title]/div/span/text()").get(), " ");
+                String t = html.xpath("//div[@class=house-title]/div/span/text()").get();
+                String[] deal = StringUtils.split(html.xpath("//div[@class=house-title]/div/span/text()").get(), " ");
                 chengjiao.setDealDate(deal[0]);
                 chengjiao.setDealAgent(deal[1]);
                 chengjiao.setTitle(ershoufang.getTitle());
@@ -101,6 +99,16 @@ public class ChengjiaoProcessor implements PageProcessor {
             }
             page.addTargetRequests(pageList, 0L);
         }
+    }
+
+    private String parseRoomId(String url) {
+        Pattern p = Pattern.compile(ROOM_ID);
+        Matcher m = p.matcher(url);
+        if (m.find()) {
+            String roomId = m.group().replace(".html", "");
+            return roomId;
+        }
+        return null;
     }
 
     @Override

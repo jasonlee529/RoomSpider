@@ -1,5 +1,13 @@
 package cn.lee.housing.spider.lianjia.spider.page.proxy;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import cn.lee.housing.spider.lianjia.service.proxy.MyProxyService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,19 +19,14 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.proxy.ProxyProvider;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by jason on 17/8/24.
@@ -40,9 +43,14 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
 
     private final AtomicInteger pointer;
 
+    private ConcurrentMap<Proxy, Long> dates = new ConcurrentHashMap<Proxy, Long>(10);
+
     @Override
     public void afterPropertiesSet() throws Exception {
         proxies = myProxyService.findAll();
+        for (Proxy p : proxies) {
+            dates.put(p, System.currentTimeMillis());
+        }
     }
 
     public MipuProxyProvider() {
@@ -55,7 +63,7 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
         boolean isSuccess = page.isDownloadSuccess();
         if (!isSuccess) {
             synchronized (proxies) {
-                proxies.remove(proxy);
+                removeProxy(proxy);
             }
         }
         myProxyService.save(proxy, isSuccess);
@@ -64,7 +72,13 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
     @Override
     public Proxy getProxy(Task task) {
         Proxy proxy = proxies.get(incrForLoop());
-        return proxy;
+        long t1 = System.currentTimeMillis();
+        long t2 = dates.get(proxy);
+        if (t1 - t2 > 1000 * 10) {
+            dates.put(proxy, t1);
+            return proxy;
+        }
+        return getProxy(task);
     }
 
     private int incrForLoop() {
@@ -81,6 +95,7 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
         } else {
             p = p % size;
         }
+        logger.error("current: " + p + " size : " + size);
         return p;
     }
 
@@ -118,6 +133,13 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
             e.printStackTrace();
         } finally {
             get.releaseConnection();
+        }
+    }
+
+    private void removeProxy(Proxy proxy) {
+        synchronized (proxies) {
+            proxies.remove(proxy);
+            dates.remove(proxy);
         }
     }
 }

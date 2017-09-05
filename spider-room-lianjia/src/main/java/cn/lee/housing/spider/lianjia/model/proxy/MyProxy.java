@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import cn.lee.housing.spider.lianjia.model.IdEntity;
+import org.joda.time.DateTime;
 import us.codecraft.webmagic.proxy.Proxy;
 
 /**
@@ -20,6 +21,7 @@ public class MyProxy extends IdEntity {
     private String password;
     private boolean avaiable;
     private long times = 0;
+    private String lastUsed;
 
     public MyProxy(Proxy proxy, boolean avaiable) {
         this.host = proxy.getHost();
@@ -27,6 +29,7 @@ public class MyProxy extends IdEntity {
         this.username = proxy.getUsername();
         this.password = proxy.getPassword();
         this.avaiable = avaiable;
+        this.resetLastUsed();
     }
 
     public MyProxy(Proxy proxy) {
@@ -83,6 +86,18 @@ public class MyProxy extends IdEntity {
 
     public void setTimes(long times) {
         this.times = times;
+    }
+
+    public String getLastUsed() {
+        return lastUsed;
+    }
+
+    public void setLastUsed(String lastUsed) {
+        this.lastUsed = lastUsed;
+    }
+
+    public void resetLastUsed() {
+        this.lastUsed = new DateTime().toString("yyyy-MM-dd_HH:mm:ss");
     }
 
     public void addTimes() {

@@ -7,7 +7,7 @@
 	</appender>
 
 	<!-- project default level -->
-	<logger name="cn.lee.housing" level="debug" />
+	<logger name="cn.lee.housing" level="error" />
 
 	<!-- 定义根日志级别 -->
 	<root level="info">
@@ -23,7 +23,7 @@
 		jdbc.connection	Logs connection open and close events as well as dumping all open connection numbers. This is very useful for hunting down connection leak problems.	1.2alpha1
 	 -->
 	<logger name="jdbc.sqlonly" level="ERROR"/>
-	<logger name="jdbc.sqltiming" level="INFO"/>
+	<logger name="jdbc.sqltiming" level="ERROR"/>
 	<logger name="jdbc.audit" level="ERROR"/>
 	<logger name="jdbc.resultset" level="ERROR"/>
 </configuration>

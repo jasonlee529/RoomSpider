@@ -24,6 +24,7 @@ public class MyProxyService {
     public void save(Proxy proxy, boolean avilable) {
         MyProxy p = myProxyDao.findByHostAndPort(proxy.getHost(), proxy.getPort());
         if (avilable) {
+            p.resetLastUsed();
             p.addTimes();
             myProxyDao.save(p);
         } else {
@@ -47,12 +48,12 @@ public class MyProxyService {
         Collections.sort(list, new Comparator<MyProxy>() {
             @Override
             public int compare(MyProxy o1, MyProxy o2) {
-                return (int)(o2.getTimes() - o1.getTimes());
+                return (int) (o2.getTimes() - o1.getTimes());
             }
         });
         List<Proxy> proxies = new ArrayList<Proxy>();
-        for(MyProxy p : list){
-            proxies.add(new Proxy(p.getHost(),p.getPort(),p.getUsername(),p.getPassword()));
+        for (MyProxy p : list) {
+            proxies.add(new Proxy(p.getHost(), p.getPort(), p.getUsername(), p.getPassword()));
         }
         return proxies;
     }
