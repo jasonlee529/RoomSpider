@@ -1,7 +1,19 @@
 package cn.lee.housing.spider.lianjia.service.room;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
 import cn.lee.housing.spider.lianjia.repository.ChengjiaoDao;
+import cn.lee.housing.spider.lianjia.service.ChengjiaoPipeline;
+import cn.lee.housing.spider.lianjia.service.proxy.ProxyService;
+import cn.lee.housing.spider.lianjia.spider.ChengjiaoProcessor;
+import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.downloader.HttpClientDownloader;
+import us.codecraft.webmagic.pipeline.ConsolePipeline;
+import us.codecraft.webmagic.proxy.ProxyProvider;
+import us.codecraft.webmagic.scheduler.PriorityScheduler;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +24,38 @@ import org.springframework.stereotype.Service;
 public class ChengjiaoService {
     @Autowired
     private ChengjiaoDao chengjiaoDao;
+    @Autowired
+    private ChengjiaoPipeline pipeline;
+    @Autowired
+    private ProxyService proxyService;
+    @Autowired
+    private ChengjiaoProcessor cjProcessor;
+    @Autowired
+    private ProxyProvider mipuProxy;
 
     public boolean isExist(String roomId) {
         Chengjiao cj = chengjiaoDao.findByRoomId(roomId);
         return cj != null;
+    }
+
+    public Map doSpider(String area) {
+        boolean isSuccess = true;
+        try {
+            HttpClientDownloader downloader = new HttpClientDownloader();
+            downloader.setProxyProvider(mipuProxy);
+            Spider spider = Spider.create(cjProcessor)
+                    // .setScheduler(new FileCacheQueueScheduler("/home/web"))
+                    .setScheduler(new PriorityScheduler())
+                    .addPipeline(new ConsolePipeline())
+                    .addPipeline(pipeline)
+                    .addUrl("https://bj.lianjia.com/chengjiao/changping");
+            spider.setDownloader(downloader);
+            spider.thread(5).start();//启动爬虫
+        } catch (Exception e) {
+            isSuccess = false;
+            e.printStackTrace();
+        }
+
+        return new HashMap();
     }
 }
