@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+
+    <!--调度器 -->
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <!--触发器列表 -->
+            <list>
+                <ref bean="cronTrigger"/>
+                <!-- <ref bean="cronTriggerAll" /> -->
+            </list>
+        </property>
+        <property name="schedulerContextAsMap">
+            <map>
+                <!-- spring 管理的service需要放到这里，才能够注入成功 -->
+                <description>schedulerContextAsMap</description>
+                <entry key="cjService" value-ref="chengjiaoService"></entry>
+            </map>
+        </property>
+    </bean>
+
+    <!-- 触发器 -->
+    <bean id="cronTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <!-- 指向我们的任务 -->
+        <property name="jobDetail" ref="myJobTask"/>
+        <!-- cron表达式 ,表示每天的01：00执行一次 -->
+        <property name="cronExpression" value="0 0 1 * * ? *"/>
+    </bean>
+    <!-- 处理类 -->
+    <bean name="myJobTask"
+          class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="cn.lee.housing.spider.lianjia.config.quartz.job.ChengjiaoJob"/>
+    </bean>
+
+</beans>

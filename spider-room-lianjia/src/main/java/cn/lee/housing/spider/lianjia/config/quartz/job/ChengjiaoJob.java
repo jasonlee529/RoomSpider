@@ -1,7 +1,10 @@
 package cn.lee.housing.spider.lianjia.config.quartz.job;
 
+import cn.lee.housing.spider.lianjia.service.room.ChengjiaoService;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+import org.quartz.SchedulerContext;
+import org.quartz.SchedulerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,17 +16,17 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
 public class ChengjiaoJob extends QuartzJobBean {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-    private String name;
-
-    // Invoked if a Job data map entry with that name
-    public void setName(String name) {
-        this.name = name;
-    }
 
     @Override
     protected void executeInternal(JobExecutionContext context)
             throws JobExecutionException {
-        System.out.println(String.format("Hello %s!", this.name));
-        logger.error(String.format("Hello %s!", this.name));
+        try {
+            // 通过这种方式才能获取service，直接使用@Autowired无法注入。
+            SchedulerContext skedCtx = context.getScheduler().getContext();
+            ChengjiaoService service = (ChengjiaoService) skedCtx.get("cjService");
+            service.doSpider("");
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+        }
     }
 }
