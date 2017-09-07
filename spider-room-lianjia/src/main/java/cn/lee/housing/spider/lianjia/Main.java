@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ImportResource;
 /**
  * Created by jason on 17/7/14.
  */
-@ImportResource(locations = {"classpath*:applicationContext.xml"})
+@ImportResource(locations = {"classpath*:applicationContext.xml", "classpath*:applicationContext-*.xml"})
 @Import({SchedulerConfig.class})
 @SpringBootApplication
 public class Main {

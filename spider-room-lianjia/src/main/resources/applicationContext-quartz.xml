@@ -10,7 +10,6 @@
             <!--触发器列表 -->
             <list>
                 <ref bean="cronTrigger"/>
-                <!-- <ref bean="cronTriggerAll" /> -->
             </list>
         </property>
         <property name="schedulerContextAsMap">
@@ -27,8 +26,7 @@
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <!-- 指向我们的任务 -->
         <property name="jobDetail" ref="myJobTask"/>
-        <!-- cron表达式 ,表示每天的01：00执行一次 -->
-        <property name="cronExpression" value="0 0 1 * * ? *"/>
+        <property name="cronExpression" value="0 0 0/2 * * ? *"/>
     </bean>
     <!-- 处理类 -->
     <bean name="myJobTask"

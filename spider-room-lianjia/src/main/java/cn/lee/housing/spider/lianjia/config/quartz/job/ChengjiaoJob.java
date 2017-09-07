@@ -1,6 +1,7 @@
 package cn.lee.housing.spider.lianjia.config.quartz.job;
 
 import cn.lee.housing.spider.lianjia.service.room.ChengjiaoService;
+import org.joda.time.DateTime;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.quartz.SchedulerContext;
@@ -24,6 +25,7 @@ public class ChengjiaoJob extends QuartzJobBean {
             // 通过这种方式才能获取service，直接使用@Autowired无法注入。
             SchedulerContext skedCtx = context.getScheduler().getContext();
             ChengjiaoService service = (ChengjiaoService) skedCtx.get("cjService");
+            logger.error(new DateTime().toString("yyyy-MM-dd HH:mm:ss")+" 开始执行！");
             service.doSpider("");
         } catch (SchedulerException e) {
             e.printStackTrace();
