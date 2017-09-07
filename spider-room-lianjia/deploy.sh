@@ -7,7 +7,7 @@ mvn clean package
 
 sleep 10s;
 
-java -jar target/room.lianjia-1.0-SNAPSHOT.jar >t.log & tail -11f t.log
+java -jar target/room.lianjia-1.1-SNAPSHOT.jar >t.log & tail -11f t.log
 
 sleep 10s;
 
