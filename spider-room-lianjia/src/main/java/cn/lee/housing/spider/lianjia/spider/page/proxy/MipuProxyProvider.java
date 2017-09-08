@@ -98,7 +98,7 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
         params.put("http_type", "2");
         params.put("ping_time", "1");
         params.put("transer_time", "1");
-        params.put("num", "40");
+        params.put("num", "100");
         params.put("result_fields", "1,2");
         params.put("result_format", "json");
         for (String key : params.keySet()) {
