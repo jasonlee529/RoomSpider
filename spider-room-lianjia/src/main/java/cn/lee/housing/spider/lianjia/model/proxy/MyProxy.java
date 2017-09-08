@@ -20,7 +20,7 @@ public class MyProxy extends IdEntity {
     private String username;
     private String password;
     private boolean avaiable;
-    private long times = 0;
+    private long times = -1;
     private String lastUsed;
 
     public MyProxy(Proxy proxy, boolean avaiable) {
