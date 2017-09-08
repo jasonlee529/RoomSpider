@@ -56,6 +56,7 @@ public class Chengjiao extends IdEntity {
     }
 
     public Chengjiao(String roomId) {
+        this();
         this.roomId = roomId;
     }
 
