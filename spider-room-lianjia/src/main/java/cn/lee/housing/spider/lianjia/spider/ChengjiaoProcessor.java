@@ -65,8 +65,8 @@ public class ChengjiaoProcessor implements PageProcessor {
                 Chengjiao chengjiao = new Chengjiao(fwId);
                 String t = html.xpath("//div[@class=house-title]/div/span/text()").get();
                 String[] deal = StringUtils.split(html.xpath("//div[@class=house-title]/div/span/text()").get(), " ");
-                chengjiao.setDealDate(deal[0]);
-                chengjiao.setDealAgent(deal[1]);
+                chengjiao.setDealDate(deal != null && deal.length > 0 ? deal[0] : "");
+                chengjiao.setDealAgent(deal != null && deal.length > 1 ? deal[1] : "");
                 chengjiao.setTitle(ershoufang.getTitle());
                 chengjiao.setTotalPrice(html.xpath("//div[@class=price]//span/i/text()").get());
                 chengjiao.setAvgPrice(html.xpath("//div[@class=price]/b/text()").get());
