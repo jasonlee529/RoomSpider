@@ -57,7 +57,8 @@ public class ChengjiaoProcessor implements PageProcessor {
             }
         } else {
             String fwId = parseRoomId(page.getUrl().get());
-            if (StringUtils.isNotBlank(fwId)) {
+            String fwId2 = html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[1]/text()").get();
+            if (StringUtils.isNotBlank(fwId) && StringUtils.isNotBlank(fwId2)) {
                 Ershoufang ershoufang = new Ershoufang();
                 ershoufang.setFwId(fwId);
                 ershoufang.setTitle(html.xpath("//div[@class=house-title]/div/text()").get());
