@@ -7,10 +7,10 @@
 	</appender>
 
 	<!-- project default level -->
-	<logger name="cn.lee.housing" level="error" />
+	<logger name="cn.lee.housing" level="info" />
 
 	<!-- 定义根日志级别 -->
-	<root level="error">
+	<root level="info">
 		<appender-ref ref="console" />
 	</root>
 	
