@@ -5,6 +5,7 @@ import javax.persistence.Table;
 
 import cn.lee.housing.spider.lianjia.model.IdEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.joda.time.DateTime;
 
 /**
  * 二手房成交价格
@@ -40,8 +41,18 @@ public class Chengjiao extends IdEntity {
 
     private String viewTimes;//浏览
 
-    public Chengjiao() {
+    private String crawTime;
 
+    public Chengjiao() {
+        this.crawTime = new DateTime().toString("yyyy-MM-dd HH:mm:ss");
+    }
+
+    public String getCrawTime() {
+        return crawTime;
+    }
+
+    public void setCrawTime(String crawTime) {
+        this.crawTime = crawTime;
     }
 
     public Chengjiao(String roomId) {
