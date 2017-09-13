@@ -81,7 +81,7 @@ public class ChengjiaoProcessor implements PageProcessor {
                 chengjiao.setCounty(subCjjg(html.xpath("//div[@class=deal-bread]//a[3]/text()").get()));
                 chengjiao.setRegion(subCjjg(html.xpath("//div[@class=deal-bread]//a[4]/text()").get()));
                 chengjiao.setReCrawl(false);
-                chengjiao.setDistrict(html.xpath("//div[@class=xiaoquCard]//div[@class=xiaoqu_header ]//h3//span/text()").get());
+                chengjiao.setDistrict(StringUtils.split(ershoufang.getTitle()," ")[0]);
                 // 具体爬去字段
                 logger.info(ershoufang.toString());
                 logger.error(chengjiao.toString());
