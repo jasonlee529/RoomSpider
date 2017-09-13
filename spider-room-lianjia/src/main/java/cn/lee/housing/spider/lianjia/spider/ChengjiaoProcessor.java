@@ -77,9 +77,14 @@ public class ChengjiaoProcessor implements PageProcessor {
                 chengjiao.setInspectTimes(html.xpath("//div[@class=msg]//span[4]/label/text()").get());
                 chengjiao.setAttentionTimes(html.xpath("//div[@class=msg]//span[5]/label/text()").get());
                 chengjiao.setViewTimes(html.xpath("//div[@class=msg]//span[6]/label/text()").get());
+
+                chengjiao.setCounty(subCjjg(html.xpath("//div[@class=deal-bread]//a[3]/text()").get()));
+                chengjiao.setRegion(subCjjg(html.xpath("//div[@class=deal-bread]//a[4]/text()").get()));
+                chengjiao.setReCrawl(false);
+                chengjiao.setDistrict(html.xpath("//div[@class=xiaoquCard]//div[@class=xiaoqu_header ]//h3//span/text()").get());
                 // 具体爬去字段
                 logger.info(ershoufang.toString());
-                logger.info(chengjiao.toString());
+                logger.error(chengjiao.toString());
                 page.putField("ershoufang", ershoufang);
                 page.putField("chengjiao", chengjiao);
             } else {
@@ -107,6 +112,10 @@ public class ChengjiaoProcessor implements PageProcessor {
             return roomId;
         }
         return null;
+    }
+
+    private String subCjjg(String in){
+        return StringUtils.substringBefore(in,"二手房成交价格");
     }
 
     @Override

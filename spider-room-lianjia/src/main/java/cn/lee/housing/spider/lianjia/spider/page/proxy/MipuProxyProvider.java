@@ -78,7 +78,7 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
     private int incrForLoop() {
         int p = pointer.incrementAndGet();
         int size = proxies.size();
-        if (size < 60) {
+        if (size < 200) {
             synchronized (proxies) {
                 getProxy();
             }

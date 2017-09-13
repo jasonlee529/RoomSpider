@@ -43,6 +43,14 @@ public class Chengjiao extends IdEntity {
 
     private String crawTime;
 
+    private boolean reCrawl = true; //是否需要爬取
+
+    private String district; // 小区
+
+    private String region;   //区域
+
+    private String county;   // 区县
+
     public Chengjiao() {
         this.crawTime = new DateTime().toString("yyyy-MM-dd HH:mm:ss");
     }
@@ -154,6 +162,38 @@ public class Chengjiao extends IdEntity {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public boolean isReCrawl() {
+        return reCrawl;
+    }
+
+    public void setReCrawl(boolean reCrawl) {
+        this.reCrawl = reCrawl;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
     }
 
     public String toString() {

@@ -35,7 +35,7 @@ public class ChengjiaoService {
 
     public boolean isExist(String roomId) {
         Chengjiao cj = chengjiaoDao.findByRoomId(roomId);
-        return cj != null;
+        return cj != null && !cj.isReCrawl();
     }
 
     public Map doSpider(String area) {
