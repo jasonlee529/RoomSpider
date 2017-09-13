@@ -8,6 +8,7 @@ import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,12 +26,15 @@ public class ChengjiaoPipeline implements Pipeline {
     @Override
     public void process(ResultItems resultItems, Task task) {
         Chengjiao entity = resultItems.get("chengjiao");
-        if (entity != null && roomDao.findByFwId(entity.getRoomId()) == null) {
+        if (entity != null) {
+            Chengjiao cj = cjDao.findByRoomId(entity.getRoomId());
+            BeanUtils.copyProperties(cj, entity);
             cjDao.save(entity);
         }
 
         Ershoufang ershoufang = resultItems.get("ershoufang");
-        if (ershoufang != null && roomDao.findByFwId(ershoufang.getFwId()) == null) {
+        if (ershoufang != null) {
+            BeanUtils.copyProperties(roomDao.findByFwId(ershoufang.getFwId()), ershoufang);
             roomDao.save(ershoufang);
         }
 
