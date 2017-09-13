@@ -29,18 +29,26 @@ public class ChengjiaoPipeline implements Pipeline {
         if (entity != null) {
             Chengjiao cj = cjDao.findByRoomId(entity.getRoomId());
             if (cj != null) {
-                BeanUtils.copyProperties(cj, entity);
+                Long id = cj.getId();
+                BeanUtils.copyProperties(entity, cj);
+                cj.setId(id);
+                cjDao.save(cj);
+            } else {
+                cjDao.save(entity);
             }
-            cjDao.save(entity);
         }
 
         Ershoufang ershoufang = resultItems.get("ershoufang");
         if (ershoufang != null) {
             Ershoufang esf = roomDao.findByFwId(ershoufang.getFwId());
             if (esf != null) {
-                BeanUtils.copyProperties(esf, ershoufang);
+                Long id = esf.getId();
+                BeanUtils.copyProperties(ershoufang, esf);
+                esf.setId(id);
+                roomDao.save(esf);
+            } else {
+                roomDao.save(ershoufang);
             }
-            roomDao.save(ershoufang);
         }
 
     }

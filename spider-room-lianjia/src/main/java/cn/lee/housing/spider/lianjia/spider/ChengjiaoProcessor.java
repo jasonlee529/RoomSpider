@@ -81,14 +81,15 @@ public class ChengjiaoProcessor implements PageProcessor {
                 chengjiao.setCounty(subCjjg(html.xpath("//div[@class=deal-bread]//a[3]/text()").get()));
                 chengjiao.setRegion(subCjjg(html.xpath("//div[@class=deal-bread]//a[4]/text()").get()));
                 chengjiao.setReCrawl(false);
-                chengjiao.setDistrict(StringUtils.split(ershoufang.getTitle()," ")[0]);
+                chengjiao.setDistrict(StringUtils.split(ershoufang.getTitle(), " ")[0]);
                 // 具体爬去字段
                 logger.info(ershoufang.toString());
                 logger.error(chengjiao.toString());
                 page.putField("ershoufang", ershoufang);
                 page.putField("chengjiao", chengjiao);
             } else {
-                logger.error(fwId + "null page!");
+                logger.error(fwId + " 爬去失败，代理爬去失败 ,重新爬取!");
+                page.addTargetRequest(page.getUrl().get());
             }
         }
         if (StringUtils.equalsIgnoreCase(START_URL, page.getUrl().get())) {
@@ -114,8 +115,8 @@ public class ChengjiaoProcessor implements PageProcessor {
         return null;
     }
 
-    private String subCjjg(String in){
-        return StringUtils.substringBefore(in,"二手房成交价格");
+    private String subCjjg(String in) {
+        return StringUtils.substringBefore(in, "二手房成交价格");
     }
 
     @Override
