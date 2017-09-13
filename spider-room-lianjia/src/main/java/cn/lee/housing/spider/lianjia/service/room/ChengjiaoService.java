@@ -33,9 +33,15 @@ public class ChengjiaoService {
     @Autowired
     private ProxyProvider mipuProxy;
 
-    public boolean isExist(String roomId) {
+    /**
+     * 是否需要重新爬取，成交不存在或者有成交记录但需要重新爬的
+     *
+     * @param roomId
+     * @return
+     */
+    public boolean isRecrawl(String roomId) {
         Chengjiao cj = chengjiaoDao.findByRoomId(roomId);
-        return cj != null && !cj.isReCrawl();
+        return cj == null || cj.isReCrawl();
     }
 
     public Map doSpider(String area) {

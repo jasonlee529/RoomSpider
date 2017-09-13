@@ -51,7 +51,7 @@ public class ChengjiaoProcessor implements PageProcessor {
             List<String> urls = page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all();
             for (String str : urls) {
                 String roomId = parseRoomId(str);
-                if (StringUtils.isNotBlank(roomId) && !chengjiaoService.isExist(roomId)) {
+                if (StringUtils.isNotBlank(roomId) && chengjiaoService.isRecrawl(roomId)) {
                     page.addTargetRequest(new Request(str).setPriority(10L));
                 }
             }
