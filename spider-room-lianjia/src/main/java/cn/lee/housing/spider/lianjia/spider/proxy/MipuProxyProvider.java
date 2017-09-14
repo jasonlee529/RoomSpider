@@ -1,4 +1,4 @@
-package cn.lee.housing.spider.lianjia.spider.page.proxy;
+package cn.lee.housing.spider.lianjia.spider.proxy;
 
 import java.util.ArrayList;
 import java.util.HashMap;

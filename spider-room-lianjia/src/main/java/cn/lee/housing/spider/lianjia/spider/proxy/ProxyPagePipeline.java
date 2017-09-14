@@ -1,4 +1,4 @@
-package cn.lee.housing.spider.lianjia.spider.page.proxy;
+package cn.lee.housing.spider.lianjia.spider.proxy;
 
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.PageModelPipeline;

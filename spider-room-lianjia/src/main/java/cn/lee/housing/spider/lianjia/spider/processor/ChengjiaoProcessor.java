@@ -1,4 +1,4 @@
-package cn.lee.housing.spider.lianjia.spider;
+package cn.lee.housing.spider.lianjia.spider.processor;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 import cn.lee.housing.spider.lianjia.model.Ershoufang;
 import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
 import cn.lee.housing.spider.lianjia.service.room.ChengjiaoService;
+import cn.lee.housing.spider.lianjia.spider.PageProcessException;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
@@ -90,7 +91,7 @@ public class ChengjiaoProcessor implements PageProcessor {
                 page.putField("chengjiao", chengjiao);
             } else {
                 logger.error(fwId + " 爬去失败，代理爬去失败 ,重新爬取!");
-                throw new IllegalArgumentException("代理爬取页面错误，需认证，重新爬取！");
+                throw new PageProcessException("代理爬取页面错误，需认证，重新爬取！");
             }
         }
         if (StringUtils.equalsIgnoreCase(START_URL, page.getUrl().get())) {

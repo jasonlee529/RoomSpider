@@ -7,7 +7,8 @@ import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
 import cn.lee.housing.spider.lianjia.repository.ChengjiaoDao;
 import cn.lee.housing.spider.lianjia.service.ChengjiaoPipeline;
 import cn.lee.housing.spider.lianjia.service.proxy.ProxyService;
-import cn.lee.housing.spider.lianjia.spider.ChengjiaoProcessor;
+import cn.lee.housing.spider.lianjia.spider.MySpider;
+import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessor;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
@@ -49,7 +50,7 @@ public class ChengjiaoService {
         try {
             HttpClientDownloader downloader = new HttpClientDownloader();
             downloader.setProxyProvider(mipuProxy);
-            Spider spider = Spider.create(cjProcessor)
+            Spider spider = MySpider.create(cjProcessor)
                     // .setScheduler(new FileCacheQueueScheduler("/home/web"))
                     .setScheduler(new PriorityScheduler())
                     .addPipeline(new ConsolePipeline())
@@ -61,7 +62,8 @@ public class ChengjiaoService {
             isSuccess = false;
             e.printStackTrace();
         }
-
-        return new HashMap();
+        Map result = new HashMap();
+        result.put("success", isSuccess);
+        return result;
     }
 }
