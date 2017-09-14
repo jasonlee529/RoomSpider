@@ -89,7 +89,7 @@ public class ChengjiaoProcessor implements PageProcessor {
                 page.putField("chengjiao", chengjiao);
             } else {
                 logger.error(fwId + " 爬去失败，代理爬去失败 ,重新爬取!");
-                page.addTargetRequest(page.getUrl().get());
+                throw new IllegalArgumentException("代理爬取页面错误，需认证，重新爬取！");
             }
         }
         if (StringUtils.equalsIgnoreCase(START_URL, page.getUrl().get())) {
