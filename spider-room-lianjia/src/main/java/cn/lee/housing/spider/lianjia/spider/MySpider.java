@@ -34,6 +34,8 @@ public class MySpider extends Spider {
                 }
             }
         } catch (PageProcessException e) {
+            logger.error(" proccess request error" + request, e);
+            e.printStackTrace();
             onDownloaderFail(request);
         } finally {
             sleep(site.getSleepTime());
