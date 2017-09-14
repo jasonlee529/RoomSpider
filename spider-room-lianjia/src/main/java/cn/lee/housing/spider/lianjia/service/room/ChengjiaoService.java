@@ -51,7 +51,6 @@ public class ChengjiaoService {
             HttpClientDownloader downloader = new HttpClientDownloader();
             downloader.setProxyProvider(mipuProxy);
             Spider spider = MySpider.create(cjProcessor)
-                    // .setScheduler(new FileCacheQueueScheduler("/home/web"))
                     .setScheduler(new PriorityScheduler())
                     .addPipeline(new ConsolePipeline())
                     .addPipeline(pipeline)

@@ -85,7 +85,6 @@ public class ChengjiaoProcessor implements PageProcessor {
                 chengjiao.setReCrawl(false);
                 chengjiao.setDistrict(StringUtils.split(ershoufang.getTitle(), " ")[0]);
                 // 具体爬去字段
-                logger.info(ershoufang.toString());
                 logger.error(chengjiao.toString());
                 page.putField("ershoufang", ershoufang);
                 page.putField("chengjiao", chengjiao);

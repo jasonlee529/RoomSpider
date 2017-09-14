@@ -1,5 +1,10 @@
 package cn.lee.housing.spider.lianjia.spider;
 
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
+
 import org.apache.commons.lang3.SerializationUtils;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
@@ -12,16 +17,71 @@ import us.codecraft.webmagic.processor.PageProcessor;
  */
 public class MySpider extends Spider {
 
-    /**
-     * create a spider with pageProcessor.
-     *
-     * @param pageProcessor pageProcessor
-     */
+    private final AtomicLong pageCount = new AtomicLong(0);
+
+    private ReentrantLock newUrlLock = new ReentrantLock();
+
+    private Condition newUrlCondition = newUrlLock.newCondition();
+
+    private int emptySleepTime = 30000;
+
+    public static Spider create(PageProcessor pageProcessor) {
+        return new MySpider(pageProcessor);
+    }
+
     public MySpider(PageProcessor pageProcessor) {
         super(pageProcessor);
     }
 
-    private void onDownloadSuccess(Request request, Page page) {
+    @Override
+    public void run() {
+        checkRunningStat();
+        initComponent();
+        logger.info("Spider {} started!", getUUID());
+        while (!Thread.currentThread().isInterrupted() && stat.get() == STAT_RUNNING) {
+            final Request request = scheduler.poll(this);
+            if (request == null) {
+                if (threadPool.getThreadAlive() == 0 && exitWhenComplete) {
+                    break;
+                }
+                // wait until new url added
+                waitNewUrl();
+            } else {
+                threadPool.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            processRequest(request);
+                            onSuccess(request);
+                        } catch (Exception e) {
+                            onError(request);
+                            logger.error("process request " + request + " error", e);
+                        } finally {
+                            pageCount.incrementAndGet();
+                            signalNewUrl();
+                        }
+                    }
+                });
+            }
+        }
+        stat.set(STAT_STOPPED);
+        // release some resources
+        if (destroyWhenExit) {
+            close();
+        }
+        logger.info("Spider {} closed! {} pages downloaded.", getUUID(), pageCount.get());
+    }
+
+    private void processRequest(Request request) {
+        Page page = downloader.download(request, this);
+        if (page.isDownloadSuccess()) {
+            onDownloadSuccess(request, page);
+        } else {
+            onDownloaderFail(request);
+        }
+    }
+
+    protected void onDownloadSuccess(Request request, Page page) {
         try {
             onSuccess(request);
             if (site.getAcceptStatCode().contains(page.getStatusCode())) {
@@ -35,7 +95,6 @@ public class MySpider extends Spider {
             }
         } catch (PageProcessException e) {
             logger.error(" proccess request error" + request, e);
-            e.printStackTrace();
             onDownloaderFail(request);
         } finally {
             sleep(site.getSleepTime());
@@ -43,7 +102,7 @@ public class MySpider extends Spider {
         return;
     }
 
-    private void onDownloaderFail(Request request) {
+    protected void onDownloaderFail(Request request) {
         if (site.getCycleRetryTimes() == 0) {
             sleep(site.getSleepTime());
         } else {
@@ -53,7 +112,7 @@ public class MySpider extends Spider {
         onError(request);
     }
 
-    private void doCycleRetry(Request request) {
+    protected void doCycleRetry(Request request) {
         Object cycleTriedTimesObject = request.getExtra(Request.CYCLE_TRIED_TIMES);
         if (cycleTriedTimesObject == null) {
             addRequest(SerializationUtils.clone(request).setPriority(0).putExtra(Request.CYCLE_TRIED_TIMES, 1));
@@ -67,4 +126,39 @@ public class MySpider extends Spider {
         sleep(site.getRetrySleepTime());
     }
 
+    protected void checkRunningStat() {
+        while (true) {
+            int statNow = stat.get();
+            if (statNow == STAT_RUNNING) {
+                throw new IllegalStateException("Spider is already running!");
+            }
+            if (stat.compareAndSet(statNow, STAT_RUNNING)) {
+                break;
+            }
+        }
+    }
+
+    protected void waitNewUrl() {
+        newUrlLock.lock();
+        try {
+            //double check
+            if (threadPool.getThreadAlive() == 0 && exitWhenComplete) {
+                return;
+            }
+            newUrlCondition.await(emptySleepTime, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            logger.warn("waitNewUrl - interrupted, error {}", e);
+        } finally {
+            newUrlLock.unlock();
+        }
+    }
+
+    private void signalNewUrl() {
+        try {
+            newUrlLock.lock();
+            newUrlCondition.signalAll();
+        } finally {
+            newUrlLock.unlock();
+        }
+    }
 }
