@@ -29,6 +29,8 @@ public class Chengjiao extends IdEntity {
 
     private String avgPrice; //　平均价格
 
+    private String area; // 面积
+
     private String listPrice; // 挂牌价格
 
     private String cycle; //成交周期
@@ -41,7 +43,7 @@ public class Chengjiao extends IdEntity {
 
     private String viewTimes;//浏览
 
-    private String crawTime;
+    private String crawTime; //抓取时间
 
     private boolean reCrawl = true; //是否需要爬取
 
@@ -194,6 +196,14 @@ public class Chengjiao extends IdEntity {
 
     public void setCounty(String county) {
         this.county = county;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
     }
 
     public String toString() {
