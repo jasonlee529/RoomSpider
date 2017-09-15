@@ -102,7 +102,8 @@ public class ChengjiaoProcessor implements PageProcessor {
             for (int i = 1; i <= maxPageNo; i++) {
                 pageList.add(START_URL + "/pg" + i);
             }
-            page.addTargetRequests(pageList, 0L);
+            logger.error("total page "+maxPageNo);
+            page.addTargetRequests(pageList, 1L);
         }
     }
 
