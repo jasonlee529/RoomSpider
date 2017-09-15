@@ -64,6 +64,7 @@ public class MySpider extends Spider {
                 });
             }
         }
+        logger.error(String.valueOf(scheduler.poll(this)));
         stat.set(STAT_STOPPED);
         // release some resources
         if (destroyWhenExit) {

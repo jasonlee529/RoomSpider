@@ -11,7 +11,6 @@ import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessor;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
-import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.proxy.ProxyProvider;
 import us.codecraft.webmagic.scheduler.PriorityScheduler;
 
@@ -52,7 +51,6 @@ public class ChengjiaoService {
             downloader.setProxyProvider(mipuProxy);
             Spider spider = MySpider.create(cjProcessor)
                     .setScheduler(new PriorityScheduler())
-                    .addPipeline(new ConsolePipeline())
                     .addPipeline(pipeline)
                     .addUrl("https://bj.lianjia.com/chengjiao/changping");
             spider.setDownloader(downloader);

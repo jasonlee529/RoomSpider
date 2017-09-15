@@ -21,9 +21,9 @@ public class Chengjiao extends IdEntity {
      */
     private String title;
 
-    private String dealDate;
+    private String dealDate;  //成交日期
 
-    private String dealAgent;
+    private String dealAgent; // 成交公司
 
     private String totalPrice; // 总价
 
