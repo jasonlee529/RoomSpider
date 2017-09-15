@@ -65,9 +65,12 @@ public class MySpider extends Spider {
                 });
             }
         }
-        logger.error(String.valueOf(scheduler.poll(this)), threadPool.getThreadAlive(), threadPool.getThreadNum());
+        logger.error(String.valueOf(scheduler.poll(this)));
+        logger.error(threadPool.getThreadAlive() + "  alive thread");
+        logger.error(threadPool.getThreadNum() + " total thread");
         PriorityScheduler pScheduler = (PriorityScheduler) scheduler;
-        logger.error(pScheduler.getTotalRequestsCount(this) + "", pScheduler.getLeftRequestsCount(this) + "");
+        logger.error(pScheduler.getTotalRequestsCount(this) + " total ");
+        logger.error(pScheduler.getLeftRequestsCount(this) + "　优先");
         stat.set(STAT_STOPPED);
         // release some resources
         if (destroyWhenExit) {
