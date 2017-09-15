@@ -11,6 +11,7 @@ import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.pipeline.Pipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
+import us.codecraft.webmagic.scheduler.PriorityScheduler;
 
 /**
  * Created by jason on 17-9-14.
@@ -65,6 +66,8 @@ public class MySpider extends Spider {
             }
         }
         logger.error(String.valueOf(scheduler.poll(this)), threadPool.getThreadAlive(), threadPool.getThreadNum());
+        PriorityScheduler pScheduler = (PriorityScheduler) scheduler;
+        logger.error(pScheduler.getTotalRequestsCount(this) + "", pScheduler.getLeftRequestsCount(this) + "");
         stat.set(STAT_STOPPED);
         // release some resources
         if (destroyWhenExit) {
