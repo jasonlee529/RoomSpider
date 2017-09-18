@@ -53,7 +53,9 @@ public class ChengjiaoProcessor implements PageProcessor {
             for (String str : urls) {
                 String roomId = parseRoomId(str);
                 if (StringUtils.isNotBlank(roomId) && chengjiaoService.isRecrawl(roomId)) {
-                    page.addTargetRequest(new Request(str).setPriority(Long.parseLong(roomId)));
+                    Request request = new Request(str).setPriority(Long.parseLong(roomId));
+                    page.addTargetRequest(request);
+                    logger.error(" add Request : " + request);
                 }
             }
         } else {
