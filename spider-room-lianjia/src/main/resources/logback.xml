@@ -6,14 +6,30 @@
 		</encoder>
 	</appender>
 
+	<appender name="rollingFile"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/infisa.tren.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/log.%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
 	<!-- project default level -->
-	<logger name="cn.lee.housing" level="info" />
+	<logger name="cn.lee.housing" level="debug" />
 
 	<!-- 定义根日志级别 -->
 	<root level="error">
 		<appender-ref ref="console" />
 	</root>
-	
+
+	<root level="debug">
+		<appender-ref ref="roolingFile"></appender-ref>
+	</root>
 	<!-- 
 		logger	description	since
 		jdbc.sqlonly	Logs only SQL. SQL executed within a prepared statement is automatically shown with it's bind arguments replaced with the data bound at that position, for greatly increased readability.	1.0

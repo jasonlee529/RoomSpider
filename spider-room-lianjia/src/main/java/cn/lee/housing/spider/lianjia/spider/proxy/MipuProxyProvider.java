@@ -64,8 +64,9 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
         if (!isSuccess) {
             synchronized (proxies) {
                 removeProxy(proxy);
-                myProxyService.save(proxy, isSuccess);
             }
+        }else{
+            myProxyService.save(proxy, isSuccess);
         }
     }
 
@@ -87,7 +88,7 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
         if (p >= size) {
             p = p % size;
         }
-        logger.error("current: " + p + " size : " + size);
+        logger.info("current: " + p + " size : " + size);
         return p;
     }
 
@@ -140,7 +141,6 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
             proxies.remove(proxy);
             dates.remove(proxy);
             myProxyService.save(proxy, false);
-
         }
     }
 }

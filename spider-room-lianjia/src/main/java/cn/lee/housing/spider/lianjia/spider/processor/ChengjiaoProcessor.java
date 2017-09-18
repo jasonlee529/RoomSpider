@@ -28,7 +28,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ChengjiaoProcessor implements PageProcessor {
 
-    private Site site = Site.me().setCharset("utf-8").setRetryTimes(5).setCycleRetryTimes(15000).setSleepTime(5000).setDomain("bj.lianjia.com");
+    private Site site = Site.me().setCharset("utf-8").setRetryTimes(5).setCycleRetryTimes(3000).setSleepTime(1000).setDomain("bj.lianjia.com");
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 

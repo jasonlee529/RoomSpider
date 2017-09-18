@@ -58,8 +58,8 @@ public class MySpider extends Spider {
                             onError(request);
                             logger.error("process request " + request + " error", e);
                         } finally {
-                            logger.error("pageCount "+pageCount );
                             pageCount.incrementAndGet();
+                            logger.info("pageCount " + pageCount);
                             signalNewUrl();
                         }
                     }
