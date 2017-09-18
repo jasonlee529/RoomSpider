@@ -6,7 +6,6 @@ import java.util.Map;
 import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
 import cn.lee.housing.spider.lianjia.repository.ChengjiaoDao;
 import cn.lee.housing.spider.lianjia.service.ChengjiaoPipeline;
-import cn.lee.housing.spider.lianjia.service.proxy.ProxyService;
 import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessor;
 import us.codecraft.webmagic.Spider;
@@ -26,8 +25,6 @@ public class ChengjiaoService {
     private ChengjiaoDao chengjiaoDao;
     @Autowired
     private ChengjiaoPipeline pipeline;
-    @Autowired
-    private ProxyService proxyService;
     @Autowired
     private ChengjiaoProcessor cjProcessor;
     @Autowired
@@ -54,7 +51,7 @@ public class ChengjiaoService {
                     .addPipeline(pipeline)
                     .addUrl("https://bj.lianjia.com/chengjiao/changping");
             spider.setDownloader(downloader);
-            spider.thread(5).start();//启动爬虫
+            spider.thread(5).run();//启动爬虫
         } catch (Exception e) {
             isSuccess = false;
             e.printStackTrace();
