@@ -51,7 +51,7 @@ public class ChengjiaoService {
                     .addPipeline(pipeline)
                     .addUrl("https://bj.lianjia.com/chengjiao");
             spider.setDownloader(downloader);
-            spider.thread(5).run();//启动爬虫
+            spider.thread(5).start();//启动爬虫
         } catch (Exception e) {
             isSuccess = false;
             e.printStackTrace();
