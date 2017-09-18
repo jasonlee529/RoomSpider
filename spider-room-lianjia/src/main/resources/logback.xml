@@ -8,9 +8,9 @@
 
 	<appender name="rollingFile"
 			  class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>logs/infisa.tren.log</file>
+		<file>logs/spider.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>logs/log.%d{yyyy-MM-dd}.log
+			<fileNamePattern>logs/spider.%d{yyyy-MM-dd}.log
 			</fileNamePattern>
 		</rollingPolicy>
 		<encoder>
@@ -20,14 +20,14 @@
 	</appender>
 
 	<!-- project default level -->
-	<logger name="cn.lee.housing" level="debug" />
+	<logger name="cn.lee.housing" level="error" />
 
 	<!-- 定义根日志级别 -->
 	<root level="error">
 		<appender-ref ref="console" />
 	</root>
 
-	<root level="debug">
+	<root level="info">
 		<appender-ref ref="rollingFile"></appender-ref>
 	</root>
 	<!-- 
