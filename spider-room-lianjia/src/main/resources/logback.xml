@@ -28,7 +28,7 @@
 	</root>
 
 	<root level="debug">
-		<appender-ref ref="roolingFile"></appender-ref>
+		<appender-ref ref="rollingFile"></appender-ref>
 	</root>
 	<!-- 
 		logger	description	since
