@@ -94,16 +94,20 @@ public class ChengjiaoProcessor implements PageProcessor {
             }
         }
         if (StringUtils.equalsIgnoreCase(START_URL, page.getUrl().get())) {
-            //总共多少页的链接
-            int total = Integer.parseInt(StringUtils.trim(page.getHtml().xpath("//div[@class=resultDes]//div[@class=total]").xpath("//span/text()").get()));
-            int pageSize = 30;
-            int maxPageNo = total / pageSize + 1;
-            List<String> pageList = Lists.newArrayList();
-            for (int i = 1; i <= maxPageNo; i++) {
-                pageList.add(START_URL + "/pg" + i);
+            try {
+                //总共多少页的链接
+                int total = Integer.parseInt(StringUtils.trim(page.getHtml().xpath("//div[@class=resultDes]//div[@class=total]").xpath("//span/text()").get()));
+                int pageSize = 30;
+                int maxPageNo = total / pageSize + 1;
+                List<String> pageList = Lists.newArrayList();
+                for (int i = 1; i <= maxPageNo; i++) {
+                    pageList.add(START_URL + "/pg" + i);
+                }
+                logger.error("total page " + maxPageNo + " total Records" + total);
+                page.addTargetRequests(pageList, 1L);
+            } catch (Exception e) {
+                throw new PageProcessException("代理爬取页面错误，需认证，重新爬取！");
             }
-            logger.error("total page " + maxPageNo + " total Records" + total);
-            page.addTargetRequests(pageList, 1L);
         }
     }
 
