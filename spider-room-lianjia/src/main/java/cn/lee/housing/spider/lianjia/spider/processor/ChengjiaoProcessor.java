@@ -102,9 +102,9 @@ public class ChengjiaoProcessor implements PageProcessor {
                 List<String> pageList = Lists.newArrayList();
                 for (int i = 1; i <= maxPageNo; i++) {
                     pageList.add(START_URL + "/pg" + i);
+                    page.addTargetRequest(new Request(START_URL + "/pg" + i).setPriority(-i));
                 }
                 logger.error("total page " + maxPageNo + " total Records" + total);
-                page.addTargetRequests(pageList, 1L);
             } catch (Exception e) {
                 throw new PageProcessException("代理爬取页面错误，需认证，重新爬取！");
             }
