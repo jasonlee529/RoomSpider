@@ -49,7 +49,7 @@ public class ChengjiaoService {
             Spider spider = MySpider.create(cjProcessor)
                     .setScheduler(new PriorityScheduler())
                     .addPipeline(pipeline)
-                    .addUrl("https://bj.lianjia.com/chengjiao/changping");
+                    .addUrl("https://bj.lianjia.com/chengjiao");
             spider.setDownloader(downloader);
             spider.thread(5).run();//启动爬虫
         } catch (Exception e) {
