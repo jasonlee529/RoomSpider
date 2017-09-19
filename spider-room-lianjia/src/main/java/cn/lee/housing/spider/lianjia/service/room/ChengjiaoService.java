@@ -52,7 +52,7 @@ public class ChengjiaoService {
                     .setScheduler(new PriorityScheduler())
                     .addPipeline(pipeline)
                     .addPipeline(new ConsolePipeline())
-                    .addUrl("https://bj.lianjia.com/chengjiao");
+                    .addUrl("https://bj.lianjia.com/chengjiao/shunyi");
             spider.setDownloader(downloader);
             spider.thread(10).start();//启动爬虫
         } catch (Exception e) {
