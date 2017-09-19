@@ -26,7 +26,7 @@
           class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <!-- 指向我们的任务 -->
         <property name="jobDetail" ref="myJobTask"/>
-        <property name="cronExpression" value="0 0 0 0/1 * ? *"/>
+        <property name="cronExpression" value="0 0 0 1/1 * ? *"/>
     </bean>
     <!-- 处理类 -->
     <bean name="myJobTask"
