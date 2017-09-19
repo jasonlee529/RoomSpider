@@ -33,11 +33,31 @@ public class ChengjiaoProcessor implements PageProcessor {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public final static String START_URL = "https://bj.lianjia.com/chengjiao/shunyi";
-    private final static String PAGE_URL = START_URL + "/pg\\d+";
+    public static String START_URL = "https://bj.lianjia.com/chengjiao/";
 
-    @Autowired
+    private String county = "";
+
     private ChengjiaoService chengjiaoService;
+
+    public String getPageUrl() {
+        return getStartURL() + "/pg\\d+";
+    }
+
+    public String getStartURL() {
+        return START_URL + county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
+    }
+
+    public void setSite(Site site) {
+        this.site = site;
+    }
+
+    public void setChengjiaoService(ChengjiaoService chengjiaoService) {
+        this.chengjiaoService = chengjiaoService;
+    }
 
     private final static String ROOM_ID = "[1-9]\\d+";
 
@@ -47,7 +67,7 @@ public class ChengjiaoProcessor implements PageProcessor {
         List<String> pageHref = html.xpath("//div[@class=page-box]/a").links().all();
         List<String> pageHrefs = html.xpath("//div[@class=pagination_group_a]").links().all();
 
-        if (StringUtils.equalsIgnoreCase(START_URL, page.getUrl().get()) || page.getUrl().regex(PAGE_URL).match()) {
+        if (StringUtils.equalsIgnoreCase(getStartURL(), page.getUrl().get()) || page.getUrl().regex(getPageUrl()).match()) {
             //列表页具体的爬去链接
             page.addTargetRequests(page.getHtml().xpath("//div[@class='page-box']//a").links().all());
             List<String> urls = page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all();
@@ -96,7 +116,7 @@ public class ChengjiaoProcessor implements PageProcessor {
                 throw new PageProcessException("代理爬取页面错误，需认证，重新爬取！");
             }
         }
-        if (StringUtils.equalsIgnoreCase(START_URL, page.getUrl().get())) {
+        if (StringUtils.equalsIgnoreCase(getStartURL(), page.getUrl().get())) {
             try {
                 //总共多少页的链接
                 int total = Integer.parseInt(StringUtils.trim(page.getHtml().xpath("//div[@class=resultDes]//div[@class=total]").xpath("//span/text()").get()));
@@ -104,7 +124,7 @@ public class ChengjiaoProcessor implements PageProcessor {
                 int maxPageNo = total / pageSize + 1;
                 List<String> pageList = Lists.newArrayList();
                 for (int i = 1; i <= 100; i++) {
-                    pageList.add(START_URL + "/pg" + i);
+                    pageList.add(getStartURL() + "/pg" + i);
                     page.addTargetRequest(new Request(START_URL + "/pg" + i).setPriority(-i));
                 }
                 logger.error("total page : " + maxPageNo + " total Records : " + total);
