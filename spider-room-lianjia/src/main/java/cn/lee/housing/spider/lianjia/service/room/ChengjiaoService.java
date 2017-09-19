@@ -10,6 +10,7 @@ import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessor;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
+import us.codecraft.webmagic.monitor.SpiderMonitor;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.proxy.ProxyProvider;
 import us.codecraft.webmagic.scheduler.PriorityScheduler;
@@ -53,7 +54,8 @@ public class ChengjiaoService {
                     .addPipeline(new ConsolePipeline())
                     .addUrl("https://bj.lianjia.com/chengjiao");
             spider.setDownloader(downloader);
-            spider.thread(1).start();//启动爬虫
+            SpiderMonitor.instance().register(spider);
+            spider.thread(10).start();//启动爬虫
         } catch (Exception e) {
             isSuccess = false;
             e.printStackTrace();
