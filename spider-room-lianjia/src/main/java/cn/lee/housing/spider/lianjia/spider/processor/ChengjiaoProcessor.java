@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Scope;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
@@ -102,7 +103,7 @@ public class ChengjiaoProcessor implements PageProcessor {
                 int pageSize = 30;
                 int maxPageNo = total / pageSize + 1;
                 List<String> pageList = Lists.newArrayList();
-                for (int i = 1; i <= maxPageNo; i++) {
+                for (int i = 1; i <= 100; i++) {
                     pageList.add(START_URL + "/pg" + i);
                     page.addTargetRequest(new Request(START_URL + "/pg" + i).setPriority(-i));
                 }
