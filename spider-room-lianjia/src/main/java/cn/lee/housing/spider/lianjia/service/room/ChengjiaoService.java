@@ -8,6 +8,8 @@ import cn.lee.housing.spider.lianjia.repository.ChengjiaoDao;
 import cn.lee.housing.spider.lianjia.service.ChengjiaoPipeline;
 import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessor;
+import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessorFactory;
+import com.alibaba.druid.util.StringUtils;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.monitor.SpiderMonitor;
@@ -28,7 +30,7 @@ public class ChengjiaoService {
     @Autowired
     private ChengjiaoPipeline pipeline;
     @Autowired
-    private ChengjiaoProcessor cjProcessor;
+    private ChengjiaoProcessorFactory factory;
     @Autowired
     private ProxyProvider mipuProxy;
 
@@ -44,23 +46,38 @@ public class ChengjiaoService {
     }
 
     public Map doSpider(String area) {
+        Map result = new HashMap();
         boolean isSuccess = true;
         try {
             HttpClientDownloader downloader = new HttpClientDownloader();
             downloader.setProxyProvider(mipuProxy);
-            Spider spider = MySpider.create(cjProcessor)
+            Spider spider = MySpider.create(factory.getObject(area))
                     .setScheduler(new PriorityScheduler())
                     .addPipeline(pipeline)
                     .addPipeline(new ConsolePipeline())
-                    .addUrl("https://bj.lianjia.com/chengjiao");
+                    .addUrl(ChengjiaoProcessor.START_URL + convertName(area));
             spider.setDownloader(downloader);
             spider.thread(10).start();//启动爬虫
         } catch (Exception e) {
             isSuccess = false;
             e.printStackTrace();
+            result.put("desc", e.getMessage());
         }
-        Map result = new HashMap();
+
         result.put("success", isSuccess);
         return result;
+    }
+
+    public String convertName(String county) {
+        String[] counties = {"haidian", "changping", "shunyi", "chaoyang", "tongzhou", "daxing", "fengtai", "fangshan", "shijingshan", "mentoukou"};
+        if (StringUtils.equalsIgnoreCase(county, "all")) {
+            return "";
+        }
+        for (String c : counties) {
+            if (StringUtils.equalsIgnoreCase(c, county)) {
+                return county;
+            }
+        }
+        throw new IllegalArgumentException(" no county " + county);
     }
 }
