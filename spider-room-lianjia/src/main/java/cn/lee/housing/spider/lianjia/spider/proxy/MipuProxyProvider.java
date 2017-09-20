@@ -96,7 +96,7 @@ public class MipuProxyProvider implements ProxyProvider, InitializingBean {
         StringBuilder api = new StringBuilder("http://proxy.mimvp.com/api/fetch.php?");
         Map<String, String> params = new HashMap<>();
         params.put("orderid", "860170823143754231");
-        params.put("http_type", "2");
+        params.put("http_type", "1,2");
         params.put("ping_time", "1");
         params.put("transer_time", "1");
         params.put("num", "100");
