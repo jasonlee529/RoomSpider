@@ -100,10 +100,7 @@ public class MySpider extends Spider {
         } catch (PageProcessException e) {
             logger.error(" proccess request error" + request, e);
             onDownloaderFail(request);
-        } finally {
-            sleep(site.getSleepTime());
         }
-        return;
     }
 
     protected void onDownloaderFail(Request request) {
@@ -117,6 +114,7 @@ public class MySpider extends Spider {
     }
 
     protected void doCycleRetry(Request request) {
+        logger.info(" doCycleRetry request " + request);
         Object cycleTriedTimesObject = request.getExtra(Request.CYCLE_TRIED_TIMES);
         if (cycleTriedTimesObject == null) {
             addRequest(SerializationUtils.clone(request).putExtra(Request.CYCLE_TRIED_TIMES, 1));

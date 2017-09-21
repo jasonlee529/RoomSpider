@@ -12,7 +12,6 @@ import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessorFactory;
 import com.alibaba.druid.util.StringUtils;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
-import us.codecraft.webmagic.monitor.SpiderMonitor;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.proxy.ProxyProvider;
 import us.codecraft.webmagic.scheduler.PriorityScheduler;
@@ -75,7 +74,7 @@ public class ChengjiaoService {
         }
         for (String c : counties) {
             if (StringUtils.equalsIgnoreCase(c, county)) {
-                return county;
+                return "/"+county;
             }
         }
         throw new IllegalArgumentException(" no county " + county);
