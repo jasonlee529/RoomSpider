@@ -12,14 +12,12 @@ import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Scope;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
@@ -112,7 +110,7 @@ public class ChengjiaoProcessor implements PageProcessor {
                 page.putField("ershoufang", ershoufang);
                 page.putField("chengjiao", chengjiao);
             } else {
-                logger.error(fwId + " 爬去失败，代理爬去失败 ,重新爬取!");
+                logger.error(page.getUrl() + " 爬去失败，代理爬去失败 ,重新爬取!");
                 throw new PageProcessException("代理爬取页面错误，需认证，重新爬取！");
             }
         }

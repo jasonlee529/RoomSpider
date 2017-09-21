@@ -20,10 +20,17 @@ public class MimvpProxyJava {
     @SuppressWarnings({"serial"})
     public static HashMap<String, String> proxyMap = new HashMap<String, String>() {
         {
-            put("http", "138.68.161.14:3128");
-            put("https", "104.236.120.183:8080");
-            put("socks4", "113.7.118.112:2346");
-            put("socks5", "61.135.155.82:1080");
+            put("HTTPS", "103.25.3.85:53281");
+            put("HTTPS", "222.186.52.136:90");
+            put("HTTPS", " 5.160.87.114:8080");
+            put("HTTPS", "114.239.1.65:808");
+            put("HTTPS", "203.142.73.234:8080");
+            put("HTTPS", "192.129.161.53:9001");
+            put("HTTPS", "89.222.217.182:3129");
+            put("HTTPS", "104.160.246.143:49195");
+            put("HTTPS", "41.242.92.252:8080");
+            put("HTTPS", "113.7.118.112:2346");
+            put("HTTPS", "82.137.250.78:65103");
         }
     };
 
@@ -125,19 +132,6 @@ public class MimvpProxyJava {
             prop.setProperty("https.proxyPort", proxy_port);
         }
 
-        // socks
-        if (proxyType.equals("socks4") || proxyType.equals("socks5")) {
-            prop.setProperty("socksProxySet", "true");
-            prop.setProperty("socksProxyHost", proxy_ip);
-            prop.setProperty("socksProxyPort", proxy_port);
-        }
-
-        // ftp
-        if (proxyType.equals("ftp")) {
-            prop.setProperty("ftp.proxyHost", proxy_ip);
-            prop.setProperty("ftp.proxyPort", proxy_port);
-            prop.setProperty("ftp.nonProxyHosts", "localhost|192.168.0.*");
-        }
 
 //        // auth 设置登录代理服务器的用户名和密码
 //        Authenticator.setDefault(new MyAuthenticator("user", "pwd"));
@@ -156,7 +150,6 @@ public class MimvpProxyJava {
                 String newData = new String(ch, 0, len);
                 data += newData;
             }
-            System.out.println("data : " + data);
             dataLen = data.length();
 
         } catch (Exception e) {
