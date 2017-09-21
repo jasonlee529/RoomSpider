@@ -64,7 +64,6 @@ public class MySpider extends Spider {
                         }
                     }
                 });
-                sleep(site.getSleepTime());
             }
         }
         PriorityScheduler pScheduler = (PriorityScheduler) scheduler;
