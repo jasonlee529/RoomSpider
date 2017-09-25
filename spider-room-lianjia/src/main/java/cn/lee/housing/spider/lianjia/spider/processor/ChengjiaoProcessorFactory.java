@@ -27,16 +27,14 @@ public class ChengjiaoProcessorFactory implements InitializingBean {
     }
 
     public static String convertName(String county) {
-        String[] counties = {"haidian", "changping", "shunyi", "chaoyang", "tongzhou", "daxing", "fengtai", "fangshan", "shijingshan", "mentoukou","yizhuangkaifaqu"};
-        if (StringUtils.equalsIgnoreCase(county, "all")) {
-            return "";
-        }
-        for (String c : counties) {
+        for (String c : BEIJING_COUNTIES) {
             if (StringUtils.equalsIgnoreCase(c, county)) {
                 return "" + county;
             }
         }
         throw new IllegalArgumentException(" no county " + county);
     }
+
+    public static String[] BEIJING_COUNTIES = {"haidian", "changping", "shunyi", "chaoyang", "tongzhou", "daxing", "fengtai", "fangshan", "shijingshan", "mentougou", "yizhuangkaifaqu","pinggu"};
 
 }
