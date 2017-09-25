@@ -28,7 +28,7 @@ public class TestDynamic {
         //final String url = "http://www.hao123.com/";
 
         final String ip = "forward.xdaili.cn";//这里以正式服务器ip地址为准
-        final int port = 80;//这里以正式服务器端口地址为准
+        final int port = 8088;//这里以正式服务器端口地址为准
 
         int timestamp = (int) (new Date().getTime() / 1000);
         //以下订单号，secret参数 须自行改动

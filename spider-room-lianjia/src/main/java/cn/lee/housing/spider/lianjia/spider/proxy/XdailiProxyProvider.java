@@ -26,7 +26,7 @@ public class XdailiProxyProvider implements ProxyProvider {
         //以下订单号，secret参数 须自行改动
         final String authHeader = authHeader("ZF20179259363xxYvyk", "6e3d4d41727f454d983a7ef7fa206e5d", timestamp);
         task.getSite().getHeaders().put("Proxy-Authorization", authHeader);
-        return new Proxy("forward.xdaili.cn", 80);
+        return new Proxy("forward.xdaili.cn", 8088);
     }
 
 
