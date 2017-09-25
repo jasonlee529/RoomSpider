@@ -9,11 +9,11 @@ import cn.lee.housing.spider.lianjia.service.ChengjiaoPipeline;
 import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessorFactory;
+import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;
 import com.alibaba.druid.util.StringUtils;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
-import us.codecraft.webmagic.proxy.ProxyProvider;
 import us.codecraft.webmagic.scheduler.PriorityScheduler;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class ChengjiaoService {
     @Autowired
     private ChengjiaoProcessorFactory factory;
     @Autowired
-    private ProxyProvider mipuProxy;
+    private XdailiProxyProvider proxyProvider;
 
     /**
      * 是否需要重新爬取，成交不存在或者有成交记录但需要重新爬的
@@ -49,7 +49,7 @@ public class ChengjiaoService {
         boolean isSuccess = true;
         try {
             HttpClientDownloader downloader = new HttpClientDownloader();
-            downloader.setProxyProvider(mipuProxy);
+            downloader.setProxyProvider(proxyProvider);
             Spider spider = MySpider.create(factory.getObject(area))
                     .setScheduler(new PriorityScheduler())
                     .addPipeline(pipeline)
@@ -74,7 +74,7 @@ public class ChengjiaoService {
         }
         for (String c : counties) {
             if (StringUtils.equalsIgnoreCase(c, county)) {
-                return "/"+county;
+                return "/" + county;
             }
         }
         throw new IllegalArgumentException(" no county " + county);
