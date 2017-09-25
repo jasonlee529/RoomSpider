@@ -1,11 +1,11 @@
 package cn.lee.housing.spider.lianjia.spider.processor;
 
 import cn.lee.housing.spider.lianjia.service.room.ChengjiaoService;
-import org.springframework.beans.factory.FactoryBean;
+import com.alibaba.druid.util.StringUtils;
+
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import us.codecraft.webmagic.processor.PageProcessor;
 
 @Service
 public class ChengjiaoProcessorFactory implements InitializingBean {
@@ -22,8 +22,21 @@ public class ChengjiaoProcessorFactory implements InitializingBean {
     public ChengjiaoProcessor getObject(String county) throws Exception {
         processor = new ChengjiaoProcessor();
         processor.setChengjiaoService(chengjiaoService);
-        processor.setCounty(county);
+        processor.setCounty(convertName(county));
         return processor;
+    }
+
+    public static String convertName(String county) {
+        String[] counties = {"haidian", "changping", "shunyi", "chaoyang", "tongzhou", "daxing", "fengtai", "fangshan", "shijingshan", "mentoukou"};
+        if (StringUtils.equalsIgnoreCase(county, "all")) {
+            return "";
+        }
+        for (String c : counties) {
+            if (StringUtils.equalsIgnoreCase(c, county)) {
+                return "" + county;
+            }
+        }
+        throw new IllegalArgumentException(" no county " + county);
     }
 
 }

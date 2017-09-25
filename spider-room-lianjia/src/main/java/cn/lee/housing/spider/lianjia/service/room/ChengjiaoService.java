@@ -10,7 +10,6 @@ import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessorFactory;
 import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;
-import com.alibaba.druid.util.StringUtils;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
@@ -54,7 +53,7 @@ public class ChengjiaoService {
                     .setScheduler(new PriorityScheduler())
                     .addPipeline(pipeline)
                     .addPipeline(new ConsolePipeline())
-                    .addUrl(ChengjiaoProcessor.START_URL + convertName(area));
+                    .addUrl(ChengjiaoProcessor.START_URL + ChengjiaoProcessorFactory.convertName(area));
             spider.setDownloader(downloader);
             spider.thread(10).start();//启动爬虫
         } catch (Exception e) {
@@ -67,16 +66,5 @@ public class ChengjiaoService {
         return result;
     }
 
-    public String convertName(String county) {
-        String[] counties = {"haidian", "changping", "shunyi", "chaoyang", "tongzhou", "daxing", "fengtai", "fangshan", "shijingshan", "mentoukou"};
-        if (StringUtils.equalsIgnoreCase(county, "all")) {
-            return "";
-        }
-        for (String c : counties) {
-            if (StringUtils.equalsIgnoreCase(c, county)) {
-                return "/" + county;
-            }
-        }
-        throw new IllegalArgumentException(" no county " + county);
-    }
+
 }

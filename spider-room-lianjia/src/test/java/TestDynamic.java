@@ -23,7 +23,7 @@ public class TestDynamic {
     }
 
     public static void main(String[] args) throws IOException {
-        final String url = "https://bj.lianjia.com/";
+        final String url = "https://bj.lianjia.com/chengjiao/fangshan";
         //final String url ="http://1212.ip138.com/ic.asp";
         //final String url = "http://www.hao123.com/";
 
