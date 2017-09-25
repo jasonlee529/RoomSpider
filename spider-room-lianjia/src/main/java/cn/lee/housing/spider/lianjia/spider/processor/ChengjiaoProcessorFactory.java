@@ -27,7 +27,7 @@ public class ChengjiaoProcessorFactory implements InitializingBean {
     }
 
     public static String convertName(String county) {
-        String[] counties = {"haidian", "changping", "shunyi", "chaoyang", "tongzhou", "daxing", "fengtai", "fangshan", "shijingshan", "mentoukou"};
+        String[] counties = {"haidian", "changping", "shunyi", "chaoyang", "tongzhou", "daxing", "fengtai", "fangshan", "shijingshan", "mentoukou","yizhuangkaifaqu"};
         if (StringUtils.equalsIgnoreCase(county, "all")) {
             return "";
         }
