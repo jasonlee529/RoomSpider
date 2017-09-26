@@ -27,6 +27,9 @@ public class ChengjiaoProcessorFactory implements InitializingBean {
     }
 
     public static String convertName(String county) {
+        if (StringUtils.equalsIgnoreCase(county, "all")) {
+            return "";
+        }
         for (String c : BEIJING_COUNTIES) {
             if (StringUtils.equalsIgnoreCase(c, county)) {
                 return "" + county;
