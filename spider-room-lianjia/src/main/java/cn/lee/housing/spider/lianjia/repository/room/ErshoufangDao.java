@@ -9,5 +9,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  */
 public interface ErshoufangDao extends PagingAndSortingRepository<Ershoufang, Long> {
 
-    public Ershoufang findByFwId(String fwId);
+    public Ershoufang findByRoomId(String roomId);
 }

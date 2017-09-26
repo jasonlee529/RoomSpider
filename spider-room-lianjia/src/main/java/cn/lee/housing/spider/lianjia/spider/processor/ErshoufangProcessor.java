@@ -51,7 +51,7 @@ public class ErshoufangProcessor implements PageProcessor {
             String fwId = html.xpath("//div[@class=houseRecord]/span[@class=info]/text()").get();
             if (StringUtils.isNotBlank(fwId)) {
                 Ershoufang ershoufang = new Ershoufang();
-                ershoufang.setFwId(fwId);
+                ershoufang.setRoomId(fwId);
                 ershoufang.setTitle(html.xpath("div[@class=content]").xpath("div[@class=title]").xpath("h1/text()").get());
                 ershoufang.setPrice(html.xpath("//div[@class=price]/span[@class=total]/text()").get());
                 ershoufang.setAvgPrice(html.xpath("//div[@class=price]//span[@class=unitPriceValue]/text()").get());
