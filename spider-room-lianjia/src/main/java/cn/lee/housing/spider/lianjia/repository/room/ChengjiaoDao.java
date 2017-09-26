@@ -1,4 +1,4 @@
-package cn.lee.housing.spider.lianjia.repository;
+package cn.lee.housing.spider.lianjia.repository.room;
 
 import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
 

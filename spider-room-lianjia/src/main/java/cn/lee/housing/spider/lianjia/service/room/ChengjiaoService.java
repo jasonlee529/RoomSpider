@@ -4,8 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
-import cn.lee.housing.spider.lianjia.repository.ChengjiaoDao;
-import cn.lee.housing.spider.lianjia.service.ChengjiaoPipeline;
+import cn.lee.housing.spider.lianjia.repository.room.ChengjiaoDao;
 import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessorFactory;

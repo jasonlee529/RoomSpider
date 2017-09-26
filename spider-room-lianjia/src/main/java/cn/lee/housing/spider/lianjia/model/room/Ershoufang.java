@@ -1,4 +1,4 @@
-package cn.lee.housing.spider.lianjia.model;
+package cn.lee.housing.spider.lianjia.model.room;
 
 import java.io.Serializable;
 import javax.persistence.*;

@@ -1,6 +1,6 @@
-package cn.lee.housing.spider.lianjia.repository;
+package cn.lee.housing.spider.lianjia.repository.room;
 
-import cn.lee.housing.spider.lianjia.model.Ershoufang;
+import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 

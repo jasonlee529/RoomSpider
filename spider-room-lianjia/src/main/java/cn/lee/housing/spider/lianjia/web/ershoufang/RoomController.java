@@ -1,6 +1,6 @@
 package cn.lee.housing.spider.lianjia.web.ershoufang;
 
-import cn.lee.housing.spider.lianjia.service.ErshoufangPipeline;
+import cn.lee.housing.spider.lianjia.service.room.ErshoufangPipeline;
 import cn.lee.housing.spider.lianjia.spider.processor.ErshoufangProcessor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

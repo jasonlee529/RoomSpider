@@ -1,7 +1,7 @@
-package cn.lee.housing.spider.lianjia.service;
+package cn.lee.housing.spider.lianjia.service.room;
 
-import cn.lee.housing.spider.lianjia.model.Ershoufang;
-import cn.lee.housing.spider.lianjia.repository.ErshoufangDao;
+import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
+import cn.lee.housing.spider.lianjia.repository.room.ErshoufangDao;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.PageModelPipeline;
 

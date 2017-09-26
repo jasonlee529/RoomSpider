@@ -2,7 +2,7 @@ package cn.lee.housing.spider.lianjia.spider.processor;
 
 import java.util.List;
 
-import cn.lee.housing.spider.lianjia.model.Ershoufang;
+import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
