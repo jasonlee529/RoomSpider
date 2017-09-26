@@ -39,7 +39,7 @@ public class Chengjiao extends IdEntity {
 
     private String inspectTimes; //带看次数
 
-    private String attentionTimes; // 关注
+    private String attentionTimes; // 关注(人）
 
     private String viewTimes;//浏览
 
@@ -52,6 +52,43 @@ public class Chengjiao extends IdEntity {
     private String region;   //区域
 
     private String county;   // 区县
+
+    private String fwhx; // 房屋户型
+
+    private String szlc; // 所在楼层
+
+    private String hxjg; // 户型结构
+
+    private String tnmj; //套内面积
+
+    private String jzlx; //建筑类型
+
+    private String fwcx; // 房屋朝向
+
+    private String jcnd;    //建成年代
+
+    private String zxqk; //装修情况
+
+    private String jzjg; //建筑结构
+
+    private String gongnuan; //供暖方式
+
+    private String tihu; //梯户比例
+
+    private String chanquan; //产权年限
+
+    private String evaloter;//配备电梯
+
+    private String 交易权属;//交易权属
+
+    private String 房屋用途; //房屋用途
+
+    private String 挂牌时间; //挂牌时间
+
+    private String 房屋年限;//房屋年限
+
+    private String 房权所属; //房权所属
+
 
     public Chengjiao() {
         this.crawTime = new DateTime().toString("yyyy-MM-dd HH:mm:ss");
