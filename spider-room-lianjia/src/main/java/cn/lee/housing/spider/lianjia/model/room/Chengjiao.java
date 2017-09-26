@@ -53,23 +53,23 @@ public class Chengjiao extends IdEntity {
 
     private String county;   // 区县
 
-    private String fwhx; // 房屋户型
+    private String huxing; // 房屋户型
 
-    private String szlc; // 所在楼层
+    private String louceng; // 所在楼层
 
-    private String hxjg; // 户型结构
+    private String rJiegou; // 户型结构
 
-    private String tnmj; //套内面积
+    private String innerArea; //套内面积
 
-    private String jzlx; //建筑类型
+    private String buildType; //建筑类型
 
-    private String fwcx; // 房屋朝向
+    private String orientation; // 房屋朝向
 
-    private String jcnd;    //建成年代
+    private String buildYear;    //建成年代
 
-    private String zxqk; //装修情况
+    private String zhuangxiu; //装修情况
 
-    private String jzjg; //建筑结构
+    private String bJiegou; //建筑结构
 
     private String gongnuan; //供暖方式
 
@@ -77,17 +77,17 @@ public class Chengjiao extends IdEntity {
 
     private String chanquan; //产权年限
 
-    private String evaloter;//配备电梯
+    private String elevator;//配备电梯
 
-    private String 交易权属;//交易权属
+    private String tradingRight;//交易权属
 
-    private String 房屋用途; //房屋用途
+    private String areaUse; //房屋用途
 
-    private String 挂牌时间; //挂牌时间
+    private String listDate; //挂牌时间
 
-    private String 房屋年限;//房屋年限
+    private String roomYear;//房屋年限
 
-    private String 房权所属; //房权所属
+    private String ownerRight; //房权所属
 
 
     public Chengjiao() {
@@ -241,6 +241,150 @@ public class Chengjiao extends IdEntity {
 
     public void setArea(String area) {
         this.area = area;
+    }
+
+    public String getHuxing() {
+        return huxing;
+    }
+
+    public void setHuxing(String huxing) {
+        this.huxing = huxing;
+    }
+
+    public String getLouceng() {
+        return louceng;
+    }
+
+    public void setLouceng(String louceng) {
+        this.louceng = louceng;
+    }
+
+    public String getrJiegou() {
+        return rJiegou;
+    }
+
+    public void setrJiegou(String rJiegou) {
+        this.rJiegou = rJiegou;
+    }
+
+    public String getInnerArea() {
+        return innerArea;
+    }
+
+    public void setInnerArea(String innerArea) {
+        this.innerArea = innerArea;
+    }
+
+    public String getBuildType() {
+        return buildType;
+    }
+
+    public void setBuildType(String buildType) {
+        this.buildType = buildType;
+    }
+
+    public String getOrientation() {
+        return orientation;
+    }
+
+    public void setOrientation(String orientation) {
+        this.orientation = orientation;
+    }
+
+    public String getBuildYear() {
+        return buildYear;
+    }
+
+    public void setBuildYear(String buildYear) {
+        this.buildYear = buildYear;
+    }
+
+    public String getZhuangxiu() {
+        return zhuangxiu;
+    }
+
+    public void setZhuangxiu(String zhuangxiu) {
+        this.zhuangxiu = zhuangxiu;
+    }
+
+    public String getbJiegou() {
+        return bJiegou;
+    }
+
+    public void setbJiegou(String bJiegou) {
+        this.bJiegou = bJiegou;
+    }
+
+    public String getGongnuan() {
+        return gongnuan;
+    }
+
+    public void setGongnuan(String gongnuan) {
+        this.gongnuan = gongnuan;
+    }
+
+    public String getTihu() {
+        return tihu;
+    }
+
+    public void setTihu(String tihu) {
+        this.tihu = tihu;
+    }
+
+    public String getChanquan() {
+        return chanquan;
+    }
+
+    public void setChanquan(String chanquan) {
+        this.chanquan = chanquan;
+    }
+
+    public String getElevator() {
+        return elevator;
+    }
+
+    public void setElevator(String elevator) {
+        this.elevator = elevator;
+    }
+
+    public String getTradingRight() {
+        return tradingRight;
+    }
+
+    public void setTradingRight(String tradingRight) {
+        this.tradingRight = tradingRight;
+    }
+
+    public String getAreaUse() {
+        return areaUse;
+    }
+
+    public void setAreaUse(String areaUse) {
+        this.areaUse = areaUse;
+    }
+
+    public String getListDate() {
+        return listDate;
+    }
+
+    public void setListDate(String listDate) {
+        this.listDate = listDate;
+    }
+
+    public String getRoomYear() {
+        return roomYear;
+    }
+
+    public void setRoomYear(String roomYear) {
+        this.roomYear = roomYear;
+    }
+
+    public String getOwnerRight() {
+        return ownerRight;
+    }
+
+    public void setOwnerRight(String ownerRight) {
+        this.ownerRight = ownerRight;
     }
 
     public String toString() {

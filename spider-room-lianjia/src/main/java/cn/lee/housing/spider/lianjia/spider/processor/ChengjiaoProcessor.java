@@ -81,17 +81,11 @@ public class ChengjiaoProcessor implements PageProcessor {
             String fwId = parseRoomId(page.getUrl().get());
             String fwId2 = html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[1]/text()").get();
             if (StringUtils.isNotBlank(fwId) && StringUtils.isNotBlank(fwId2)) {
-                Ershoufang ershoufang = new Ershoufang();
-                ershoufang.setFwId(fwId);
-                ershoufang.setTitle(html.xpath("//div[@class=house-title]/div/text()").get());
-
                 Chengjiao chengjiao = new Chengjiao(fwId);
-                String t = html.xpath("//div[@class=house-title]/div/span/text()").get();
                 String[] deal = StringUtils.split(html.xpath("//div[@class=house-title]/div/span/text()").get(), " ");
                 chengjiao.setDealDate(deal != null && deal.length > 0 ? deal[0] : "");
                 chengjiao.setDealAgent(deal != null && deal.length > 1 ? deal[1] : "");
-                chengjiao.setTitle(ershoufang.getTitle());
-                chengjiao.setArea(html.xpath("//div[@class=base]//div[@class=content]//li[3]/text()").get());
+                chengjiao.setTitle(html.xpath("//div[@class=house-title]/div/text()").get());
                 chengjiao.setTotalPrice(html.xpath("//div[@class=price]//span/i/text()").get());
                 chengjiao.setAvgPrice(html.xpath("//div[@class=price]/b/text()").get());
                 chengjiao.setListPrice(html.xpath("//div[@class=msg]//span[1]/label/text()").get());
@@ -101,13 +95,38 @@ public class ChengjiaoProcessor implements PageProcessor {
                 chengjiao.setAttentionTimes(html.xpath("//div[@class=msg]//span[5]/label/text()").get());
                 chengjiao.setViewTimes(html.xpath("//div[@class=msg]//span[6]/label/text()").get());
 
+                //quyue
                 chengjiao.setCounty(subCjjg(html.xpath("//div[@class=deal-bread]//a[3]/text()").get()));
                 chengjiao.setRegion(subCjjg(html.xpath("//div[@class=deal-bread]//a[4]/text()").get()));
                 chengjiao.setReCrawl(false);
-                chengjiao.setDistrict(StringUtils.split(ershoufang.getTitle(), " ")[0]);
+                chengjiao.setDistrict(StringUtils.split(chengjiao.getTitle(), " ")[0]);
+
+                //jiben
+                chengjiao.setHuxing(html.xpath("//div[@class=base]//div[@class=content]//li[1]/text()").get());
+                chengjiao.setLouceng(html.xpath("//div[@class=base]//div[@class=content]//li[2]/text()").get());
+                chengjiao.setArea(html.xpath("//div[@class=base]//div[@class=content]//li[3]/text()").get());
+                chengjiao.setrJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[4]/text()").get());
+                chengjiao.setInnerArea(html.xpath("//div[@class=base]//div[@class=content]//li[5]/text()").get());
+                chengjiao.setBuildType(html.xpath("//div[@class=base]//div[@class=content]//li[6]/text()").get());
+                chengjiao.setOrientation(html.xpath("//div[@class=base]//div[@class=content]//li[7]/text()").get());
+                chengjiao.setBuildYear(html.xpath("//div[@class=base]//div[@class=content]//li[8]/text()").get());
+                chengjiao.setZhuangxiu(html.xpath("//div[@class=base]//div[@class=content]//li[9]/text()").get());
+                chengjiao.setbJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[10]/text()").get());
+                chengjiao.setGongnuan(html.xpath("//div[@class=base]//div[@class=content]//li[11]/text()").get());
+                chengjiao.setTihu(html.xpath("//div[@class=base]//div[@class=content]//li[12]/text()").get());
+                chengjiao.setChanquan(html.xpath("//div[@class=base]//div[@class=content]//li[13]/text()").get());
+                chengjiao.setElevator(html.xpath("//div[@class=base]//div[@class=content]//li[14]/text()").get());
+                //jiaoyi
+
+                chengjiao.setTradingRight(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[2]/text()").get());
+                chengjiao.setListDate(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[3]/text()").get());
+                chengjiao.setAreaUse(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[4]/text()").get());
+                chengjiao.setRoomYear(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[5]/text()").get());
+                chengjiao.setOwnerRight(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[6]/text()").get());
+
+
                 // 具体爬去字段
                 logger.error(chengjiao.toString());
-                page.putField("ershoufang", ershoufang);
                 page.putField("chengjiao", chengjiao);
             } else {
                 logger.error(page.getUrl() + " 爬去失败，代理爬去失败 ,重新爬取!");
