@@ -1,4 +1,4 @@
-package cn.lee.housing.spider.lianjia.service.room;
+package cn.lee.housing.spider.lianjia.spider.pipeline;
 
 import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
 import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
