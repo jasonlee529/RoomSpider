@@ -21,7 +21,7 @@ public class Ershoufang implements Serializable {
 
     private Long id;//数据保存标识
     @ExtractBy(value = "//div[@class=houseRecord]/span[@class=info]/text()", notNull = true)
-    private String fwId; // 链家id
+    private String roomId; // 链家id
     private String dateTime; //爬取时间
     @ExtractBy("//div[@class=sellDetailHeader]//h1[@class=main]/text()")
     private String title;
@@ -65,12 +65,12 @@ public class Ershoufang implements Serializable {
         this.id = id;
     }
 
-    public String getFwId() {
-        return fwId;
+    public String getRoomId() {
+        return roomId;
     }
 
-    public void setFwId(String fwId) {
-        this.fwId = fwId;
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
     }
 
     public String getDateTime() {

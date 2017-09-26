@@ -8,6 +8,7 @@ import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
 import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
 import cn.lee.housing.spider.lianjia.service.room.ChengjiaoService;
 import cn.lee.housing.spider.lianjia.spider.PageProcessException;
+import cn.lee.housing.utils.mapper.BeanMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
@@ -128,6 +129,7 @@ public class ChengjiaoProcessor implements PageProcessor {
                 // 具体爬去字段
                 logger.error(chengjiao.toString());
                 page.putField("chengjiao", chengjiao);
+                page.putField("ershoufang", BeanMapper.map(chengjiao, Ershoufang.class));
             } else {
                 logger.error(page.getUrl() + " 爬去失败，代理爬去失败 ,重新爬取!");
                 throw new PageProcessException("代理爬取页面错误，需认证，重新爬取！");
