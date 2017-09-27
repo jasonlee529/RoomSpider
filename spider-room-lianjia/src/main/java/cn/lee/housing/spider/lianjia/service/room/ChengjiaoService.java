@@ -15,6 +15,7 @@ import cn.lee.housing.spider.lianjia.spider.pipeline.ChengjiaoPipeline;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessorFactory;
 import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;
+import org.apache.commons.lang3.StringUtils;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
@@ -102,7 +103,7 @@ public class ChengjiaoService {
                 }
             });
             for (Chengjiao cj : ids) {
-                spider.addUrl("https://bj.lianjia.com/chengjiao/" + cj.getRoomId() + ".html");
+                spider.addUrl("https://bj.lianjia.com/chengjiao/" + StringUtils.trim(cj.getRoomId()) + ".html");
             }
             spider.setDownloader(downloader);
             spider.thread(10).start();//启动爬虫
