@@ -20,8 +20,24 @@ public class ChengjiaoController {
     @Autowired
     private ChengjiaoService cJService;
 
+    /**
+     * 按区域爬取
+     *
+     * @param area
+     * @return
+     */
     @RequestMapping(value = "{area}")
     public Map area(@PathVariable String area) {
         return cJService.doSpider(area);
+    }
+
+    /**
+     * 重新爬取所有的需要重爬取的数据
+     *
+     * @return
+     */
+    @RequestMapping(value = "recrawl")
+    public Map recrawl() {
+        return cJService.reCrawl();
     }
 }
