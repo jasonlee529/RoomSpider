@@ -98,7 +98,7 @@ public class ChengjiaoService {
             List<Chengjiao> ids = chengjiaoDao.findAll(new Specification<Chengjiao>() {
                 @Override
                 public Predicate toPredicate(Root<Chengjiao> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-                    return criteriaBuilder.equal(root.get("reCrawl"), "1");
+                    return criteriaBuilder.equal(root.get("reCrawl"), true);
                 }
             });
             for (Chengjiao cj : ids) {
