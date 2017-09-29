@@ -3,6 +3,9 @@ package cn.lee.housing.spider.lianjia.service.room;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
+import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
+import cn.lee.housing.spider.lianjia.repository.room.ErshoufangDao;
 import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.pipeline.ErshoufangPipeline;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessorFactory;
@@ -23,6 +26,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ErshoufangService {
 
+    @Autowired
+    private ErshoufangDao dao;
     @Autowired
     private ErshoufangPipeline pipeline;
     @Autowired
@@ -59,4 +64,8 @@ public class ErshoufangService {
         return result;
     }
 
+    public boolean isRecrawl(String roomId) {
+        Ershoufang cj = dao.findByRoomId(roomId);
+        return cj == null || cj.isReCrawl();
+    }
 }
