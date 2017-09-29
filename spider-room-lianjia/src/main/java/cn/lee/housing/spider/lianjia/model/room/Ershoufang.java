@@ -1,68 +1,85 @@
 package cn.lee.housing.spider.lianjia.model.room;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+import cn.lee.housing.spider.lianjia.model.IdEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.joda.time.DateTime;
-import us.codecraft.webmagic.model.annotation.ExtractBy;
-import us.codecraft.webmagic.model.annotation.HelpUrl;
-import us.codecraft.webmagic.model.annotation.TargetUrl;
 
 /**
  * Created by jason on 17-7-11.
  */
 @Entity
 @Table(name = "lianjia_ershoufang")
-@TargetUrl("https://bj.lianjia.com/ershoufang/\\w+.html")
-@HelpUrl("https://bj.lianjia.com/ershoufang/changping/pg\\d+/")
-public class Ershoufang implements Serializable {
+public class Ershoufang extends IdEntity {
 
-
-    private Long id;//数据保存标识
-    @ExtractBy(value = "//div[@class=houseRecord]/span[@class=info]/text()", notNull = true)
-    private String roomId; // 链家id
-    private String dateTime; //爬取时间
-    @ExtractBy("//div[@class=sellDetailHeader]//h1[@class=main]/text()")
+    private String roomId; // 房间编号,链家id
+    /**
+     * 标题
+     */
     private String title;
-    @ExtractBy("//div[@class=price]/span[@class=total]/text()")
-    private String price;
-    @ExtractBy("//div[@class=price]//span[@class=unitPriceValue]/text()")
-    private String avgPrice;
-    @ExtractBy("//div[@class=area]//div[@class=mainInfo]/text()")
-    private String buildArea; //建筑面积
-    @ExtractBy("//div[@class=price]//span[@class=total]/text()")
-    private String useArea; // 使用面积
 
-    @ExtractBy("//div[@class=introContent]//div[@class=content]//ul//li[1]/text()")
-    private String type;  //　户型
-    @ExtractBy("//div[@class=introContent]//div[@class=content]//ul//li[2]/text()")
-    private String floor; // 楼层
-    @ExtractBy("//div[@class=introContent]//div[@class=content]//ul//li[9]/text()")
-    private String decoration; //装修
-    @ExtractBy("//div[@class=introContent]//div[@class=content]//ul//li[7]/text()")
-    private String drection;  //朝向
-    @ExtractBy("//div[@class=area]//div[@class=subInfo]/text()")
-    private String buidYear; //建筑时间
-    @ExtractBy("//div[@class=introContent]//div[@class=content]//ul//li[6]/text()")
-    private String buildType; // 建筑类型
-    @ExtractBy("//div[@class=aroundInfo]//div[@class=areaName]//span[@class=info]//tidyText()")
-    private String region;  // 所在区域
+    private String totalPrice; // 总价
 
+    private String avgPrice; //　平均价格
+
+    private String area; // 面积
+
+    private String inspectTimes; //带看次数
+
+    private String attentionTimes; // 关注(人）
+
+    private String viewTimes;//浏览
+
+    private String crawTime; //抓取时间
+
+    private boolean reCrawl = true; //是否需要爬取
+
+    private String district; // 小区
+
+    private String region;   //区域
+
+    private String county;   // 区县
+
+    private String huxing; // 房屋户型
+
+    private String louceng; // 所在楼层
+
+    private String rJiegou; // 户型结构
+
+    private String innerArea; //套内面积
+
+    private String buildType; //建筑类型
+
+    private String orientation; // 房屋朝向
+
+    private String buildYear;    //建成年代
+
+    private String zhuangxiu; //装修情况
+
+    private String bJiegou; //建筑结构
+
+    private String gongnuan; //供暖方式
+
+    private String tihu; //梯户比例
+
+    private String chanquan; //产权年限
+
+    private String elevator;//配备电梯
+
+    private String tradingRight;//交易权属
+
+    private String areaUse; //房屋用途
+
+    private String listDate; //挂牌时间
+
+    private String roomYear;//房屋年限
+
+    private String ownerRight; //房权所属
 
     public Ershoufang() {
-        this.dateTime = new DateTime().toString("yyyy-MM-dd_HH:mm:ss");
-    }
-
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.crawTime = new DateTime().toString("yyyy-MM-dd_HH:mm:ss");
     }
 
     public String getRoomId() {
@@ -73,14 +90,6 @@ public class Ershoufang implements Serializable {
         this.roomId = roomId;
     }
 
-    public String getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -89,12 +98,12 @@ public class Ershoufang implements Serializable {
         this.title = title;
     }
 
-    public String getPrice() {
-        return price;
+    public String getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setTotalPrice(String totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public String getAvgPrice() {
@@ -105,60 +114,108 @@ public class Ershoufang implements Serializable {
         this.avgPrice = avgPrice;
     }
 
-    public String getBuildArea() {
-        return buildArea;
+    public String getArea() {
+        return area;
     }
 
-    public void setBuildArea(String buildArea) {
-        this.buildArea = buildArea;
+    public void setArea(String area) {
+        this.area = area;
     }
 
-    public String getUseArea() {
-        return useArea;
+    public String getInspectTimes() {
+        return inspectTimes;
     }
 
-    public void setUseArea(String useArea) {
-        this.useArea = useArea;
+    public void setInspectTimes(String inspectTimes) {
+        this.inspectTimes = inspectTimes;
     }
 
-    public String getType() {
-        return type;
+    public String getAttentionTimes() {
+        return attentionTimes;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setAttentionTimes(String attentionTimes) {
+        this.attentionTimes = attentionTimes;
     }
 
-    public String getFloor() {
-        return floor;
+    public String getViewTimes() {
+        return viewTimes;
     }
 
-    public void setFloor(String floor) {
-        this.floor = floor;
+    public void setViewTimes(String viewTimes) {
+        this.viewTimes = viewTimes;
     }
 
-    public String getDecoration() {
-        return decoration;
+    public String getCrawTime() {
+        return crawTime;
     }
 
-    public void setDecoration(String decoration) {
-        this.decoration = decoration;
+    public void setCrawTime(String crawTime) {
+        this.crawTime = crawTime;
     }
 
-    public String getDrection() {
-        return drection;
+    public boolean isReCrawl() {
+        return reCrawl;
     }
 
-    public void setDrection(String drection) {
-        this.drection = drection;
+    public void setReCrawl(boolean reCrawl) {
+        this.reCrawl = reCrawl;
     }
 
-    public String getBuidYear() {
-        return buidYear;
+    public String getDistrict() {
+        return district;
     }
 
-    public void setBuidYear(String buidYear) {
-        this.buidYear = buidYear;
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
+    }
+
+    public String getHuxing() {
+        return huxing;
+    }
+
+    public void setHuxing(String huxing) {
+        this.huxing = huxing;
+    }
+
+    public String getLouceng() {
+        return louceng;
+    }
+
+    public void setLouceng(String louceng) {
+        this.louceng = louceng;
+    }
+
+    public String getrJiegou() {
+        return rJiegou;
+    }
+
+    public void setrJiegou(String rJiegou) {
+        this.rJiegou = rJiegou;
+    }
+
+    public String getInnerArea() {
+        return innerArea;
+    }
+
+    public void setInnerArea(String innerArea) {
+        this.innerArea = innerArea;
     }
 
     public String getBuildType() {
@@ -169,12 +226,108 @@ public class Ershoufang implements Serializable {
         this.buildType = buildType;
     }
 
-    public String getRegion() {
-        return region;
+    public String getOrientation() {
+        return orientation;
     }
 
-    public void setRegion(String region) {
-        this.region = region;
+    public void setOrientation(String orientation) {
+        this.orientation = orientation;
+    }
+
+    public String getBuildYear() {
+        return buildYear;
+    }
+
+    public void setBuildYear(String buildYear) {
+        this.buildYear = buildYear;
+    }
+
+    public String getZhuangxiu() {
+        return zhuangxiu;
+    }
+
+    public void setZhuangxiu(String zhuangxiu) {
+        this.zhuangxiu = zhuangxiu;
+    }
+
+    public String getbJiegou() {
+        return bJiegou;
+    }
+
+    public void setbJiegou(String bJiegou) {
+        this.bJiegou = bJiegou;
+    }
+
+    public String getGongnuan() {
+        return gongnuan;
+    }
+
+    public void setGongnuan(String gongnuan) {
+        this.gongnuan = gongnuan;
+    }
+
+    public String getTihu() {
+        return tihu;
+    }
+
+    public void setTihu(String tihu) {
+        this.tihu = tihu;
+    }
+
+    public String getChanquan() {
+        return chanquan;
+    }
+
+    public void setChanquan(String chanquan) {
+        this.chanquan = chanquan;
+    }
+
+    public String getElevator() {
+        return elevator;
+    }
+
+    public void setElevator(String elevator) {
+        this.elevator = elevator;
+    }
+
+    public String getTradingRight() {
+        return tradingRight;
+    }
+
+    public void setTradingRight(String tradingRight) {
+        this.tradingRight = tradingRight;
+    }
+
+    public String getAreaUse() {
+        return areaUse;
+    }
+
+    public void setAreaUse(String areaUse) {
+        this.areaUse = areaUse;
+    }
+
+    public String getListDate() {
+        return listDate;
+    }
+
+    public void setListDate(String listDate) {
+        this.listDate = listDate;
+    }
+
+    public String getRoomYear() {
+        return roomYear;
+    }
+
+    public void setRoomYear(String roomYear) {
+        this.roomYear = roomYear;
+    }
+
+    public String getOwnerRight() {
+        return ownerRight;
+    }
+
+    public void setOwnerRight(String ownerRight) {
+        this.ownerRight = ownerRight;
     }
 
     @Override
