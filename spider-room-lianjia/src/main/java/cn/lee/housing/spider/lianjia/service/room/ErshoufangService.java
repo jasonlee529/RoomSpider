@@ -1,0 +1,62 @@
+package cn.lee.housing.spider.lianjia.service.room;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import cn.lee.housing.spider.lianjia.spider.MySpider;
+import cn.lee.housing.spider.lianjia.spider.pipeline.ErshoufangPipeline;
+import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessorFactory;
+import cn.lee.housing.spider.lianjia.spider.processor.ErshoufangProcessor;
+import cn.lee.housing.spider.lianjia.spider.processor.ErshoufangProcessorFactory;
+import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;
+import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.downloader.HttpClientDownloader;
+import us.codecraft.webmagic.pipeline.ConsolePipeline;
+import us.codecraft.webmagic.scheduler.PriorityScheduler;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ * Created by jason on 17-9-29.
+ */
+@Service
+public class ErshoufangService {
+
+    @Autowired
+    private ErshoufangPipeline pipeline;
+    @Autowired
+    private XdailiProxyProvider proxyProvider;
+    @Autowired
+    private ErshoufangProcessorFactory factory;
+
+    /**
+     * 爬取
+     *
+     * @param area
+     * @return
+     */
+    public Map doSpider(String area) {
+        Map result = new HashMap();
+        boolean isSuccess = true;
+        try {
+            HttpClientDownloader downloader = new HttpClientDownloader();
+            downloader.setProxyProvider(proxyProvider);
+            Spider spider = MySpider.create(factory.getObject(area))
+                    .setScheduler(new PriorityScheduler())
+                    .addPipeline(pipeline)
+                    .addPipeline(new ConsolePipeline())
+                    .addUrl(ErshoufangProcessor.START_URL + ChengjiaoProcessorFactory.convertName(area));
+            spider.setDownloader(downloader);
+            spider.thread(10).start();//启动爬虫
+        } catch (Exception e) {
+            isSuccess = false;
+            e.printStackTrace();
+            result.put("desc", e.getMessage());
+        }
+
+        result.put("success", isSuccess);
+        return result;
+    }
+
+}

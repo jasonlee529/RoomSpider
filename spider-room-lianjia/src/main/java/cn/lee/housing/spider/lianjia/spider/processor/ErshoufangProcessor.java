@@ -3,6 +3,7 @@ package cn.lee.housing.spider.lianjia.spider.processor;
 import java.util.List;
 
 import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
+import cn.lee.housing.spider.lianjia.service.room.ErshoufangService;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
@@ -23,6 +24,9 @@ public class ErshoufangProcessor implements PageProcessor {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    private ErshoufangService service;
+    private String county = "";
+
     public final static String START_URL = "https://bj.lianjia.com/ershoufang/changping";
     private final static String PAGE_URL = START_URL + "/pg\\d+";
 
@@ -42,7 +46,6 @@ public class ErshoufangProcessor implements PageProcessor {
         if (page.getUrl().regex(PAGE_URL).match()) {
             //列表页具体的爬去链接
             Selectable selectable = page.getHtml().xpath("//div[@class='page-box']//a");
-            Selectable links = selectable.links();
             page.addTargetRequests(page.getHtml().xpath("//div[@class='page-box']//a").links().all());
 
             page.addTargetRequests(page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all());
@@ -78,4 +81,19 @@ public class ErshoufangProcessor implements PageProcessor {
     }
 
 
+    public ErshoufangService getService() {
+        return service;
+    }
+
+    public void setService(ErshoufangService service) {
+        this.service = service;
+    }
+
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
+    }
 }
