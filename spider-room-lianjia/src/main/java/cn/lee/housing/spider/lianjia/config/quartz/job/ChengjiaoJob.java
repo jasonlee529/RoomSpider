@@ -1,6 +1,7 @@
 package cn.lee.housing.spider.lianjia.config.quartz.job;
 
 import cn.lee.housing.spider.lianjia.service.room.ChengjiaoService;
+import cn.lee.housing.spider.lianjia.service.room.ErshoufangService;
 import org.joda.time.DateTime;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -27,6 +28,9 @@ public class ChengjiaoJob extends QuartzJobBean {
             ChengjiaoService service = (ChengjiaoService) skedCtx.get("cjService");
             logger.error(new DateTime().toString("yyyy-MM-dd HH:mm:ss") + " 开始任务执行！");
             service.doSpider("all");
+
+            ErshoufangService ershoufagService = (ErshoufangService) skedCtx.get("ershoufagService");
+            ershoufagService.doSpider("all");
         } catch (SchedulerException e) {
             e.printStackTrace();
         }

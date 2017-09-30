@@ -17,6 +17,7 @@
                 <!-- spring 管理的service需要放到这里，才能够注入成功 -->
                 <description>schedulerContextAsMap</description>
                 <entry key="cjService" value-ref="chengjiaoService"></entry>
+                <entry key="ershoufagService" value-ref="ershoufangService"></entry>
             </map>
         </property>
     </bean>
