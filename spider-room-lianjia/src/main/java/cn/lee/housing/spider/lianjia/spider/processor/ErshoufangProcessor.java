@@ -4,11 +4,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
+import cn.lee.housing.spider.lianjia.model.room.Baojia;
 import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
 import cn.lee.housing.spider.lianjia.service.room.ErshoufangService;
 import cn.lee.housing.spider.lianjia.spider.PageProcessException;
-import cn.lee.housing.utils.mapper.BeanMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
@@ -33,7 +32,7 @@ public class ErshoufangProcessor implements PageProcessor {
     private ErshoufangService service;
     private String county = "";
 
-    public final static String START_URL = "https://bj.lianjia.com/ershoufang";
+    public final static String START_URL = "https://bj.lianjia.com/ershoufang/";
     private final static String PAGE_URL = START_URL + "/pg\\d+";
 
     @Override
@@ -44,68 +43,69 @@ public class ErshoufangProcessor implements PageProcessor {
 
         if (StringUtils.equalsIgnoreCase(getStartURL(), page.getUrl().get()) || page.getUrl().regex(getPageUrl()).match()) {
             //列表页具体的爬去链接
-            page.addTargetRequests(page.getHtml().xpath("//div[@class='page-box']//a").links().all());
-            List<String> urls = page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all();
-            for (String str : urls) {
-                String roomId = parseRoomId(str);
+            List<Selectable> nodes = page.getHtml().xpath("//ul[@class=sellListContent]/li").nodes();
+            for (Selectable node : nodes) {
+                String url = node.xpath("//a[@class=img]").links().get();
+                String roomId = parseRoomId(url);
                 if (StringUtils.isNotBlank(roomId) && service.isRecrawl(roomId)) {
-                    Request request = new Request(str).setPriority(Long.parseLong(roomId));
+                    Request request = new Request(url).setPriority(Long.parseLong(roomId));
                     page.addTargetRequest(request);
                     logger.error(" add Request : " + request);
+                } else {
+                    Baojia bj = new Baojia(roomId);
+                    bj.setPrice(node.xpath("//div[@class=totalPrice]/span/text()").get());
+                    page.putField("baojia", bj);
+                    logger.info("{} baojia : ", bj);
                 }
             }
         } else {
             String fwId = parseRoomId(page.getUrl().get());
-            String fwId2 = html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[1]/text()").get();
+            String fwId2 = html.xpath("//div[@class=overview]//div[@class=houseRecord]//span[@class=info]/text()").get();
             if (StringUtils.isNotBlank(fwId) && StringUtils.isNotBlank(fwId2)) {
-                Chengjiao chengjiao = new Chengjiao(fwId);
-                String[] deal = StringUtils.split(html.xpath("//div[@class=house-title]/div/span/text()").get(), " ");
-                chengjiao.setDealDate(deal != null && deal.length > 0 ? deal[0] : "");
-                chengjiao.setDealAgent(deal != null && deal.length > 1 ? deal[1] : "");
-                chengjiao.setTitle(html.xpath("//div[@class=house-title]/div/text()").get());
-                chengjiao.setTotalPrice(html.xpath("//div[@class=price]//span/i/text()").get());
-                chengjiao.setAvgPrice(html.xpath("//div[@class=price]/b/text()").get());
-                chengjiao.setListPrice(html.xpath("//div[@class=msg]//span[1]/label/text()").get());
-                chengjiao.setCycle(html.xpath("//div[@class=msg]//span[2]/label/text()").get());
-                chengjiao.setTimes(html.xpath("//div[@class=msg]//span[3]/label/text()").get());
-                chengjiao.setInspectTimes(html.xpath("//div[@class=msg]//span[4]/label/text()").get());
-                chengjiao.setAttentionTimes(html.xpath("//div[@class=msg]//span[5]/label/text()").get());
-                chengjiao.setViewTimes(html.xpath("//div[@class=msg]//span[6]/label/text()").get());
+                Ershoufang entity = new Ershoufang(fwId);
+                entity.setTitle(html.xpath("//div[@class=sellDetailHeader]//div[@class=title]//h1/text()").get());
+                entity.setSubTitle(html.xpath("//div[@class=sellDetailHeader]//div[@class=title]//div/text()").get());
+                entity.setTotalPrice(html.xpath("//div[@class=overview]//div[@class=price]/span[@class=total]/text()").get());
+                entity.setAvgPrice(html.xpath("//div[@class=overview]//div[@class=price]/span[@class=unitPriceValue]/text()").get());
+                entity.setInspectTimes(html.xpath("//span[@id=cartCount]/text()").get());
+                entity.setAttentionTimes(html.xpath("//span[@id=favCount]/text()").get());
 
                 //quyue
-                chengjiao.setCounty(subCjjg(html.xpath("//div[@class=deal-bread]//a[3]/text()").get()));
-                chengjiao.setRegion(subCjjg(html.xpath("//div[@class=deal-bread]//a[4]/text()").get()));
-                chengjiao.setReCrawl(false);
-                chengjiao.setDistrict(StringUtils.split(chengjiao.getTitle(), " ")[0]);
+                entity.setCounty(subCjjg(html.xpath("//div[@class=intro]//a[3]/text()").get()));
+                entity.setRegion(subCjjg(html.xpath("//div[@class=intro]//a[4]/text()").get()));
+                entity.setReCrawl(false);
+                entity.setDistrict(html.xpath("//div[@class=intro]//a[5]/text()").get());
 
                 //jiben
-                chengjiao.setHuxing(html.xpath("//div[@class=base]//div[@class=content]//li[1]/text()").get());
-                chengjiao.setLouceng(html.xpath("//div[@class=base]//div[@class=content]//li[2]/text()").get());
-                chengjiao.setArea(html.xpath("//div[@class=base]//div[@class=content]//li[3]/text()").get());
-                chengjiao.setrJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[4]/text()").get());
-                chengjiao.setInnerArea(html.xpath("//div[@class=base]//div[@class=content]//li[5]/text()").get());
-                chengjiao.setBuildType(html.xpath("//div[@class=base]//div[@class=content]//li[6]/text()").get());
-                chengjiao.setOrientation(html.xpath("//div[@class=base]//div[@class=content]//li[7]/text()").get());
-                chengjiao.setBuildYear(html.xpath("//div[@class=base]//div[@class=content]//li[8]/text()").get());
-                chengjiao.setZhuangxiu(html.xpath("//div[@class=base]//div[@class=content]//li[9]/text()").get());
-                chengjiao.setbJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[10]/text()").get());
-                chengjiao.setGongnuan(html.xpath("//div[@class=base]//div[@class=content]//li[11]/text()").get());
-                chengjiao.setTihu(html.xpath("//div[@class=base]//div[@class=content]//li[12]/text()").get());
-                chengjiao.setChanquan(html.xpath("//div[@class=base]//div[@class=content]//li[13]/text()").get());
-                chengjiao.setElevator(html.xpath("//div[@class=base]//div[@class=content]//li[14]/text()").get());
+                entity.setHuxing(html.xpath("//div[@class=base]//div[@class=content]//li[1]/text()").get());
+                entity.setLouceng(html.xpath("//div[@class=base]//div[@class=content]//li[2]/text()").get());
+                entity.setArea(html.xpath("//div[@class=base]//div[@class=content]//li[3]/text()").get());
+                entity.setrJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[4]/text()").get());
+                entity.setInnerArea(html.xpath("//div[@class=base]//div[@class=content]//li[5]/text()").get());
+                entity.setBuildType(html.xpath("//div[@class=base]//div[@class=content]//li[6]/text()").get());
+                entity.setOrientation(html.xpath("//div[@class=base]//div[@class=content]//li[7]/text()").get());
+                entity.setbJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[8]/text()").get());
+                entity.setZhuangxiu(html.xpath("//div[@class=base]//div[@class=content]//li[9]/text()").get());
+                entity.setTihu(html.xpath("//div[@class=base]//div[@class=content]//li[10]/text()").get());
+                entity.setGongnuan(html.xpath("//div[@class=base]//div[@class=content]//li[11]/text()").get());
+                entity.setElevator(html.xpath("//div[@class=base]//div[@class=content]//li[12]/text()").get());
+                entity.setChanquan(html.xpath("//div[@class=base]//div[@class=content]//li[13]/text()").get());
+                entity.setBuildYear(html.xpath("//div[@class=houseInfo]//div[@class=subInfo]/text()").get());
                 //jiaoyi
 
-                chengjiao.setTradingRight(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[2]/text()").get());
-                chengjiao.setListDate(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[3]/text()").get());
-                chengjiao.setAreaUse(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[4]/text()").get());
-                chengjiao.setRoomYear(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[5]/text()").get());
-                chengjiao.setOwnerRight(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[6]/text()").get());
+                entity.setListDate(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[1]/text()").get());
+                entity.setTradingRight(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[2]/text()").get());
+                entity.setLastTradeDate(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[3]/text()").get());
+                entity.setAreaUse(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[4]/text()").get());
+                entity.setRoomYear(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[5]/text()").get());
+                entity.setOwnerRight(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[6]/text()").get());
+                entity.setDiya(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[7]/span[2]/text()").get());
+                entity.setRoomDeeed(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[8]/text()").get());
 
 
                 // 具体爬去字段
-                logger.error(chengjiao.toString());
-                page.putField("chengjiao", chengjiao);
-                page.putField("ershoufang", BeanMapper.map(chengjiao, Ershoufang.class));
+                logger.error(entity.toString());
+                page.putField("ershoufang", entity);
             } else {
                 logger.error(page.getUrl() + " 爬去失败，代理爬去失败 ,重新爬取!");
                 throw new PageProcessException("代理爬取页面错误，需认证，重新爬取！");
@@ -114,7 +114,7 @@ public class ErshoufangProcessor implements PageProcessor {
         if (StringUtils.equalsIgnoreCase(getStartURL(), page.getUrl().get())) {
             try {
                 //总共多少页的链接
-                int total = Integer.parseInt(StringUtils.trim(page.getHtml().xpath("//div[@class=resultDes]//div[@class=total]").xpath("//span/text()").get()));
+                int total = Integer.parseInt(StringUtils.trim(page.getHtml().xpath("//div[@class=resultDes]//h2[@class=total]").xpath("//span/text()").get()));
                 int pageSize = 30;
                 int maxPageNo = total / pageSize + 1;
                 List<String> pageList = Lists.newArrayList();

@@ -5,6 +5,7 @@ import javax.persistence.Table;
 
 import cn.lee.housing.spider.lianjia.model.IdEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.joda.time.DateTime;
 
 /**
  * 每日房子报价，相同价格不更新
@@ -19,6 +20,11 @@ public class Baojia extends IdEntity {
     private String price; //报价
 
     private String crawTime;//抓取时间
+
+    public Baojia(String roomId) {
+        this.roomId = roomId;
+        this.crawTime = new DateTime().toString("yyyy-MM-dd HH:mm:ss");
+    }
 
     public String getRoomId() {
         return roomId;

@@ -20,6 +20,8 @@ public class Ershoufang extends IdEntity {
      */
     private String title;
 
+    private String subTitle;//副标题
+
     private String totalPrice; // 总价
 
     private String avgPrice; //　平均价格
@@ -29,8 +31,6 @@ public class Ershoufang extends IdEntity {
     private String inspectTimes; //带看次数
 
     private String attentionTimes; // 关注(人）
-
-    private String viewTimes;//浏览
 
     private String crawTime; //抓取时间
 
@@ -78,7 +78,14 @@ public class Ershoufang extends IdEntity {
 
     private String ownerRight; //房权所属
 
-    public Ershoufang() {
+    private String lastTradeDate; // 上次交易日期
+
+    private String diya; //是否抵押
+
+    private String roomDeeed; // 其他
+
+    public Ershoufang(String roomId) {
+        this.roomId = roomId;
         this.crawTime = new DateTime().toString("yyyy-MM-dd_HH:mm:ss");
     }
 
@@ -96,6 +103,14 @@ public class Ershoufang extends IdEntity {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
     }
 
     public String getTotalPrice() {
@@ -136,14 +151,6 @@ public class Ershoufang extends IdEntity {
 
     public void setAttentionTimes(String attentionTimes) {
         this.attentionTimes = attentionTimes;
-    }
-
-    public String getViewTimes() {
-        return viewTimes;
-    }
-
-    public void setViewTimes(String viewTimes) {
-        this.viewTimes = viewTimes;
     }
 
     public String getCrawTime() {
@@ -328,6 +335,30 @@ public class Ershoufang extends IdEntity {
 
     public void setOwnerRight(String ownerRight) {
         this.ownerRight = ownerRight;
+    }
+
+    public String getLastTradeDate() {
+        return lastTradeDate;
+    }
+
+    public void setLastTradeDate(String lastTradeDate) {
+        this.lastTradeDate = lastTradeDate;
+    }
+
+    public String getDiya() {
+        return diya;
+    }
+
+    public void setDiya(String diya) {
+        this.diya = diya;
+    }
+
+    public String getRoomDeeed() {
+        return roomDeeed;
+    }
+
+    public void setRoomDeeed(String roomDeeed) {
+        this.roomDeeed = roomDeeed;
     }
 
     @Override
