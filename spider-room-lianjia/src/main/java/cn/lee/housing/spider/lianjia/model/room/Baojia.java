@@ -21,6 +21,9 @@ public class Baojia extends IdEntity {
 
     private String crawTime;//抓取时间
 
+    public Baojia() {
+    }
+
     public Baojia(String roomId) {
         this.roomId = roomId;
         this.crawTime = new DateTime().toString("yyyy-MM-dd HH:mm:ss");
