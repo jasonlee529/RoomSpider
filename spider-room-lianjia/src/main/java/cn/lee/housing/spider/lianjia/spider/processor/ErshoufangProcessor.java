@@ -66,7 +66,7 @@ public class ErshoufangProcessor implements PageProcessor {
                 entity.setTitle(html.xpath("//div[@class=sellDetailHeader]//div[@class=title]//h1/text()").get());
                 entity.setSubTitle(html.xpath("//div[@class=sellDetailHeader]//div[@class=title]//div/text()").get());
                 entity.setTotalPrice(html.xpath("//div[@class=overview]//div[@class=price]/span[@class=total]/text()").get());
-                entity.setAvgPrice(html.xpath("//div[@class=overview]//div[@class=price]/span[@class=unitPriceValue]/text()").get());
+                entity.setAvgPrice(html.xpath("//div[@class=overview]//div[@class=price]//span[@class=unitPriceValue]/text()").get());
                 entity.setInspectTimes(html.xpath("//span[@id=cartCount]/text()").get());
                 entity.setAttentionTimes(html.xpath("//span[@id=favCount]/text()").get());
 
