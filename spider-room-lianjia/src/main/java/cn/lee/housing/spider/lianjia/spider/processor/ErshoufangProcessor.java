@@ -1,9 +1,5 @@
 package cn.lee.housing.spider.lianjia.spider.processor;
 
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import cn.lee.housing.spider.lianjia.model.room.Baojia;
 import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
 import cn.lee.housing.spider.lianjia.service.room.ErshoufangService;
@@ -18,6 +14,10 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
+
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -53,7 +53,10 @@ public class ErshoufangProcessor implements PageProcessor {
                     logger.error(" add Request : " + request);
                 } else {
                     Baojia bj = new Baojia(roomId);
+                    bj.setTitle(node.xpath("//div[@class=title]/a/text()").get());
                     bj.setPrice(node.xpath("//div[@class=totalPrice]/span/text()").get());
+                    bj.setInfo(node.xpath("//div[@class=houseInfo]/text()").get());
+                    bj.setAvgPrice(node.xpath("//div[@class=unitPrice]/span/text()").get());
                     page.putField("baojia", bj);
                     logger.info("{} baojia : ", bj);
                 }
