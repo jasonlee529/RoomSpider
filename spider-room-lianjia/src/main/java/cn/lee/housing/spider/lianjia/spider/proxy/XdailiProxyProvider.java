@@ -7,6 +7,7 @@ import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.proxy.ProxyProvider;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +16,16 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class XdailiProxyProvider implements ProxyProvider {
+
+    @Value("${xdaili.secret}")
+    private String secret;
+    @Value("${xdaili.order}")
+    private String orderId;
+    @Value("${xdaili.url}")
+    private String url;
+    @Value("${xdaili.port}")
+    private int port;
+
     @Override
     public void returnProxy(Proxy proxy, Page page, Task task) {
 
@@ -24,9 +35,9 @@ public class XdailiProxyProvider implements ProxyProvider {
     public Proxy getProxy(Task task) {
         int timestamp = (int) (new Date().getTime() / 1000);
         //以下订单号，secret参数 须自行改动
-        final String authHeader = authHeader("ZF20179259363xxYvyk", "6e3d4d41727f454d983a7ef7fa206e5d", timestamp);
+        final String authHeader = authHeader(secret, orderId, timestamp);
         task.getSite().getHeaders().put("Proxy-Authorization", authHeader);
-        return new Proxy("forward.xdaili.cn", 8088);
+        return new Proxy(url, port);
     }
 
 
