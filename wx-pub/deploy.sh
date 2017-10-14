@@ -9,4 +9,3 @@ nohup  java -jar target/*.jar -Dcom.sun.management.jmxremote -Dcom.sun.managemen
 
 sleep 10s;
 
-curl localhost:18080/lianjia/chengjiao/changping &
