@@ -17,25 +17,31 @@ public class AuthController {
 
     @RequestMapping("wx")
     public String wx(HttpServletRequest request) {
-        Enumeration<String> params = request.getParameterNames();
-        if (!params.hasMoreElements()) {
-            return "hello, this is handle view";
-        }
-        String signature = request.getParameter("signature");
-        String timestamp = request.getParameter("timestamp");
-        String nonce = request.getParameter("nonce");
-        String echostr = request.getParameter("echostr");
-        String[] list = new String[]{
-                signature, timestamp, nonce
-        };
-        Arrays.sort(list);
-        String hashCode = new String(DigestUtils.sha1(list.toString().getBytes()));
-        String secret = "16e85693f56899ec0ae0812ba62b7c12";
-        String token = "xiaokele2017";
-        System.out.println(signature + "______" + hashCode);
-        if (StringUtils.equals(signature, hashCode)) {
-            return echostr;
-        } else {
+        try {
+            Enumeration<String> params = request.getParameterNames();
+            if (!params.hasMoreElements()) {
+                return "hello, this is handle view";
+            }
+            String signature = request.getParameter("signature");
+            String timestamp = request.getParameter("timestamp");
+            String nonce = request.getParameter("nonce");
+            String echostr = request.getParameter("echostr");
+            String[] list = new String[]{
+                    signature, timestamp, nonce
+            };
+            Arrays.sort(list);
+            String hashCode = new String(DigestUtils.sha1(list.toString().getBytes()));
+            String secret = "16e85693f56899ec0ae0812ba62b7c12";
+            String token = "xiaokele2017";
+            System.out.println(signature + "______" + hashCode);
+            if (StringUtils.equals(signature, hashCode)) {
+                return echostr;
+            } else {
+                return "";
+            }
+        } catch (Exception e) {
+            return e.getMessage();
+        } finally {
             return "";
         }
     }
