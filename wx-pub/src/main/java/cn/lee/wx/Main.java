@@ -19,8 +19,5 @@ public class Main {
     }
 
 
-    @RequestMapping("wx")
-    public String wx() {
-        return "fdsafs";
-    }
+
 }
