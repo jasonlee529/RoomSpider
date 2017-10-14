@@ -32,7 +32,8 @@ public class AuthController {
         String hashCode = new String(DigestUtils.sha1(list.toString().getBytes()));
         String secret = "16e85693f56899ec0ae0812ba62b7c12";
         String token = "xiaokele2017";
-        if (StringUtils.equals(token, hashCode)) {
+        System.out.println(signature + "______" + hashCode);
+        if (StringUtils.equals(signature, hashCode)) {
             return echostr;
         } else {
             return "";
