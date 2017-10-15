@@ -35,6 +35,15 @@ public class ChengjiaoProcessor implements PageProcessor {
     public static String START_URL = "https://bj.lianjia.com/chengjiao/";
 
     private String county = "";
+    private String[] params = {};
+
+    public String[] getParams() {
+        return params;
+    }
+
+    public void setParams(String[] params) {
+        this.params = params;
+    }
 
     private ChengjiaoService chengjiaoService;
 
@@ -43,7 +52,7 @@ public class ChengjiaoProcessor implements PageProcessor {
     }
 
     public String getStartURL() {
-        return START_URL + county;
+        return getUrl("");
     }
 
     public void setCounty(String county) {
@@ -142,7 +151,7 @@ public class ChengjiaoProcessor implements PageProcessor {
                 int pageSize = 30;
                 int maxPageNo = total / pageSize + 1;
                 List<String> pageList = Lists.newArrayList();
-                total = total > 100 ? 100 : total;
+                //total = total > 100 ? 100 : total;
                 for (int i = 1; i <= total; i++) {
                     pageList.add(getStartURL() + "/pg" + i);
                     page.addTargetRequest(new Request(getStartURL() + "/pg" + i).setPriority(-i));
@@ -171,6 +180,17 @@ public class ChengjiaoProcessor implements PageProcessor {
     @Override
     public Site getSite() {
         return site;
+    }
+
+
+    public String getUrl(String pg) {
+        List<String> list = Lists.newArrayList();
+        list.add("https://bj.lianjia.com");
+        list.add("chengjiao");
+        list.add(county);
+        list.addAll(Lists.<String>newArrayList(params));
+        list.add(pg);
+        return StringUtils.join(list, "/");
     }
 
 

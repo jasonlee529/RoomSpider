@@ -63,11 +63,13 @@ public class ChengjiaoService {
         try {
             HttpClientDownloader downloader = new HttpClientDownloader();
             downloader.setProxyProvider(proxyProvider);
+            ChengjiaoProcessor processor = factory.getObject(area);
+            processor.setParams(new String[]{"ddo22" });
             Spider spider = MySpider.create(factory.getObject(area))
                     .setScheduler(new PriorityScheduler())
                     .addPipeline(pipeline)
                     .addPipeline(new ConsolePipeline())
-                    .addUrl(ChengjiaoProcessor.START_URL + ChengjiaoProcessorFactory.convertName(area));
+                    .addUrl(processor.getStartURL());
             spider.setDownloader(downloader);
             spider.thread(10).start();//启动爬虫
         } catch (Exception e) {
