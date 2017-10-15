@@ -8,4 +8,4 @@ xdaili:
   secret: ZF20179259363xxYvyk
   order: 6e3d4d41727f454d983a7ef7fa206e5d
   url: forward.xdaili.cn
-  port: 80
+  port: 8088
