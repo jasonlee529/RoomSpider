@@ -2,6 +2,8 @@ package cn.lee.wx.web;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +16,8 @@ import java.util.Enumeration;
  */
 @RestController
 public class AuthController {
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping("wx")
     public String wx(HttpServletRequest request) {
@@ -33,7 +37,7 @@ public class AuthController {
             String hashCode = new String(DigestUtils.sha1(list.toString().getBytes()));
             String secret = "16e85693f56899ec0ae0812ba62b7c12";
             String token = "xiaokele2017";
-            System.out.println(signature + "______" + hashCode);
+            logger.error(signature + "______" + hashCode);
             if (StringUtils.equals(signature, hashCode)) {
                 return echostr;
             } else {
