@@ -29,7 +29,7 @@ public class SignUtils {
         String strin = Arrays.toString(arr);
         logger.info(strin);
         // 将三个参数字符串拼接成一个字符串进行sha1加密
-        String tmpStr = new String(DigestUtils.sha1(strin));
+        String tmpStr = DigestUtils.sha1Hex(strin);
         logger.info("hashcod:{} , signature:{}", tmpStr, signature);
         // 将sha1加密后的字符串可与signature对比，标识该请求来源于微信
         return tmpStr != null ? tmpStr.equals(signature.toUpperCase()) : false;
