@@ -3,6 +3,7 @@ package cn.lee.wx.util;
 import java.util.Arrays;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +27,7 @@ public class SignUtils {
         String[] arr = new String[]{token, timestamp, nonce};
         // 将token、timestamp、nonce三个参数进行字典序排序
         Arrays.sort(arr);
-        String strin = Arrays.toString(arr);
+        String strin = StringUtils.join(arr, "");
         logger.info(strin);
         // 将三个参数字符串拼接成一个字符串进行sha1加密
         String tmpStr = DigestUtils.sha1Hex(strin);
