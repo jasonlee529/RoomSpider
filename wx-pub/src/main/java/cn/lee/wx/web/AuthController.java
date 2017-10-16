@@ -46,6 +46,7 @@ public class AuthController {
             }
         } catch (Exception e) {
             logger.error("Connect the weixin server is error.");
+            out.print(e.getMessage());
         } finally {
             out.close();
         }
