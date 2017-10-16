@@ -3,11 +3,16 @@ package cn.lee.wx.util;
 import java.util.Arrays;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by jason on 17-10-16.
  */
 public class SignUtils {
+
+    private static Logger logger = LoggerFactory.getLogger(SignUtils.class);
+
     /**
      * 验证签名
      *
@@ -24,7 +29,7 @@ public class SignUtils {
 
         // 将三个参数字符串拼接成一个字符串进行sha1加密
         String tmpStr = new String(DigestUtils.sha1(arr[0] + arr[1] + arr[2]));
-
+        logger.info("hashcod:{} , signature:{}", tmpStr, signature);
         // 将sha1加密后的字符串可与signature对比，标识该请求来源于微信
         return tmpStr != null ? tmpStr.equals(signature.toUpperCase()) : false;
     }
