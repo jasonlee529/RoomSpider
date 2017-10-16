@@ -26,9 +26,10 @@ public class SignUtils {
         String[] arr = new String[]{token, timestamp, nonce};
         // 将token、timestamp、nonce三个参数进行字典序排序
         Arrays.sort(arr);
-
+        String strin = Arrays.toString(arr);
+        logger.info(strin);
         // 将三个参数字符串拼接成一个字符串进行sha1加密
-        String tmpStr = new String(DigestUtils.sha1(arr[0] + arr[1] + arr[2]));
+        String tmpStr = new String(DigestUtils.sha1(strin));
         logger.info("hashcod:{} , signature:{}", tmpStr, signature);
         // 将sha1加密后的字符串可与signature对比，标识该请求来源于微信
         return tmpStr != null ? tmpStr.equals(signature.toUpperCase()) : false;

@@ -26,6 +26,8 @@ public class AuthController {
 
     @RequestMapping("wx")
     public void wx(HttpServletRequest request, HttpServletResponse response) {
+        logger.info(request.getPathInfo());
+        logger.info(request.getRequestURI());
         // 将请求、响应的编码均设置为UTF-8（防止中文乱码）
         PrintWriter out = null;
         try {
