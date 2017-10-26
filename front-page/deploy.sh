@@ -1,0 +1,1 @@
+nohup gulp serve &
