@@ -1,1 +1,1 @@
-console.log('\'Allo \'Allo!');
+var t = require();
