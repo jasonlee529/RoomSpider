@@ -1,1 +1,1 @@
-var t = require();
+console.log('fsdfs');
