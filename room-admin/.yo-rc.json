@@ -1,17 +1,1 @@
-{
-  "generator-fountain-angular2": {
-    "version": "1.0.0",
-    "props": {
-      "framework": "angular2",
-      "modules": "webpack",
-      "js": "typescript",
-      "ci": "",
-      "css": "scss",
-      "resolved": "/home/jason/workbench/source-code/git/github/.nvm/versions/node/v6.3.0/lib/node_modules/generator-fountain-webapp/node_modules/generator-fountain-angular2/generators/app/index.js",
-      "namespace": "fountain-angular2:app",
-      "_": [],
-      "sample": "todoMVC",
-      "router": "router"
-    }
-  }
-}
+{}
