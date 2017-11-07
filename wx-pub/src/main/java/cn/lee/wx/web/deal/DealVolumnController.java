@@ -1,7 +1,11 @@
 package cn.lee.wx.web.deal;
 
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
+import cn.lee.wx.deal.service.DealMonthService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "deal/volumn")
 public class DealVolumnController {
 
+    @Autowired
+    private DealMonthService dealMonthService;
+
     /**
      * 分区或者全北京的数据量
      *
@@ -22,14 +29,12 @@ public class DealVolumnController {
      * @return
      */
     @RequestMapping("month/{area}")
-    public String area(@PathVariable String area, HttpServletRequest request) {
-
-
-        return "";
+    public Map area(@PathVariable String area, HttpServletRequest request) {
+        return dealMonthService.monthData();
     }
 
     @RequestMapping("month")
-    public String areaAll(HttpServletRequest request) {
+    public Map areaAll(HttpServletRequest request) {
         return area("all", request);
     }
 }
