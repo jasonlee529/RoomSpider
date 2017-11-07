@@ -6,6 +6,7 @@ import java.io.IOException;
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,6 +27,7 @@ public class Main {
 
 
     @Bean
+    @Qualifier("freeMarkerConfiguration")
     public Configuration freeMarkerConfiguration() throws IOException {
         Configuration cfg = new Configuration(Configuration.VERSION_2_3_26);
         cfg.setDirectoryForTemplateLoading(new File("classpath:/template"));

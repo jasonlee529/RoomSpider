@@ -1,4 +1,4 @@
-package cn.lee.wx.web.wx;
+package cn.lee.wx.web.deal;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -12,21 +12,26 @@ import org.apache.logging.log4j.core.util.StringBuilderWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
 
 /**
  * 使用freemarker 解析模板
  * Created by jason on 17-11-6.
  */
-public class FreeMarkerUtils {
+public class FreeMarkerUtils implements ApplicationContextAware {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private static Logger logger = LoggerFactory.getLogger(FreeMarkerUtils.class);
     /**
      * 读取velocity的模板的帮助类
      */
-    private Configuration configuration;
+    private static Configuration configuration = null;
 
-    public void setConfiguration(Configuration configuration) {
-        this.configuration = configuration;
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        configuration = (Configuration) applicationContext.getBean("freeMarkerConfiguration");
     }
 
     /**
@@ -35,7 +40,7 @@ public class FreeMarkerUtils {
      * @param templateLocation ，相对veloctity resource loader的路径
      * @return
      */
-    public String mergeTemplate(String templateLocation) {
+    public static String mergeTemplate(String templateLocation) {
         return mergeTemplate(templateLocation, new HashMap<String, Object>());
     }
 
@@ -46,7 +51,7 @@ public class FreeMarkerUtils {
      * @param model            数据上下文
      * @return
      */
-    public String mergeTemplate(String templateLocation, Map model) {
+    public static String mergeTemplate(String templateLocation, Map model) {
         return mergeTemplate(templateLocation, "utf-8", model);
     }
 
@@ -58,11 +63,11 @@ public class FreeMarkerUtils {
      * @param model
      * @return
      */
-    public String mergeTemplate(String templateLocation, String encoding, Map<String, Object> model) {
+    public static String mergeTemplate(String templateLocation, String encoding, Map<String, Object> model) {
         return doMergeTemplate(templateLocation, encoding, model);
     }
 
-    protected String doMergeTemplate(String templateLocation, String encoding, Map<String, Object> model) {
+    protected static String doMergeTemplate(String templateLocation, String encoding, Map<String, Object> model) {
         String result = "";
         Template tpl = null;
         try {
