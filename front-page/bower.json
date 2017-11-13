@@ -5,7 +5,8 @@
     "bootstrap-sass": "~3.3.5",
     "modernizr": "~2.8.1",
     "gentelella": "^1.4.0",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "art-template": "^4.12.1"
   },
   "overrides": {
     "bootstrap-sass": {
