@@ -37,4 +37,11 @@ public class DealVolumnController {
     public Map areaAll(HttpServletRequest request) {
         return area("all", request);
     }
+
+
+    @RequestMapping("kpi")
+    public Map kpi() {
+        dealMonthService.kpi();
+        return null;
+    }
 }

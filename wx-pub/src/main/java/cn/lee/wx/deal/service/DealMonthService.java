@@ -2,6 +2,7 @@ package cn.lee.wx.deal.service;
 
 import java.util.Map;
 
+import cn.lee.wx.data.service.ConfigSqlTplService;
 import cn.lee.wx.deal.repository.DealMonthRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.stereotype.Service;
 public class DealMonthService {
 
     @Autowired
+    private ConfigSqlTplService configSqlTplService;
+    @Autowired
     private DealMonthRepository dealMonthRepository;
 
     public Map monthData() {
@@ -21,4 +24,7 @@ public class DealMonthService {
     }
 
 
+    public void kpi() {
+        configSqlTplService.executeSql(1, null);
+    }
 }

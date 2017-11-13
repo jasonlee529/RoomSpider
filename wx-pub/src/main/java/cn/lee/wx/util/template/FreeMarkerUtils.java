@@ -1,6 +1,7 @@
 package cn.lee.wx.util.template;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
@@ -85,5 +86,20 @@ public class FreeMarkerUtils implements ApplicationContextAware {
         return result;
     }
 
+    public static String mergeTemplateFromString(String tplStr, Map<String, Object> model) {
+        String result = "";
+        Template tpl = null;
+        Writer writer = new StringBuilderWriter();
+        try {
+            tpl = new Template("", new StringReader(tplStr), configuration);
+            tpl.process(model, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TemplateException e) {
+            e.printStackTrace();
+        }
+        result = writer.toString();
+        return result;
+    }
 }
 
