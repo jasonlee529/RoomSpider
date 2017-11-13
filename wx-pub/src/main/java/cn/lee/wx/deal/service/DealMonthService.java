@@ -15,8 +15,6 @@ import org.springframework.stereotype.Service;
 public class DealMonthService {
 
     @Autowired
-    private ConfigSqlTplService configSqlTplService;
-    @Autowired
     private DealMonthRepository dealMonthRepository;
 
     public Map monthData() {
@@ -24,7 +22,4 @@ public class DealMonthService {
     }
 
 
-    public void kpi() {
-        configSqlTplService.executeSql(1, null);
-    }
 }

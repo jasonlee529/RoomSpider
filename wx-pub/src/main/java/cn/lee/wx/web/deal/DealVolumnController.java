@@ -39,9 +39,4 @@ public class DealVolumnController {
     }
 
 
-    @RequestMapping("kpi")
-    public Map kpi() {
-        dealMonthService.kpi();
-        return null;
-    }
 }
