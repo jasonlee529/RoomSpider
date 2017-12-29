@@ -26,7 +26,9 @@
         <property name="jpaProperties">
             <props>
                 <!-- 命名规则 My_NAME->MyName -->
-                <prop key="hibernate.physical_naming_strategy">org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy</prop>
+                <prop key="hibernate.physical_naming_strategy">
+                    org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+                </prop>
                 <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
                 <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
@@ -65,6 +67,16 @@
         </property>
     </bean>
 
+    <bean id="velocityEngine"
+          class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="velocityProperties">
+            <value>
+                resource.loader=class
+                class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+            </value>
+        </property>
+    </bean>
+    
     <!-- 数据源配置, 使用Tomcat JDBC连接池 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
         <!-- Connection Info -->
@@ -85,7 +97,7 @@
     </bean>
 
     <context:property-placeholder ignore-unresolvable="true"
-                                      location="classpath*:/application.properties"/>
+                                  location="classpath*:/application.properties"/>
     <beans profile="company">
         <context:property-placeholder ignore-unresolvable="true"
                                       location="classpath*:/application.company.properties"/>
