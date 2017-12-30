@@ -16,7 +16,7 @@ import org.springframework.web.util.WebUtils;
  * Created by jason on 17-12-29.
  */
 @RestController
-@RequestMapping(value = "data/sql")
+@RequestMapping(value = "/data/sql")
 public class SQLDataController {
 
     @Autowired

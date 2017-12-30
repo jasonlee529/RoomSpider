@@ -3,7 +3,6 @@ package cn.lee.housing.spider.lianjia.web.ershoufang;
 import java.util.Map;
 
 import cn.lee.housing.spider.lianjia.service.room.ErshoufangService;
-import cn.lee.housing.spider.lianjia.spider.pipeline.ErshoufangPipeline;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
