@@ -67,16 +67,6 @@
         </property>
     </bean>
 
-    <bean id="velocityEngine"
-          class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
-        <property name="velocityProperties">
-            <value>
-                resource.loader=class
-                class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-            </value>
-        </property>
-    </bean>
-    
     <!-- 数据源配置, 使用Tomcat JDBC连接池 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
         <!-- Connection Info -->
@@ -98,9 +88,9 @@
 
     <context:property-placeholder ignore-unresolvable="true"
                                   location="classpath*:/application.properties"/>
-    <beans profile="company">
+    <beans profile="local">
         <context:property-placeholder ignore-unresolvable="true"
-                                      location="classpath*:/application.company.properties"/>
+                                      location="classpath*:/application.local.properties"/>
     </beans>
 
 </beans>
