@@ -92,7 +92,7 @@
                                   location="classpath*:/application.properties"/>
     <beans profile="local">
         <context:property-placeholder ignore-unresolvable="true"
-                                      location="classpath*:/application.local.properties"/>
+                                      location="classpath*:/application-local.properties"/>
     </beans>
 
 </beans>
