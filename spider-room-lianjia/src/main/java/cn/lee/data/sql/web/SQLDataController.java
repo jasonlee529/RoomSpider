@@ -7,6 +7,7 @@ import cn.lee.data.sql.result.SqlResult;
 import cn.lee.data.sql.service.ConfigSourceService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import org.springframework.web.util.WebUtils;
 /**
  * Created by jason on 17-12-29.
  */
+@Controller
 @RestController
 @RequestMapping(value = "/data/sql")
 public class SQLDataController {

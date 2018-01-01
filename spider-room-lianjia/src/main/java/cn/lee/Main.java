@@ -1,4 +1,4 @@
-package cn.lee.housing.spider.lianjia;
+package cn.lee;
 
 import cn.lee.housing.spider.lianjia.config.SchedulerConfig;
 import org.slf4j.Logger;
