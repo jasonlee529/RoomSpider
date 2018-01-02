@@ -6,7 +6,8 @@
     "modernizr": "~2.8.1",
     "gentelella": "^1.4.0",
     "bootstrap": "^3.3.7",
-    "art-template": "^4.12.1"
+    "art-template": "^4.12.1",
+    "esl": "^2.1.6"
   },
   "overrides": {
     "bootstrap-sass": {
