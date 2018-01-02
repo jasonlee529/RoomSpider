@@ -3,7 +3,7 @@ $(document).ready(function () {
     var d = res.result[0];
     var data = [{clazz: 'user', title: '总成交量', value: d.total_deal},
       {clazz: 'clock-o', title: '成交时间', value: d.last_deal_date, subTitle: '最早成交时间', value2: d.min_deal_date},
-      {clazz: 'clock-o', title: '最后爬取时间', value: d.last_craw_time}
+      {clazz: 'clock-o', title: '最后爬取时间', value: d.last_craw_time.substr(0,10),value2:d.last_craw_time.substr(10)}
     ]
     $('#totalKpi').empty();
     data.forEach(function (n) {
