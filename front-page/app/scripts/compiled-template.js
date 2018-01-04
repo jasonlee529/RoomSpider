@@ -6,3 +6,18 @@ var kpiTpl = template.compile(
   '</div>');
 
 
+var top10TrTpl = template.compile(
+  '{{each $data.result}}' +
+  '<tr>' +
+  '<th scope="row">{{$index}}</th>' +
+  '<td>{{$value.county}}</td>' +
+  '<td>{{$value.region}}</td>' +
+  '<td>{{$value.district}}</td>' +
+  '<td>{{$value.total_price}}</td>' +
+  '<td>{{$value.avg_price}}</td>' +
+  '<td>{{$value.area}}</td>' +
+  '<td>{{$value.build_year}}</td>' +
+  '<td>{{$value.trading_right}}</td>' +
+  '</tr>' +
+  '{{/each}}'
+);
