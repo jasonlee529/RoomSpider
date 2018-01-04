@@ -18,6 +18,7 @@ var top10TrTpl = template.compile(
   '<td>{{$value.area}}</td>' +
   '<td>{{$value.build_year}}</td>' +
   '<td>{{$value.trading_right}}</td>' +
+  '<td>{{$value.deal_date}}</td>' +
   '</tr>' +
   '{{/each}}'
 );
