@@ -17,7 +17,8 @@
   <link href="../../bower_components/gentelella/vendors/nprogress/nprogress.css" rel="stylesheet">
   <!-- iCheck -->
   <link href="../../bower_components/gentelella/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-
+  <!-- bootstrap-daterangepicker -->
+  <link href="../../bower_components/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
   <!-- Custom Theme Style -->
   <link href="../../bower_components/gentelella/build/css/custom.min.css" rel="stylesheet">
 </head>
@@ -275,6 +276,7 @@
           <div class="title_left">
             <h3>Tables
               <small>Some examples to get you started</small>
+
             </h3>
           </div>
 
@@ -299,6 +301,11 @@
               <div class="x_title">
                 <h2>区县TOP10排名
                   <small>均价最低TOP10</small>
+                  <div id="reportrange_right" class="pull-right"
+                       style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                    <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                  </div>
                 </h2>
                 <ul class="nav navbar-right panel_toolbox">
                   <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -370,6 +377,8 @@
 <script src="../../bower_components/gentelella/vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
 <script src="../../bower_components/gentelella/vendors/nprogress/nprogress.js"></script>
+<script src="../../bower_components/gentelella/vendors/moment/min/moment.min.js"></script>
+<script src="../../bower_components/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- iCheck -->
 <script src="../../bower_components/gentelella/vendors/iCheck/icheck.min.js"></script>
 <script src="../bower_components/art-template/lib/template-web.js"></script>
@@ -379,8 +388,9 @@
 <script src="../scripts/compiled-template.js"></script>
 <script>
   $(document).ready(function () {
+
     $.get('http://116.196.86.186:18080/data/sql/2', function (res) {
-        $('#top_10').find('tbody').append(top10TrTpl(res));
+      $('#top_10').find('tbody').append(top10TrTpl(res));
     });
   })
 
