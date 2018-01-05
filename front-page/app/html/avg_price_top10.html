@@ -390,6 +390,7 @@
 
   $(document).ready(function () {
     init_daterangepicker();
+    refreshTop10Data();
   })
   function refreshTop10Data() {
     $.get('http://116.196.86.186:18080/data/sql/2', params, function (res) {
