@@ -390,11 +390,10 @@
 
   $(document).ready(function () {
     init_daterangepicker();
-    refreshTop10Data();
   })
   function refreshTop10Data() {
     $.get('http://116.196.86.186:18080/data/sql/2', params, function (res) {
-      $('#top_10').find('tbody').append(top10TrTpl(res));
+      $('#top_10').find('tbody').html(top10TrTpl(res));
     });
   }
   function init_daterangepicker() {
@@ -409,6 +408,7 @@
       $('#reportrange_right span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
       params.filter__start_time = start.format('YYYY.MM.DD');
       params.filter__end_time = end.format('YYYY.MM.DD');
+      refreshTop10Data();
     };
 
     var optionSet1 = {
