@@ -90,6 +90,7 @@ public class DataFileDownloadController {
             rowNum++;
             for (Map<String, Object> data : result.getResult()) {
                 row = s1.createRow(rowNum++);
+                cellNum = 0;
                 for (HashMap<String, String> column : COLUMNS) {
                     Cell cell = row.createCell(cellNum);
                     cell.setCellValue(String.valueOf(data.get(column.get("name"))));
