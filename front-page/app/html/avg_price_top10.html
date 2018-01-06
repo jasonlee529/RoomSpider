@@ -314,9 +314,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
                       class="fa fa-wrench"></i></a>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Settings 1</a>
-                      </li>
-                      <li><a href="#">Settings 2</a>
+                      <li><a id="download_1" href="javascript:;">下载数据文件</a>
                       </li>
                     </ul>
                   </li>
@@ -392,6 +390,10 @@
   $(document).ready(function () {
     init_filter_daterangepicker();
     refreshTop10Data();
+    $('#download_1').click(function(){
+       var url = "http://116.196.86.186:18080/data/file/sql/2?filter__start_time="+params.filter__start_time+"&filter__end_time="+params.filter__end_time;
+       window.open(url);
+    });
   })
   function refreshTop10Data() {
     $.get('http://116.196.86.186:18080/data/sql/2', params, function (res) {
