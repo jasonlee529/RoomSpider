@@ -1,5 +1,9 @@
 package cn.lee.housing.spider.lianjia.spider.processor;
 
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import cn.lee.housing.spider.lianjia.model.room.Baojia;
 import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
 import cn.lee.housing.spider.lianjia.service.room.ErshoufangService;
@@ -14,10 +18,6 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
-
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 /**
@@ -157,13 +157,16 @@ public class ErshoufangProcessor implements PageProcessor {
     }
 
     private String parseRoomId(String url) {
+        if (StringUtils.isBlank(url)) {
+            return "";
+        }
         Pattern p = Pattern.compile(ROOM_ID);
         Matcher m = p.matcher(url);
         if (m.find()) {
             String roomId = m.group().replace(".html", "");
             return roomId;
         }
-        return null;
+        return "";
     }
 
     public String getPageUrl() {
