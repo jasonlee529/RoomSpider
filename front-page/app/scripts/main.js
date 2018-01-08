@@ -17,7 +17,7 @@ $(document).ready(function () {
   //最近成交趋势
   $.get('http://116.196.86.186:18080/data/sql/4', function (res) {
     var legend = [], data = [];
-    res.result.forEach(function (n) {
+    res.result.reverse().forEach(function (n) {
       legend.push(n.deal_date);
       data.push(n.amount);
     });
@@ -27,7 +27,9 @@ $(document).ready(function () {
       },
       tooltip: {
         trigger: 'axis'
-      }, grid: {
+      },
+      grid: {
+        x: 40,
         x2: 40
       },
       legend: {
@@ -39,7 +41,6 @@ $(document).ready(function () {
           saveAsImage: {show: true}
         }
       },
-      calculable: true,
       xAxis: [
         {
           type: 'category',
@@ -81,7 +82,7 @@ $(document).ready(function () {
   //最近挂牌趋势
   $.get('http://116.196.86.186:18080/data/sql/5', function (res) {
     var legend = [], data = [];
-    res.result.forEach(function (n) {
+    res.result.reverse().forEach(function (n) {
       legend.push(n.deal_date);
       data.push(n.amount);
     });
@@ -92,6 +93,7 @@ $(document).ready(function () {
       tooltip: {
         trigger: 'axis'
       }, grid: {
+        x: 40,
         x2: 40
       },
       legend: {
@@ -138,8 +140,8 @@ $(document).ready(function () {
         }
       ]
     };
-    var echartDeal = echarts.init(document.getElementById('day_list_trend'));
-    echartDeal.setOption(option, true);
+    var echartList = echarts.init(document.getElementById('day_list_trend'));
+    echartList.setOption(option, true);
   })
 
 
