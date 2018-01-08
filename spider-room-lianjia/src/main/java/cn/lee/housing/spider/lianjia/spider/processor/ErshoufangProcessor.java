@@ -32,7 +32,7 @@ public class ErshoufangProcessor implements PageProcessor {
     private ErshoufangService service;
     private String county = "";
 
-    public final static String START_URL = "https://bj.lianjia.com/ershoufang/";
+    public final static String START_URL = "https://bj.lianjia.com/ershoufang/co32/";
     private final static String PAGE_URL = START_URL + "/pg\\d+";
 
     @Override
