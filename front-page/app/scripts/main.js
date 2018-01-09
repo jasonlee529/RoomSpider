@@ -16,7 +16,7 @@ $(document).ready(function () {
 
   //最近成交趋势
   $.get('http://116.196.86.186:18080/data/sql/4', function (res) {
-    var legend = [], data = [],price=[];
+    var legend = [], data = [], price = [];
     res.result.reverse().forEach(function (n) {
       legend.push(n.deal_date);
       data.push(n.amount);
@@ -31,10 +31,10 @@ $(document).ready(function () {
       },
       grid: {
         x: 40,
-        x2: 40
+        x2: 60
       },
       legend: {
-        data: ['成交量','每平米均价']
+        data: ['成交量', '每平米均价']
       },
       toolbox: {
         show: true,
@@ -45,23 +45,23 @@ $(document).ready(function () {
       xAxis: [
         {
           type: 'category',
-          show:false,
+          show: false,
           boundaryGap: false,
           data: legend
         }
       ],
       yAxis: [
         {
-          type: 'value',
+          type: 'value', name: "成交量",
           axisLabel: {
             formatter: '{value} '
           }
-        },{
-      type: 'value',
-        axisLabel: {
-        formatter: '{value} '
-      }
-    }
+        }, {
+          type: 'value', name: '每平米均价',
+          axisLabel: {
+            formatter: '{value} '
+          }
+        }
       ],
       series: [
         {
@@ -79,22 +79,11 @@ $(document).ready(function () {
               {type: 'average', name: '平均值'}
             ]
           }
-        },{
+        }, {
           name: '每平米均价',
-          yAxisIndex:1,
+          yAxisIndex: 1,
           type: 'line',
-          data: price,
-          markPoint: {
-            data: [
-              {type: 'max', name: '最大值'},
-              {type: 'min', name: '最小值'}
-            ]
-          },
-          markLine: {
-            data: [
-              {type: 'average', name: '平均值'}
-            ]
-          }
+          data: price
         }
       ]
     };
@@ -103,10 +92,11 @@ $(document).ready(function () {
   });
   //最近挂牌趋势
   $.get('http://116.196.86.186:18080/data/sql/5', function (res) {
-    var days = [], data = [];
+    var days = [], data = [], avg = [];
     res.result.reverse().forEach(function (n) {
       days.push(n.list_date);
       data.push(n.amount);
+      avg.push(n.avg);
     });
     var option2 = {
       title: {
@@ -116,10 +106,10 @@ $(document).ready(function () {
         trigger: 'axis'
       }, grid: {
         x: 40,
-        x2: 40
+        x2: 60
       },
       legend: {
-        data: ['每日挂牌']
+        data: ['挂牌量', '挂牌均价']
       },
       toolbox: {
         show: true,
@@ -131,7 +121,7 @@ $(document).ready(function () {
       xAxis: [
         {
           type: 'category',
-          show:true,
+          show: true,
           boundaryGap: false,
           data: days
         }
@@ -139,6 +129,13 @@ $(document).ready(function () {
       yAxis: [
         {
           type: 'value',
+          name: '挂牌量',
+          axisLabel: {
+            formatter: '{value} '
+          }
+        }, {
+          type: 'value',
+          name: '每平米均价',
           axisLabel: {
             formatter: '{value} '
           }
@@ -146,7 +143,7 @@ $(document).ready(function () {
       ],
       series: [
         {
-          name: '每日挂牌',
+          name: '挂牌量',
           type: 'line',
           data: data,
           markPoint: {
@@ -160,6 +157,11 @@ $(document).ready(function () {
               {type: 'average', name: '平均值'}
             ]
           }
+        }, {
+          name: '挂牌均价',
+          type: 'line',
+          yAxisIndex: 1,
+          data: avg
         }
       ]
     };
