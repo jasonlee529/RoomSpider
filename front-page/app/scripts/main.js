@@ -44,6 +44,7 @@ $(document).ready(function () {
       xAxis: [
         {
           type: 'category',
+          show:false,
           boundaryGap: false,
           data: legend
         }
@@ -77,16 +78,15 @@ $(document).ready(function () {
     };
     var echartDeal = echarts.init(document.getElementById('day_deal_trend'));
     echartDeal.setOption(option, true);
-
-  })
+  });
   //最近挂牌趋势
   $.get('http://116.196.86.186:18080/data/sql/5', function (res) {
-    var legend = [], data = [];
+    var days = [], data = [];
     res.result.reverse().forEach(function (n) {
-      legend.push(n.deal_date);
+      days.push(n.list_date);
       data.push(n.amount);
     });
-    var option = {
+    var option2 = {
       title: {
         text: '最近百日挂牌数据'
       },
@@ -109,8 +109,9 @@ $(document).ready(function () {
       xAxis: [
         {
           type: 'category',
+          show:true,
           boundaryGap: false,
-          data: legend
+          data: days
         }
       ],
       yAxis: [
@@ -141,7 +142,7 @@ $(document).ready(function () {
       ]
     };
     var echartList = echarts.init(document.getElementById('day_list_trend'));
-    echartList.setOption(option, true);
+    echartList.setOption(option2, true);
   })
 
 
