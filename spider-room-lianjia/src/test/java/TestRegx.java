@@ -1,6 +1,7 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 /**
@@ -20,4 +21,13 @@ public class TestRegx {
         System.out.println(m.group());
     }
 
+
+    @Test
+    public void test() {
+        String area = "100.24㎡          ";
+        area = StringUtils.trim(area);
+        area = StringUtils.replace(area, "㎡", " ");
+        System.out.println(area);
+
+    }
 }

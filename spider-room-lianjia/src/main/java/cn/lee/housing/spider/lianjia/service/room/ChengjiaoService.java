@@ -64,7 +64,6 @@ public class ChengjiaoService {
             HttpClientDownloader downloader = new HttpClientDownloader();
             downloader.setProxyProvider(proxyProvider);
             ChengjiaoProcessor processor = factory.getObject(area);
-           // processor.setParams(new String[]{"ddo22" });
             Spider spider = MySpider.create(processor)
                     .setScheduler(new PriorityScheduler())
                     .addPipeline(pipeline)

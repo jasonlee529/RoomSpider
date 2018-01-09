@@ -114,9 +114,11 @@ public class ChengjiaoProcessor implements PageProcessor {
                 //jiben
                 chengjiao.setHuxing(html.xpath("//div[@class=base]//div[@class=content]//li[1]/text()").get());
                 chengjiao.setLouceng(html.xpath("//div[@class=base]//div[@class=content]//li[2]/text()").get());
-                chengjiao.setArea(html.xpath("//div[@class=base]//div[@class=content]//li[3]/text()").get());
+                String area = StringUtils.trim(html.xpath("//div[@class=base]//div[@class=content]//li[3]/text()").get());
+                chengjiao.setArea(StringUtils.replace(area, "㎡", ""));
                 chengjiao.setrJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[4]/text()").get());
-                chengjiao.setInnerArea(html.xpath("//div[@class=base]//div[@class=content]//li[5]/text()").get());
+                String innerArea = StringUtils.trim(html.xpath("//div[@class=base]//div[@class=content]//li[5]/text()").get());
+                chengjiao.setInnerArea(StringUtils.replace(innerArea, "㎡", ""));
                 chengjiao.setBuildType(html.xpath("//div[@class=base]//div[@class=content]//li[6]/text()").get());
                 chengjiao.setOrientation(html.xpath("//div[@class=base]//div[@class=content]//li[7]/text()").get());
                 chengjiao.setBuildYear(html.xpath("//div[@class=base]//div[@class=content]//li[8]/text()").get());
