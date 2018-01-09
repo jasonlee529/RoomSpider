@@ -16,10 +16,11 @@ $(document).ready(function () {
 
   //最近成交趋势
   $.get('http://116.196.86.186:18080/data/sql/4', function (res) {
-    var legend = [], data = [];
+    var legend = [], data = [],price=[];
     res.result.reverse().forEach(function (n) {
       legend.push(n.deal_date);
       data.push(n.amount);
+      price.push(n.avg);
     });
     var option = {
       title: {
@@ -33,7 +34,7 @@ $(document).ready(function () {
         x2: 40
       },
       legend: {
-        data: ['每日成交']
+        data: ['成交量','每平米均价']
       },
       toolbox: {
         show: true,
@@ -55,13 +56,34 @@ $(document).ready(function () {
           axisLabel: {
             formatter: '{value} '
           }
-        }
+        },{
+      type: 'value',
+        axisLabel: {
+        formatter: '{value} '
+      }
+    }
       ],
       series: [
         {
-          name: '每日成交',
+          name: '成交量',
           type: 'line',
           data: data,
+          markPoint: {
+            data: [
+              {type: 'max', name: '最大值'},
+              {type: 'min', name: '最小值'}
+            ]
+          },
+          markLine: {
+            data: [
+              {type: 'average', name: '平均值'}
+            ]
+          }
+        },{
+          name: '每平米均价',
+          yAxisIndex:1,
+          type: 'line',
+          data: price,
           markPoint: {
             data: [
               {type: 'max', name: '最大值'},
