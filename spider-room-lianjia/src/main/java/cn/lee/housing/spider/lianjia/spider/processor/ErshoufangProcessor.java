@@ -82,9 +82,11 @@ public class ErshoufangProcessor implements PageProcessor {
                 //jiben
                 entity.setHuxing(html.xpath("//div[@class=base]//div[@class=content]//li[1]/text()").get());
                 entity.setLouceng(html.xpath("//div[@class=base]//div[@class=content]//li[2]/text()").get());
-                entity.setArea(html.xpath("//div[@class=base]//div[@class=content]//li[3]/text()").get());
+                String area = StringUtils.trim(html.xpath("//div[@class=base]//div[@class=content]//li[3]/text()").get());
+                entity.setArea(StringUtils.replace(area, "㎡", ""));
                 entity.setrJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[4]/text()").get());
-                entity.setInnerArea(html.xpath("//div[@class=base]//div[@class=content]//li[5]/text()").get());
+                String innerArea = StringUtils.trim(html.xpath("//div[@class=base]//div[@class=content]//li[5]/text()").get());
+                entity.setInnerArea(StringUtils.replace(innerArea, "㎡", ""));
                 entity.setBuildType(html.xpath("//div[@class=base]//div[@class=content]//li[6]/text()").get());
                 entity.setOrientation(html.xpath("//div[@class=base]//div[@class=content]//li[7]/text()").get());
                 entity.setbJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[8]/text()").get());
