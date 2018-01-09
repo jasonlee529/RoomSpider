@@ -47,18 +47,19 @@ public class ErshoufangProcessor implements PageProcessor {
             for (Selectable node : nodes) {
                 String url = node.xpath("//a[@class=img]").links().get();
                 String roomId = parseRoomId(url);
-                if (StringUtils.isNotBlank(roomId) && service.isRecrawl(roomId)) {
-                    Request request = new Request(url).setPriority(Long.parseLong(roomId));
-                    page.addTargetRequest(request);
-                    logger.error(" add Request : " + request);
-                } else {
+                if (StringUtils.isNotBlank(roomId)) {
                     Baojia bj = new Baojia(roomId);
                     bj.setTitle(node.xpath("//div[@class=title]/a/text()").get());
                     bj.setPrice(node.xpath("//div[@class=totalPrice]/span/text()").get());
                     bj.setInfo(node.xpath("//div[@class=houseInfo]/text()").get());
-                    bj.setAvgPrice(node.xpath("//div[@class=unitPrice]/span/text()").get());
+                    bj.setAvgPrice(node.$("div.unitPrice","data-price").get());
                     page.putField("baojia", bj);
                     logger.info("{} baojia : ", bj);
+                    if (service.isRecrawl(roomId)) {
+                        Request request = new Request(url).setPriority(Long.parseLong(roomId));
+                        page.addTargetRequest(request);
+                        logger.error(" add Request : " + request);
+                    }
                 }
             }
         } else {
