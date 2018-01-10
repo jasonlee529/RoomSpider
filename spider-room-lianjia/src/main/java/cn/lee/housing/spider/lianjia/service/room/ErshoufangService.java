@@ -1,7 +1,6 @@
 package cn.lee.housing.spider.lianjia.service.room;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import cn.lee.housing.spider.lianjia.model.room.Baojia;
@@ -86,13 +85,6 @@ public class ErshoufangService {
 
     public Ershoufang saveErshoufang(Ershoufang ershoufang) {
         dao.save(ershoufang);
-        List<Baojia> prices = baojiaoDao.findByRoomId(ershoufang.getRoomId());
-        if (prices == null || prices.size() == 0) {
-            Baojia bj = new Baojia(ershoufang.getRoomId());
-            bj.setPrice(ershoufang.getTotalPrice());
-            bj.setCrawTime(ershoufang.getCrawTime());
-            baojiaoDao.save(bj);
-        }
         return ershoufang;
     }
 }
