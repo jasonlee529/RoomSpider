@@ -78,13 +78,9 @@ public class ErshoufangService {
 
     public Baojia saveBaojia(Baojia baojia) {
         Baojia last = baojiaoDao.findFirstByRoomIdOrderByCrawTimeDesc(baojia.getRoomId());
-        if (last != null && !StringUtils.equalsIgnoreCase(last.getPrice(), baojia.getPrice())) {
-            Ershoufang ershoufang = dao.findByRoomId(baojia.getRoomId());
-            ershoufang.setTotalPrice(baojia.getPrice());
-            saveErshoufang(ershoufang);
+        if (last == null || !StringUtils.equalsIgnoreCase(last.getPrice(), baojia.getPrice())) {
             baojiaoDao.save(baojia);
         }
-
         return baojia;
     }
 
