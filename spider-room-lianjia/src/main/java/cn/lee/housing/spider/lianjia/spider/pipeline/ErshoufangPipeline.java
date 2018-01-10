@@ -7,6 +7,7 @@ import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +23,17 @@ public class ErshoufangPipeline implements Pipeline {
 
     @Override
     public void process(ResultItems resultItems, Task task) {
-        Ershoufang entity = resultItems.get("ershoufang");
-        if (entity != null) {
-            service.saveErshoufang(entity);
+        Ershoufang ershoufang = resultItems.get("ershoufang");
+        if (ershoufang != null) {
+            Ershoufang esf = service.findByRoomId(ershoufang.getRoomId());
+            if (esf != null) {
+                Long id = esf.getId();
+                BeanUtils.copyProperties(ershoufang, esf);
+                esf.setId(id);
+                service.saveErshoufang(esf);
+            } else {
+                service.saveErshoufang(ershoufang);
+            }
         }
         Baojia bj = resultItems.get("baojia");
         if (bj != null) {

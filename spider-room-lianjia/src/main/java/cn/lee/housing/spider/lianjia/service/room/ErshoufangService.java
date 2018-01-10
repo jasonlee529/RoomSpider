@@ -87,4 +87,8 @@ public class ErshoufangService {
         dao.save(ershoufang);
         return ershoufang;
     }
+
+    public Ershoufang findByRoomId(String roomId) {
+        return dao.findByRoomId(roomId);
+    }
 }
