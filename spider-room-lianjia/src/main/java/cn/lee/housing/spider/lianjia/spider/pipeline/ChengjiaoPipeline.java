@@ -40,12 +40,12 @@ public class ChengjiaoPipeline implements Pipeline {
 
         Ershoufang ershoufang = resultItems.get("ershoufang");
         if (ershoufang != null) {
+            ershoufang.setStatus("已成交");
             Ershoufang esf = roomDao.findByRoomId(ershoufang.getRoomId());
             if (esf != null) {
                 Long id = esf.getId();
                 BeanUtils.copyProperties(ershoufang, esf);
                 esf.setId(id);
-                esf.setStatus("已成交");
                 roomDao.save(esf);
             } else {
                 roomDao.save(ershoufang);
