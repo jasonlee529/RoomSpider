@@ -45,7 +45,6 @@ $(document).ready(function () {
       xAxis: [
         {
           type: 'category',
-          show: false,
           boundaryGap: false,
           data: legend
         }
