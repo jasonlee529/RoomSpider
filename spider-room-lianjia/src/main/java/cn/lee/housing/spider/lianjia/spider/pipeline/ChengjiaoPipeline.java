@@ -1,7 +1,7 @@
 package cn.lee.housing.spider.lianjia.spider.pipeline;
 
-import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
 import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
+import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
 import cn.lee.housing.spider.lianjia.repository.room.ChengjiaoDao;
 import cn.lee.housing.spider.lianjia.repository.room.ErshoufangDao;
 import us.codecraft.webmagic.ResultItems;
@@ -45,6 +45,7 @@ public class ChengjiaoPipeline implements Pipeline {
                 Long id = esf.getId();
                 BeanUtils.copyProperties(ershoufang, esf);
                 esf.setId(id);
+                esf.setStatus("已成交");
                 roomDao.save(esf);
             } else {
                 roomDao.save(ershoufang);

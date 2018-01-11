@@ -84,12 +84,22 @@ public class Ershoufang extends IdEntity {
 
     private String roomDeeed; // 其他
 
+    private String status; // 状态
+
     public Ershoufang() {
     }
 
     public Ershoufang(String roomId) {
         this.roomId = roomId;
         this.crawTime = new DateTime().toString("yyyy-MM-dd_HH:mm:ss");
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getRoomId() {
