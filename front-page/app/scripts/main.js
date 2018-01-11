@@ -15,26 +15,28 @@ $(document).ready(function () {
   });
 
   //最近成交趋势
-  $.get('http://116.196.86.186:18080/data/sql/4', function (res) {
-    var legend = [], data = [], price = [];
+  $.get('http://116.196.86.186:18080/data/sql/6', function (res) {
+    var days = [], listAmount = [], dealAmount = [];
     res.result.reverse().forEach(function (n) {
-      legend.push(n.deal_date);
-      data.push(n.amount);
-      price.push(n.avg);
+      days.push(n.date);
+      listAmount.push(n.list_amount);
+      if(n.deal_amount!=0){
+        dealAmount.push(n.deal_amount);
+      }
     });
     var option = {
       title: {
-        text: '最近百日成交数据'
+        text: '最近百日挂牌/成交量对比'
       },
       tooltip: {
         trigger: 'axis'
       },
       grid: {
         x: 40,
-        x2: 60
+        x2: 40
       },
       legend: {
-        data: ['成交量', '每平米均价']
+        data: ['挂牌量', '成交量']
       },
       toolbox: {
         show: true,
@@ -46,17 +48,12 @@ $(document).ready(function () {
         {
           type: 'category',
           boundaryGap: false,
-          data: legend
+          data: days
         }
       ],
       yAxis: [
         {
-          type: 'value', name: "成交量",
-          axisLabel: {
-            formatter: '{value} '
-          }
-        }, {
-          type: 'value', name: '每平米均价',
+          type: 'value', name: "数量",
           axisLabel: {
             formatter: '{value} '
           }
@@ -64,9 +61,9 @@ $(document).ready(function () {
       ],
       series: [
         {
-          name: '成交量',
+          name: '挂牌量',
           type: 'line',
-          data: data,
+          data: listAmount,
           markPoint: {
             data: [
               {type: 'max', name: '最大值'},
@@ -79,10 +76,20 @@ $(document).ready(function () {
             ]
           }
         }, {
-          name: '每平米均价',
-          yAxisIndex: 1,
+          name: '成交量',
           type: 'line',
-          data: price
+          data: dealAmount,
+          markPoint: {
+            data: [
+              {type: 'max', name: '最大值'},
+              {type: 'min', name: '最小值'}
+            ]
+          },
+          markLine: {
+            data: [
+              {type: 'average', name: '平均值'}
+            ]
+          }
         }
       ]
     };
@@ -90,25 +97,27 @@ $(document).ready(function () {
     echartDeal.setOption(option, true);
   });
   //最近挂牌趋势
-  $.get('http://116.196.86.186:18080/data/sql/5', function (res) {
-    var days = [], data = [], avg = [];
+  $.get('http://116.196.86.186:18080/data/sql/7', function (res) {
+    var days = [], list = [], deal = [];
     res.result.reverse().forEach(function (n) {
-      days.push(n.list_date);
-      data.push(n.amount);
-      avg.push(n.avg);
+      days.push(n.date);
+      list.push(n.list_avg);
+      if(n.deal_avg!=0){
+        deal.push(n.deal_avg);
+      }
     });
     var option2 = {
       title: {
-        text: '最近百日挂牌数据'
+        text: '最近百日挂牌/成交均价对比'
       },
       tooltip: {
         trigger: 'axis'
       }, grid: {
-        x: 40,
+        x: 60,
         x2: 60
       },
       legend: {
-        data: ['挂牌量', '挂牌均价']
+        data: ['挂牌均价', '成交均价']
       },
       toolbox: {
         show: true,
@@ -128,13 +137,8 @@ $(document).ready(function () {
       yAxis: [
         {
           type: 'value',
-          name: '挂牌量',
-          axisLabel: {
-            formatter: '{value} '
-          }
-        }, {
-          type: 'value',
-          name: '每平米均价',
+          name: '均价(元/平米)',
+          min:20000,
           axisLabel: {
             formatter: '{value} '
           }
@@ -142,13 +146,13 @@ $(document).ready(function () {
       ],
       series: [
         {
-          name: '挂牌量',
+          name: '挂牌均价',
           type: 'line',
-          data: data,
+          data: list,
           markPoint: {
             data: [
-              {type: 'max', name: '最大值'},
-              {type: 'min', name: '最小值'}
+              {type: 'max', name: '最大值',symbolSize:[60,30],symbol:'rect'},
+              {type: 'min', name: '最小值',symbolSize:[60,30],symbol:'rect'}
             ]
           },
           markLine: {
@@ -157,10 +161,20 @@ $(document).ready(function () {
             ]
           }
         }, {
-          name: '挂牌均价',
+          name: '成交均价',
           type: 'line',
-          yAxisIndex: 1,
-          data: avg
+          data: deal,
+          markPoint: {
+            data: [
+              {type: 'max', name: '最大值',symbolSize:[100,60]},
+              {type: 'min', name: '最小值',symbolSize:[100,60]}
+            ]
+          },
+          markLine: {
+            data: [
+              {type: 'average', name: '平均值'}
+            ]
+          }
         }
       ]
     };
