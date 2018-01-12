@@ -2,10 +2,10 @@ $(document).ready(function () {
   $.get('http://116.196.86.186:18080/data/sql/1', function (res) {
     var d = res.result[0];
     var data = [{clazz: 'user', title: '总成交量', value: d.total_deal},
-      {clazz: 'clock-o', title: '成交时间', value: d.last_deal_date, subTitle: '最早成交时间', value2: d.min_deal_date},
+      {clazz: 'clock-o', title: '最新成交时间', value: d.last_deal_date, subTitle: '最早成交时间', value2: d.min_deal_date},
       {clazz: 'clock-o', title: '成交爬取爬取时间', value: d.last_craw_time.substr(0, 10), value2: d.last_craw_time.substr(10)},
       {clazz: 'clock-o', title: '总二手房量', value: d.total_ershoufang},
-      {clazz: 'clock-o', title: '二手房爬取时间', value: d.max_list_craw.substr(0, 10), value2: d.max_list_craw.substr(10)},
+      {clazz: 'clock-o', title: '二手房爬取时间', value: d.max_list_craw.substr(0, 10), value2: d.max_list_craw.substr(11)},
       {clazz: 'clock-o', title: '报价爬取时间', value: d.max_baojia_craw.substr(0, 10), value2: d.max_baojia_craw.substr(10)}
     ]
     $('#totalKpi').empty();
@@ -26,7 +26,8 @@ $(document).ready(function () {
     });
     var option = {
       title: {
-        text: '最近百日挂牌/成交量对比'
+        x:'center',
+        text: '最近百日挂牌/成交数量对比'
       },
       tooltip: {
         trigger: 'axis'
@@ -36,6 +37,8 @@ $(document).ready(function () {
         x2: 40
       },
       legend: {
+        x:'center',
+        y:30,
         data: ['挂牌量', '成交量']
       },
       toolbox: {
@@ -53,7 +56,7 @@ $(document).ready(function () {
       ],
       yAxis: [
         {
-          type: 'value', name: "数量",
+          type: 'value', name: '数量',
           axisLabel: {
             formatter: '{value} '
           }
@@ -108,6 +111,7 @@ $(document).ready(function () {
     });
     var option2 = {
       title: {
+        x:'center',
         text: '最近百日挂牌/成交均价对比'
       },
       tooltip: {
@@ -117,6 +121,8 @@ $(document).ready(function () {
         x2: 60
       },
       legend: {
+        x:'center',
+        y:30,
         data: ['挂牌均价', '成交均价']
       },
       toolbox: {
@@ -138,7 +144,7 @@ $(document).ready(function () {
         {
           type: 'value',
           name: '均价(元/平米)',
-          min:20000,
+          min:40000,
           axisLabel: {
             formatter: '{value} '
           }
