@@ -388,6 +388,7 @@
   var params = {filter__start_time: '', filter__end_time: ''}
 
   $(document).ready(function () {
+
     init_filter_daterangepicker();
     refreshTop10Data();
     $('#download_1').click(function(){
@@ -415,7 +416,7 @@
     };
 
     var optionSet1 = {
-      startDate: moment().subtract(29, 'days'),
+      startDate: moment().subtract(7, 'days'),
       endDate: moment(),
       minDate: '01/01/2012',
       maxDate: '12/31/2020',
@@ -453,7 +454,7 @@
       }
     };
 
-    $('#filter_timepicker span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+    $('#filter_timepicker span').html(optionSet1.startDate.format('MMMM D, YYYY') + ' - ' + optionSet1.endDate.format('MMMM D, YYYY'));
     params.filter__start_time = optionSet1.startDate.format('YYYY.MM.DD');
     params.filter__end_time = optionSet1.endDate.format('YYYY.MM.DD');
     $('#filter_timepicker').daterangepicker(optionSet1, cb);
