@@ -183,7 +183,7 @@ public class ErshoufangProcessor implements PageProcessor {
     private final static String ROOM_ID = "[1-9]\\d+";
 
     private String subCjjg(String in) {
-        return StringUtils.substringBefore(in, "二手房成交价格");
+        return StringUtils.substringBefore(in, "二手房");
     }
 
 }
