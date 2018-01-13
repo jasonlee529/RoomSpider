@@ -78,7 +78,7 @@ public class ErshoufangProcessor implements PageProcessor {
                 entity.setCounty(subCjjg(html.xpath("//div[@class=intro]//a[3]/text()").get()));
                 entity.setRegion(subCjjg(html.xpath("//div[@class=intro]//a[4]/text()").get()));
                 entity.setReCrawl(false);
-                entity.setDistrict(html.xpath("//div[@class=intro]//a[5]/text()").get());
+                entity.setDistrict(subCjjg(html.xpath("//div[@class=intro]//a[5]/text()").get()));
 
                 //jiben
                 entity.setHuxing(html.xpath("//div[@class=base]//div[@class=content]//li[1]/text()").get());
