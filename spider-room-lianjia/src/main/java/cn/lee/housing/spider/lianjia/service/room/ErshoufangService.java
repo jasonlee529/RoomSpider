@@ -52,7 +52,7 @@ public class ErshoufangService {
         try {
             HttpClientDownloader downloader = new HttpClientDownloader();
             downloader.setProxyProvider(proxyProvider);
-            Spider spider = MySpider.create(factory.getObject(area))
+            Spider spider = MySpider.create(factory.getProcessor2(area))
                     .setScheduler(new PriorityScheduler())
                     .addPipeline(pipeline)
                     .addPipeline(new ConsolePipeline())
