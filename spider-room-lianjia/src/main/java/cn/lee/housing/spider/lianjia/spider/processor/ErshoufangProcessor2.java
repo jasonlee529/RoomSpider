@@ -33,6 +33,7 @@ public class ErshoufangProcessor2 implements PageProcessor {
 
     public final static String START_URL = "https://bj.lianjia.com/ershoufang/co32/";
     private final static String PAGE_URL = START_URL + "/pg\\d+";
+    private final Pattern pageOnePattern = Pattern.compile("/pg\\d+");
 
     @Override
     public void process(Page page) {
@@ -115,15 +116,24 @@ public class ErshoufangProcessor2 implements PageProcessor {
                 String url = node.links().get();
                 page.addTargetRequest(url);
             }
-            List<Selectable> pageNodes = page.getHtml().xpath("//div[@class=house-lst-page-box]//a").nodes();
-            for (Selectable node : pageNodes) {
-                String url = node.links().get();
-                page.addTargetRequest("https://bj.lianjia.com/"+url);
+            if (isPageOne(page)) {
+                //是否第一页,添加分页爬取链接
+                int total = Integer.parseInt(StringUtils.trim(page.getHtml().xpath("//div[@class=resultDes]//h2[@class=total]").xpath("//span/text()").get()));
+                int pageSize = 30;
+                int maxPageNo = total / pageSize + 1;
+                total = total > 100 ? 100 : total;
+                for (int i = 2; i <= total; i++) {
+                    page.addTargetRequest(new Request(page.getUrl().get() + "/pg" + i).setPriority(-i));
+                }
+                logger.error("total page : " + maxPageNo + " total Records : " + total);
+            } else {
+                //
             }
         }
+    }
 
-
-
+    private boolean isPageOne(Page page) {
+        return !pageOnePattern.matcher(page.getUrl().get()).find();
     }
 
     private boolean isDetailPage(Page page) {
