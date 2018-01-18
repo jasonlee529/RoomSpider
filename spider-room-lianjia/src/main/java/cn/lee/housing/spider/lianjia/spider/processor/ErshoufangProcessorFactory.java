@@ -26,8 +26,8 @@ public class ErshoufangProcessorFactory implements InitializingBean {
         processor.setCounty(convertName(county));
         return processor;
     }
-    public ErshoufangProcessor2 getProcessor2(String county) throws Exception {
-        ErshoufangProcessor2 processor = new ErshoufangProcessor2();
+    public ErshoufangProcessor getProcessor2(String county) throws Exception {
+        ErshoufangProcessor processor = new ErshoufangProcessor();
         processor.setService(service);
         processor.setCounty(convertName(county));
         return processor;

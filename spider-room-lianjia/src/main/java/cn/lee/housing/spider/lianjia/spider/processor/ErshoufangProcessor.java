@@ -22,7 +22,7 @@ import us.codecraft.webmagic.selector.Selectable;
 /**
  * Created by jason on 17-6-14.
  */
-public class ErshoufangProcessor2 implements PageProcessor {
+public class ErshoufangProcessor implements PageProcessor {
 
     private Site site = Site.me().setCharset("utf-8").setRetryTimes(10).setCycleRetryTimes(200).setSleepTime(1000).setDomain("bj.lianjia.com");
 
