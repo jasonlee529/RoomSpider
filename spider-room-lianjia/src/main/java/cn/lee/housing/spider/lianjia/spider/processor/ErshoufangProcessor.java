@@ -31,7 +31,7 @@ public class ErshoufangProcessor implements PageProcessor {
     private ErshoufangService service;
     private String county = "";
 
-    public final static String START_URL = "https://bj.lianjia.com/ershoufang/";
+    public final static String START_URL = "https://bj.lianjia.com/ershoufang/co32";
     private final Pattern pageOnePattern = Pattern.compile("/pg\\d+");
 
     private final Pattern numberPattern = Pattern.compile("/\\d+");
@@ -44,8 +44,8 @@ public class ErshoufangProcessor implements PageProcessor {
         } else {
             //非详情页
             processListItems(page);
-            processAreaItems(page);
-            processSortItems(page);
+//            processAreaItems(page);
+//            processSortItems(page);
             processPageItems(page);
         }
     }
