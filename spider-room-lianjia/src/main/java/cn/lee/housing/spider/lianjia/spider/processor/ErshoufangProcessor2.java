@@ -32,9 +32,9 @@ public class ErshoufangProcessor2 implements PageProcessor {
     private String county = "";
 
     public final static String START_URL = "https://bj.lianjia.com/ershoufang/co32/";
-    private final static String PAGE_URL = START_URL + "/pg\\d+";
     private final Pattern pageOnePattern = Pattern.compile("/pg\\d+");
 
+    private final Pattern numberPattern = Pattern.compile("/\\d+");
     @Override
     public void process(Page page) {
         Html html = page.getHtml();
@@ -101,7 +101,7 @@ public class ErshoufangProcessor2 implements PageProcessor {
                     bj.setTitle(node.xpath("//div[@class=title]/a/text()").get());
                     bj.setPrice(node.xpath("//div[@class=totalPrice]/span/text()").get());
                     bj.setInfo(node.xpath("//div[@class=houseInfo]/text()").get());
-                    bj.setAvgPrice(node.$("div.unitPrice", "data-price").get());
+                    bj.setAvgPrice(numberPattern.matcher(node.$("div.unitPrice", "data-price").get()).group());
                     page.putField("baojia", bj);
                     logger.info("{} baojia : ", bj);
                     if (service.isRecrawl(roomId)) {
