@@ -78,8 +78,8 @@ public class ChengjiaoProcessor implements PageProcessor {
         } else {
             //非详情页
             processListItems(page);
-//            processAreaItems(page);
-//            processListMoreItems(page);
+            processAreaItems(page);
+            processListMoreItems(page);
 //            processSortItems(page);
             processPagerItems(page);
         }

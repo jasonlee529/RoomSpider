@@ -44,7 +44,7 @@ public class ErshoufangProcessor implements PageProcessor {
         } else {
             //非详情页
             processListItems(page);
-//            processAreaItems(page);
+            processAreaItems(page);
 //            processSortItems(page);
             processPageItems(page);
         }
