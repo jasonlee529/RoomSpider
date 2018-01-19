@@ -5,7 +5,7 @@ git pull
 
 mvn clean package
 
-nohup  java -jar target/room.lianjia-*.jar -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8999 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false >t.log & tail -11f t.log
+nohup  java  -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=128m -jar target/room.lianjia-*.jar  >t.log & tail -11f t.log
 
 sleep 10s;
 
