@@ -5,7 +5,7 @@ git pull
 
 mvn clean package
 
-nohup  java  -XX:MaxMetaspaceSize=1G -jar target/room.lianjia-*.jar  >t.log & tail -11f t.log
+nohup  java  -Xmx -jar target/room.lianjia-*.jar  >t.log & tail -11f t.log
 
 sleep 10s;
 
