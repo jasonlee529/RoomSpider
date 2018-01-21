@@ -9,7 +9,6 @@ import cn.lee.housing.spider.lianjia.repository.room.BaojiaDao;
 import cn.lee.housing.spider.lianjia.repository.room.ErshoufangDao;
 import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.pipeline.ErshoufangPipeline;
-import cn.lee.housing.spider.lianjia.spider.processor.ErshoufangMoreProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.ErshoufangProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.ErshoufangProcessorFactory;
 import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;
@@ -44,7 +43,7 @@ public class ErshoufangService {
         Map result = new HashMap();
         boolean isSuccess = true;
         try {
-            doSpider(factory.getProcessor2(area));
+            doSpider(factory.getObject(area));
 
         } catch (Exception e) {
             isSuccess = false;
@@ -59,7 +58,7 @@ public class ErshoufangService {
         Map result = new HashMap();
         boolean isSuccess = true;
         try {
-            doSpider(new ErshoufangMoreProcessor());
+            doSpider(factory.getMoreProcessor());
         } catch (Exception e) {
             isSuccess = false;
             e.printStackTrace();

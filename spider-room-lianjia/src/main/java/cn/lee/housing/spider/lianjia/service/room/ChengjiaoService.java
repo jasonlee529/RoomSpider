@@ -12,7 +12,6 @@ import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
 import cn.lee.housing.spider.lianjia.repository.room.ChengjiaoDao;
 import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.pipeline.ChengjiaoPipeline;
-import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoMoreProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessorFactory;
 import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;
@@ -71,7 +70,7 @@ public class ChengjiaoService {
         Map result = new HashMap();
         boolean isSuccess = true;
         try {
-            doSpider(new ChengjiaoMoreProcessor());
+            doSpider(factory.getMoreProcessor());
         } catch (Exception e) {
             isSuccess = false;
             e.printStackTrace();

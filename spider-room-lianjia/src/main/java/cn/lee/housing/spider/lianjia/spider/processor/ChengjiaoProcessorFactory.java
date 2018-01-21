@@ -25,6 +25,11 @@ public class ChengjiaoProcessorFactory implements InitializingBean {
         processor.setCounty(convertName(county));
         return processor;
     }
+    public ChengjiaoProcessor getMoreProcessor() throws Exception {
+        processor = new ChengjiaoMoreProcessor();
+        processor.setChengjiaoService(chengjiaoService);
+        return processor;
+    }
 
     public static String convertName(String county) {
         if (StringUtils.equalsIgnoreCase(county, "all")) {
