@@ -27,7 +27,7 @@ public class ChengjiaoJob extends QuartzJobBean {
             SchedulerContext skedCtx = context.getScheduler().getContext();
             ChengjiaoService service = (ChengjiaoService) skedCtx.get("cjService");
             logger.error(new DateTime().toString("yyyy-MM-dd HH:mm:ss") + " 开始任务执行！");
-            service.doSpider("all");
+            service.spiderDay("all");
 
             ErshoufangService ershoufagService = (ErshoufangService) skedCtx.get("ershoufagService");
             ershoufagService.doSpider("all");

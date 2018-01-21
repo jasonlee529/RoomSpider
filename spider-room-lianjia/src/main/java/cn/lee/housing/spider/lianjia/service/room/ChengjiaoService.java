@@ -12,6 +12,7 @@ import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
 import cn.lee.housing.spider.lianjia.repository.room.ChengjiaoDao;
 import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.pipeline.ChengjiaoPipeline;
+import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoMoreProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessorFactory;
 import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;
@@ -51,26 +52,11 @@ public class ChengjiaoService {
         return cj == null || cj.isReCrawl();
     }
 
-    /**
-     * 爬取
-     *
-     * @param area
-     * @return
-     */
-    public Map doSpider(String area) {
+    public Map spiderDay(String area) {
         Map result = new HashMap();
         boolean isSuccess = true;
         try {
-            HttpClientDownloader downloader = new HttpClientDownloader();
-            downloader.setProxyProvider(proxyProvider);
-            ChengjiaoProcessor processor = factory.getObject(area);
-            Spider spider = MySpider.create(processor)
-                    .setScheduler(new PriorityScheduler())
-                    .addPipeline(pipeline)
-                    .addPipeline(new ConsolePipeline())
-                    .addUrl(processor.getStartURL());
-            spider.setDownloader(downloader);
-            spider.thread(10).start();//启动爬虫
+            doSpider(factory.getObject(area));
         } catch (Exception e) {
             isSuccess = false;
             e.printStackTrace();
@@ -79,6 +65,41 @@ public class ChengjiaoService {
 
         result.put("success", isSuccess);
         return result;
+    }
+
+    public Map spiderAll() {
+        Map result = new HashMap();
+        boolean isSuccess = true;
+        try {
+            doSpider(new ChengjiaoMoreProcessor());
+        } catch (Exception e) {
+            isSuccess = false;
+            e.printStackTrace();
+            result.put("desc", e.getMessage());
+        }
+
+        result.put("success", isSuccess);
+        return result;
+    }
+
+
+    /**
+     * 爬取
+     *
+     * @param processor
+     * @return
+     */
+    private void doSpider(ChengjiaoProcessor processor) {
+        HttpClientDownloader downloader = new HttpClientDownloader();
+        downloader.setProxyProvider(proxyProvider);
+        Spider spider = MySpider.create(processor)
+                .setScheduler(new PriorityScheduler())
+                .addPipeline(pipeline)
+                .addPipeline(new ConsolePipeline())
+                .addUrl(processor.getStartURL());
+        spider.setDownloader(downloader);
+        spider.thread(10).start();//启动爬虫
+
     }
 
 

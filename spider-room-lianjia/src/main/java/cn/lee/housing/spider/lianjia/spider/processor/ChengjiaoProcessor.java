@@ -18,7 +18,6 @@ import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
-import us.codecraft.webmagic.selector.Selectable;
 
 import org.springframework.stereotype.Service;
 
@@ -78,49 +77,7 @@ public class ChengjiaoProcessor implements PageProcessor {
         } else {
             //非详情页
             processListItems(page);
-            processAreaItems(page);
-            processListMoreItems(page);
-//            processSortItems(page);
             processPagerItems(page);
-        }
-    }
-
-    /**
-     * 区域筛选条件
-     *
-     * @param page
-     */
-    private void processAreaItems(Page page) {
-        List<Selectable> areaNodes = page.getHtml().xpath("//div[@class=position]//div//a").nodes();
-        for (Selectable node : areaNodes) {
-            String url = node.links().get();
-            page.addTargetRequest(url);
-        }
-    }
-
-    /**
-     * 更多筛选条件
-     *
-     * @param page
-     */
-    private void processListMoreItems(Page page) {
-        List<Selectable> areaNodes = page.getHtml().xpath("//div[@class=list-more]//a").nodes();
-        for (Selectable node : areaNodes) {
-            String url = node.links().get();
-            page.addTargetRequest(url);
-        }
-    }
-
-    /**
-     * 排序字段
-     *
-     * @param page
-     */
-    private void processSortItems(Page page) {
-        List<Selectable> areaNodes = page.getHtml().xpath("//div[@class=orderTag]//li//a").nodes();
-        for (Selectable node : areaNodes) {
-            String url = node.links().get();
-            page.addTargetRequest(url);
         }
     }
 
@@ -129,7 +86,7 @@ public class ChengjiaoProcessor implements PageProcessor {
      *
      * @param page
      */
-    private void processListItems(Page page) {
+    protected void processListItems(Page page) {
         List<String> urls = page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all();
         for (String str : urls) {
             String roomId = parseRoomId(str);
@@ -141,11 +98,11 @@ public class ChengjiaoProcessor implements PageProcessor {
         }
     }
 
-    private boolean isDetailPage(Page page) {
+    protected boolean isDetailPage(Page page) {
         return StringUtils.endsWith(page.getUrl().get(), "html");
     }
 
-    private void processPagerItems(Page page) {
+    protected void processPagerItems(Page page) {
         try {
             //总共多少页的链接
             int total = Integer.parseInt(StringUtils.trim(page.getHtml().xpath("//div[@class=resultDes]//div[@class=total]").xpath("//span/text()").get()));
@@ -163,7 +120,7 @@ public class ChengjiaoProcessor implements PageProcessor {
         }
     }
 
-    private void processDetail(Page page) {
+    protected void processDetail(Page page) {
         Html html = page.getHtml();
         String fwId = parseRoomId(page.getUrl().get());
         String fwId2 = html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[1]/text()").get();

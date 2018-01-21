@@ -28,8 +28,18 @@ public class ChengjiaoController {
      */
     @RequestMapping(value = "{area}")
     public Map area(@PathVariable String area) {
-        return cJService.doSpider(area);
+        return cJService.spiderDay(area);
     }
+    /**
+     * 深度爬虫
+     *
+     * @return
+     */
+    @RequestMapping(value = "more")
+    public Map area() {
+        return cJService.spiderAll();
+    }
+
 
     /**
      * 重新爬取所有的需要重爬取的数据

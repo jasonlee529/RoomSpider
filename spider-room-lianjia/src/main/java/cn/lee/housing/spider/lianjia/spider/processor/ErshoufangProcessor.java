@@ -44,26 +44,18 @@ public class ErshoufangProcessor implements PageProcessor {
         } else {
             //非详情页
             processListItems(page);
-            processAreaItems(page);
-//            processSortItems(page);
             processPageItems(page);
         }
     }
 
-    private void processSortItems(Page page) {
-        List<Selectable> areaNodes = page.getHtml().xpath("//div[@class=orderTag]//li//a").nodes();
-        for (Selectable node : areaNodes) {
-            String url = node.links().get();
-            page.addTargetRequest(url);
-        }
-    }
+
 
     /**
      * 处理页码
      *
      * @param page
      */
-    private void processPageItems(Page page) {
+    protected void processPageItems(Page page) {
         if (isPageOne(page)) {
             //是否第一页,添加分页爬取链接
             int total = Integer.parseInt(StringUtils.trim(page.getHtml().xpath("//div[@class=resultDes]//h2[@class=total]").xpath("//span/text()").get()));
@@ -79,25 +71,14 @@ public class ErshoufangProcessor implements PageProcessor {
         }
     }
 
-    /**
-     * 处理小区
-     *
-     * @param page
-     */
-    private void processAreaItems(Page page) {
-        List<Selectable> areaNodes = page.getHtml().xpath("//div[@class=position]//div//a").nodes();
-        for (Selectable node : areaNodes) {
-            String url = node.links().get();
-            page.addTargetRequest(url);
-        }
-    }
+
 
     /**
      * 处理分页数据
      *
      * @param page
      */
-    private void processListItems(Page page) {
+    protected void processListItems(Page page) {
         List<Selectable> nodes = page.getHtml().xpath("//ul[@class=sellListContent]/li").nodes();
         for (Selectable node : nodes) {
             String url = node.xpath("//a[@class=img]").links().get();
@@ -124,7 +105,7 @@ public class ErshoufangProcessor implements PageProcessor {
      *
      * @param page
      */
-    private void processDetail(Page page) {
+    protected void processDetail(Page page) {
         Html html = page.getHtml();
         String fwId = parseRoomId(page.getUrl().get());
         String fwId2 = html.xpath("//div[@class=overview]//div[@class=houseRecord]//span[@class=info]/text()").get();
@@ -183,7 +164,7 @@ public class ErshoufangProcessor implements PageProcessor {
         return !pageOnePattern.matcher(page.getUrl().get()).find();
     }
 
-    private boolean isDetailPage(Page page) {
+    protected boolean isDetailPage(Page page) {
         return StringUtils.endsWith(page.getUrl().get(), "html");
     }
 
