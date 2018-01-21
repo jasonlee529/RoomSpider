@@ -9,7 +9,7 @@ import cn.lee.housing.spider.lianjia.repository.room.BaojiaDao;
 import cn.lee.housing.spider.lianjia.repository.room.ErshoufangDao;
 import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.pipeline.ErshoufangPipeline;
-import cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessorFactory;
+import cn.lee.housing.spider.lianjia.spider.processor.ErshoufangMoreProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.ErshoufangProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.ErshoufangProcessorFactory;
 import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;
@@ -40,25 +40,12 @@ public class ErshoufangService {
     @Autowired
     private ErshoufangProcessorFactory factory;
 
-    /**
-     * 爬取
-     *
-     * @param area
-     * @return
-     */
-    public Map doSpider(String area) {
+    public Map spiderDay(String area) {
         Map result = new HashMap();
         boolean isSuccess = true;
         try {
-            HttpClientDownloader downloader = new HttpClientDownloader();
-            downloader.setProxyProvider(proxyProvider);
-            Spider spider = MySpider.create(factory.getProcessor2(area))
-                    .setScheduler(new PriorityScheduler())
-                    .addPipeline(pipeline)
-                    .addPipeline(new ConsolePipeline())
-                    .addUrl(ErshoufangProcessor.START_URL + ChengjiaoProcessorFactory.convertName(area));
-            spider.setDownloader(downloader);
-            spider.thread(10).start();//启动爬虫
+            doSpider(factory.getProcessor2(area));
+
         } catch (Exception e) {
             isSuccess = false;
             e.printStackTrace();
@@ -67,6 +54,37 @@ public class ErshoufangService {
 
         result.put("success", isSuccess);
         return result;
+    }
+    public Map spiderDepth() {
+        Map result = new HashMap();
+        boolean isSuccess = true;
+        try {
+            doSpider(new ErshoufangMoreProcessor());
+        } catch (Exception e) {
+            isSuccess = false;
+            e.printStackTrace();
+            result.put("desc", e.getMessage());
+        }
+
+        result.put("success", isSuccess);
+        return result;
+    }
+
+    /**
+     * 爬取
+     *
+     * @return
+     */
+    public void doSpider(ErshoufangProcessor processor) {
+        HttpClientDownloader downloader = new HttpClientDownloader();
+        downloader.setProxyProvider(proxyProvider);
+        Spider spider = MySpider.create(processor)
+                .setScheduler(new PriorityScheduler())
+                .addPipeline(pipeline)
+                .addPipeline(new ConsolePipeline())
+                .addUrl(processor.getStartUrl());
+        spider.setDownloader(downloader);
+        spider.thread(10).start();//启动爬虫
     }
 
     public boolean isRecrawl(String roomId) {

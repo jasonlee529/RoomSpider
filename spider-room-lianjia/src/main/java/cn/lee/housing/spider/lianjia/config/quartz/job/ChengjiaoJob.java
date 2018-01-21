@@ -30,7 +30,7 @@ public class ChengjiaoJob extends QuartzJobBean {
             service.spiderDay("all");
 
             ErshoufangService ershoufagService = (ErshoufangService) skedCtx.get("ershoufagService");
-            ershoufagService.doSpider("all");
+            ershoufagService.spiderDay("all");
         } catch (SchedulerException e) {
             e.printStackTrace();
         }

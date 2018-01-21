@@ -22,8 +22,12 @@ public class ErshoufangController {
 
     @RequestMapping(value = "{area}")
     public Map area(@PathVariable String area) {
-        return service.doSpider(area);
+        return service.spiderDay(area);
     }
 
 
+    @RequestMapping(value = "more")
+    public Map area() {
+        return service.spiderDepth();
+    }
 }

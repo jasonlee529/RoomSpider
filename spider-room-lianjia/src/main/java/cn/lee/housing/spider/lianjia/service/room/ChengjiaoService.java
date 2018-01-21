@@ -67,7 +67,7 @@ public class ChengjiaoService {
         return result;
     }
 
-    public Map spiderAll() {
+    public Map spiderDepth() {
         Map result = new HashMap();
         boolean isSuccess = true;
         try {

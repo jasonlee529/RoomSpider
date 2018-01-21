@@ -209,4 +209,7 @@ public class ErshoufangProcessor implements PageProcessor {
         return StringUtils.substringBefore(in, "二手房");
     }
 
+    public String getStartUrl() {
+        return START_URL;
+    }
 }

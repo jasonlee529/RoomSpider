@@ -37,7 +37,7 @@ public class ChengjiaoController {
      */
     @RequestMapping(value = "more")
     public Map area() {
-        return cJService.spiderAll();
+        return cJService.spiderDepth();
     }
 
 
