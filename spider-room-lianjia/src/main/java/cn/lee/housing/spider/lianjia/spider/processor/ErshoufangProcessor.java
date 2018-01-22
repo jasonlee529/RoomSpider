@@ -88,7 +88,7 @@ public class ErshoufangProcessor implements PageProcessor {
                 bj.setTitle(node.xpath("//div[@class=title]/a/text()").get());
                 bj.setPrice(node.xpath("//div[@class=totalPrice]/span/text()").get());
                 bj.setInfo(node.xpath("//div[@class=houseInfo]/text()").get());
-                bj.setAvgPrice(numberPattern.matcher(node.$("div.unitPrice", "data-price").get()).group());
+                bj.setAvgPrice(node.$("div.unitPrice", "data-price").get());
                 page.putField("baojia", bj);
                 logger.info("{} baojia : ", bj);
                 if (service.isRecrawl(roomId)) {
