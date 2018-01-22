@@ -68,6 +68,7 @@ public class ChengjiaoProcessor implements PageProcessor {
     }
 
     private final static String ROOM_ID = "[1-9]\\d+";
+    private final Pattern pageOnePattern = Pattern.compile("/pg\\d+");
 
     @Override
     public void process(Page page) {
@@ -103,21 +104,29 @@ public class ChengjiaoProcessor implements PageProcessor {
     }
 
     protected void processPagerItems(Page page) {
-        try {
-            //总共多少页的链接
-            int total = Integer.parseInt(StringUtils.trim(page.getHtml().xpath("//div[@class=resultDes]//div[@class=total]").xpath("//span/text()").get()));
-            int pageSize = 30;
-            int maxPageNo = total / pageSize + 1;
-            List<String> pageList = Lists.newArrayList();
-            total = total > 100 ? 100 : total;
-            for (int i = 1; i <= total; i++) {
-                pageList.add(getStartURL() + "/pg" + i);
-                page.addTargetRequest(new Request(getStartURL() + "/pg" + i).setPriority(-i));
+        if (isPageOne(page)) {
+            try {
+                //总共多少页的链接
+                int total = Integer.parseInt(StringUtils.trim(page.getHtml().xpath("//div[@class=resultDes]//div[@class=total]").xpath("//span/text()").get()));
+                int pageSize = 30;
+                int maxPageNo = total / pageSize + 1;
+                List<String> pageList = Lists.newArrayList();
+                total = total > 100 ? 100 : total;
+                for (int i = 1; i <= total; i++) {
+                    pageList.add(getStartURL() + "/pg" + i);
+                    page.addTargetRequest(new Request(getStartURL() + "/pg" + i).setPriority(-i));
+                }
+                logger.error("total page : " + maxPageNo + " total Records : " + total);
+            } catch (Exception e) {
+                throw new PageProcessException("代理爬取页面错误，需认证，重新爬取！");
             }
-            logger.error("total page : " + maxPageNo + " total Records : " + total);
-        } catch (Exception e) {
-            throw new PageProcessException("代理爬取页面错误，需认证，重新爬取！");
+        } else {
+
         }
+    }
+
+    private boolean isPageOne(Page page) {
+        return !pageOnePattern.matcher(page.getUrl().get()).find();
     }
 
     protected void processDetail(Page page) {
