@@ -11,9 +11,7 @@
 angular
   .module('roomAdminApp', [
     'ngAnimate',
-    'ngAria',
     'ngCookies',
-    'ngMessages',
     'ngResource',
     'ngRoute',
     'ngSanitize',
