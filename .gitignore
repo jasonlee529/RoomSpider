@@ -17,6 +17,9 @@ bin/
 **/target
 # Compiled class file
 *.class
+**/node_modules
+**/bower_components
+
 
 # Log file
 *.log
