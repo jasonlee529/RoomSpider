@@ -1,4 +1,4 @@
-{
+t status{
   "directory": "bower_components",
 	"scripts": {
 		"postinstall": "gulp wiredep"
