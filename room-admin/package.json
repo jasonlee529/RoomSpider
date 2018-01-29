@@ -12,5 +12,9 @@
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.8",
     "wiredep": "^4.0.0"
+  },
+  "dependencies": {
+    "del": "^3.0.0",
+    "run-sequence": "^2.2.1"
   }
 }
