@@ -8,5 +8,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 /**
  * Created by jason on 18-2-1.
  */
-public interface DayInfoDao extends PagingAndSortingRepository<DayInfoDao, Long>, JpaSpecificationExecutor<DayInfo> {
+public interface DayInfoDao extends PagingAndSortingRepository<DayInfo, Long>, JpaSpecificationExecutor<DayInfo> {
 }
