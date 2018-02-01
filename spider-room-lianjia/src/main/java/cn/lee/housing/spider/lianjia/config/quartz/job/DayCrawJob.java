@@ -15,7 +15,7 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
 /**
  * Created by jason on 17-9-7.
  */
-public class ChengjiaoJob extends QuartzJobBean {
+public class DayCrawJob extends QuartzJobBean {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 

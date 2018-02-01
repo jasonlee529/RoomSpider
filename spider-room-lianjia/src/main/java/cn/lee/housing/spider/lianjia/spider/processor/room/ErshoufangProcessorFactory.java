@@ -1,4 +1,4 @@
-package cn.lee.housing.spider.lianjia.spider.processor;
+package cn.lee.housing.spider.lianjia.spider.processor.room;
 
 import cn.lee.housing.spider.lianjia.service.room.ErshoufangService;
 
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static cn.lee.housing.spider.lianjia.spider.processor.ChengjiaoProcessorFactory.convertName;
+import static cn.lee.housing.spider.lianjia.spider.processor.room.ChengjiaoProcessorFactory.convertName;
 
 @Service
 public class ErshoufangProcessorFactory implements InitializingBean {

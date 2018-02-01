@@ -32,7 +32,7 @@
     <!-- 处理类 -->
     <bean name="myJobTask"
           class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
-        <property name="jobClass" value="cn.lee.housing.spider.lianjia.config.quartz.job.ChengjiaoJob"/>
+        <property name="jobClass" value="cn.lee.housing.spider.lianjia.config.quartz.job.DayCrawJob"/>
     </bean>
 
 </beans>

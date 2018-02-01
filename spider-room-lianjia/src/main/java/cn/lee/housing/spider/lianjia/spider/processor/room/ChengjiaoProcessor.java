@@ -1,4 +1,4 @@
-package cn.lee.housing.spider.lianjia.spider.processor;
+package cn.lee.housing.spider.lianjia.spider.processor.room;
 
 import java.util.List;
 import java.util.regex.Matcher;

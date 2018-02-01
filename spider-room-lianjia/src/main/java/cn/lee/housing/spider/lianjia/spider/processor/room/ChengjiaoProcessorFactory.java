@@ -1,4 +1,4 @@
-package cn.lee.housing.spider.lianjia.spider.processor;
+package cn.lee.housing.spider.lianjia.spider.processor.room;
 
 import cn.lee.housing.spider.lianjia.service.room.ChengjiaoService;
 import com.alibaba.druid.util.StringUtils;
