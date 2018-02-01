@@ -11,7 +11,7 @@ import cn.lee.housing.spider.lianjia.model.IdEntity;
  */
 @Entity
 @Table(name = "wangqian_agents")
-public class Agents extends IdEntity {
+public class MonthAgent extends IdEntity {
 
     private String month;
     private String seq;
