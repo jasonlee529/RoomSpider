@@ -10,13 +10,13 @@ import cn.lee.housing.spider.lianjia.model.IdEntity;
  * Created by jason on 18-1-29.
  */
 @Entity
-@Table(name = "wangqian_county")
+@Table(name = "wangqian_month_county")
 public class MonthCounty extends IdEntity {
 
     private String month;
-    private String  county;
-    private String dealAmt;
-    private String totalArea;
+    private String county;//区县
+    private String dealAmt;//成交套数
+    private String totalArea;//成交面积
 
     public String getMonth() {
         return month;

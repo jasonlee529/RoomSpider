@@ -10,15 +10,15 @@ import cn.lee.housing.spider.lianjia.model.IdEntity;
  * Created by jason on 18-1-29.
  */
 @Entity
-@Table(name = "wangqian_agents")
+@Table(name = "wangqian_month_agents")
 public class MonthAgent extends IdEntity {
 
     private String month;
-    private String seq;
-    private String agent;
-    private String uploadAmt;
-    private String dealAmt;
-    private String refundAmt;
+    private String seq; //排序
+    private String agent; // 机构
+    private String newAmt; //发布套数
+    private String dealAmt;//成交套数
+    private String refundAmt;//退房套数
 
     public String getMonth() {
         return month;
@@ -44,12 +44,12 @@ public class MonthAgent extends IdEntity {
         this.agent = agent;
     }
 
-    public String getUploadAmt() {
-        return uploadAmt;
+    public String getNewAmt() {
+        return newAmt;
     }
 
-    public void setUploadAmt(String uploadAmt) {
-        this.uploadAmt = uploadAmt;
+    public void setNewAmt(String newAmt) {
+        this.newAmt = newAmt;
     }
 
     public String getDealAmt() {
