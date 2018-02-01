@@ -8,7 +8,7 @@ import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
 import cn.lee.housing.spider.lianjia.repository.room.BaojiaDao;
 import cn.lee.housing.spider.lianjia.repository.room.ErshoufangDao;
 import cn.lee.housing.spider.lianjia.spider.MySpider;
-import cn.lee.housing.spider.lianjia.spider.pipeline.ErshoufangPipeline;
+import cn.lee.housing.spider.lianjia.spider.pipeline.room.ErshoufangPipeline;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ErshoufangProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ErshoufangProcessorFactory;
 import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;

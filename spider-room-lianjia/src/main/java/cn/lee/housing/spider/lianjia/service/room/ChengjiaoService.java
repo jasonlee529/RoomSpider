@@ -11,7 +11,7 @@ import javax.persistence.criteria.Root;
 import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
 import cn.lee.housing.spider.lianjia.repository.room.ChengjiaoDao;
 import cn.lee.housing.spider.lianjia.spider.MySpider;
-import cn.lee.housing.spider.lianjia.spider.pipeline.ChengjiaoPipeline;
+import cn.lee.housing.spider.lianjia.spider.pipeline.room.ChengjiaoPipeline;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ChengjiaoProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ChengjiaoProcessorFactory;
 import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;

@@ -1,7 +1,18 @@
 package cn.lee.housing.spider.lianjia.service.wangqian;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import cn.lee.housing.spider.lianjia.model.wangqian.*;
 import cn.lee.housing.spider.lianjia.repository.wangqian.*;
+import cn.lee.housing.spider.lianjia.spider.MySpider;
+import cn.lee.housing.spider.lianjia.spider.pipeline.wangqian.WangqianPipeline;
+import cn.lee.housing.spider.lianjia.spider.processor.wangqian.WangqianProcessor;
+import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;
+import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.downloader.HttpClientDownloader;
+import us.codecraft.webmagic.pipeline.ConsolePipeline;
+import us.codecraft.webmagic.scheduler.PriorityScheduler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +22,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class WangqianService {
+
+    @Autowired
+    private XdailiProxyProvider proxyProvider;
+
+    @Autowired
+    private WangqianPipeline wangqianPipeline;
     @Autowired
     private DayInfoDao dayInfoDao;
     @Autowired
@@ -42,4 +59,26 @@ public class WangqianService {
         monthInfoDao.save(obj);
     }
 
+    public Map startCrawl() {
+        Map result = new HashMap();
+        boolean isSuccess = true;
+        try {
+            HttpClientDownloader downloader = new HttpClientDownloader();
+            downloader.setProxyProvider(proxyProvider);
+            Spider spider = MySpider.create(new WangqianProcessor())
+                    .setScheduler(new PriorityScheduler())
+                    .addPipeline(wangqianPipeline)
+                    .addPipeline(new ConsolePipeline())
+                    .addUrl("http://210.75.213.188/shh/portal/bjjs/index.aspx");
+            spider.setDownloader(downloader);
+            spider.thread(10).start();//启动爬虫
+        } catch (Exception e) {
+            isSuccess = false;
+            e.printStackTrace();
+            result.put("desc", e.getMessage());
+        }
+
+        result.put("success", isSuccess);
+        return result;
+    }
 }

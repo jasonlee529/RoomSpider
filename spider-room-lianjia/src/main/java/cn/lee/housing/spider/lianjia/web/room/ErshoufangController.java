@@ -1,4 +1,4 @@
-package cn.lee.housing.spider.lianjia.web.ershoufang;
+package cn.lee.housing.spider.lianjia.web.room;
 
 import java.util.Map;
 
