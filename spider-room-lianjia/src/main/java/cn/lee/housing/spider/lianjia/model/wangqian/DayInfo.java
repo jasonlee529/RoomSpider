@@ -3,13 +3,15 @@ package cn.lee.housing.spider.lianjia.model.wangqian;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import cn.lee.housing.spider.lianjia.model.IdEntity;
+
 /**
  * 每日核验房源和成交房源数
  * Created by jason on 18-2-1.
  */
 @Entity
 @Table(name = "wangqian_day_info")
-public class DayInfo {
+public class DayInfo extends IdEntity{
     private String date;
     private String verifiedAmt; //核验房源数
     private String verifiedAreas; // 核验面积

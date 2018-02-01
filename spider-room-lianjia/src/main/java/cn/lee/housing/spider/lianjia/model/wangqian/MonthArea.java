@@ -3,12 +3,14 @@ package cn.lee.housing.spider.lianjia.model.wangqian;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import cn.lee.housing.spider.lianjia.model.IdEntity;
+
 /**
  * Created by jason on 18-2-1.
  */
 @Entity
 @Table(name="wangqian_month_area")
-public class MonthArea {
+public class MonthArea extends IdEntity {
 
     private String month;   //月份
     private String areaName; //面积分段
