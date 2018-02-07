@@ -102,15 +102,15 @@ public class WangqianProcessor implements PageProcessor {
     }
 
     private String parseMonth(Page page) {
-        return  page.getHtml().xpath("//div[@class=Title1000]//div[2]/text()").get();
+        return page.getHtml().xpath("//div[@class=Title1000]//div[2]/text()").get();
     }
 
     private DayInfo parseDayInfo(Page page) {
         //day info
         DayInfo dayInfo = new DayInfo();
-        List<Selectable> tables = page.getHtml().$("table.tjInfo").nodes();
+        List<Selectable> tables = page.getHtml().xpath("//table[@class=tjInfo]").nodes();
         Selectable verified = tables.get(0);
-        dayInfo.setDate(verified.$("thead tr").get().replace("核验房源", ""));
+        dayInfo.setDate(verified.xpath("//thead/tr/text()").get().replace("核验房源", ""));
         dayInfo.setVerifiedAmt(verified.$("tbody tr[0] td[1]").get());
         dayInfo.setVerifiedAreas(verified.$("tbody tr[1] td[1]").get());
         dayInfo.setVerifiedResAmt(verified.$("tbody tr[2] td[1]").get());
