@@ -1,5 +1,6 @@
 package cn.lee.housing.spider.lianjia.web.wangqian;
 
+import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,7 +23,7 @@ public class WangqianController {
     @RequestMapping
     public Map wangqian(HttpServletRequest request) {
         wangqianService.startCrawl();
-        return null;
+        return new HashMap();
     }
 
 }

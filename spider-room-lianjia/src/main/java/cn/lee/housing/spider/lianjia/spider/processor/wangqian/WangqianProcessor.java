@@ -102,7 +102,7 @@ public class WangqianProcessor implements PageProcessor {
     }
 
     private String parseMonth(Page page) {
-        return page.getHtml().$("div.toolbar01").get();
+        return  page.getHtml().xpath("//div[@class=Title1000]//div[2]/text()").get();
     }
 
     private DayInfo parseDayInfo(Page page) {
