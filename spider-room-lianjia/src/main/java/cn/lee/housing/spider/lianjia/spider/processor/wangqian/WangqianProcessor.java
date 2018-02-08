@@ -110,16 +110,16 @@ public class WangqianProcessor implements PageProcessor {
         DayInfo dayInfo = new DayInfo();
         List<Selectable> tables = page.getHtml().xpath("//table[@class=tjInfo]").nodes();
         Selectable verified = tables.get(0);
-        dayInfo.setDate(verified.xpath("//thead/tr/text()").get().replace("核验房源", ""));
-        dayInfo.setVerifiedAmt(verified.$("tbody tr[0] td[1]").get());
-        dayInfo.setVerifiedAreas(verified.$("tbody tr[1] td[1]").get());
-        dayInfo.setVerifiedResAmt(verified.$("tbody tr[2] td[1]").get());
-        dayInfo.setVerifiedResAreas(verified.$("tbody tr[3] td[1]").get());
-        Selectable deal = tables.get(0);
-        dayInfo.setDealAmt(deal.$("tbody tr[0] td[1]").get());
-        dayInfo.setDealAreas(deal.$("tbody tr[1] td[1]").get());
-        dayInfo.setDealResAmt(deal.$("tbody tr[2] td[1]").get());
-        dayInfo.setDealResAreas(deal.$("tbody tr[3] td[1]").get());
+        dayInfo.setDate(verified.xpath("//tr/th/text()").get().replace("核验房源", ""));
+        dayInfo.setVerifiedAmt(verified.xpath("//tr[1]/td/text()").get());
+        dayInfo.setVerifiedAreas(verified.xpath("//tr[2]/td/text()").get());
+        dayInfo.setVerifiedResAmt(verified.xpath("//tr[3]/td/text()").get());
+        dayInfo.setVerifiedResAreas(verified.xpath("//tr[4]/td/text()").get());
+        Selectable deal = tables.get(2);
+        dayInfo.setDealAmt(deal.xpath("//tr[1]/td/text()").get());
+        dayInfo.setDealAreas(deal.xpath("//tr[2]/td/text()").get());
+        dayInfo.setDealResAmt(deal.xpath("//tr[3]/td/text()").get());
+        dayInfo.setDealResAreas(deal.xpath("//tr[4]/td/text()").get());
         return dayInfo;
     }
 
