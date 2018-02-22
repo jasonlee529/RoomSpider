@@ -49,7 +49,6 @@ public class ErshoufangProcessor implements PageProcessor {
     }
 
 
-
     /**
      * 处理页码
      *
@@ -70,7 +69,6 @@ public class ErshoufangProcessor implements PageProcessor {
             //
         }
     }
-
 
 
     /**
@@ -143,14 +141,14 @@ public class ErshoufangProcessor implements PageProcessor {
             entity.setBuildYear(html.xpath("//div[@class=houseInfo]//div[@class=subInfo]/text()").get());
             //jiaoyi
 
-            entity.setListDate(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[1]/text()").get());
-            entity.setTradingRight(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[2]/text()").get());
-            entity.setLastTradeDate(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[3]/text()").get());
-            entity.setAreaUse(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[4]/text()").get());
-            entity.setRoomYear(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[5]/text()").get());
-            entity.setOwnerRight(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[6]/text()").get());
+            entity.setListDate(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[1]/span[2]/tidyText()").get());
+            entity.setTradingRight(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[2]//span[2]/tidyText()").get());
+            entity.setLastTradeDate(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[3]//span[2]/tidyText()").get());
+            entity.setAreaUse(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[4]//span[2]/tidyText()").get());
+            entity.setRoomYear(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[5]//span[2]/tidyText()").get());
+            entity.setOwnerRight(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[6]//span[2]/tidyText()").get());
             entity.setDiya(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[7]/span[2]/text()").get());
-            entity.setRoomDeeed(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[8]/text()").get());
+            entity.setRoomDeeed(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[8]//span[2]/tidyText()").get());
 
             // 具体爬去字段
             page.putField("ershoufang", entity);
