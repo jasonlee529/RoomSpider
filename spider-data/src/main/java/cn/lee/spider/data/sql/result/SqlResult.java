@@ -1,4 +1,4 @@
-package cn.lee.data.sql.result;
+package cn.lee.spider.data.sql.result;
 
 import java.util.ArrayList;
 import java.util.List;

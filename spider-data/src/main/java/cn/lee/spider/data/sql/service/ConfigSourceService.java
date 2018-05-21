@@ -1,13 +1,13 @@
-package cn.lee.data.sql.service;
+package cn.lee.spider.data.sql.service;
 
 import java.util.List;
 import java.util.Map;
 
-import cn.lee.data.sql.config.ConfigSource;
-import cn.lee.data.sql.repository.ConfigSourceDao;
-import cn.lee.data.sql.result.SqlResult;
-import cn.lee.housing.utils.template.FreeMarkerUtils;
 
+import cn.lee.spider.data.sql.config.ConfigSource;
+import cn.lee.spider.data.sql.repository.ConfigSourceDao;
+import cn.lee.spider.data.sql.result.SqlResult;
+import cn.lee.utils.template.FreeMarkerUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;

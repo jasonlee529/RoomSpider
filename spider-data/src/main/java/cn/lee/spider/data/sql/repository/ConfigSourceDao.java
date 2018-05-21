@@ -1,7 +1,6 @@
-package cn.lee.data.sql.repository;
+package cn.lee.spider.data.sql.repository;
 
-import cn.lee.data.sql.config.ConfigSource;
-
+import cn.lee.spider.data.sql.config.ConfigSource;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 

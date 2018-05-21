@@ -1,4 +1,4 @@
-package cn.lee.data.sql.web;
+package cn.lee.spider.data.sql.web;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,8 +7,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.lee.data.sql.result.SqlResult;
-import cn.lee.data.sql.service.ConfigSourceService;
+import cn.lee.spider.data.sql.result.SqlResult;
+import cn.lee.spider.data.sql.service.ConfigSourceService;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -70,7 +70,7 @@ public class DataFileDownloadController {
         }});
     }};
 
-    @RequestMapping(value = "sql/{id}")
+    @RequestMapping(value = "cn/lee/spider/data/sql/{id}")
     public void one(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) {
         SqlResult result = new SqlResult();
         try {

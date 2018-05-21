@@ -1,9 +1,9 @@
-package cn.lee.data.sql.config;
+package cn.lee.spider.data.sql.config;
+
+import cn.lee.utils.jpa.IdEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-
-import cn.lee.housing.spider.lianjia.model.IdEntity;
 
 /**
  * Created by jason on 17-12-29.

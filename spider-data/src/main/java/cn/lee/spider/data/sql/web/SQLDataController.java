@@ -1,16 +1,15 @@
-package cn.lee.data.sql.web;
+package cn.lee.spider.data.sql.web;
 
-import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
-
-import cn.lee.data.sql.result.SqlResult;
-import cn.lee.data.sql.service.ConfigSourceService;
-
+import cn.lee.spider.data.sql.result.SqlResult;
+import cn.lee.spider.data.sql.service.ConfigSourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.WebUtils;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
  * Created by jason on 17-12-29.
