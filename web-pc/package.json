@@ -6,6 +6,7 @@
   "author": "jason",
   "license": "GPL",
   "dependencies": {
+    "angular": "^1.7.0",
     "gentelella": "^1.4.0"
   }
 }
