@@ -1,0 +1,11 @@
+{
+  "name": "web-pc",
+  "version": "1.0.0",
+  "description": "前端页面，适配PC端浏览器",
+  "main": "index.js",
+  "author": "jason",
+  "license": "GPL",
+  "dependencies": {
+    "gentelella": "^1.4.0"
+  }
+}
