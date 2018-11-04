@@ -18,6 +18,7 @@
 
     <modules>
         <module>spider-room-lianjia</module>
+        <module>spider-data</module>
         <module>wx-pub</module>
     </modules>
 
