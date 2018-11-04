@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $.get('http://116.196.86.186:18080/data/sql/1', function (res) {
+  $.get('http://116.196.86.186:18081/data/sql/1', function (res) {
     var d = res.result[0];
     var data = [{clazz: 'user', title: '总成交量', value: d.total_deal},
       {clazz: 'clock-o', title: '最新成交时间', value: d.last_deal_date, subTitle: '最早成交时间', value2: d.min_deal_date},
@@ -15,7 +15,7 @@ $(document).ready(function () {
   });
 
   //最近成交趋势
-  $.get('http://116.196.86.186:18080/data/sql/6', function (res) {
+  $.get('http://116.196.86.186:18081/data/sql/6', function (res) {
     var days = [], listAmount = [], dealAmount = [];
     res.result.reverse().forEach(function (n) {
       days.push(n.date);
@@ -100,7 +100,7 @@ $(document).ready(function () {
     echartDeal.setOption(option, true);
   });
   //最近挂牌趋势
-  $.get('http://116.196.86.186:18080/data/sql/7', function (res) {
+  $.get('http://116.196.86.186:18081/data/sql/7', function (res) {
     var days = [], list = [], deal = [];
     res.result.reverse().forEach(function (n) {
       days.push(n.date);
