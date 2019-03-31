@@ -7,6 +7,8 @@ const wiredep = require('wiredep').stream;
 const runSequence = require('run-sequence');
 var mainBowerFiles = require('gulp-main-bower-files');
 var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
+var rename = require('gulp-rename');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -60,16 +62,16 @@ gulp.task('html', ['styles', 'scripts'], () => {
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     .pipe($.if(/\.js$/, $.uglify({compress: {drop_console: true}})))
     .pipe($.if(/\.css$/, $.cssnano({safe: true, autoprefixer: false})))
-    .pipe($.if(/\.html$/, $.htmlmin({
-      collapseWhitespace: true,
-      minifyCSS: true,
-      minifyJS: {compress: {drop_console: true}},
-      processConditionalComments: true,
-      removeComments: true,
-      removeEmptyAttributes: true,
-      removeScriptTypeAttributes: true,
-      removeStyleLinkTypeAttributes: true
-    })))
+    // .pipe($.if(/\.html$/, $.htmlmin({
+    //   collapseWhitespace: true,
+    //   minifyCSS: true,
+    //   minifyJS: {compress: {drop_console: true}},
+    //   processConditionalComments: true,
+    //   removeComments: true,
+    //   removeEmptyAttributes: true,
+    //   removeScriptTypeAttributes: true,
+    //   removeStyleLinkTypeAttributes: true
+    // })))
     .pipe(gulp.dest('dist'));
 });
 
@@ -174,14 +176,30 @@ gulp.task('wiredep', () => {
     }))
     .pipe(gulp.dest('app'));
 });
+// 合并 vendor js
+gulp.task('vendor', function() {
+  gulp.src(['./bower_components/**/vendor/**.js'
+      ])
+      .pipe(concat('vendor.js'))
+      .pipe(gulp.dest('./dist/js'))
+      .pipe(rename('vendor.min.js'))
+     // .pipe(uglify())
+      .pipe(gulp.dest('./dist/js'));
+});
+
+gulp.task('bower',function(){
+  gulp.src(['./bower_components/**'
+      ])
+      .pipe(gulp.dest('./dist/bower_components/'));
+})
 
 gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras', 'scripts'], () => {
-  return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+  return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: false}));
 });
 
 gulp.task('default', () => {
   return new Promise(resolve => {
     dev = false;
-    runSequence(['clean', 'wiredep'], 'build', resolve);
+    runSequence(['clean','bower'], 'build', resolve);
   });
 });
