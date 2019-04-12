@@ -200,6 +200,6 @@ gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras', 'scripts'], () 
 gulp.task('default', () => {
   return new Promise(resolve => {
     dev = false;
-    runSequence(['clean','bower'], 'build', resolve);
+    runSequence(['clean','wiredep'], 'bower','build', resolve);
   });
 });
