@@ -1,9 +1,5 @@
 package cn.lee.housing.spider.lianjia.spider.processor.room;
 
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
 import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
 import cn.lee.housing.spider.lianjia.service.room.ChengjiaoService;
@@ -13,13 +9,16 @@ import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -107,16 +106,13 @@ public class ChengjiaoProcessor implements PageProcessor {
         if (isPageOne(page)) {
             try {
                 //总共多少页的链接
-                int total = Integer.parseInt(StringUtils.trim(page.getHtml().xpath("//div[@class=resultDes]//div[@class=total]").xpath("//span/text()").get()));
-                int pageSize = 30;
-                int maxPageNo = total / pageSize + 1;
-                List<String> pageList = Lists.newArrayList();
-                total = total > 100 ? 100 : total;
-                for (int i = 1; i <= total; i++) {
-                    pageList.add(getStartURL() + "/pg" + i);
-                    page.addTargetRequest(new Request(getStartURL() + "/pg" + i).setPriority(-i));
+                String pageTpl = page.getHtml().xpath("//div[@class=house-lst-page-box]").$("div", "page-url").get();
+                for (int i = 2; i <= 100; i++) {
+                    String pageIndex = StringUtils.replace(pageTpl,"{page}",i+"");
+                    page.addTargetRequest(new Request("https://bj.lianjia.com/"+pageIndex));
                 }
-                logger.error("total page : " + maxPageNo + " total Records : " + total);
+                page.addTargetRequests(page.getHtml().xpath("//div[@class=m-filter]//div[@class=list-more]//a").links().all(), -1);
+                logger.error("total request : " + page.getTargetRequests().size() );
             } catch (Exception e) {
                 throw new PageProcessException("代理爬取页面错误，需认证，重新爬取！");
             }
