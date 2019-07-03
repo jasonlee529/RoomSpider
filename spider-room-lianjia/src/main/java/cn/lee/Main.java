@@ -16,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 /**
  * Created by jason on 17/7/14.
  */
-@ImportResource(locations = {"classpath*:applicationContext.xml", "classpath*:applicationContext-*.xml"})
+@ImportResource(locations = { "classpath*:applicationContext-*.xml"})
 @Import({SchedulerConfig.class})
 @SpringBootApplication
 public class Main {

@@ -9,3 +9,16 @@ xdaili:
   order: 6e3d4d41727f454d983a7ef7fa206e5d
   url: forward.xdaili.cn
   port: 80
+spring:
+  aop:
+    proxy-target-class: true
+  jpa:
+    open-in-view: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      web-stat-filter:
+        enabled: true
+      stat-view-servlet:
+        enabled: true
+        allow: 0.0.0.0/8
