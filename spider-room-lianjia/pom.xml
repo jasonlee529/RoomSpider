@@ -113,6 +113,12 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.38</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.nutz/ssdb4j -->
+        <dependency>
+            <groupId>org.nutz</groupId>
+            <artifactId>ssdb4j</artifactId>
+            <version>9.4</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>

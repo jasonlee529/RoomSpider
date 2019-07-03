@@ -14,6 +14,7 @@ import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.pipeline.room.ChengjiaoPipeline;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ChengjiaoProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ChengjiaoProcessorFactory;
+import cn.lee.housing.spider.lianjia.spider.proxy.CustomeProxyProvider;
 import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;
 import org.apache.commons.lang3.StringUtils;
 import us.codecraft.webmagic.Spider;
@@ -38,7 +39,7 @@ public class ChengjiaoService {
     @Autowired
     private ChengjiaoProcessorFactory factory;
     @Autowired
-    private XdailiProxyProvider proxyProvider;
+    private CustomeProxyProvider proxyProvider;
 
     /**
      * 是否需要重新爬取，成交不存在或者有成交记录但需要重新爬的
