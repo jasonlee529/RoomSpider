@@ -1,22 +1,21 @@
 package cn.lee.housing.utils.template;
 
 
-import java.io.IOException;
-import java.io.StringReader;
-import java.io.Writer;
-import java.util.HashMap;
-import java.util.Map;
-
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import org.apache.logging.log4j.core.util.StringBuilderWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+
+import java.io.IOException;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by jason on 17-12-29.
@@ -72,7 +71,7 @@ public class FreeMarkerUtils implements ApplicationContextAware {
         Template tpl = null;
         try {
             tpl = configuration.getTemplate(templateLocation);
-            Writer writer = new StringBuilderWriter();
+            Writer writer = new StringWriter();
             tpl.process(model, writer);
             result = writer.toString();
         } catch (IOException e) {
@@ -88,7 +87,7 @@ public class FreeMarkerUtils implements ApplicationContextAware {
     public static String mergeTemplateFromString(String tplStr, Map<String, Object> model) {
         String result = "";
         Template tpl = null;
-        Writer writer = new StringBuilderWriter();
+        Writer writer = new StringWriter();
         try {
             tpl = new Template("", new StringReader(tplStr), configuration);
             tpl.process(model, writer);

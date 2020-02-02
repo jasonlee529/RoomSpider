@@ -1,10 +1,5 @@
 package cn.lee.housing.spider.lianjia.spider;
 
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
-
 import org.apache.commons.lang3.SerializationUtils;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
@@ -13,12 +8,20 @@ import us.codecraft.webmagic.pipeline.Pipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.scheduler.PriorityScheduler;
 
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.Function;
+
 /**
  * Created by jason on 17-9-14.
  */
 public class MySpider extends Spider {
 
     private final AtomicLong pageCount = new AtomicLong(0);
+
+    private Function<Spider, Spider> closeFunction;
 
     private ReentrantLock newUrlLock = new ReentrantLock();
 
@@ -27,12 +30,18 @@ public class MySpider extends Spider {
     private int emptySleepTime = 30000;
 
     public static Spider create(PageProcessor pageProcessor) {
-        return new MySpider(pageProcessor);
+        return new MySpider(pageProcessor, null);
     }
 
-    public MySpider(PageProcessor pageProcessor) {
-        super(pageProcessor);
+    public static Spider create(PageProcessor pageProcessor, Function closeFunction) {
+        return new MySpider(pageProcessor, closeFunction);
     }
+
+    public MySpider(PageProcessor pageProcessor, Function closeFunction) {
+        super(pageProcessor);
+        this.closeFunction = closeFunction;
+    }
+
 
     @Override
     public void run() {
@@ -40,7 +49,7 @@ public class MySpider extends Spider {
         initComponent();
         logger.info("Spider {} started!", getUUID());
         while (!Thread.currentThread().isInterrupted() && stat.get() == STAT_RUNNING) {
-             final Request request = scheduler.poll(this);
+            final Request request = scheduler.poll(this);
             if (request == null) {
                 if (threadPool.getThreadAlive() == 0 && exitWhenComplete) {
                     break;
@@ -68,12 +77,20 @@ public class MySpider extends Spider {
         }
         PriorityScheduler pScheduler = (PriorityScheduler) scheduler;
         logger.error(pScheduler.getTotalRequestsCount(this) + " total ");
+
         stat.set(STAT_STOPPED);
         // release some resources
         if (destroyWhenExit) {
+            afterClose();
             close();
         }
         logger.info("Spider {} closed! {} pages downloaded.", getUUID(), pageCount.get());
+    }
+
+    public void afterClose() {
+        if (closeFunction != null) {
+            closeFunction.apply(this);
+        }
     }
 
     private void processRequest(Request request) {
@@ -162,5 +179,9 @@ public class MySpider extends Spider {
         } finally {
             newUrlLock.unlock();
         }
+    }
+
+    public Function<Spider, Spider> getCloseFunction() {
+        return closeFunction;
     }
 }
