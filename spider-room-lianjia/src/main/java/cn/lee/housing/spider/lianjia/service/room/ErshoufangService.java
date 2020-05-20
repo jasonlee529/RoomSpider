@@ -11,6 +11,7 @@ import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.pipeline.room.ErshoufangPipeline;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ErshoufangProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ErshoufangProcessorFactory;
+import cn.lee.housing.spider.lianjia.spider.proxy.CustomeProxyProvider;
 import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;
 import org.apache.commons.lang3.StringUtils;
 import us.codecraft.webmagic.Spider;
@@ -35,7 +36,7 @@ public class ErshoufangService {
     @Autowired
     private ErshoufangPipeline pipeline;
     @Autowired
-    private XdailiProxyProvider proxyProvider;
+    private CustomeProxyProvider proxyProvider;
     @Autowired
     private ErshoufangProcessorFactory factory;
 
