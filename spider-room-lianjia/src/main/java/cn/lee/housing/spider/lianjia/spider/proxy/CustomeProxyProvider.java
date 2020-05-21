@@ -40,7 +40,10 @@ public class CustomeProxyProvider implements ProxyProvider, InitializingBean {
 
     @Override
     public void returnProxy(Proxy proxy, Page page, Task task) {
+        if (!page.isDownloadSuccess()) {
+            // Remove proxy
 
+        }
     }
 
     @Override

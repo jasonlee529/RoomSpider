@@ -6,8 +6,8 @@ git pull
 mvn clean package
 JVM_OPT="-Xmx1G -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/web/logs/java.hprof"
 echo $JVM_OPT
-nohup  java -jar -Xmx1G $JVM_OPT target/room.lianjia-*.jar  >>t.log & tail -11f t.log
+nohup  java -jar -Xmx1G $JVM_OPT target/room.lianjia-*.jar  >t.log 2>&1 &
 
-sleep 10s;
+tail -11f t.log
 
-curl localhost:18080/lianjia/chengjiao/changping &
+
