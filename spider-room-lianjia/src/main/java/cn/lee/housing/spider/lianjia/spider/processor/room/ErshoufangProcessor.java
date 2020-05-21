@@ -61,7 +61,7 @@ public class ErshoufangProcessor implements PageProcessor {
             int maxPageNo = total / pageSize + 1;
             total = total > 100 ? 100 : total;
             for (int i = 2; i <= total; i++) {
-                page.addTargetRequest(new Request(page.getUrl().get() + "/pg" + i).setPriority(-i));
+                page.addTargetRequest(new Request(page.getUrl().get() + "/pg" + i).setPriority(0));
             }
             logger.error("total page : " + maxPageNo + " total Records : " + total);
         } else {
@@ -89,7 +89,7 @@ public class ErshoufangProcessor implements PageProcessor {
                 page.putField("baojia", bj);
                 logger.info("{} baojia : ", bj);
                 if (service.isRecrawl(roomId)) {
-                    Request request = new Request(url);
+                    Request request = new Request(url).setPriority(10L);
                     page.addTargetRequest(request);
                     logger.info(" add Request : " + request);
                 }
