@@ -109,13 +109,13 @@ public class ChengjiaoProcessor implements PageProcessor {
                     String pageIndex = StringUtils.replace(pageTpl, "{page}", i + "");
                     page.addTargetRequest(new Request("https://bj.lianjia.com/" + pageIndex));
                 }
-                page.addTargetRequests(page.getHtml().xpath("//div[@class=m-filter]//div[@class=list-more]//a").links().all(), 0);
+                page.addTargetRequests(page.getHtml().xpath("//div[@class=m-filter]//div[@class=list-more]//a").links().all(), -1);
                 logger.error("total request : " + page.getTargetRequests().size());
             } catch (Exception e) {
                 throw new PageProcessException("代理爬取页面错误，需认证，重新爬取！");
             }
         } else {
-            page.addTargetRequests(page.getHtml().xpath("//div[@class=m-filter]//div[@class=list-more]//a").links().all(), 0);
+            page.addTargetRequests(page.getHtml().xpath("//div[@class=m-filter]//div[@class=list-more]//a").links().all(), -1);
             logger.error("total request : " + page.getTargetRequests().size());
         }
     }
