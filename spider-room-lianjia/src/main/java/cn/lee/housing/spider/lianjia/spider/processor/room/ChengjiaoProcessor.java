@@ -166,8 +166,8 @@ public class ChengjiaoProcessor implements PageProcessor {
             chengjiao.setbJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[10]/text()").get());
             chengjiao.setGongnuan(html.xpath("//div[@class=base]//div[@class=content]//li[11]/text()").get());
             chengjiao.setTihu(html.xpath("//div[@class=base]//div[@class=content]//li[12]/text()").get());
-            chengjiao.setChanquan(html.xpath("//div[@class=base]//div[@class=content]//li[13]/text()").get());
-            chengjiao.setElevator(html.xpath("//div[@class=base]//div[@class=content]//li[14]/text()").get());
+//            chengjiao.setChanquan(html.xpath("//div[@class=base]//div[@class=content]//li[13]/text()").get());
+            chengjiao.setElevator(html.xpath("//div[@class=base]//div[@class=content]//li[13]/text()").get());
             //jiaoyi
 
             chengjiao.setTradingRight(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[2]/text()").get());
