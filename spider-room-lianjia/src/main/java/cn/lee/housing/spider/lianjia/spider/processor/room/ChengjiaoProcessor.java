@@ -107,7 +107,7 @@ public class ChengjiaoProcessor implements PageProcessor {
                 String pageTpl = page.getHtml().xpath("//div[@class=house-lst-page-box]").$("div", "page-url").get();
                 for (int i = 2; i <= 100; i++) {
                     String pageIndex = StringUtils.replace(pageTpl, "{page}", i + "");
-                    page.addTargetRequest(new Request("https://bj.lianjia.com/" + pageIndex));
+                    page.addTargetRequest(new Request("https://bj.lianjia.com/" + pageIndex).setPriority(100L));
                 }
                 page.addTargetRequests(page.getHtml().xpath("//div[@class=m-filter]//div[@class=list-more]//a").links().all(), -1);
                 logger.error("total request : " + page.getTargetRequests().size());
