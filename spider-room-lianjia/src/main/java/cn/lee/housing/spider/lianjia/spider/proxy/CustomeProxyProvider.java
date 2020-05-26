@@ -9,6 +9,8 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -25,12 +27,16 @@ import java.io.IOException;
  */
 @Service
 public class CustomeProxyProvider implements ProxyProvider, InitializingBean {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Value("${proxy.custome}")
+    @Value("${proxy.custome.get}")
     private String proxyUrl;
+    @Value("${proxy.custome.delete}")
+    private String deleteUrl;
 
     HttpClient client = null;
     HttpGet get = null;
+    HttpGet delete = null;
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -42,7 +48,14 @@ public class CustomeProxyProvider implements ProxyProvider, InitializingBean {
     public void returnProxy(Proxy proxy, Page page, Task task) {
         if (!page.isDownloadSuccess()) {
             // Remove proxy
-
+            String url = deleteUrl + "?proxy=" + proxy.getHost() + ":" + proxy.getPort();
+            delete = new HttpGet(url);
+            try {
+                HttpResponse response = client.execute(delete);
+                logger.info(EntityUtils.toString(response.getEntity(), "UTF-8"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -43,7 +43,7 @@ public class MySpider extends Spider {
              final Request request = scheduler.poll(this);
             if (request == null) {
                 if (threadPool.getThreadAlive() == 0 && exitWhenComplete) {
-                    break;
+                   break;
                 }
                 // wait until new url added
                 waitNewUrl();
@@ -67,7 +67,7 @@ public class MySpider extends Spider {
             }
         }
         PriorityScheduler pScheduler = (PriorityScheduler) scheduler;
-        logger.error(pScheduler.getTotalRequestsCount(this) + " total ");
+        logger.info(pScheduler.getTotalRequestsCount(this) + " total ");
         stat.set(STAT_STOPPED);
         // release some resources
         if (destroyWhenExit) {
@@ -99,6 +99,7 @@ public class MySpider extends Spider {
             }
         } catch (PageProcessException e) {
             logger.error(" proccess request error" + request, e);
+            page.setDownloadSuccess(false);
             onDownloaderFail(request);
         }
     }
