@@ -1,12 +1,13 @@
 package cn.lee.housing.spider.lianjia.spider.processor.room;
 
-import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
-import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
+import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaChengjiao;
+import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaErshoufang;
 import cn.lee.housing.spider.lianjia.service.room.ChengjiaoService;
 import cn.lee.housing.spider.lianjia.spider.PageProcessException;
 import cn.lee.housing.utils.mapper.BeanMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Lists;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -129,7 +130,7 @@ public class ChengjiaoProcessor implements PageProcessor {
         String fwId = RoomIdProvider.parseRoomId(page.getUrl().get());
         String fwId2 = html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[1]/text()").get();
         if (StringUtils.isNotBlank(fwId) && StringUtils.isNotBlank(fwId2)) {
-            Chengjiao chengjiao = new Chengjiao(fwId);
+            LianjiaChengjiao chengjiao = LianjiaChengjiao.builder().roomId(fwId).crawTime(new DateTime().toString("yyyy-MM-dd HH:mm:ss")).build();
             String[] deal = StringUtils.split(html.xpath("//div[@class=house-title]/div/span/text()").get(), " ");
             chengjiao.setDealDate(deal != null && deal.length > 0 ? deal[0] : "");
             chengjiao.setDealAgent(deal != null && deal.length > 1 ? deal[1] : "");
@@ -154,14 +155,14 @@ public class ChengjiaoProcessor implements PageProcessor {
             chengjiao.setLouceng(html.xpath("//div[@class=base]//div[@class=content]//li[2]/text()").get());
             String area = StringUtils.trim(html.xpath("//div[@class=base]//div[@class=content]//li[3]/text()").get());
             chengjiao.setArea(StringUtils.replace(area, "㎡", ""));
-            chengjiao.setrJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[4]/text()").get());
+            chengjiao.setRJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[4]/text()").get());
             String innerArea = StringUtils.trim(html.xpath("//div[@class=base]//div[@class=content]//li[5]/text()").get());
             chengjiao.setInnerArea(StringUtils.replace(innerArea, "㎡", ""));
             chengjiao.setBuildType(html.xpath("//div[@class=base]//div[@class=content]//li[6]/text()").get());
             chengjiao.setOrientation(html.xpath("//div[@class=base]//div[@class=content]//li[7]/text()").get());
             chengjiao.setBuildYear(html.xpath("//div[@class=base]//div[@class=content]//li[8]/text()").get());
             chengjiao.setZhuangxiu(html.xpath("//div[@class=base]//div[@class=content]//li[9]/text()").get());
-            chengjiao.setbJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[10]/text()").get());
+            chengjiao.setBJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[10]/text()").get());
             chengjiao.setGongnuan(html.xpath("//div[@class=base]//div[@class=content]//li[11]/text()").get());
             chengjiao.setTihu(html.xpath("//div[@class=base]//div[@class=content]//li[12]/text()").get());
 //            chengjiao.setChanquan(html.xpath("//div[@class=base]//div[@class=content]//li[13]/text()").get());
@@ -178,7 +179,7 @@ public class ChengjiaoProcessor implements PageProcessor {
             // 具体爬去字段
             logger.error(chengjiao.toString());
             page.putField("chengjiao", chengjiao);
-            page.putField("ershoufang", BeanMapper.map(chengjiao, Ershoufang.class));
+            page.putField("ershoufang", BeanMapper.map(chengjiao, LianjiaErshoufang.class));
         } else {
             logger.error(page.getUrl() + " 爬去失败，代理爬去失败 ,重新爬取!");
             throw new PageProcessException("代理爬取页面错误，需认证，重新爬取！");

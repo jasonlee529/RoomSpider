@@ -1,15 +1,14 @@
 package cn.lee.housing.spider.lianjia.spider.pipeline.room;
 
-import cn.lee.housing.spider.lianjia.model.room.Baojia;
-import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
+import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaBaojia;
+import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaErshoufang;
 import cn.lee.housing.spider.lianjia.service.room.ErshoufangService;
-import us.codecraft.webmagic.ResultItems;
-import us.codecraft.webmagic.Task;
-import us.codecraft.webmagic.pipeline.Pipeline;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import us.codecraft.webmagic.ResultItems;
+import us.codecraft.webmagic.Task;
+import us.codecraft.webmagic.pipeline.Pipeline;
 
 /**
  * Created by jason on 17/7/14.
@@ -23,9 +22,9 @@ public class ErshoufangPipeline implements Pipeline {
 
     @Override
     public void process(ResultItems resultItems, Task task) {
-        Ershoufang ershoufang = resultItems.get("ershoufang");
+        LianjiaErshoufang ershoufang = resultItems.get("ershoufang");
         if (ershoufang != null) {
-            Ershoufang esf = service.findByRoomId(ershoufang.getRoomId());
+            LianjiaErshoufang esf = service.findByRoomId(ershoufang.getRoomId());
             if (esf != null) {
                 Long id = esf.getId();
                 BeanUtils.copyProperties(ershoufang, esf);
@@ -35,7 +34,7 @@ public class ErshoufangPipeline implements Pipeline {
                 service.saveErshoufang(ershoufang);
             }
         }
-        Baojia bj = resultItems.get("baojia");
+        LianjiaBaojia bj = resultItems.get("baojia");
         if (bj != null) {
             service.saveBaojia(bj);
         }

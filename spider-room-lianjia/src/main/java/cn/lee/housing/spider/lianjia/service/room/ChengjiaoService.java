@@ -1,30 +1,25 @@
 package cn.lee.housing.spider.lianjia.service.room;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-
-import cn.lee.housing.spider.lianjia.model.room.Chengjiao;
-import cn.lee.housing.spider.lianjia.repository.room.ChengjiaoDao;
+import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaChengjiao;
+import cn.lee.housing.spider.lianjia.model.task.TaskJob;
+import cn.lee.housing.spider.lianjia.repository.room.lianjia.LianjiaChengjiaoMapper;
+import cn.lee.housing.spider.lianjia.service.task.TaskService;
 import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.pipeline.room.ChengjiaoPipeline;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ChengjiaoProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ChengjiaoProcessorFactory;
 import cn.lee.housing.spider.lianjia.spider.proxy.CustomeProxyProvider;
-import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.scheduler.PriorityScheduler;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.stereotype.Service;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -33,13 +28,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class ChengjiaoService {
     @Autowired
-    private ChengjiaoDao chengjiaoDao;
+    private LianjiaChengjiaoMapper chengjiaoDao;
     @Autowired
     private ChengjiaoPipeline pipeline;
     @Autowired
     private ChengjiaoProcessorFactory factory;
     @Autowired
     private CustomeProxyProvider proxyProvider;
+
+    @Autowired
+    private TaskService taskService;
 
     /**
      * 是否需要重新爬取，成交不存在或者有成交记录但需要重新爬的
@@ -48,8 +46,8 @@ public class ChengjiaoService {
      * @return
      */
     public boolean isRecrawl(String roomId) {
-        Chengjiao cj = chengjiaoDao.findByRoomId(roomId);
-        return cj == null || cj.isReCrawl();
+        LianjiaChengjiao cj = chengjiaoDao.findByRoomId(roomId);
+        return cj == null || cj.getReCrawl();
     }
 
     public Map spiderDay(String area) {
@@ -90,15 +88,21 @@ public class ChengjiaoService {
      * @return
      */
     private void doSpider(ChengjiaoProcessor processor) {
+        TaskJob job = taskService.createJob();
         HttpClientDownloader downloader = new HttpClientDownloader();
         downloader.setProxyProvider(proxyProvider);
-        Spider spider = MySpider.create(processor)
+        Spider spider = MySpider.create(processor, s -> {
+            MySpider ms = (MySpider) s;
+            job.setPageCount(ms.getPageCount());
+            taskService.saveTaskJob(job);
+            return ms.getPageCount();
+        })
                 .setScheduler(new PriorityScheduler())
                 .addPipeline(pipeline)
                 .addPipeline(new ConsolePipeline())
                 .addUrl(processor.getStartURL());
         spider.setDownloader(downloader);
-        spider.thread(10).start();//启动爬虫
+        spider.thread(3).start();//启动爬虫
 
     }
 
@@ -118,13 +122,8 @@ public class ChengjiaoService {
                     .setScheduler(new PriorityScheduler())
                     .addPipeline(pipeline)
                     .addPipeline(new ConsolePipeline());
-            List<Chengjiao> ids = chengjiaoDao.findAll(new Specification<Chengjiao>() {
-                @Override
-                public Predicate toPredicate(Root<Chengjiao> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-                    return criteriaBuilder.equal(root.get("reCrawl"), true);
-                }
-            });
-            for (Chengjiao cj : ids) {
+            List<LianjiaChengjiao> ids = chengjiaoDao.findAllRrawl();
+            for (LianjiaChengjiao cj : ids) {
                 spider.addUrl("https://bj.lianjia.com/chengjiao/" + StringUtils.trim(cj.getRoomId()) + ".html");
             }
             spider.setDownloader(downloader);

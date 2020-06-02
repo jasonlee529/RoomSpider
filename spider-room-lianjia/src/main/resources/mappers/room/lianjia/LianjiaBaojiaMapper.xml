@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lee.housing.spider.lianjia.repository.room.lianjia.LianjiaBaojiaMapper">
+    <resultMap id="BaseResultMap" type="cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaBaojia">
+        <!--@mbg.generated-->
+        <!--@Table lianjia_ershoufang_baojia-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="craw_time" jdbcType="VARCHAR" property="crawTime"/>
+        <result column="price" jdbcType="VARCHAR" property="price"/>
+        <result column="room_id" jdbcType="VARCHAR" property="roomId"/>
+        <result column="avg_price" jdbcType="VARCHAR" property="avgPrice"/>
+        <result column="info" jdbcType="VARCHAR" property="info"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, craw_time, price, room_id, avg_price, info, title, gmt_created, gmt_modified
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from lianjia_ershoufang_baojia
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from lianjia_ershoufang_baojia
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id"
+            parameterType="cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaBaojia"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into lianjia_ershoufang_baojia (craw_time, price, room_id,
+        avg_price, info, title,
+        gmt_created, gmt_modified)
+        values (#{crawTime,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, #{roomId,jdbcType=VARCHAR},
+        #{avgPrice,jdbcType=VARCHAR}, #{info,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR},
+        #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaBaojia"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into lianjia_ershoufang_baojia
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="crawTime != null">
+                craw_time,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="roomId != null">
+                room_id,
+            </if>
+            <if test="avgPrice != null">
+                avg_price,
+            </if>
+            <if test="info != null">
+                info,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="gmtCreated != null">
+                gmt_created,
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="crawTime != null">
+                #{crawTime,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=VARCHAR},
+            </if>
+            <if test="roomId != null">
+                #{roomId,jdbcType=VARCHAR},
+            </if>
+            <if test="avgPrice != null">
+                #{avgPrice,jdbcType=VARCHAR},
+            </if>
+            <if test="info != null">
+                #{info,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtCreated != null">
+                #{gmtCreated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtModified != null">
+                #{gmtModified,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaBaojia">
+        <!--@mbg.generated-->
+        update lianjia_ershoufang_baojia
+        <set>
+            <if test="crawTime != null">
+                craw_time = #{crawTime,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=VARCHAR},
+            </if>
+            <if test="roomId != null">
+                room_id = #{roomId,jdbcType=VARCHAR},
+            </if>
+            <if test="avgPrice != null">
+                avg_price = #{avgPrice,jdbcType=VARCHAR},
+            </if>
+            <if test="info != null">
+                info = #{info,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtCreated != null">
+                gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey"
+            parameterType="cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaBaojia">
+        <!--@mbg.generated-->
+        update lianjia_ershoufang_baojia
+        set craw_time = #{crawTime,jdbcType=VARCHAR},
+        price = #{price,jdbcType=VARCHAR},
+        room_id = #{roomId,jdbcType=VARCHAR},
+        avg_price = #{avgPrice,jdbcType=VARCHAR},
+        info = #{info,jdbcType=VARCHAR},
+        title = #{title,jdbcType=VARCHAR},
+        gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update lianjia_ershoufang_baojia
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="craw_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.crawTime,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.price,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="room_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.roomId,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="avg_price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.avgPrice,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="info = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.info,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="title = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.title,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="gmt_created = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.gmtCreated,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="gmt_modified = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.gmtModified,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=INTEGER}
+        </foreach>
+    </update>
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update lianjia_ershoufang_baojia
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="craw_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.crawTime != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.crawTime,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.price != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.price,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="room_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.roomId != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.roomId,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="avg_price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.avgPrice != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.avgPrice,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="info = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.info != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.info,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="title = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.title != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.title,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="gmt_created = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.gmtCreated != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.gmtCreated,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="gmt_modified = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.gmtModified != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.gmtModified,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=INTEGER}
+        </foreach>
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into lianjia_ershoufang_baojia
+        (craw_time, price, room_id, avg_price, info, title, gmt_created, gmt_modified)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.crawTime,jdbcType=VARCHAR}, #{item.price,jdbcType=VARCHAR}, #{item.roomId,jdbcType=VARCHAR},
+            #{item.avgPrice,jdbcType=VARCHAR}, #{item.info,jdbcType=VARCHAR}, #{item.title,jdbcType=VARCHAR},
+            #{item.gmtCreated,jdbcType=TIMESTAMP}, #{item.gmtModified,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+    <select id="findFirstByRoomIdOrderByCrawTimeDesc" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from lianjia_ershoufang_baojia t
+        order by craw_time desc
+        limit 1
+    </select>
+</mapper>
