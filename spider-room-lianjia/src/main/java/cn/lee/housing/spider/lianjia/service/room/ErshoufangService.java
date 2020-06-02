@@ -1,25 +1,24 @@
 package cn.lee.housing.spider.lianjia.service.room;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import cn.lee.housing.spider.lianjia.model.room.Baojia;
-import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
-import cn.lee.housing.spider.lianjia.repository.room.BaojiaDao;
-import cn.lee.housing.spider.lianjia.repository.room.ErshoufangDao;
+import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaBaojia;
+import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaErshoufang;
+import cn.lee.housing.spider.lianjia.repository.room.lianjia.LianjiaBaojiaMapper;
+import cn.lee.housing.spider.lianjia.repository.room.lianjia.LianjiaErshoufangMapper;
 import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.pipeline.room.ErshoufangPipeline;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ErshoufangProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ErshoufangProcessorFactory;
-import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;
+import cn.lee.housing.spider.lianjia.spider.proxy.CustomeProxyProvider;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.scheduler.PriorityScheduler;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -29,13 +28,13 @@ import org.springframework.stereotype.Service;
 public class ErshoufangService {
 
     @Autowired
-    private ErshoufangDao dao;
+    private LianjiaErshoufangMapper dao;
     @Autowired
-    private BaojiaDao baojiaoDao;
+    private LianjiaBaojiaMapper baojiaoDao;
     @Autowired
     private ErshoufangPipeline pipeline;
     @Autowired
-    private XdailiProxyProvider proxyProvider;
+    private CustomeProxyProvider proxyProvider;
     @Autowired
     private ErshoufangProcessorFactory factory;
 
@@ -54,6 +53,7 @@ public class ErshoufangService {
         result.put("success", isSuccess);
         return result;
     }
+
     public Map spiderDepth() {
         Map result = new HashMap();
         boolean isSuccess = true;
@@ -87,25 +87,25 @@ public class ErshoufangService {
     }
 
     public boolean isRecrawl(String roomId) {
-        Ershoufang cj = dao.findByRoomId(roomId);
-        return cj == null || cj.isReCrawl();
+        LianjiaErshoufang cj = dao.findByRoomId(roomId);
+        return cj == null || cj.getReCrawl();
     }
 
 
-    public Baojia saveBaojia(Baojia baojia) {
-        Baojia last = baojiaoDao.findFirstByRoomIdOrderByCrawTimeDesc(baojia.getRoomId());
+    public LianjiaBaojia saveBaojia(LianjiaBaojia baojia) {
+        LianjiaBaojia last = baojiaoDao.findFirstByRoomIdOrderByCrawTimeDesc(baojia.getRoomId());
         if (last == null || !StringUtils.equalsIgnoreCase(last.getPrice(), baojia.getPrice())) {
-            baojiaoDao.save(baojia);
+            baojiaoDao.insertSelective(baojia);
         }
         return baojia;
     }
 
-    public Ershoufang saveErshoufang(Ershoufang ershoufang) {
-        dao.save(ershoufang);
+    public LianjiaErshoufang saveErshoufang(LianjiaErshoufang ershoufang) {
+        dao.insertSelective(ershoufang);
         return ershoufang;
     }
 
-    public Ershoufang findByRoomId(String roomId) {
+    public LianjiaErshoufang findByRoomId(String roomId) {
         return dao.findByRoomId(roomId);
     }
 }

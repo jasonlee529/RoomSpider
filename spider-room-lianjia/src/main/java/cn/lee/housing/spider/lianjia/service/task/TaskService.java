@@ -1,7 +1,7 @@
 package cn.lee.housing.spider.lianjia.service.task;
 
 import cn.lee.housing.spider.lianjia.model.task.TaskJob;
-import cn.lee.housing.spider.lianjia.repository.task.TaskJobDao;
+import cn.lee.housing.spider.lianjia.repository.task.TaskJobMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,14 +9,16 @@ import org.springframework.stereotype.Service;
 public class TaskService {
 
     @Autowired
-    private TaskJobDao jobDao;
+    private TaskJobMapper jobDao;
 
 
     public TaskJob createJob() {
-        return saveTaskJob(new TaskJob());
+        TaskJob job = TaskJob.builder().name("爬虫任务_" + System.currentTimeMillis()).build();
+        return saveTaskJob(job);
     }
 
     public TaskJob saveTaskJob(TaskJob job) {
-        return jobDao.save(job);
+        jobDao.insertSelective(job);
+        return job;
     }
 }

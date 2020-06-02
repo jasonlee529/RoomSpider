@@ -19,10 +19,10 @@ public class WangqianPipeline implements Pipeline {
 
     @Override
     public void process(ResultItems resultItems, Task task) {
-        wangqianService.saveDayInfo((DayInfo) resultItems.get("dayInfo"));
-        wangqianService.saveMonthAgent((MonthAgent) resultItems.get("monthAgent"));
-        wangqianService.saveMonthArea((MonthArea) resultItems.get("monthArea"));
-        wangqianService.saveMonthCounty((MonthCounty) resultItems.get("monthCounty"));
-        wangqianService.saveMonthInfo((MonthInfo) resultItems.get("monthInfo"));
+//        wangqianService.saveDayInfo((DayInfo) resultItems.get("dayInfo"));
+//        wangqianService.saveMonthAgent((MonthAgent) resultItems.get("monthAgent"));
+//        wangqianService.saveMonthArea((MonthArea) resultItems.get("monthArea"));
+//        wangqianService.saveMonthCounty((MonthCounty) resultItems.get("monthCounty"));
+//        wangqianService.saveMonthInfo((MonthInfo) resultItems.get("monthInfo"));
     }
 }
