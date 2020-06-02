@@ -9,12 +9,12 @@
     <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-<!--    <parent>-->
-<!--        <groupId>cn.lee.spider</groupId>-->
-<!--        <artifactId>room.lianjia-parent</artifactId>-->
-<!--        <version>1.0-SNAPSHOT</version>-->
-<!--        <relativePath>../pom.xml</relativePath>-->
-<!--    </parent>-->
+    <!--    <parent>-->
+    <!--        <groupId>cn.lee.spider</groupId>-->
+    <!--        <artifactId>room.lianjia-parent</artifactId>-->
+    <!--        <version>1.0-SNAPSHOT</version>-->
+    <!--        <relativePath>../pom.xml</relativePath>-->
+    <!--    </parent>-->
 
     <properties>
         <poi.version>3.17</poi.version>
@@ -34,13 +34,12 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
-        <!--        <dependency>-->
-        <!--            <groupId>org.mybatis.spring.boot</groupId>-->
-        <!--            <artifactId>mybatis-spring-boot-starter</artifactId>-->
-        <!--            <version>2.0.1</version>-->
-        <!--        </dependency>-->
-
+        <!--        https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.0.1</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
@@ -140,7 +139,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
