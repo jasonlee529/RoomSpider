@@ -108,4 +108,28 @@ public class ErshoufangService {
     public LianjiaErshoufang findByRoomId(String roomId) {
         return dao.findByRoomId(roomId);
     }
+
+    public Map spiderBaojia() {
+        Map result = new HashMap();
+        boolean isSuccess = true;
+        try {
+            HttpClientDownloader downloader = new HttpClientDownloader();
+            downloader.setProxyProvider(proxyProvider);
+            PriorityScheduler scheduler = new PriorityScheduler();
+            Spider spider = MySpider.create(factory.getBaojiaProcessor())
+                    .setScheduler(scheduler)
+                    .addPipeline(pipeline)
+                    .addPipeline(new ConsolePipeline())
+                    .addUrl();
+            spider.setDownloader(downloader);
+            spider.thread(10).start();//启动爬虫
+        } catch (Exception e) {
+            isSuccess = false;
+            e.printStackTrace();
+            result.put("desc", e.getMessage());
+        }
+
+        result.put("success", isSuccess);
+        return result;
+    }
 }

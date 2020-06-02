@@ -2,6 +2,7 @@ package cn.lee.housing.spider.lianjia.spider.proxy;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -24,13 +25,17 @@ import java.io.IOException;
  * Created by jason on 17-9-25.
  */
 @Service
+@Slf4j
 public class CustomeProxyProvider implements ProxyProvider, InitializingBean {
 
-    @Value("${proxy.custome}")
+    @Value("${proxy.custome.get}")
     private String proxyUrl;
+    @Value("${proxy.custome.delete}")
+    private String deleteUrl;
 
     HttpClient client = null;
     HttpGet get = null;
+    HttpGet delete = null;
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -40,7 +45,17 @@ public class CustomeProxyProvider implements ProxyProvider, InitializingBean {
 
     @Override
     public void returnProxy(Proxy proxy, Page page, Task task) {
-
+        if (!page.isDownloadSuccess()) {
+            // Remove proxy
+            String url = deleteUrl + "?proxy=" + proxy.getHost() + ":" + proxy.getPort();
+            delete = new HttpGet(url);
+            try {
+                HttpResponse response = client.execute(delete);
+                log.info(EntityUtils.toString(response.getEntity(), "UTF-8"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
