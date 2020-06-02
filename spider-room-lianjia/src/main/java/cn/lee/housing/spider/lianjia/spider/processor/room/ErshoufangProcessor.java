@@ -64,7 +64,7 @@ public class ErshoufangProcessor implements PageProcessor {
             int maxPageNo = total / pageSize + 1;
             total = total > 100 ? 100 : total;
             for (int i = 2; i <= total; i++) {
-                page.addTargetRequest(new Request(page.getUrl().get() + "/pg" + i).setPriority(-i));
+                page.addTargetRequest(new Request(page.getUrl().get() + "/pg" + i).setPriority(100L));
             }
             logger.error("total page : " + maxPageNo + " total Records : " + total);
         } else {
@@ -82,7 +82,7 @@ public class ErshoufangProcessor implements PageProcessor {
         List<Selectable> nodes = page.getHtml().xpath("//ul[@class=sellListContent]/li").nodes();
         for (Selectable node : nodes) {
             String url = node.xpath("//a[@class=img]").links().get();
-            String roomId = parseRoomId(url);
+            String roomId = RoomIdProvider.parseRoomId(url);
             if (StringUtils.isNotBlank(roomId)) {
                 LianjiaBaojia bj = LianjiaBaojia.builder().roomId(roomId).crawTime(new DateTime().toString("yyyy-MM-dd HH:mm:ss")).build();
                 bj.setTitle(node.xpath("//div[@class=title]/a/text()").get());
@@ -92,9 +92,9 @@ public class ErshoufangProcessor implements PageProcessor {
                 page.putField("baojia", bj);
                 logger.info("{} baojia : ", bj);
                 if (service.isRecrawl(roomId)) {
-                    Request request = new Request(url).setPriority(100L);
+                    Request request = new Request(url).setPriority(Long.parseLong(roomId));
                     page.addTargetRequest(request);
-                    logger.error(" add Request : " + request);
+                    logger.info(" add Request : " + request);
                 }
             }
         }
@@ -107,7 +107,7 @@ public class ErshoufangProcessor implements PageProcessor {
      */
     protected void processDetail(Page page) {
         Html html = page.getHtml();
-        String fwId = parseRoomId(page.getUrl().get());
+        String fwId = RoomIdProvider.parseRoomId(page.getUrl().get());
         String fwId2 = html.xpath("//div[@class=overview]//div[@class=houseRecord]//span[@class=info]/text()").get();
         if (StringUtils.isNotBlank(fwId) && StringUtils.isNotBlank(fwId2)) {
             LianjiaErshoufang entity = LianjiaErshoufang.builder().roomId(fwId).crawTime(new DateTime().toString("yyyy-MM-dd HH:mm:ss")).build();
@@ -191,21 +191,6 @@ public class ErshoufangProcessor implements PageProcessor {
     public void setCounty(String county) {
         this.county = county;
     }
-
-    private String parseRoomId(String url) {
-        if (StringUtils.isBlank(url)) {
-            return "";
-        }
-        Pattern p = Pattern.compile(ROOM_ID);
-        Matcher m = p.matcher(url);
-        if (m.find()) {
-            String roomId = m.group().replace(".html", "");
-            return roomId;
-        }
-        return "";
-    }
-
-    private final static String ROOM_ID = "[1-9]\\d+";
 
     private String subCjjg(String in) {
         return StringUtils.substringBefore(in, "二手房");

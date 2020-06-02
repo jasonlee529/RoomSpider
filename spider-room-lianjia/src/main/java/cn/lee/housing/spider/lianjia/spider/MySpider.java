@@ -78,6 +78,7 @@ public class MySpider extends Spider {
         PriorityScheduler pScheduler = (PriorityScheduler) scheduler;
         logger.error(pScheduler.getTotalRequestsCount(this) + " total ");
 
+        logger.info(pScheduler.getTotalRequestsCount(this) + " total ");
         stat.set(STAT_STOPPED);
         // release some resources
         if (destroyWhenExit) {
@@ -116,6 +117,7 @@ public class MySpider extends Spider {
             }
         } catch (PageProcessException e) {
             logger.error(" proccess request error" + request, e);
+            page.setDownloadSuccess(false);
             onDownloaderFail(request);
         }
     }
