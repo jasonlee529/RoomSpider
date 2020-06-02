@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lee.housing.spider.lianjia.repository.room.lianjia.LianjiaErshoufangMapper">
+    <resultMap id="BaseResultMap" type="cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaErshoufang">
+        <!--@mbg.generated-->
+        <!--@Table lianjia_ershoufang-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="area" jdbcType="VARCHAR" property="area"/>
+        <result column="area_use" jdbcType="VARCHAR" property="areaUse"/>
+        <result column="attention_times" jdbcType="VARCHAR" property="attentionTimes"/>
+        <result column="avg_price" jdbcType="VARCHAR" property="avgPrice"/>
+        <result column="b_jiegou" jdbcType="VARCHAR" property="bJiegou"/>
+        <result column="build_type" jdbcType="VARCHAR" property="buildType"/>
+        <result column="build_year" jdbcType="VARCHAR" property="buildYear"/>
+        <result column="chanquan" jdbcType="VARCHAR" property="chanquan"/>
+        <result column="county" jdbcType="VARCHAR" property="county"/>
+        <result column="craw_time" jdbcType="VARCHAR" property="crawTime"/>
+        <result column="district" jdbcType="VARCHAR" property="district"/>
+        <result column="diya" jdbcType="VARCHAR" property="diya"/>
+        <result column="elevator" jdbcType="VARCHAR" property="elevator"/>
+        <result column="gongnuan" jdbcType="VARCHAR" property="gongnuan"/>
+        <result column="huxing" jdbcType="VARCHAR" property="huxing"/>
+        <result column="inner_area" jdbcType="VARCHAR" property="innerArea"/>
+        <result column="inspect_times" jdbcType="VARCHAR" property="inspectTimes"/>
+        <result column="last_trade_date" jdbcType="VARCHAR" property="lastTradeDate"/>
+        <result column="list_date" jdbcType="VARCHAR" property="listDate"/>
+        <result column="louceng" jdbcType="VARCHAR" property="louceng"/>
+        <result column="orientation" jdbcType="VARCHAR" property="orientation"/>
+        <result column="owner_right" jdbcType="VARCHAR" property="ownerRight"/>
+        <result column="r_jiegou" jdbcType="VARCHAR" property="rJiegou"/>
+        <result column="re_crawl" jdbcType="BIT" property="reCrawl"/>
+        <result column="region" jdbcType="VARCHAR" property="region"/>
+        <result column="room_deeed" jdbcType="VARCHAR" property="roomDeeed"/>
+        <result column="room_id" jdbcType="VARCHAR" property="roomId"/>
+        <result column="room_year" jdbcType="VARCHAR" property="roomYear"/>
+        <result column="sub_title" jdbcType="VARCHAR" property="subTitle"/>
+        <result column="tihu" jdbcType="VARCHAR" property="tihu"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="total_price" jdbcType="VARCHAR" property="totalPrice"/>
+        <result column="trading_right" jdbcType="VARCHAR" property="tradingRight"/>
+        <result column="zhuangxiu" jdbcType="VARCHAR" property="zhuangxiu"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
+        <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, area, area_use, attention_times, avg_price, b_jiegou, build_type, build_year,
+        chanquan, county, craw_time, district, diya, elevator, gongnuan, huxing, inner_area,
+        inspect_times, last_trade_date, list_date, louceng, orientation, owner_right, r_jiegou,
+        re_crawl, region, room_deeed, room_id, room_year, sub_title, tihu, title, total_price,
+        trading_right, zhuangxiu, `status`, gmt_modified, gmt_created
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from lianjia_ershoufang
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from lianjia_ershoufang
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id"
+            parameterType="cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaErshoufang" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into lianjia_ershoufang (area, area_use, attention_times,
+        avg_price, b_jiegou, build_type,
+        build_year, chanquan, county,
+        craw_time, district, diya,
+        elevator, gongnuan, huxing,
+        inner_area, inspect_times, last_trade_date,
+        list_date, louceng, orientation,
+        owner_right, r_jiegou, re_crawl,
+        region, room_deeed, room_id,
+        room_year, sub_title, tihu,
+        title, total_price, trading_right,
+        zhuangxiu, `status`, gmt_modified,
+        gmt_created)
+        values (#{area,jdbcType=VARCHAR}, #{areaUse,jdbcType=VARCHAR}, #{attentionTimes,jdbcType=VARCHAR},
+        #{avgPrice,jdbcType=VARCHAR}, #{bJiegou,jdbcType=VARCHAR}, #{buildType,jdbcType=VARCHAR},
+        #{buildYear,jdbcType=VARCHAR}, #{chanquan,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR},
+        #{crawTime,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, #{diya,jdbcType=VARCHAR},
+        #{elevator,jdbcType=VARCHAR}, #{gongnuan,jdbcType=VARCHAR}, #{huxing,jdbcType=VARCHAR},
+        #{innerArea,jdbcType=VARCHAR}, #{inspectTimes,jdbcType=VARCHAR}, #{lastTradeDate,jdbcType=VARCHAR},
+        #{listDate,jdbcType=VARCHAR}, #{louceng,jdbcType=VARCHAR}, #{orientation,jdbcType=VARCHAR},
+        #{ownerRight,jdbcType=VARCHAR}, #{rJiegou,jdbcType=VARCHAR}, #{reCrawl,jdbcType=BIT},
+        #{region,jdbcType=VARCHAR}, #{roomDeeed,jdbcType=VARCHAR}, #{roomId,jdbcType=VARCHAR},
+        #{roomYear,jdbcType=VARCHAR}, #{subTitle,jdbcType=VARCHAR}, #{tihu,jdbcType=VARCHAR},
+        #{title,jdbcType=VARCHAR}, #{totalPrice,jdbcType=VARCHAR}, #{tradingRight,jdbcType=VARCHAR},
+        #{zhuangxiu,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{gmtModified,jdbcType=TIMESTAMP},
+        #{gmtCreated,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaErshoufang" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into lianjia_ershoufang
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="area != null">
+                area,
+            </if>
+            <if test="areaUse != null">
+                area_use,
+            </if>
+            <if test="attentionTimes != null">
+                attention_times,
+            </if>
+            <if test="avgPrice != null">
+                avg_price,
+            </if>
+            <if test="bJiegou != null">
+                b_jiegou,
+            </if>
+            <if test="buildType != null">
+                build_type,
+            </if>
+            <if test="buildYear != null">
+                build_year,
+            </if>
+            <if test="chanquan != null">
+                chanquan,
+            </if>
+            <if test="county != null">
+                county,
+            </if>
+            <if test="crawTime != null">
+                craw_time,
+            </if>
+            <if test="district != null">
+                district,
+            </if>
+            <if test="diya != null">
+                diya,
+            </if>
+            <if test="elevator != null">
+                elevator,
+            </if>
+            <if test="gongnuan != null">
+                gongnuan,
+            </if>
+            <if test="huxing != null">
+                huxing,
+            </if>
+            <if test="innerArea != null">
+                inner_area,
+            </if>
+            <if test="inspectTimes != null">
+                inspect_times,
+            </if>
+            <if test="lastTradeDate != null">
+                last_trade_date,
+            </if>
+            <if test="listDate != null">
+                list_date,
+            </if>
+            <if test="louceng != null">
+                louceng,
+            </if>
+            <if test="orientation != null">
+                orientation,
+            </if>
+            <if test="ownerRight != null">
+                owner_right,
+            </if>
+            <if test="rJiegou != null">
+                r_jiegou,
+            </if>
+            <if test="reCrawl != null">
+                re_crawl,
+            </if>
+            <if test="region != null">
+                region,
+            </if>
+            <if test="roomDeeed != null">
+                room_deeed,
+            </if>
+            <if test="roomId != null">
+                room_id,
+            </if>
+            <if test="roomYear != null">
+                room_year,
+            </if>
+            <if test="subTitle != null">
+                sub_title,
+            </if>
+            <if test="tihu != null">
+                tihu,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="totalPrice != null">
+                total_price,
+            </if>
+            <if test="tradingRight != null">
+                trading_right,
+            </if>
+            <if test="zhuangxiu != null">
+                zhuangxiu,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified,
+            </if>
+            <if test="gmtCreated != null">
+                gmt_created,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="area != null">
+                #{area,jdbcType=VARCHAR},
+            </if>
+            <if test="areaUse != null">
+                #{areaUse,jdbcType=VARCHAR},
+            </if>
+            <if test="attentionTimes != null">
+                #{attentionTimes,jdbcType=VARCHAR},
+            </if>
+            <if test="avgPrice != null">
+                #{avgPrice,jdbcType=VARCHAR},
+            </if>
+            <if test="bJiegou != null">
+                #{bJiegou,jdbcType=VARCHAR},
+            </if>
+            <if test="buildType != null">
+                #{buildType,jdbcType=VARCHAR},
+            </if>
+            <if test="buildYear != null">
+                #{buildYear,jdbcType=VARCHAR},
+            </if>
+            <if test="chanquan != null">
+                #{chanquan,jdbcType=VARCHAR},
+            </if>
+            <if test="county != null">
+                #{county,jdbcType=VARCHAR},
+            </if>
+            <if test="crawTime != null">
+                #{crawTime,jdbcType=VARCHAR},
+            </if>
+            <if test="district != null">
+                #{district,jdbcType=VARCHAR},
+            </if>
+            <if test="diya != null">
+                #{diya,jdbcType=VARCHAR},
+            </if>
+            <if test="elevator != null">
+                #{elevator,jdbcType=VARCHAR},
+            </if>
+            <if test="gongnuan != null">
+                #{gongnuan,jdbcType=VARCHAR},
+            </if>
+            <if test="huxing != null">
+                #{huxing,jdbcType=VARCHAR},
+            </if>
+            <if test="innerArea != null">
+                #{innerArea,jdbcType=VARCHAR},
+            </if>
+            <if test="inspectTimes != null">
+                #{inspectTimes,jdbcType=VARCHAR},
+            </if>
+            <if test="lastTradeDate != null">
+                #{lastTradeDate,jdbcType=VARCHAR},
+            </if>
+            <if test="listDate != null">
+                #{listDate,jdbcType=VARCHAR},
+            </if>
+            <if test="louceng != null">
+                #{louceng,jdbcType=VARCHAR},
+            </if>
+            <if test="orientation != null">
+                #{orientation,jdbcType=VARCHAR},
+            </if>
+            <if test="ownerRight != null">
+                #{ownerRight,jdbcType=VARCHAR},
+            </if>
+            <if test="rJiegou != null">
+                #{rJiegou,jdbcType=VARCHAR},
+            </if>
+            <if test="reCrawl != null">
+                #{reCrawl,jdbcType=BIT},
+            </if>
+            <if test="region != null">
+                #{region,jdbcType=VARCHAR},
+            </if>
+            <if test="roomDeeed != null">
+                #{roomDeeed,jdbcType=VARCHAR},
+            </if>
+            <if test="roomId != null">
+                #{roomId,jdbcType=VARCHAR},
+            </if>
+            <if test="roomYear != null">
+                #{roomYear,jdbcType=VARCHAR},
+            </if>
+            <if test="subTitle != null">
+                #{subTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="tihu != null">
+                #{tihu,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="totalPrice != null">
+                #{totalPrice,jdbcType=VARCHAR},
+            </if>
+            <if test="tradingRight != null">
+                #{tradingRight,jdbcType=VARCHAR},
+            </if>
+            <if test="zhuangxiu != null">
+                #{zhuangxiu,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtModified != null">
+                #{gmtModified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtCreated != null">
+                #{gmtCreated,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaErshoufang">
+        <!--@mbg.generated-->
+        update lianjia_ershoufang
+        <set>
+            <if test="area != null">
+                area = #{area,jdbcType=VARCHAR},
+            </if>
+            <if test="areaUse != null">
+                area_use = #{areaUse,jdbcType=VARCHAR},
+            </if>
+            <if test="attentionTimes != null">
+                attention_times = #{attentionTimes,jdbcType=VARCHAR},
+            </if>
+            <if test="avgPrice != null">
+                avg_price = #{avgPrice,jdbcType=VARCHAR},
+            </if>
+            <if test="bJiegou != null">
+                b_jiegou = #{bJiegou,jdbcType=VARCHAR},
+            </if>
+            <if test="buildType != null">
+                build_type = #{buildType,jdbcType=VARCHAR},
+            </if>
+            <if test="buildYear != null">
+                build_year = #{buildYear,jdbcType=VARCHAR},
+            </if>
+            <if test="chanquan != null">
+                chanquan = #{chanquan,jdbcType=VARCHAR},
+            </if>
+            <if test="county != null">
+                county = #{county,jdbcType=VARCHAR},
+            </if>
+            <if test="crawTime != null">
+                craw_time = #{crawTime,jdbcType=VARCHAR},
+            </if>
+            <if test="district != null">
+                district = #{district,jdbcType=VARCHAR},
+            </if>
+            <if test="diya != null">
+                diya = #{diya,jdbcType=VARCHAR},
+            </if>
+            <if test="elevator != null">
+                elevator = #{elevator,jdbcType=VARCHAR},
+            </if>
+            <if test="gongnuan != null">
+                gongnuan = #{gongnuan,jdbcType=VARCHAR},
+            </if>
+            <if test="huxing != null">
+                huxing = #{huxing,jdbcType=VARCHAR},
+            </if>
+            <if test="innerArea != null">
+                inner_area = #{innerArea,jdbcType=VARCHAR},
+            </if>
+            <if test="inspectTimes != null">
+                inspect_times = #{inspectTimes,jdbcType=VARCHAR},
+            </if>
+            <if test="lastTradeDate != null">
+                last_trade_date = #{lastTradeDate,jdbcType=VARCHAR},
+            </if>
+            <if test="listDate != null">
+                list_date = #{listDate,jdbcType=VARCHAR},
+            </if>
+            <if test="louceng != null">
+                louceng = #{louceng,jdbcType=VARCHAR},
+            </if>
+            <if test="orientation != null">
+                orientation = #{orientation,jdbcType=VARCHAR},
+            </if>
+            <if test="ownerRight != null">
+                owner_right = #{ownerRight,jdbcType=VARCHAR},
+            </if>
+            <if test="rJiegou != null">
+                r_jiegou = #{rJiegou,jdbcType=VARCHAR},
+            </if>
+            <if test="reCrawl != null">
+                re_crawl = #{reCrawl,jdbcType=BIT},
+            </if>
+            <if test="region != null">
+                region = #{region,jdbcType=VARCHAR},
+            </if>
+            <if test="roomDeeed != null">
+                room_deeed = #{roomDeeed,jdbcType=VARCHAR},
+            </if>
+            <if test="roomId != null">
+                room_id = #{roomId,jdbcType=VARCHAR},
+            </if>
+            <if test="roomYear != null">
+                room_year = #{roomYear,jdbcType=VARCHAR},
+            </if>
+            <if test="subTitle != null">
+                sub_title = #{subTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="tihu != null">
+                tihu = #{tihu,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="totalPrice != null">
+                total_price = #{totalPrice,jdbcType=VARCHAR},
+            </if>
+            <if test="tradingRight != null">
+                trading_right = #{tradingRight,jdbcType=VARCHAR},
+            </if>
+            <if test="zhuangxiu != null">
+                zhuangxiu = #{zhuangxiu,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                `status` = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtCreated != null">
+                gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaErshoufang">
+        <!--@mbg.generated-->
+        update lianjia_ershoufang
+        set area = #{area,jdbcType=VARCHAR},
+        area_use = #{areaUse,jdbcType=VARCHAR},
+        attention_times = #{attentionTimes,jdbcType=VARCHAR},
+        avg_price = #{avgPrice,jdbcType=VARCHAR},
+        b_jiegou = #{bJiegou,jdbcType=VARCHAR},
+        build_type = #{buildType,jdbcType=VARCHAR},
+        build_year = #{buildYear,jdbcType=VARCHAR},
+        chanquan = #{chanquan,jdbcType=VARCHAR},
+        county = #{county,jdbcType=VARCHAR},
+        craw_time = #{crawTime,jdbcType=VARCHAR},
+        district = #{district,jdbcType=VARCHAR},
+        diya = #{diya,jdbcType=VARCHAR},
+        elevator = #{elevator,jdbcType=VARCHAR},
+        gongnuan = #{gongnuan,jdbcType=VARCHAR},
+        huxing = #{huxing,jdbcType=VARCHAR},
+        inner_area = #{innerArea,jdbcType=VARCHAR},
+        inspect_times = #{inspectTimes,jdbcType=VARCHAR},
+        last_trade_date = #{lastTradeDate,jdbcType=VARCHAR},
+        list_date = #{listDate,jdbcType=VARCHAR},
+        louceng = #{louceng,jdbcType=VARCHAR},
+        orientation = #{orientation,jdbcType=VARCHAR},
+        owner_right = #{ownerRight,jdbcType=VARCHAR},
+        r_jiegou = #{rJiegou,jdbcType=VARCHAR},
+        re_crawl = #{reCrawl,jdbcType=BIT},
+        region = #{region,jdbcType=VARCHAR},
+        room_deeed = #{roomDeeed,jdbcType=VARCHAR},
+        room_id = #{roomId,jdbcType=VARCHAR},
+        room_year = #{roomYear,jdbcType=VARCHAR},
+        sub_title = #{subTitle,jdbcType=VARCHAR},
+        tihu = #{tihu,jdbcType=VARCHAR},
+        title = #{title,jdbcType=VARCHAR},
+        total_price = #{totalPrice,jdbcType=VARCHAR},
+        trading_right = #{tradingRight,jdbcType=VARCHAR},
+        zhuangxiu = #{zhuangxiu,jdbcType=VARCHAR},
+        `status` = #{status,jdbcType=VARCHAR},
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+        gmt_created = #{gmtCreated,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update lianjia_ershoufang
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="area = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.area,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="area_use = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.areaUse,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="attention_times = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.attentionTimes,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="avg_price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.avgPrice,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="b_jiegou = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.bJiegou,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="build_type = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.buildType,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="build_year = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.buildYear,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="chanquan = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.chanquan,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="county = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.county,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="craw_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.crawTime,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="district = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.district,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="diya = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.diya,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="elevator = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.elevator,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="gongnuan = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.gongnuan,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="huxing = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.huxing,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="inner_area = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.innerArea,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="inspect_times = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.inspectTimes,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="last_trade_date = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.lastTradeDate,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="list_date = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.listDate,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="louceng = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.louceng,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="orientation = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.orientation,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="owner_right = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.ownerRight,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="r_jiegou = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.rJiegou,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="re_crawl = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.reCrawl,jdbcType=BIT}
+                </foreach>
+            </trim>
+            <trim prefix="region = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.region,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="room_deeed = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.roomDeeed,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="room_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.roomId,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="room_year = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.roomYear,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="sub_title = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.subTitle,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="tihu = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.tihu,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="title = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.title,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="total_price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.totalPrice,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="trading_right = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.tradingRight,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="zhuangxiu = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.zhuangxiu,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="`status` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.status,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="gmt_modified = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.gmtModified,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="gmt_created = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.gmtCreated,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=INTEGER}
+        </foreach>
+    </update>
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update lianjia_ershoufang
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="area = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.area != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.area,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="area_use = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.areaUse != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.areaUse,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="attention_times = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.attentionTimes != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.attentionTimes,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="avg_price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.avgPrice != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.avgPrice,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="b_jiegou = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.bJiegou != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.bJiegou,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="build_type = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.buildType != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.buildType,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="build_year = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.buildYear != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.buildYear,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="chanquan = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.chanquan != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.chanquan,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="county = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.county != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.county,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="craw_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.crawTime != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.crawTime,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="district = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.district != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.district,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="diya = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.diya != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.diya,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="elevator = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.elevator != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.elevator,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="gongnuan = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.gongnuan != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.gongnuan,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="huxing = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.huxing != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.huxing,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="inner_area = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.innerArea != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.innerArea,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="inspect_times = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.inspectTimes != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.inspectTimes,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="last_trade_date = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.lastTradeDate != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.lastTradeDate,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="list_date = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.listDate != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.listDate,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="louceng = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.louceng != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.louceng,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="orientation = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.orientation != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.orientation,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="owner_right = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.ownerRight != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.ownerRight,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="r_jiegou = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.rJiegou != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.rJiegou,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="re_crawl = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.reCrawl != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.reCrawl,jdbcType=BIT}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="region = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.region != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.region,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="room_deeed = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.roomDeeed != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.roomDeeed,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="room_id = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.roomId != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.roomId,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="room_year = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.roomYear != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.roomYear,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="sub_title = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.subTitle != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.subTitle,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="tihu = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.tihu != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.tihu,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="title = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.title != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.title,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="total_price = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.totalPrice != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.totalPrice,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="trading_right = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.tradingRight != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.tradingRight,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="zhuangxiu = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.zhuangxiu != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.zhuangxiu,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="`status` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.status != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.status,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="gmt_modified = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.gmtModified != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.gmtModified,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="gmt_created = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.gmtCreated != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.gmtCreated,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=INTEGER}
+        </foreach>
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into lianjia_ershoufang
+        (area, area_use, attention_times, avg_price, b_jiegou, build_type, build_year, chanquan,
+        county, craw_time, district, diya, elevator, gongnuan, huxing, inner_area, inspect_times,
+        last_trade_date, list_date, louceng, orientation, owner_right, r_jiegou, re_crawl,
+        region, room_deeed, room_id, room_year, sub_title, tihu, title, total_price, trading_right,
+        zhuangxiu, `status`, gmt_modified, gmt_created)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.area,jdbcType=VARCHAR}, #{item.areaUse,jdbcType=VARCHAR}, #{item.attentionTimes,jdbcType=VARCHAR},
+            #{item.avgPrice,jdbcType=VARCHAR}, #{item.bJiegou,jdbcType=VARCHAR}, #{item.buildType,jdbcType=VARCHAR},
+            #{item.buildYear,jdbcType=VARCHAR}, #{item.chanquan,jdbcType=VARCHAR}, #{item.county,jdbcType=VARCHAR},
+            #{item.crawTime,jdbcType=VARCHAR}, #{item.district,jdbcType=VARCHAR}, #{item.diya,jdbcType=VARCHAR},
+            #{item.elevator,jdbcType=VARCHAR}, #{item.gongnuan,jdbcType=VARCHAR}, #{item.huxing,jdbcType=VARCHAR},
+            #{item.innerArea,jdbcType=VARCHAR}, #{item.inspectTimes,jdbcType=VARCHAR},
+            #{item.lastTradeDate,jdbcType=VARCHAR},
+            #{item.listDate,jdbcType=VARCHAR}, #{item.louceng,jdbcType=VARCHAR}, #{item.orientation,jdbcType=VARCHAR},
+            #{item.ownerRight,jdbcType=VARCHAR}, #{item.rJiegou,jdbcType=VARCHAR}, #{item.reCrawl,jdbcType=BIT},
+            #{item.region,jdbcType=VARCHAR}, #{item.roomDeeed,jdbcType=VARCHAR}, #{item.roomId,jdbcType=VARCHAR},
+            #{item.roomYear,jdbcType=VARCHAR}, #{item.subTitle,jdbcType=VARCHAR}, #{item.tihu,jdbcType=VARCHAR},
+            #{item.title,jdbcType=VARCHAR}, #{item.totalPrice,jdbcType=VARCHAR}, #{item.tradingRight,jdbcType=VARCHAR},
+            #{item.zhuangxiu,jdbcType=VARCHAR}, #{item.status,jdbcType=VARCHAR}, #{item.gmtModified,jdbcType=TIMESTAMP},
+            #{item.gmtCreated,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+    <select id="findByRoomId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from lianjia_ershoufang t
+        where room_id=#{roomId,jdbcType=VARCHAR}
+    </select>
+</mapper>

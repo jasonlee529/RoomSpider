@@ -1,16 +1,12 @@
 package cn.lee.housing.spider.lianjia.model.wangqian;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 import cn.lee.housing.spider.lianjia.model.IdEntity;
 
 /**
  * 网签机构
  * Created by jason on 18-1-29.
  */
-@Entity
-@Table(name = "wangqian_month_agents")
+//@Table(name = "wangqian_month_agents")
 public class MonthAgent extends IdEntity {
 
     private String month;

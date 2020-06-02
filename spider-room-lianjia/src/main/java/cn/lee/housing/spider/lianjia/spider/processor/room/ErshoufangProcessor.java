@@ -1,14 +1,11 @@
 package cn.lee.housing.spider.lianjia.spider.processor.room;
 
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import cn.lee.housing.spider.lianjia.model.room.Baojia;
-import cn.lee.housing.spider.lianjia.model.room.Ershoufang;
+import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaBaojia;
+import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaErshoufang;
 import cn.lee.housing.spider.lianjia.service.room.ErshoufangService;
 import cn.lee.housing.spider.lianjia.spider.PageProcessException;
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import us.codecraft.webmagic.Page;
@@ -17,6 +14,10 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
+
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -82,7 +83,7 @@ public class ErshoufangProcessor implements PageProcessor {
             String url = node.xpath("//a[@class=img]").links().get();
             String roomId = parseRoomId(url);
             if (StringUtils.isNotBlank(roomId)) {
-                Baojia bj = new Baojia(roomId);
+                LianjiaBaojia bj = LianjiaBaojia.builder().roomId(roomId).crawTime(new DateTime().toString("yyyy-MM-dd HH:mm:ss")).build();
                 bj.setTitle(node.xpath("//div[@class=title]/a/text()").get());
                 bj.setPrice(node.xpath("//div[@class=totalPrice]/span/text()").get());
                 bj.setInfo(node.xpath("//div[@class=houseInfo]/text()").get());
@@ -108,7 +109,7 @@ public class ErshoufangProcessor implements PageProcessor {
         String fwId = parseRoomId(page.getUrl().get());
         String fwId2 = html.xpath("//div[@class=overview]//div[@class=houseRecord]//span[@class=info]/text()").get();
         if (StringUtils.isNotBlank(fwId) && StringUtils.isNotBlank(fwId2)) {
-            Ershoufang entity = new Ershoufang(fwId);
+            LianjiaErshoufang entity = LianjiaErshoufang.builder().roomId(fwId).crawTime(new DateTime().toString("yyyy-MM-dd HH:mm:ss")).build();
             entity.setTitle(html.xpath("//div[@class=sellDetailHeader]//div[@class=title]//h1/text()").get());
             entity.setSubTitle(html.xpath("//div[@class=sellDetailHeader]//div[@class=title]//div/text()").get());
             entity.setTotalPrice(html.xpath("//div[@class=overview]//div[@class=price]/span[@class=total]/text()").get());
@@ -127,12 +128,12 @@ public class ErshoufangProcessor implements PageProcessor {
             entity.setLouceng(html.xpath("//div[@class=base]//div[@class=content]//li[2]/text()").get());
             String area = StringUtils.trim(html.xpath("//div[@class=base]//div[@class=content]//li[3]/text()").get());
             entity.setArea(StringUtils.replace(area, "㎡", ""));
-            entity.setrJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[4]/text()").get());
+            entity.setRJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[4]/text()").get());
             String innerArea = StringUtils.trim(html.xpath("//div[@class=base]//div[@class=content]//li[5]/text()").get());
             entity.setInnerArea(StringUtils.replace(innerArea, "㎡", ""));
             entity.setBuildType(html.xpath("//div[@class=base]//div[@class=content]//li[6]/text()").get());
             entity.setOrientation(html.xpath("//div[@class=base]//div[@class=content]//li[7]/text()").get());
-            entity.setbJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[8]/text()").get());
+            entity.setBJiegou(html.xpath("//div[@class=base]//div[@class=content]//li[8]/text()").get());
             entity.setZhuangxiu(html.xpath("//div[@class=base]//div[@class=content]//li[9]/text()").get());
             entity.setTihu(html.xpath("//div[@class=base]//div[@class=content]//li[10]/text()").get());
             entity.setGongnuan(html.xpath("//div[@class=base]//div[@class=content]//li[11]/text()").get());

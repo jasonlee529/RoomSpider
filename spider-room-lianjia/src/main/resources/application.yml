@@ -10,7 +10,7 @@ xdaili:
   url: forward.xdaili.cn
   port: 80
 proxy:
-  custome: http://116.196.86.186:35050/api/v1/proxy/?https=1
+  custome: http://116.196.86.186:35050/api/v1/proxy/
 spring:
   aop:
     proxy-target-class: true

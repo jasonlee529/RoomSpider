@@ -1,15 +1,11 @@
 package cn.lee.housing.spider.lianjia.model.wangqian;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 import cn.lee.housing.spider.lianjia.model.IdEntity;
 
 /**
  * Created by jason on 18-2-1.
  */
-@Entity
-@Table(name = "wangqian_month")
+//@Table(name = "wangqian_month")
 public class MonthInfo extends IdEntity {
 
     private String month;   //月份

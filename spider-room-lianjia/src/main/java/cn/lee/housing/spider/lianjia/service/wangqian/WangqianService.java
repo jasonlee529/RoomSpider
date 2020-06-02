@@ -1,21 +1,18 @@
 package cn.lee.housing.spider.lianjia.service.wangqian;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import cn.lee.housing.spider.lianjia.model.wangqian.*;
-import cn.lee.housing.spider.lianjia.repository.wangqian.*;
 import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.pipeline.wangqian.WangqianPipeline;
 import cn.lee.housing.spider.lianjia.spider.processor.wangqian.WangqianProcessor;
 import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.scheduler.PriorityScheduler;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by jason on 18-2-1.
@@ -28,36 +25,36 @@ public class WangqianService {
 
     @Autowired
     private WangqianPipeline wangqianPipeline;
-    @Autowired
-    private DayInfoDao dayInfoDao;
-    @Autowired
-    private MonthAgentDao monthAgentDao;
-    @Autowired
-    private MonthAreaDao monthAreaDao;
-    @Autowired
-    private MonthCountyDao monthCountyDao;
-    @Autowired
-    private MonthInfoDao monthInfoDao;
-
-    public void saveDayInfo(DayInfo dayInfo) {
-        dayInfoDao.save(dayInfo);
-    }
-
-    public void saveMonthAgent(MonthAgent obj) {
-        monthAgentDao.save(obj);
-    }
-
-    public void saveMonthArea(MonthArea obj) {
-        monthAreaDao.save(obj);
-    }
-
-    public void saveMonthCounty(MonthCounty obj) {
-        monthCountyDao.save(obj);
-    }
-
-    public void saveMonthInfo(MonthInfo obj) {
-        monthInfoDao.save(obj);
-    }
+//    @Autowired
+//    private DayInfoDao dayInfoDao;
+//    @Autowired
+//    private MonthAgentDao monthAgentDao;
+//    @Autowired
+//    private MonthAreaDao monthAreaDao;
+//    @Autowired
+//    private MonthCountyDao monthCountyDao;
+//    @Autowired
+//    private MonthInfoDao monthInfoDao;
+//
+//    public void saveDayInfo(DayInfo dayInfo) {
+//        dayInfoDao.save(dayInfo);
+//    }
+//
+//    public void saveMonthAgent(MonthAgent obj) {
+//        monthAgentDao.save(obj);
+//    }
+//
+//    public void saveMonthArea(MonthArea obj) {
+//        monthAreaDao.save(obj);
+//    }
+//
+//    public void saveMonthCounty(MonthCounty obj) {
+//        monthCountyDao.save(obj);
+//    }
+//
+//    public void saveMonthInfo(MonthInfo obj) {
+//        monthInfoDao.save(obj);
+//    }
 
     public Map startCrawl() {
         Map result = new HashMap();
