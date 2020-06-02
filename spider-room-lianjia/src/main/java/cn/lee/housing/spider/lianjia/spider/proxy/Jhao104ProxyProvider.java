@@ -26,22 +26,24 @@ import java.io.IOException;
  * Created by jason on 17-9-25.
  */
 @Service
-public class CustomeProxyProvider implements ProxyProvider, InitializingBean {
+public class Jhao104ProxyProvider implements ProxyProvider, InitializingBean {
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Value("${proxy.custome.get}")
+    @Value("${proxy.jhao104.get}")
     private String proxyUrl;
-    @Value("${proxy.custome.delete}")
+    @Value("${proxy.jhao104.delete}")
     private String deleteUrl;
-
     HttpClient client = null;
     HttpGet get = null;
     HttpGet delete = null;
+
 
     @Override
     public void afterPropertiesSet() throws Exception {
         client = HttpClientBuilder.create().build();
         get = new HttpGet(proxyUrl);
+
     }
 
     @Override
@@ -67,7 +69,7 @@ public class CustomeProxyProvider implements ProxyProvider, InitializingBean {
                 HttpEntity he = response.getEntity();
                 String respContent = EntityUtils.toString(he, "UTF-8");
                 JSONObject jsonObject = JSON.parseObject(respContent);
-                String jsonStr = jsonObject.getJSONObject("data").getString("proxy");  //取出json数组中的某一个属性
+                String jsonStr = jsonObject.getString("proxy");  //取出json数组中的某一个属性
                 System.out.println("代理IP: " + jsonStr);
                 if (StringUtils.isNotBlank(jsonStr)) {
                     String[] arrs = StringUtils.split(jsonStr, ":");

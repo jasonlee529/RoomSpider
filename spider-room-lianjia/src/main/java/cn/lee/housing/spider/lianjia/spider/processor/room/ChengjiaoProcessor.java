@@ -18,7 +18,6 @@ import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.selector.Html;
 
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
@@ -67,7 +66,6 @@ public class ChengjiaoProcessor implements PageProcessor {
         this.chengjiaoService = chengjiaoService;
     }
 
-    private final static String ROOM_ID = "[1-9]\\d+";
     private final Pattern pageOnePattern = Pattern.compile("/pg\\d+");
 
     @Override
@@ -90,9 +88,9 @@ public class ChengjiaoProcessor implements PageProcessor {
     protected void processListItems(Page page) {
         List<String> urls = page.getHtml().xpath("//div[@class=leftContent]//ul//li//div[@class=title]//a").links().all();
         for (String str : urls) {
-            String roomId = parseRoomId(str);
+            String roomId = RoomIdProvider.parseRoomId(str);
             if (StringUtils.isNotBlank(roomId) && chengjiaoService.isRecrawl(roomId)) {
-                Request request = new Request(str).setPriority(Long.parseLong(roomId));
+                Request request = new Request(str).setPriority(10L);
                 page.addTargetRequest(request);
                 logger.error(" add Request : " + request);
             }
@@ -110,7 +108,7 @@ public class ChengjiaoProcessor implements PageProcessor {
                 String pageTpl = page.getHtml().xpath("//div[@class=house-lst-page-box]").$("div", "page-url").get();
                 for (int i = 2; i <= 100; i++) {
                     String pageIndex = StringUtils.replace(pageTpl, "{page}", i + "");
-                    page.addTargetRequest(new Request("https://bj.lianjia.com/" + pageIndex));
+                    page.addTargetRequest(new Request("https://bj.lianjia.com/" + pageIndex).setPriority(100L));
                 }
                 page.addTargetRequests(page.getHtml().xpath("//div[@class=m-filter]//div[@class=list-more]//a").links().all(), -1);
                 logger.error("total request : " + page.getTargetRequests().size());
@@ -129,7 +127,7 @@ public class ChengjiaoProcessor implements PageProcessor {
 
     protected void processDetail(Page page) {
         Html html = page.getHtml();
-        String fwId = parseRoomId(page.getUrl().get());
+        String fwId = RoomIdProvider.parseRoomId(page.getUrl().get());
         String fwId2 = html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[1]/text()").get();
         if (StringUtils.isNotBlank(fwId) && StringUtils.isNotBlank(fwId2)) {
             LianjiaChengjiao chengjiao = LianjiaChengjiao.builder().roomId(fwId).crawTime(new DateTime().toString("yyyy-MM-dd HH:mm:ss")).build();
@@ -186,16 +184,6 @@ public class ChengjiaoProcessor implements PageProcessor {
             logger.error(page.getUrl() + " 爬去失败，代理爬去失败 ,重新爬取!");
             throw new PageProcessException("代理爬取页面错误，需认证，重新爬取！");
         }
-    }
-
-    private String parseRoomId(String url) {
-        Pattern p = Pattern.compile(ROOM_ID);
-        Matcher m = p.matcher(url);
-        if (m.find()) {
-            String roomId = m.group().replace(".html", "");
-            return roomId;
-        }
-        return null;
     }
 
     private String subCjjg(String in) {
