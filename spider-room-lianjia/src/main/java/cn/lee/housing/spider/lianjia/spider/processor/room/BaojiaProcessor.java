@@ -18,7 +18,7 @@ public class BaojiaProcessor implements PageProcessor {
     @Override
     public void process(Page page) {
         Html html = page.getHtml();
-        String fwId = parseRoomId(page.getUrl().get());
+        String fwId = RoomIdProvider.parseRoomId(page.getUrl().get());
     }
 
     @Override
