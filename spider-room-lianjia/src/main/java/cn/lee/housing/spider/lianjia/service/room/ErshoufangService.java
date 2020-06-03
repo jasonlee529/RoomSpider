@@ -1,7 +1,6 @@
 package cn.lee.housing.spider.lianjia.service.room;
 
 import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaBaojia;
-import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaChengjiao;
 import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaErshoufang;
 import cn.lee.housing.spider.lianjia.repository.room.lianjia.LianjiaBaojiaMapper;
 import cn.lee.housing.spider.lianjia.repository.room.lianjia.LianjiaErshoufangMapper;
@@ -95,10 +94,10 @@ public class ErshoufangService {
 
 
     public LianjiaBaojia saveBaojia(LianjiaBaojia baojia) {
-        LianjiaBaojia last = baojiaoDao.findFirstByRoomIdOrderByCrawTimeDesc(baojia.getRoomId());
-        if (last == null || !StringUtils.equalsIgnoreCase(last.getPrice(), baojia.getPrice())) {
-            baojiaoDao.insertSelective(baojia);
-        }
+//        LianjiaBaojia last = baojiaoDao.findFirstByRoomIdOrderByCrawTimeDesc(baojia.getRoomId());
+//        if (last == null || !StringUtils.equalsIgnoreCase(last.getPrice(), baojia.getPrice())) {
+        baojiaoDao.insertSelective(baojia);
+//        }
         return baojia;
     }
 
