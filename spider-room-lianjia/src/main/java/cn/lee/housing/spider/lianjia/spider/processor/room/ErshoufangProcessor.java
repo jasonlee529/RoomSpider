@@ -4,6 +4,7 @@ import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaBaojia;
 import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaErshoufang;
 import cn.lee.housing.spider.lianjia.service.room.ErshoufangService;
 import cn.lee.housing.spider.lianjia.spider.PageProcessException;
+import cn.lee.housing.utils.mapper.BeanMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
@@ -91,7 +92,7 @@ public class ErshoufangProcessor implements PageProcessor {
                 page.putField("baojia", bj);
                 logger.info("{} baojia : ", bj);
                 if (service.isRecrawl(roomId)) {
-                    Request request = new Request(url).setPriority(10L);
+                    Request request = new Request(url).setPriority(Long.parseLong(roomId));
                     page.addTargetRequest(request);
                     logger.info(" add Request : " + request);
                 }
@@ -151,10 +152,12 @@ public class ErshoufangProcessor implements PageProcessor {
             entity.setDiya(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[7]/span[2]/text()").get());
             entity.setRoomDeeed(html.xpath("//div[@class=baseinform]//div[@class=transaction]//li[8]//span[2]/tidyText()").get());
 
-            // 具体爬去字段
+            // 具体爬取字段
             page.putField("ershoufang", entity);
+            LianjiaBaojia baojia = BeanMapper.map(entity, LianjiaBaojia.class);
+            page.putField("baojia", baojia);
         } else {
-            logger.error(page.getUrl() + " 爬去失败，代理爬去失败 ,重新爬取!");
+            logger.error(page.getUrl() + " 爬取失败，代理爬取失败 ,重新爬取!");
             throw new PageProcessException("代理爬取页面错误，需认证，重新爬取！");
         }
     }

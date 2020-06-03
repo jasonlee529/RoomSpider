@@ -30,4 +30,9 @@ public class ErshoufangController {
     public Map area() {
         return service.spiderDepth();
     }
+
+    @RequestMapping(value = "baojia")
+    public Map baojia() {
+        return service.spiderBaojia();
+    }
 }

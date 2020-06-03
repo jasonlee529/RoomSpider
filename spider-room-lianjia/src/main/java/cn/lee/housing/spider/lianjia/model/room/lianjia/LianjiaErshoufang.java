@@ -99,6 +99,6 @@ public class LianjiaErshoufang {
     private Date gmtCreated;
 
     public static LianjiaErshoufangBuilder builder() {
-        return new LianjiaErshoufangBuilder();
+        return new LianjiaErshoufangBuilder().crawTime(new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
     }
 }

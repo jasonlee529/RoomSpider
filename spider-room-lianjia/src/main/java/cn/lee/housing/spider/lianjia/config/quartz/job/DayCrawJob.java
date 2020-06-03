@@ -9,7 +9,6 @@ import org.quartz.SchedulerContext;
 import org.quartz.SchedulerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
 /**
@@ -31,6 +30,8 @@ public class DayCrawJob extends QuartzJobBean {
 
             ErshoufangService ershoufagService = (ErshoufangService) skedCtx.get("ershoufagService");
             ershoufagService.spiderDay("all");
+
+            ershoufagService.spiderBaojia();
         } catch (SchedulerException e) {
             e.printStackTrace();
         }

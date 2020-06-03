@@ -38,6 +38,6 @@ public class LianjiaBaojia {
     private Date gmtModified;
 
     public static LianjiaBaojiaBuilder builder() {
-        return new LianjiaBaojiaBuilder();
+        return new LianjiaBaojiaBuilder().crawTime(new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
     }
 }
