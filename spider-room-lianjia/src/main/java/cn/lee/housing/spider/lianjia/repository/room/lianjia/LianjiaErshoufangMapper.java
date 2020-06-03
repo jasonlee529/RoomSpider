@@ -1,10 +1,12 @@
 package cn.lee.housing.spider.lianjia.repository.room.lianjia;
 
+import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaChengjiao;
 import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaErshoufang;
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
 @Mapper
 
 public interface LianjiaErshoufangMapper {
@@ -27,4 +29,8 @@ public interface LianjiaErshoufangMapper {
     int batchInsert(@Param("list") List<LianjiaErshoufang> list);
 
     LianjiaErshoufang findByRoomId(@Param("roomId") String roomId);
+
+    int updateByRoomId(LianjiaErshoufang record);
+
+    List<LianjiaErshoufang> findByStatus();
 }

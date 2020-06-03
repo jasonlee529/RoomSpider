@@ -9,9 +9,6 @@ import cn.lee.housing.spider.lianjia.spider.pipeline.room.ErshoufangPipeline;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ErshoufangProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ErshoufangProcessorFactory;
 import cn.lee.housing.spider.lianjia.spider.proxy.CustomeProxyProvider;
-import cn.lee.housing.spider.lianjia.spider.proxy.CustomeProxyProvider;
-import cn.lee.housing.spider.lianjia.spider.proxy.Jhao104ProxyProvider;
-import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +18,7 @@ import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.scheduler.PriorityScheduler;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -96,19 +94,56 @@ public class ErshoufangService {
 
 
     public LianjiaBaojia saveBaojia(LianjiaBaojia baojia) {
-        LianjiaBaojia last = baojiaoDao.findFirstByRoomIdOrderByCrawTimeDesc(baojia.getRoomId());
-        if (last == null || !StringUtils.equalsIgnoreCase(last.getPrice(), baojia.getPrice())) {
-            baojiaoDao.insertSelective(baojia);
-        }
+//        LianjiaBaojia last = baojiaoDao.findFirstByRoomIdOrderByCrawTimeDesc(baojia.getRoomId());
+//        if (last == null || !StringUtils.equalsIgnoreCase(last.getPrice(), baojia.getPrice())) {
+        baojiaoDao.insertSelective(baojia);
+//        }
         return baojia;
     }
 
     public LianjiaErshoufang saveErshoufang(LianjiaErshoufang ershoufang) {
-        dao.insertSelective(ershoufang);
+        if (ershoufang.getId() == null) {
+            dao.insertSelective(ershoufang);
+        } else {
+            dao.updateByPrimaryKeySelective(ershoufang);
+        }
         return ershoufang;
     }
 
+    public LianjiaErshoufang updateByRoomId(LianjiaErshoufang ershoufang) {
+        dao.updateByRoomId(ershoufang);
+        return ershoufang;
+    }
+
+
     public LianjiaErshoufang findByRoomId(String roomId) {
         return dao.findByRoomId(roomId);
+    }
+
+    public Map spiderBaojia() {
+        Map result = new HashMap();
+        boolean isSuccess = true;
+        try {
+            HttpClientDownloader downloader = new HttpClientDownloader();
+            downloader.setProxyProvider(proxyProvider);
+            PriorityScheduler scheduler = new PriorityScheduler();
+            Spider spider = MySpider.create(factory.getBaojiaProcessor())
+                    .setScheduler(scheduler)
+                    .addPipeline(pipeline)
+                    .addPipeline(new ConsolePipeline());
+            List<LianjiaErshoufang> ids = dao.findByStatus();
+            for (LianjiaErshoufang cj : ids) {
+                spider.addUrl("https://bj.lianjia.com/ershoufang/" + StringUtils.trim(cj.getRoomId()) + ".html");
+            }
+            spider.setDownloader(downloader);
+            spider.thread(10).start();//启动爬虫
+        } catch (Exception e) {
+            isSuccess = false;
+            e.printStackTrace();
+            result.put("desc", e.getMessage());
+        }
+
+        result.put("success", isSuccess);
+        return result;
     }
 }
