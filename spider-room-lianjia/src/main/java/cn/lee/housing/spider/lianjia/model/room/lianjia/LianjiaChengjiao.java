@@ -152,6 +152,6 @@ public class LianjiaChengjiao {
     private Date gmtModified;
 
     public static LianjiaChengjiaoBuilder builder() {
-        return new LianjiaChengjiaoBuilder();
+        return new LianjiaChengjiaoBuilder().crawTime(new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
     }
 }

@@ -1,6 +1,7 @@
 package cn.lee.housing.spider.lianjia.service.room;
 
 import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaBaojia;
+import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaChengjiao;
 import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaErshoufang;
 import cn.lee.housing.spider.lianjia.repository.room.lianjia.LianjiaBaojiaMapper;
 import cn.lee.housing.spider.lianjia.repository.room.lianjia.LianjiaErshoufangMapper;
@@ -9,9 +10,6 @@ import cn.lee.housing.spider.lianjia.spider.pipeline.room.ErshoufangPipeline;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ErshoufangProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ErshoufangProcessorFactory;
 import cn.lee.housing.spider.lianjia.spider.proxy.CustomeProxyProvider;
-import cn.lee.housing.spider.lianjia.spider.proxy.CustomeProxyProvider;
-import cn.lee.housing.spider.lianjia.spider.proxy.Jhao104ProxyProvider;
-import cn.lee.housing.spider.lianjia.spider.proxy.XdailiProxyProvider;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +19,7 @@ import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.scheduler.PriorityScheduler;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -104,9 +103,19 @@ public class ErshoufangService {
     }
 
     public LianjiaErshoufang saveErshoufang(LianjiaErshoufang ershoufang) {
-        dao.insertSelective(ershoufang);
+        if (ershoufang.getId() == null) {
+            dao.insertSelective(ershoufang);
+        } else {
+            dao.updateByPrimaryKeySelective(ershoufang);
+        }
         return ershoufang;
     }
+
+    public LianjiaErshoufang updateByRoomId(LianjiaErshoufang ershoufang) {
+        dao.updateByRoomId(ershoufang);
+        return ershoufang;
+    }
+
 
     public LianjiaErshoufang findByRoomId(String roomId) {
         return dao.findByRoomId(roomId);
@@ -122,8 +131,11 @@ public class ErshoufangService {
             Spider spider = MySpider.create(factory.getBaojiaProcessor())
                     .setScheduler(scheduler)
                     .addPipeline(pipeline)
-                    .addPipeline(new ConsolePipeline())
-                    .addUrl();
+                    .addPipeline(new ConsolePipeline());
+            List<LianjiaErshoufang> ids = dao.findByStatus();
+            for (LianjiaErshoufang cj : ids) {
+                spider.addUrl("https://bj.lianjia.com/ershoufang/" + StringUtils.trim(cj.getRoomId()) + ".html");
+            }
             spider.setDownloader(downloader);
             spider.thread(10).start();//启动爬虫
         } catch (Exception e) {
