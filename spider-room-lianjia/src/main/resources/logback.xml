@@ -1,43 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration debug="false" scan="false">
+	<contextName>xiliu-chronic-service</contextName>
+	<conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+	<conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
+	<conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+
+	<property name="CONSOLE_LOG_PATTERN" value="${CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+	<property name="FILE_LOG_PATTERN" value="${FILE_LOG_PATTERN:-%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+
 	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
 		</encoder>
 	</appender>
-
-	<appender name="rollingFile"
-			  class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>logs/spider.log</file>
+	<appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_PATH}/xiliu-chronic-service.${name}.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>logs/spider.%d{yyyy-MM-dd}.log
-			</fileNamePattern>
+			<fileNamePattern>${LOG_PATH}/spider-room-lianjia.%d{yyyy-MM-dd}.log</fileNamePattern>
 		</rollingPolicy>
 		<encoder>
-			<pattern>%d{yyyy-MM-dd-HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
-			</pattern>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
 		</encoder>
 	</appender>
-
 	<!-- project default level -->
-	<logger name="cn.lee.housing" level="info" />
-
+	<logger name="cn.lee" level="info"/>
 	<!-- 定义根日志级别 -->
 	<root level="info">
-		<appender-ref ref="console" />
-		<appender-ref ref="rollingFile"></appender-ref>
+		<appender-ref ref="rollingFile"/>
+		<appender-ref ref="console"/>
 	</root>
-
 	<!--
-		logger	description	since
-		jdbc.sqlonly	Logs only SQL. SQL executed within a prepared statement is automatically shown with it's bind arguments replaced with the data bound at that position, for greatly increased readability.	1.0
-		jdbc.sqltiming	Logs the SQL, post-execution, including timing statistics on how long the SQL took to execute.	1.0
-		jdbc.audit	Logs ALL JDBC calls except for ResultSets. This is a very voluminous output, and is not normally needed unless tracking down a specific JDBC problem.	1.0
-		jdbc.resultset	Even more voluminous, because all calls to ResultSet objects are logged.	1.0
-		jdbc.connection	Logs connection open and close events as well as dumping all open connection numbers. This is very useful for hunting down connection leak problems.	1.2alpha1
-	 -->
+        logger	description	since
+        jdbc.sqlonly	Logs only SQL. SQL executed within a prepared statement is automatically shown with it's bind arguments replaced with the data bound at that position, for greatly increased readability.	1.0
+        jdbc.sqltiming	Logs the SQL, post-execution, including timing statistics on how long the SQL took to execute.	1.0
+        jdbc.audit	Logs ALL JDBC calls except for ResultSets. This is a very voluminous output, and is not normally needed unless tracking down a specific JDBC problem.	1.0
+        jdbc.resultset	Even more voluminous, because all calls to ResultSet objects are logged.	1.0
+        jdbc.connection	Logs connection open and close events as well as dumping all open connection numbers. This is very useful for hunting down connection leak problems.	1.2alpha1
+     -->
 	<logger name="jdbc.sqlonly" level="ERROR"/>
-	<logger name="jdbc.sqltiming" level="ERROR"/>
+	<logger name="jdbc.sqltiming" level="info"/>
 	<logger name="jdbc.audit" level="ERROR"/>
 	<logger name="jdbc.resultset" level="ERROR"/>
+	<logger name="jdbc.resultsettable" level="info"/>
 </configuration>
