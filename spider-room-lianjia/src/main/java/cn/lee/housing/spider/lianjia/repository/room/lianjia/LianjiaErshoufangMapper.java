@@ -1,6 +1,5 @@
 package cn.lee.housing.spider.lianjia.repository.room.lianjia;
 
-import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaChengjiao;
 import cn.lee.housing.spider.lianjia.model.room.lianjia.LianjiaErshoufang;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -32,5 +31,7 @@ public interface LianjiaErshoufangMapper {
 
     int updateByRoomId(LianjiaErshoufang record);
 
-    List<LianjiaErshoufang> findByStatus();
+    List<LianjiaErshoufang> findByStatus(@Param("start") long start, @Param("end") long end);
+
+    long countByStatus();
 }
