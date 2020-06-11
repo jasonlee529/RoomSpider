@@ -133,7 +133,7 @@ public class ErshoufangService {
                     .setScheduler(scheduler)
                     .addPipeline(pipeline)
                     .addPipeline(new ConsolePipeline());
-            List<LianjiaErshoufang> ids = dao.findByStatus(0, 1000);
+            List<LianjiaErshoufang> ids = dao.findByStatus(0, 100);
             baojiaProcessor.setTotal(dao.countByStatus());
             for (LianjiaErshoufang cj : ids) {
                 spider.addUrl("https://bj.lianjia.com/ershoufang/" + StringUtils.trim(cj.getRoomId()) + ".html");
