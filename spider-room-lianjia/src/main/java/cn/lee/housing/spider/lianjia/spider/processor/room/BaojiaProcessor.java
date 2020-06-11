@@ -54,7 +54,7 @@ public class BaojiaProcessor extends ErshoufangProcessor {
 
     private void addMoreUrl(Page page) {
         if (pageCount.get() * 1000 < total) {
-            List<LianjiaErshoufang> ids = getService().findByStatus(pageCount.get() * 1000, pageCount.incrementAndGet() * 1000);
+            List<LianjiaErshoufang> ids = getService().findByStatus(pageCount.get() * 100, pageCount.incrementAndGet() * 100);
             for (LianjiaErshoufang cj : ids) {
                 page.addTargetRequest("https://bj.lianjia.com/ershoufang/" + StringUtils.trim(cj.getRoomId()) + ".html");
             }
