@@ -8,6 +8,9 @@ import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.selector.Html;
 
+import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
+
 /**
  * @author libo
  * @Title: BaojiaProcessor
@@ -20,9 +23,17 @@ public class BaojiaProcessor extends ErshoufangProcessor {
 
     private Site site = Site.me().setCharset("utf-8").setRetryTimes(10).setCycleRetryTimes(200).setSleepTime(1000).setDomain("bj.lianjia.com");
 
+    private final AtomicLong pageCount = new AtomicLong(1);
+
+    private Long total = 0L;
+
+    public void setTotal(Long total) {
+        this.total = total;
+    }
 
     @Override
     public void process(Page page) {
+        addMoreUrl(page);
         Html html = page.getHtml();
         String fwId = RoomIdProvider.parseRoomId(page.getUrl().get());
         if (StringUtils.isNotBlank(fwId) && StringUtils.isNotBlank(fwId)) {
@@ -39,6 +50,16 @@ public class BaojiaProcessor extends ErshoufangProcessor {
             }
             page.putField("baojia", entity);
         }
+    }
+
+    private void addMoreUrl(Page page) {
+        if (pageCount.get() * 1000 < total) {
+            List<LianjiaErshoufang> ids = getService().findByStatus(pageCount.get() * 1000, pageCount.incrementAndGet() * 1000);
+            for (LianjiaErshoufang cj : ids) {
+                page.addTargetRequest("https://bj.lianjia.com/ershoufang/" + StringUtils.trim(cj.getRoomId()) + ".html");
+            }
+        }
+        log.info("当前页码: " + pageCount.get());
     }
 
     @Override

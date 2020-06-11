@@ -1047,10 +1047,17 @@
         </set>
         where room_id = #{roomId,jdbcType=VARCHAR}
     </update>
+    <select id="countByStatus"  resultType="java.lang.Long">
+        select
+        count(1)
+        from lianjia_ershoufang
+        where status is null
+    </select>
     <select id="findByStatus"  resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"></include>
         from lianjia_ershoufang
         where status is null
+        limit #{start} ,  #{end}
     </select>
 </mapper>

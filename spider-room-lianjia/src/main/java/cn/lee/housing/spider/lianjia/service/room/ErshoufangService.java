@@ -6,6 +6,7 @@ import cn.lee.housing.spider.lianjia.repository.room.lianjia.LianjiaBaojiaMapper
 import cn.lee.housing.spider.lianjia.repository.room.lianjia.LianjiaErshoufangMapper;
 import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.pipeline.room.ErshoufangPipeline;
+import cn.lee.housing.spider.lianjia.spider.processor.room.BaojiaProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ErshoufangProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ErshoufangProcessorFactory;
 import cn.lee.housing.spider.lianjia.spider.proxy.CustomeProxyProvider;
@@ -127,11 +128,13 @@ public class ErshoufangService {
             HttpClientDownloader downloader = new HttpClientDownloader();
             downloader.setProxyProvider(proxyProvider);
             PriorityScheduler scheduler = new PriorityScheduler();
-            Spider spider = MySpider.create(factory.getBaojiaProcessor())
+            BaojiaProcessor baojiaProcessor = factory.getBaojiaProcessor();
+            Spider spider = MySpider.create(baojiaProcessor)
                     .setScheduler(scheduler)
                     .addPipeline(pipeline)
                     .addPipeline(new ConsolePipeline());
-            List<LianjiaErshoufang> ids = dao.findByStatus();
+            List<LianjiaErshoufang> ids = dao.findByStatus(0, 1000);
+            baojiaProcessor.setTotal(dao.countByStatus());
             for (LianjiaErshoufang cj : ids) {
                 spider.addUrl("https://bj.lianjia.com/ershoufang/" + StringUtils.trim(cj.getRoomId()) + ".html");
             }
@@ -145,5 +148,9 @@ public class ErshoufangService {
 
         result.put("success", isSuccess);
         return result;
+    }
+
+    public List<LianjiaErshoufang> findByStatus(long start, long end) {
+        return dao.findByStatus(start, end);
     }
 }

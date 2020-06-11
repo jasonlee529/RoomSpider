@@ -32,10 +32,10 @@ public class ErshoufangProcessorFactory implements InitializingBean {
         return processor;
     }
 
-    public ErshoufangProcessor getBaojiaProcessor() {
+    public BaojiaProcessor getBaojiaProcessor() {
         processor = new BaojiaProcessor();
         processor.setService(service);
-        return processor;
+        return (BaojiaProcessor) processor;
 
     }
 }
