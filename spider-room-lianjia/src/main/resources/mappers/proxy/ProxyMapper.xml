@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lee.housing.proxy.repository.ProxyMapper">
+    <resultMap id="BaseResultMap" type="cn.lee.housing.proxy.model.ProxyModel">
+        <!--@mbg.generated-->
+        <!--@Table free_proxy-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="host" jdbcType="VARCHAR" property="host"/>
+        <result column="port" jdbcType="VARCHAR" property="port"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="region" jdbcType="VARCHAR" property="region"/>
+        <result column="anonymous" jdbcType="VARCHAR" property="anonymous"/>
+        <result column="quality" jdbcType="INTEGER" property="quality"/>
+        <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `host`, port, `type`, region, anonymous, quality, gmt_created, gmt_modified
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from free_proxy
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from free_proxy
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.lee.housing.proxy.model.ProxyModel"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into free_proxy (`host`, port, `type`,
+        region, anonymous, quality)
+        values (#{host,jdbcType=VARCHAR}, #{port,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},
+        #{region,jdbcType=VARCHAR}, #{anonymous,jdbcType=VARCHAR}, #{quality,jdbcType=INTEGER}
+       )
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.lee.housing.proxy.model.ProxyModel"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into free_proxy
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="host != null">
+                `host`,
+            </if>
+            <if test="port != null">
+                port,
+            </if>
+            <if test="type != null">
+                `type`,
+            </if>
+            <if test="region != null">
+                region,
+            </if>
+            <if test="anonymous != null">
+                anonymous,
+            </if>
+            <if test="quality != null">
+                quality,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="host != null">
+                #{host,jdbcType=VARCHAR},
+            </if>
+            <if test="port != null">
+                #{port,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="region != null">
+                #{region,jdbcType=VARCHAR},
+            </if>
+            <if test="anonymous != null">
+                #{anonymous,jdbcType=VARCHAR},
+            </if>
+            <if test="quality != null">
+                #{quality,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.lee.housing.proxy.model.ProxyModel">
+        <!--@mbg.generated-->
+        update free_proxy
+        <set>
+            <if test="host != null">
+                `host` = #{host,jdbcType=VARCHAR},
+            </if>
+            <if test="port != null">
+                port = #{port,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                `type` = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="region != null">
+                region = #{region,jdbcType=VARCHAR},
+            </if>
+            <if test="anonymous != null">
+                anonymous = #{anonymous,jdbcType=VARCHAR},
+            </if>
+            <if test="quality != null">
+                quality = #{quality,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.lee.housing.proxy.model.ProxyModel">
+        <!--@mbg.generated-->
+        update free_proxy
+        set `host` = #{host,jdbcType=VARCHAR},
+        port = #{port,jdbcType=VARCHAR},
+        `type` = #{type,jdbcType=VARCHAR},
+        region = #{region,jdbcType=VARCHAR},
+        anonymous = #{anonymous,jdbcType=VARCHAR},
+        quality = #{quality,jdbcType=INTEGER}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update free_proxy
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="`host` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.host,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="port = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.port,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="`type` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.type,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="region = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.region,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="anonymous = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.anonymous,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="quality = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=BIGINT} then #{item.quality,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update free_proxy
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="`host` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.host != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.host,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="port = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.port != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.port,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="`type` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.type != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.type,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="region = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.region != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.region,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="anonymous = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.anonymous != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.anonymous,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="quality = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.quality != null">
+                        when id = #{item.id,jdbcType=BIGINT} then #{item.quality,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=BIGINT}
+        </foreach>
+    </update>
+    <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into free_proxy
+        (`host`, port, `type`, region, anonymous, quality)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.host,jdbcType=VARCHAR}, #{item.port,jdbcType=VARCHAR}, #{item.type,jdbcType=VARCHAR},
+            #{item.region,jdbcType=VARCHAR}, #{item.anonymous,jdbcType=VARCHAR}, #{item.quality,jdbcType=INTEGER}
+           )
+        </foreach>
+    </insert>
+</mapper>
