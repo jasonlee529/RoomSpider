@@ -1,0 +1,8 @@
+package com.example.demo02
+
+rule "b"
+    when
+        $d : Double(this == 2);
+    then
+        System.err.println("b" + $d);
+end

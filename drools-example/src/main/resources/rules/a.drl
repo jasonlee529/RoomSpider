@@ -1,0 +1,16 @@
+package com.example.demo02
+
+rule "a1"
+    when
+        $d : Double() from entry-point "gate1";
+    then
+        System.err.println("gate1 : " + $d);
+        kcontext.getKieRuntime().getEntryPoint("gate2").insert(3d+$d);
+end
+
+rule "a2"
+    when
+        $d : Double() from entry-point "gate2";
+    then
+        System.err.println("gate2 : " + $d);
+end
