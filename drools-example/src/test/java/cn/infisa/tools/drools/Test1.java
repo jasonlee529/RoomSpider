@@ -25,10 +25,16 @@ public class Test1 {
 
     @Test
     public void test1() {
-        KieSession kieSession = kieTemplate.getKieSession("Login.drl","a.drl","b.drl","c.drl","Message.drl","MyMarket.xls","RuleInExcel.xls","age1.drl","age2.drl");
+        KieSession kieSession = kieTemplate.getKieSession("Login.drl", "a.drl", "b.drl", "c.drl", "Message.drl", "MyMarket.xls", "RuleInExcel.xls", "age1.drl", "age2.drl");
         kieSession.insert(new Vip());
         kieSession.insert(new Vip());
         kieSession.insert(new Vip());
+        kieSession.fireAllRules();
+    }
+
+    @Test
+    public void test2() {
+        KieSession kieSession = kieTemplate.getKieSession("Login.drl", "a.drl", "b.drl", "c.drl", "Message.drl", "MyMarket.xls", "RuleInExcel.xls", "age1.drl", "age2.drl");
         EntryPoint entryPoint = kieSession.getEntryPoint("gate1");
         entryPoint.insert(1d);
         entryPoint.insert(2d);
@@ -45,5 +51,4 @@ public class Test1 {
         entryPoint.insert(6d);
         kieSession.fireAllRules();
     }
-
 }
