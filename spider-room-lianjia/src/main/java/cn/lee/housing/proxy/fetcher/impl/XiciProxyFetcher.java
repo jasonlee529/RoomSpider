@@ -42,7 +42,7 @@ public class XiciProxyFetcher implements ProxyFetcher {
                             .region(tr.select("td:eq(3)").text())
                             .anonymous(tr.select("td:eq(4)").text())
                             .type(tr.select("td:eq(5)").text())
-                            .quality(0).build());
+                            .source(url).quality(0).nextVerifyTime(System.currentTimeMillis() + 1000 * 60 * 60 * 6).build());
                     count++;
                 }
             } catch (IOException e) {

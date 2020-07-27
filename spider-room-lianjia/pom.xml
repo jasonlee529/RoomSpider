@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.lee.spider</groupId>
-    <artifactId>room.lianjia</artifactId>
+    <artifactId>room.lianjia</artifactId>gg
     <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -34,6 +34,11 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>com.xuxueli</groupId>
+            <artifactId>xxl-job-core</artifactId>
+            <version>2.2.0</version>
+        </dependency>
         <!--        https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.lee.housing.proxy.repository.ProxyMapper">
+<mapper namespace="cn.lee.housing.proxy.repository.ProxyModelMapper">
     <resultMap id="BaseResultMap" type="cn.lee.housing.proxy.model.ProxyModel">
         <!--@mbg.generated-->
         <!--@Table free_proxy-->
@@ -11,21 +11,24 @@
         <result column="region" jdbcType="VARCHAR" property="region"/>
         <result column="anonymous" jdbcType="VARCHAR" property="anonymous"/>
         <result column="quality" jdbcType="INTEGER" property="quality"/>
+        <result column="source" jdbcType="VARCHAR" property="source"/>
         <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated"/>
         <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
+        <result column="succ" jdbcType="INTEGER" property="succ"/>
+        <result column="next_verify_time" jdbcType="BIGINT" property="nextVerifyTime"/>
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->
-        id, `host`, port, `type`, region, anonymous, quality, gmt_created, gmt_modified
+        id, `host`, port, `type`, region, anonymous, quality, `source`, succ, next_verify_time
     </sql>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         <!--@mbg.generated-->
         select
         <include refid="Base_Column_List"/>
         from free_proxy
         where id = #{id,jdbcType=BIGINT}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         <!--@mbg.generated-->
         delete from free_proxy
         where id = #{id,jdbcType=BIGINT}
@@ -34,10 +37,13 @@
             useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into free_proxy (`host`, port, `type`,
-        region, anonymous, quality)
+        region, anonymous, quality,
+        `source`, succ, next_verify_time
+        )
         values (#{host,jdbcType=VARCHAR}, #{port,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},
-        #{region,jdbcType=VARCHAR}, #{anonymous,jdbcType=VARCHAR}, #{quality,jdbcType=INTEGER}
-       )
+        #{region,jdbcType=VARCHAR}, #{anonymous,jdbcType=VARCHAR}, #{quality,jdbcType=INTEGER},
+        #{source,jdbcType=VARCHAR}, #{succ,jdbcType=INTEGER}, #{nextVerifyTime,jdbcType=BIGINT}
+        )
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.lee.housing.proxy.model.ProxyModel"
             useGeneratedKeys="true">
@@ -62,6 +68,15 @@
             <if test="quality != null">
                 quality,
             </if>
+            <if test="source != null">
+                `source`,
+            </if>
+            <if test="succ != null">
+                succ,
+            </if>
+            <if test="nextVerifyTime != null">
+                next_verify_time,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="host != null">
@@ -81,6 +96,15 @@
             </if>
             <if test="quality != null">
                 #{quality,jdbcType=INTEGER},
+            </if>
+            <if test="source != null">
+                #{source,jdbcType=VARCHAR},
+            </if>
+            <if test="succ != null">
+                #{succ,jdbcType=INTEGER},
+            </if>
+            <if test="nextVerifyTime != null">
+                #{nextVerifyTime,jdbcType=BIGINT},
             </if>
         </trim>
     </insert>
@@ -106,6 +130,15 @@
             <if test="quality != null">
                 quality = #{quality,jdbcType=INTEGER},
             </if>
+            <if test="source != null">
+                `source` = #{source,jdbcType=VARCHAR},
+            </if>
+            <if test="succ != null">
+                succ = #{succ,jdbcType=INTEGER},
+            </if>
+            <if test="nextVerifyTime != null">
+                next_verify_time = #{nextVerifyTime,jdbcType=BIGINT},
+            </if>
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
@@ -117,7 +150,10 @@
         `type` = #{type,jdbcType=VARCHAR},
         region = #{region,jdbcType=VARCHAR},
         anonymous = #{anonymous,jdbcType=VARCHAR},
-        quality = #{quality,jdbcType=INTEGER}
+        quality = #{quality,jdbcType=INTEGER},
+        `source` = #{source,jdbcType=VARCHAR},
+        succ = #{succ,jdbcType=INTEGER},
+        next_verify_time = #{nextVerifyTime,jdbcType=BIGINT}
         where id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateBatch" parameterType="java.util.List">
@@ -126,38 +162,53 @@
         <trim prefix="set" suffixOverrides=",">
             <trim prefix="`host` = case" suffix="end,">
                 <foreach collection="list" index="index" item="item">
-                    when id = #{item.id,jdbcType=BIGINT} then #{item.host,jdbcType=VARCHAR}
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.host,jdbcType=VARCHAR}
                 </foreach>
             </trim>
             <trim prefix="port = case" suffix="end,">
                 <foreach collection="list" index="index" item="item">
-                    when id = #{item.id,jdbcType=BIGINT} then #{item.port,jdbcType=VARCHAR}
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.port,jdbcType=VARCHAR}
                 </foreach>
             </trim>
             <trim prefix="`type` = case" suffix="end,">
                 <foreach collection="list" index="index" item="item">
-                    when id = #{item.id,jdbcType=BIGINT} then #{item.type,jdbcType=VARCHAR}
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.type,jdbcType=VARCHAR}
                 </foreach>
             </trim>
             <trim prefix="region = case" suffix="end,">
                 <foreach collection="list" index="index" item="item">
-                    when id = #{item.id,jdbcType=BIGINT} then #{item.region,jdbcType=VARCHAR}
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.region,jdbcType=VARCHAR}
                 </foreach>
             </trim>
             <trim prefix="anonymous = case" suffix="end,">
                 <foreach collection="list" index="index" item="item">
-                    when id = #{item.id,jdbcType=BIGINT} then #{item.anonymous,jdbcType=VARCHAR}
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.anonymous,jdbcType=VARCHAR}
                 </foreach>
             </trim>
             <trim prefix="quality = case" suffix="end,">
                 <foreach collection="list" index="index" item="item">
-                    when id = #{item.id,jdbcType=BIGINT} then #{item.quality,jdbcType=INTEGER}
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.quality,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="`source` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.source,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="succ = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.succ,jdbcType=INTEGER}
+                </foreach>
+            </trim>
+            <trim prefix="next_verify_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when id = #{item.id,jdbcType=INTEGER} then #{item.nextVerifyTime,jdbcType=BIGINT}
                 </foreach>
             </trim>
         </trim>
         where id in
         <foreach close=")" collection="list" item="item" open="(" separator=", ">
-            #{item.id,jdbcType=BIGINT}
+            #{item.id,jdbcType=INTEGER}
         </foreach>
     </update>
     <update id="updateBatchSelective" parameterType="java.util.List">
@@ -167,60 +218,96 @@
             <trim prefix="`host` = case" suffix="end,">
                 <foreach collection="list" index="index" item="item">
                     <if test="item.host != null">
-                        when id = #{item.id,jdbcType=BIGINT} then #{item.host,jdbcType=VARCHAR}
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.host,jdbcType=VARCHAR}
                     </if>
                 </foreach>
             </trim>
             <trim prefix="port = case" suffix="end,">
                 <foreach collection="list" index="index" item="item">
                     <if test="item.port != null">
-                        when id = #{item.id,jdbcType=BIGINT} then #{item.port,jdbcType=VARCHAR}
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.port,jdbcType=VARCHAR}
                     </if>
                 </foreach>
             </trim>
             <trim prefix="`type` = case" suffix="end,">
                 <foreach collection="list" index="index" item="item">
                     <if test="item.type != null">
-                        when id = #{item.id,jdbcType=BIGINT} then #{item.type,jdbcType=VARCHAR}
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.type,jdbcType=VARCHAR}
                     </if>
                 </foreach>
             </trim>
             <trim prefix="region = case" suffix="end,">
                 <foreach collection="list" index="index" item="item">
                     <if test="item.region != null">
-                        when id = #{item.id,jdbcType=BIGINT} then #{item.region,jdbcType=VARCHAR}
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.region,jdbcType=VARCHAR}
                     </if>
                 </foreach>
             </trim>
             <trim prefix="anonymous = case" suffix="end,">
                 <foreach collection="list" index="index" item="item">
                     <if test="item.anonymous != null">
-                        when id = #{item.id,jdbcType=BIGINT} then #{item.anonymous,jdbcType=VARCHAR}
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.anonymous,jdbcType=VARCHAR}
                     </if>
                 </foreach>
             </trim>
             <trim prefix="quality = case" suffix="end,">
                 <foreach collection="list" index="index" item="item">
                     <if test="item.quality != null">
-                        when id = #{item.id,jdbcType=BIGINT} then #{item.quality,jdbcType=INTEGER}
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.quality,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="`source` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.source != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.source,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="succ = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.succ != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.succ,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="next_verify_time = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.nextVerifyTime != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.nextVerifyTime,jdbcType=BIGINT}
                     </if>
                 </foreach>
             </trim>
         </trim>
         where id in
         <foreach close=")" collection="list" item="item" open="(" separator=", ">
-            #{item.id,jdbcType=BIGINT}
+            #{item.id,jdbcType=INTEGER}
         </foreach>
     </update>
     <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
         <!--@mbg.generated-->
         insert into free_proxy
-        (`host`, port, `type`, region, anonymous, quality)
+        (`host`, port, `type`, region, anonymous, quality, `source`, succ, next_verify_time
+        )
         values
         <foreach collection="list" item="item" separator=",">
             (#{item.host,jdbcType=VARCHAR}, #{item.port,jdbcType=VARCHAR}, #{item.type,jdbcType=VARCHAR},
-            #{item.region,jdbcType=VARCHAR}, #{item.anonymous,jdbcType=VARCHAR}, #{item.quality,jdbcType=INTEGER}
-           )
+            #{item.region,jdbcType=VARCHAR}, #{item.anonymous,jdbcType=VARCHAR}, #{item.quality,jdbcType=INTEGER},
+            #{item.source,jdbcType=VARCHAR}, #{item.succ,jdbcType=INTEGER}, #{item.nextVerifyTime,jdbcType=BIGINT}
+            )
         </foreach>
     </insert>
+    <select id="findByHostAndPort" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from free_proxy
+        where host=#{host,jdbcType=VARCHAR} and port =#{port,jdbcType=VARCHAR}
+    </select>
+    <select id="findNextValid" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from free_proxy
+        where
+        next_verify_time <= #{nextValid,jdbcType=BIGINT}
+    </select>
 </mapper>

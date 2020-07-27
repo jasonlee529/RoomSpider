@@ -7,13 +7,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-/**
- * @author libo
- * @Title: ProxyModel
- * @Description:
- * @date 2020/6/13 8:59
- * @Version 1.0
- */
 @Data
 @Builder
 @AllArgsConstructor
@@ -52,12 +45,19 @@ public class ProxyModel {
     private Integer quality;
 
     /**
-     * 创建时间
+     * 来源
      */
-    private Date gmtCreated;
+    private String source;
+
+    private Integer succ;
 
     /**
-     * 更新时间
+     * 下次校验时间
      */
+    private Long nextVerifyTime;
+    private Date gmtCreated;
     private Date gmtModified;
+    public static ProxyModelBuilder builder() {
+        return new ProxyModelBuilder();
+    }
 }

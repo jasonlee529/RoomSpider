@@ -1,13 +1,12 @@
 package cn.lee.housing.proxy.repository;
 
 import cn.lee.housing.proxy.model.ProxyModel;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@Mapper
-public interface ProxyMapper {
+import org.apache.ibatis.annotations.Param;
+
+public interface ProxyModelMapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(ProxyModel record);
@@ -25,4 +24,8 @@ public interface ProxyMapper {
     int updateBatchSelective(List<ProxyModel> list);
 
     int batchInsert(@Param("list") List<ProxyModel> list);
+
+    List<ProxyModel> findByHostAndPort(@Param("host") String host, @Param("port") String port);
+
+    List<ProxyModel> findNextValid(@Param("nextValid") Long nextValid);
 }
