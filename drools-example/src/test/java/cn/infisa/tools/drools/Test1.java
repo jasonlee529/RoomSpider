@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Demo03Application.class)
 public class Test1 {
@@ -49,6 +52,70 @@ public class Test1 {
         entryPoint.insert(4d);
         entryPoint.insert(5d);
         entryPoint.insert(6d);
+        kieSession.fireAllRules();
+    }
+
+    @Test
+    public void test3() {
+        KieSession kieSession = kieTemplate.getKieSession("t1k.drl", "RuleInExcel.xls");
+        for (int i = 1; i <= 10000; i++) {
+            kieSession.insert((double) i);
+        }
+        kieSession.fireAllRules();
+    }
+
+    @Test
+    public void test4() {
+        KieSession kieSession = kieTemplate.getKieSession("t5k.drl", "RuleInExcel.xls");
+        for (int i = 1; i <= 10000; i++) {
+            kieSession.insert((double) i);
+        }
+        kieSession.fireAllRules();
+    }
+
+    @Test
+    public void test5() {
+        KieSession kieSession = kieTemplate.getKieSession("t1w.drl", "RuleInExcel.xls");
+        for (int i = 1; i <= 10000; i++) {
+            kieSession.insert((double) i);
+        }
+        kieSession.fireAllRules();
+    }
+
+    @Test
+    public void test6() {
+        List<String> files = new ArrayList<>();
+        for (int i = 1; i < 10; i++) {
+            files.add("ttt" + i + ".drl");
+        }
+        KieSession kieSession = kieTemplate.getKieSession(files.toArray(new String[]{}));
+        for (int i = 1; i <= 10000; i++) {
+            kieSession.insert((double) i);
+        }
+        kieSession.fireAllRules();
+    }
+    @Test
+    public void test7() {
+        List<String> files = new ArrayList<>();
+        for (int i = 1; i < 100; i++) {
+            files.add("ttt" + i + ".drl");
+        }
+        KieSession kieSession = kieTemplate.getKieSession(files.toArray(new String[]{}));
+        for (int i = 1; i <= 10000; i++) {
+            kieSession.insert((double) i);
+        }
+        kieSession.fireAllRules();
+    }
+    @Test
+    public void test8() {
+        List<String> files = new ArrayList<>();
+        for (int i = 1; i < 1000; i++) {
+            files.add("ttt" + i + ".drl");
+        }
+        KieSession kieSession = kieTemplate.getKieSession(files.toArray(new String[]{}));
+        for (int i = 1; i <= 10000; i++) {
+            kieSession.insert((double) i);
+        }
         kieSession.fireAllRules();
     }
 }

@@ -1,0 +1,7000 @@
+rule "b1"
+    when
+        $d :Double(this == 1)
+    then
+        System.err.println("b1 " + $d);
+end
+
+rule "b2"
+    when
+        $d :Double(this == 2)
+    then
+        System.err.println("b2 " + $d);
+end
+
+rule "b3"
+    when
+        $d :Double(this == 3)
+    then
+        System.err.println("b3 " + $d);
+end
+
+rule "b4"
+    when
+        $d :Double(this == 4)
+    then
+        System.err.println("b4 " + $d);
+end
+
+rule "b5"
+    when
+        $d :Double(this == 5)
+    then
+        System.err.println("b5 " + $d);
+end
+
+rule "b6"
+    when
+        $d :Double(this == 6)
+    then
+        System.err.println("b6 " + $d);
+end
+
+rule "b7"
+    when
+        $d :Double(this == 7)
+    then
+        System.err.println("b7 " + $d);
+end
+
+rule "b8"
+    when
+        $d :Double(this == 8)
+    then
+        System.err.println("b8 " + $d);
+end
+
+rule "b9"
+    when
+        $d :Double(this == 9)
+    then
+        System.err.println("b9 " + $d);
+end
+
+rule "b10"
+    when
+        $d :Double(this == 10)
+    then
+        System.err.println("b10 " + $d);
+end
+
+rule "b11"
+    when
+        $d :Double(this == 11)
+    then
+        System.err.println("b11 " + $d);
+end
+
+rule "b12"
+    when
+        $d :Double(this == 12)
+    then
+        System.err.println("b12 " + $d);
+end
+
+rule "b13"
+    when
+        $d :Double(this == 13)
+    then
+        System.err.println("b13 " + $d);
+end
+
+rule "b14"
+    when
+        $d :Double(this == 14)
+    then
+        System.err.println("b14 " + $d);
+end
+
+rule "b15"
+    when
+        $d :Double(this == 15)
+    then
+        System.err.println("b15 " + $d);
+end
+
+rule "b16"
+    when
+        $d :Double(this == 16)
+    then
+        System.err.println("b16 " + $d);
+end
+
+rule "b17"
+    when
+        $d :Double(this == 17)
+    then
+        System.err.println("b17 " + $d);
+end
+
+rule "b18"
+    when
+        $d :Double(this == 18)
+    then
+        System.err.println("b18 " + $d);
+end
+
+rule "b19"
+    when
+        $d :Double(this == 19)
+    then
+        System.err.println("b19 " + $d);
+end
+
+rule "b20"
+    when
+        $d :Double(this == 20)
+    then
+        System.err.println("b20 " + $d);
+end
+
+rule "b21"
+    when
+        $d :Double(this == 21)
+    then
+        System.err.println("b21 " + $d);
+end
+
+rule "b22"
+    when
+        $d :Double(this == 22)
+    then
+        System.err.println("b22 " + $d);
+end
+
+rule "b23"
+    when
+        $d :Double(this == 23)
+    then
+        System.err.println("b23 " + $d);
+end
+
+rule "b24"
+    when
+        $d :Double(this == 24)
+    then
+        System.err.println("b24 " + $d);
+end
+
+rule "b25"
+    when
+        $d :Double(this == 25)
+    then
+        System.err.println("b25 " + $d);
+end
+
+rule "b26"
+    when
+        $d :Double(this == 26)
+    then
+        System.err.println("b26 " + $d);
+end
+
+rule "b27"
+    when
+        $d :Double(this == 27)
+    then
+        System.err.println("b27 " + $d);
+end
+
+rule "b28"
+    when
+        $d :Double(this == 28)
+    then
+        System.err.println("b28 " + $d);
+end
+
+rule "b29"
+    when
+        $d :Double(this == 29)
+    then
+        System.err.println("b29 " + $d);
+end
+
+rule "b30"
+    when
+        $d :Double(this == 30)
+    then
+        System.err.println("b30 " + $d);
+end
+
+rule "b31"
+    when
+        $d :Double(this == 31)
+    then
+        System.err.println("b31 " + $d);
+end
+
+rule "b32"
+    when
+        $d :Double(this == 32)
+    then
+        System.err.println("b32 " + $d);
+end
+
+rule "b33"
+    when
+        $d :Double(this == 33)
+    then
+        System.err.println("b33 " + $d);
+end
+
+rule "b34"
+    when
+        $d :Double(this == 34)
+    then
+        System.err.println("b34 " + $d);
+end
+
+rule "b35"
+    when
+        $d :Double(this == 35)
+    then
+        System.err.println("b35 " + $d);
+end
+
+rule "b36"
+    when
+        $d :Double(this == 36)
+    then
+        System.err.println("b36 " + $d);
+end
+
+rule "b37"
+    when
+        $d :Double(this == 37)
+    then
+        System.err.println("b37 " + $d);
+end
+
+rule "b38"
+    when
+        $d :Double(this == 38)
+    then
+        System.err.println("b38 " + $d);
+end
+
+rule "b39"
+    when
+        $d :Double(this == 39)
+    then
+        System.err.println("b39 " + $d);
+end
+
+rule "b40"
+    when
+        $d :Double(this == 40)
+    then
+        System.err.println("b40 " + $d);
+end
+
+rule "b41"
+    when
+        $d :Double(this == 41)
+    then
+        System.err.println("b41 " + $d);
+end
+
+rule "b42"
+    when
+        $d :Double(this == 42)
+    then
+        System.err.println("b42 " + $d);
+end
+
+rule "b43"
+    when
+        $d :Double(this == 43)
+    then
+        System.err.println("b43 " + $d);
+end
+
+rule "b44"
+    when
+        $d :Double(this == 44)
+    then
+        System.err.println("b44 " + $d);
+end
+
+rule "b45"
+    when
+        $d :Double(this == 45)
+    then
+        System.err.println("b45 " + $d);
+end
+
+rule "b46"
+    when
+        $d :Double(this == 46)
+    then
+        System.err.println("b46 " + $d);
+end
+
+rule "b47"
+    when
+        $d :Double(this == 47)
+    then
+        System.err.println("b47 " + $d);
+end
+
+rule "b48"
+    when
+        $d :Double(this == 48)
+    then
+        System.err.println("b48 " + $d);
+end
+
+rule "b49"
+    when
+        $d :Double(this == 49)
+    then
+        System.err.println("b49 " + $d);
+end
+
+rule "b50"
+    when
+        $d :Double(this == 50)
+    then
+        System.err.println("b50 " + $d);
+end
+
+rule "b51"
+    when
+        $d :Double(this == 51)
+    then
+        System.err.println("b51 " + $d);
+end
+
+rule "b52"
+    when
+        $d :Double(this == 52)
+    then
+        System.err.println("b52 " + $d);
+end
+
+rule "b53"
+    when
+        $d :Double(this == 53)
+    then
+        System.err.println("b53 " + $d);
+end
+
+rule "b54"
+    when
+        $d :Double(this == 54)
+    then
+        System.err.println("b54 " + $d);
+end
+
+rule "b55"
+    when
+        $d :Double(this == 55)
+    then
+        System.err.println("b55 " + $d);
+end
+
+rule "b56"
+    when
+        $d :Double(this == 56)
+    then
+        System.err.println("b56 " + $d);
+end
+
+rule "b57"
+    when
+        $d :Double(this == 57)
+    then
+        System.err.println("b57 " + $d);
+end
+
+rule "b58"
+    when
+        $d :Double(this == 58)
+    then
+        System.err.println("b58 " + $d);
+end
+
+rule "b59"
+    when
+        $d :Double(this == 59)
+    then
+        System.err.println("b59 " + $d);
+end
+
+rule "b60"
+    when
+        $d :Double(this == 60)
+    then
+        System.err.println("b60 " + $d);
+end
+
+rule "b61"
+    when
+        $d :Double(this == 61)
+    then
+        System.err.println("b61 " + $d);
+end
+
+rule "b62"
+    when
+        $d :Double(this == 62)
+    then
+        System.err.println("b62 " + $d);
+end
+
+rule "b63"
+    when
+        $d :Double(this == 63)
+    then
+        System.err.println("b63 " + $d);
+end
+
+rule "b64"
+    when
+        $d :Double(this == 64)
+    then
+        System.err.println("b64 " + $d);
+end
+
+rule "b65"
+    when
+        $d :Double(this == 65)
+    then
+        System.err.println("b65 " + $d);
+end
+
+rule "b66"
+    when
+        $d :Double(this == 66)
+    then
+        System.err.println("b66 " + $d);
+end
+
+rule "b67"
+    when
+        $d :Double(this == 67)
+    then
+        System.err.println("b67 " + $d);
+end
+
+rule "b68"
+    when
+        $d :Double(this == 68)
+    then
+        System.err.println("b68 " + $d);
+end
+
+rule "b69"
+    when
+        $d :Double(this == 69)
+    then
+        System.err.println("b69 " + $d);
+end
+
+rule "b70"
+    when
+        $d :Double(this == 70)
+    then
+        System.err.println("b70 " + $d);
+end
+
+rule "b71"
+    when
+        $d :Double(this == 71)
+    then
+        System.err.println("b71 " + $d);
+end
+
+rule "b72"
+    when
+        $d :Double(this == 72)
+    then
+        System.err.println("b72 " + $d);
+end
+
+rule "b73"
+    when
+        $d :Double(this == 73)
+    then
+        System.err.println("b73 " + $d);
+end
+
+rule "b74"
+    when
+        $d :Double(this == 74)
+    then
+        System.err.println("b74 " + $d);
+end
+
+rule "b75"
+    when
+        $d :Double(this == 75)
+    then
+        System.err.println("b75 " + $d);
+end
+
+rule "b76"
+    when
+        $d :Double(this == 76)
+    then
+        System.err.println("b76 " + $d);
+end
+
+rule "b77"
+    when
+        $d :Double(this == 77)
+    then
+        System.err.println("b77 " + $d);
+end
+
+rule "b78"
+    when
+        $d :Double(this == 78)
+    then
+        System.err.println("b78 " + $d);
+end
+
+rule "b79"
+    when
+        $d :Double(this == 79)
+    then
+        System.err.println("b79 " + $d);
+end
+
+rule "b80"
+    when
+        $d :Double(this == 80)
+    then
+        System.err.println("b80 " + $d);
+end
+
+rule "b81"
+    when
+        $d :Double(this == 81)
+    then
+        System.err.println("b81 " + $d);
+end
+
+rule "b82"
+    when
+        $d :Double(this == 82)
+    then
+        System.err.println("b82 " + $d);
+end
+
+rule "b83"
+    when
+        $d :Double(this == 83)
+    then
+        System.err.println("b83 " + $d);
+end
+
+rule "b84"
+    when
+        $d :Double(this == 84)
+    then
+        System.err.println("b84 " + $d);
+end
+
+rule "b85"
+    when
+        $d :Double(this == 85)
+    then
+        System.err.println("b85 " + $d);
+end
+
+rule "b86"
+    when
+        $d :Double(this == 86)
+    then
+        System.err.println("b86 " + $d);
+end
+
+rule "b87"
+    when
+        $d :Double(this == 87)
+    then
+        System.err.println("b87 " + $d);
+end
+
+rule "b88"
+    when
+        $d :Double(this == 88)
+    then
+        System.err.println("b88 " + $d);
+end
+
+rule "b89"
+    when
+        $d :Double(this == 89)
+    then
+        System.err.println("b89 " + $d);
+end
+
+rule "b90"
+    when
+        $d :Double(this == 90)
+    then
+        System.err.println("b90 " + $d);
+end
+
+rule "b91"
+    when
+        $d :Double(this == 91)
+    then
+        System.err.println("b91 " + $d);
+end
+
+rule "b92"
+    when
+        $d :Double(this == 92)
+    then
+        System.err.println("b92 " + $d);
+end
+
+rule "b93"
+    when
+        $d :Double(this == 93)
+    then
+        System.err.println("b93 " + $d);
+end
+
+rule "b94"
+    when
+        $d :Double(this == 94)
+    then
+        System.err.println("b94 " + $d);
+end
+
+rule "b95"
+    when
+        $d :Double(this == 95)
+    then
+        System.err.println("b95 " + $d);
+end
+
+rule "b96"
+    when
+        $d :Double(this == 96)
+    then
+        System.err.println("b96 " + $d);
+end
+
+rule "b97"
+    when
+        $d :Double(this == 97)
+    then
+        System.err.println("b97 " + $d);
+end
+
+rule "b98"
+    when
+        $d :Double(this == 98)
+    then
+        System.err.println("b98 " + $d);
+end
+
+rule "b99"
+    when
+        $d :Double(this == 99)
+    then
+        System.err.println("b99 " + $d);
+end
+
+rule "b100"
+    when
+        $d :Double(this == 100)
+    then
+        System.err.println("b100 " + $d);
+end
+
+rule "b101"
+    when
+        $d :Double(this == 101)
+    then
+        System.err.println("b101 " + $d);
+end
+
+rule "b102"
+    when
+        $d :Double(this == 102)
+    then
+        System.err.println("b102 " + $d);
+end
+
+rule "b103"
+    when
+        $d :Double(this == 103)
+    then
+        System.err.println("b103 " + $d);
+end
+
+rule "b104"
+    when
+        $d :Double(this == 104)
+    then
+        System.err.println("b104 " + $d);
+end
+
+rule "b105"
+    when
+        $d :Double(this == 105)
+    then
+        System.err.println("b105 " + $d);
+end
+
+rule "b106"
+    when
+        $d :Double(this == 106)
+    then
+        System.err.println("b106 " + $d);
+end
+
+rule "b107"
+    when
+        $d :Double(this == 107)
+    then
+        System.err.println("b107 " + $d);
+end
+
+rule "b108"
+    when
+        $d :Double(this == 108)
+    then
+        System.err.println("b108 " + $d);
+end
+
+rule "b109"
+    when
+        $d :Double(this == 109)
+    then
+        System.err.println("b109 " + $d);
+end
+
+rule "b110"
+    when
+        $d :Double(this == 110)
+    then
+        System.err.println("b110 " + $d);
+end
+
+rule "b111"
+    when
+        $d :Double(this == 111)
+    then
+        System.err.println("b111 " + $d);
+end
+
+rule "b112"
+    when
+        $d :Double(this == 112)
+    then
+        System.err.println("b112 " + $d);
+end
+
+rule "b113"
+    when
+        $d :Double(this == 113)
+    then
+        System.err.println("b113 " + $d);
+end
+
+rule "b114"
+    when
+        $d :Double(this == 114)
+    then
+        System.err.println("b114 " + $d);
+end
+
+rule "b115"
+    when
+        $d :Double(this == 115)
+    then
+        System.err.println("b115 " + $d);
+end
+
+rule "b116"
+    when
+        $d :Double(this == 116)
+    then
+        System.err.println("b116 " + $d);
+end
+
+rule "b117"
+    when
+        $d :Double(this == 117)
+    then
+        System.err.println("b117 " + $d);
+end
+
+rule "b118"
+    when
+        $d :Double(this == 118)
+    then
+        System.err.println("b118 " + $d);
+end
+
+rule "b119"
+    when
+        $d :Double(this == 119)
+    then
+        System.err.println("b119 " + $d);
+end
+
+rule "b120"
+    when
+        $d :Double(this == 120)
+    then
+        System.err.println("b120 " + $d);
+end
+
+rule "b121"
+    when
+        $d :Double(this == 121)
+    then
+        System.err.println("b121 " + $d);
+end
+
+rule "b122"
+    when
+        $d :Double(this == 122)
+    then
+        System.err.println("b122 " + $d);
+end
+
+rule "b123"
+    when
+        $d :Double(this == 123)
+    then
+        System.err.println("b123 " + $d);
+end
+
+rule "b124"
+    when
+        $d :Double(this == 124)
+    then
+        System.err.println("b124 " + $d);
+end
+
+rule "b125"
+    when
+        $d :Double(this == 125)
+    then
+        System.err.println("b125 " + $d);
+end
+
+rule "b126"
+    when
+        $d :Double(this == 126)
+    then
+        System.err.println("b126 " + $d);
+end
+
+rule "b127"
+    when
+        $d :Double(this == 127)
+    then
+        System.err.println("b127 " + $d);
+end
+
+rule "b128"
+    when
+        $d :Double(this == 128)
+    then
+        System.err.println("b128 " + $d);
+end
+
+rule "b129"
+    when
+        $d :Double(this == 129)
+    then
+        System.err.println("b129 " + $d);
+end
+
+rule "b130"
+    when
+        $d :Double(this == 130)
+    then
+        System.err.println("b130 " + $d);
+end
+
+rule "b131"
+    when
+        $d :Double(this == 131)
+    then
+        System.err.println("b131 " + $d);
+end
+
+rule "b132"
+    when
+        $d :Double(this == 132)
+    then
+        System.err.println("b132 " + $d);
+end
+
+rule "b133"
+    when
+        $d :Double(this == 133)
+    then
+        System.err.println("b133 " + $d);
+end
+
+rule "b134"
+    when
+        $d :Double(this == 134)
+    then
+        System.err.println("b134 " + $d);
+end
+
+rule "b135"
+    when
+        $d :Double(this == 135)
+    then
+        System.err.println("b135 " + $d);
+end
+
+rule "b136"
+    when
+        $d :Double(this == 136)
+    then
+        System.err.println("b136 " + $d);
+end
+
+rule "b137"
+    when
+        $d :Double(this == 137)
+    then
+        System.err.println("b137 " + $d);
+end
+
+rule "b138"
+    when
+        $d :Double(this == 138)
+    then
+        System.err.println("b138 " + $d);
+end
+
+rule "b139"
+    when
+        $d :Double(this == 139)
+    then
+        System.err.println("b139 " + $d);
+end
+
+rule "b140"
+    when
+        $d :Double(this == 140)
+    then
+        System.err.println("b140 " + $d);
+end
+
+rule "b141"
+    when
+        $d :Double(this == 141)
+    then
+        System.err.println("b141 " + $d);
+end
+
+rule "b142"
+    when
+        $d :Double(this == 142)
+    then
+        System.err.println("b142 " + $d);
+end
+
+rule "b143"
+    when
+        $d :Double(this == 143)
+    then
+        System.err.println("b143 " + $d);
+end
+
+rule "b144"
+    when
+        $d :Double(this == 144)
+    then
+        System.err.println("b144 " + $d);
+end
+
+rule "b145"
+    when
+        $d :Double(this == 145)
+    then
+        System.err.println("b145 " + $d);
+end
+
+rule "b146"
+    when
+        $d :Double(this == 146)
+    then
+        System.err.println("b146 " + $d);
+end
+
+rule "b147"
+    when
+        $d :Double(this == 147)
+    then
+        System.err.println("b147 " + $d);
+end
+
+rule "b148"
+    when
+        $d :Double(this == 148)
+    then
+        System.err.println("b148 " + $d);
+end
+
+rule "b149"
+    when
+        $d :Double(this == 149)
+    then
+        System.err.println("b149 " + $d);
+end
+
+rule "b150"
+    when
+        $d :Double(this == 150)
+    then
+        System.err.println("b150 " + $d);
+end
+
+rule "b151"
+    when
+        $d :Double(this == 151)
+    then
+        System.err.println("b151 " + $d);
+end
+
+rule "b152"
+    when
+        $d :Double(this == 152)
+    then
+        System.err.println("b152 " + $d);
+end
+
+rule "b153"
+    when
+        $d :Double(this == 153)
+    then
+        System.err.println("b153 " + $d);
+end
+
+rule "b154"
+    when
+        $d :Double(this == 154)
+    then
+        System.err.println("b154 " + $d);
+end
+
+rule "b155"
+    when
+        $d :Double(this == 155)
+    then
+        System.err.println("b155 " + $d);
+end
+
+rule "b156"
+    when
+        $d :Double(this == 156)
+    then
+        System.err.println("b156 " + $d);
+end
+
+rule "b157"
+    when
+        $d :Double(this == 157)
+    then
+        System.err.println("b157 " + $d);
+end
+
+rule "b158"
+    when
+        $d :Double(this == 158)
+    then
+        System.err.println("b158 " + $d);
+end
+
+rule "b159"
+    when
+        $d :Double(this == 159)
+    then
+        System.err.println("b159 " + $d);
+end
+
+rule "b160"
+    when
+        $d :Double(this == 160)
+    then
+        System.err.println("b160 " + $d);
+end
+
+rule "b161"
+    when
+        $d :Double(this == 161)
+    then
+        System.err.println("b161 " + $d);
+end
+
+rule "b162"
+    when
+        $d :Double(this == 162)
+    then
+        System.err.println("b162 " + $d);
+end
+
+rule "b163"
+    when
+        $d :Double(this == 163)
+    then
+        System.err.println("b163 " + $d);
+end
+
+rule "b164"
+    when
+        $d :Double(this == 164)
+    then
+        System.err.println("b164 " + $d);
+end
+
+rule "b165"
+    when
+        $d :Double(this == 165)
+    then
+        System.err.println("b165 " + $d);
+end
+
+rule "b166"
+    when
+        $d :Double(this == 166)
+    then
+        System.err.println("b166 " + $d);
+end
+
+rule "b167"
+    when
+        $d :Double(this == 167)
+    then
+        System.err.println("b167 " + $d);
+end
+
+rule "b168"
+    when
+        $d :Double(this == 168)
+    then
+        System.err.println("b168 " + $d);
+end
+
+rule "b169"
+    when
+        $d :Double(this == 169)
+    then
+        System.err.println("b169 " + $d);
+end
+
+rule "b170"
+    when
+        $d :Double(this == 170)
+    then
+        System.err.println("b170 " + $d);
+end
+
+rule "b171"
+    when
+        $d :Double(this == 171)
+    then
+        System.err.println("b171 " + $d);
+end
+
+rule "b172"
+    when
+        $d :Double(this == 172)
+    then
+        System.err.println("b172 " + $d);
+end
+
+rule "b173"
+    when
+        $d :Double(this == 173)
+    then
+        System.err.println("b173 " + $d);
+end
+
+rule "b174"
+    when
+        $d :Double(this == 174)
+    then
+        System.err.println("b174 " + $d);
+end
+
+rule "b175"
+    when
+        $d :Double(this == 175)
+    then
+        System.err.println("b175 " + $d);
+end
+
+rule "b176"
+    when
+        $d :Double(this == 176)
+    then
+        System.err.println("b176 " + $d);
+end
+
+rule "b177"
+    when
+        $d :Double(this == 177)
+    then
+        System.err.println("b177 " + $d);
+end
+
+rule "b178"
+    when
+        $d :Double(this == 178)
+    then
+        System.err.println("b178 " + $d);
+end
+
+rule "b179"
+    when
+        $d :Double(this == 179)
+    then
+        System.err.println("b179 " + $d);
+end
+
+rule "b180"
+    when
+        $d :Double(this == 180)
+    then
+        System.err.println("b180 " + $d);
+end
+
+rule "b181"
+    when
+        $d :Double(this == 181)
+    then
+        System.err.println("b181 " + $d);
+end
+
+rule "b182"
+    when
+        $d :Double(this == 182)
+    then
+        System.err.println("b182 " + $d);
+end
+
+rule "b183"
+    when
+        $d :Double(this == 183)
+    then
+        System.err.println("b183 " + $d);
+end
+
+rule "b184"
+    when
+        $d :Double(this == 184)
+    then
+        System.err.println("b184 " + $d);
+end
+
+rule "b185"
+    when
+        $d :Double(this == 185)
+    then
+        System.err.println("b185 " + $d);
+end
+
+rule "b186"
+    when
+        $d :Double(this == 186)
+    then
+        System.err.println("b186 " + $d);
+end
+
+rule "b187"
+    when
+        $d :Double(this == 187)
+    then
+        System.err.println("b187 " + $d);
+end
+
+rule "b188"
+    when
+        $d :Double(this == 188)
+    then
+        System.err.println("b188 " + $d);
+end
+
+rule "b189"
+    when
+        $d :Double(this == 189)
+    then
+        System.err.println("b189 " + $d);
+end
+
+rule "b190"
+    when
+        $d :Double(this == 190)
+    then
+        System.err.println("b190 " + $d);
+end
+
+rule "b191"
+    when
+        $d :Double(this == 191)
+    then
+        System.err.println("b191 " + $d);
+end
+
+rule "b192"
+    when
+        $d :Double(this == 192)
+    then
+        System.err.println("b192 " + $d);
+end
+
+rule "b193"
+    when
+        $d :Double(this == 193)
+    then
+        System.err.println("b193 " + $d);
+end
+
+rule "b194"
+    when
+        $d :Double(this == 194)
+    then
+        System.err.println("b194 " + $d);
+end
+
+rule "b195"
+    when
+        $d :Double(this == 195)
+    then
+        System.err.println("b195 " + $d);
+end
+
+rule "b196"
+    when
+        $d :Double(this == 196)
+    then
+        System.err.println("b196 " + $d);
+end
+
+rule "b197"
+    when
+        $d :Double(this == 197)
+    then
+        System.err.println("b197 " + $d);
+end
+
+rule "b198"
+    when
+        $d :Double(this == 198)
+    then
+        System.err.println("b198 " + $d);
+end
+
+rule "b199"
+    when
+        $d :Double(this == 199)
+    then
+        System.err.println("b199 " + $d);
+end
+
+rule "b200"
+    when
+        $d :Double(this == 200)
+    then
+        System.err.println("b200 " + $d);
+end
+
+rule "b201"
+    when
+        $d :Double(this == 201)
+    then
+        System.err.println("b201 " + $d);
+end
+
+rule "b202"
+    when
+        $d :Double(this == 202)
+    then
+        System.err.println("b202 " + $d);
+end
+
+rule "b203"
+    when
+        $d :Double(this == 203)
+    then
+        System.err.println("b203 " + $d);
+end
+
+rule "b204"
+    when
+        $d :Double(this == 204)
+    then
+        System.err.println("b204 " + $d);
+end
+
+rule "b205"
+    when
+        $d :Double(this == 205)
+    then
+        System.err.println("b205 " + $d);
+end
+
+rule "b206"
+    when
+        $d :Double(this == 206)
+    then
+        System.err.println("b206 " + $d);
+end
+
+rule "b207"
+    when
+        $d :Double(this == 207)
+    then
+        System.err.println("b207 " + $d);
+end
+
+rule "b208"
+    when
+        $d :Double(this == 208)
+    then
+        System.err.println("b208 " + $d);
+end
+
+rule "b209"
+    when
+        $d :Double(this == 209)
+    then
+        System.err.println("b209 " + $d);
+end
+
+rule "b210"
+    when
+        $d :Double(this == 210)
+    then
+        System.err.println("b210 " + $d);
+end
+
+rule "b211"
+    when
+        $d :Double(this == 211)
+    then
+        System.err.println("b211 " + $d);
+end
+
+rule "b212"
+    when
+        $d :Double(this == 212)
+    then
+        System.err.println("b212 " + $d);
+end
+
+rule "b213"
+    when
+        $d :Double(this == 213)
+    then
+        System.err.println("b213 " + $d);
+end
+
+rule "b214"
+    when
+        $d :Double(this == 214)
+    then
+        System.err.println("b214 " + $d);
+end
+
+rule "b215"
+    when
+        $d :Double(this == 215)
+    then
+        System.err.println("b215 " + $d);
+end
+
+rule "b216"
+    when
+        $d :Double(this == 216)
+    then
+        System.err.println("b216 " + $d);
+end
+
+rule "b217"
+    when
+        $d :Double(this == 217)
+    then
+        System.err.println("b217 " + $d);
+end
+
+rule "b218"
+    when
+        $d :Double(this == 218)
+    then
+        System.err.println("b218 " + $d);
+end
+
+rule "b219"
+    when
+        $d :Double(this == 219)
+    then
+        System.err.println("b219 " + $d);
+end
+
+rule "b220"
+    when
+        $d :Double(this == 220)
+    then
+        System.err.println("b220 " + $d);
+end
+
+rule "b221"
+    when
+        $d :Double(this == 221)
+    then
+        System.err.println("b221 " + $d);
+end
+
+rule "b222"
+    when
+        $d :Double(this == 222)
+    then
+        System.err.println("b222 " + $d);
+end
+
+rule "b223"
+    when
+        $d :Double(this == 223)
+    then
+        System.err.println("b223 " + $d);
+end
+
+rule "b224"
+    when
+        $d :Double(this == 224)
+    then
+        System.err.println("b224 " + $d);
+end
+
+rule "b225"
+    when
+        $d :Double(this == 225)
+    then
+        System.err.println("b225 " + $d);
+end
+
+rule "b226"
+    when
+        $d :Double(this == 226)
+    then
+        System.err.println("b226 " + $d);
+end
+
+rule "b227"
+    when
+        $d :Double(this == 227)
+    then
+        System.err.println("b227 " + $d);
+end
+
+rule "b228"
+    when
+        $d :Double(this == 228)
+    then
+        System.err.println("b228 " + $d);
+end
+
+rule "b229"
+    when
+        $d :Double(this == 229)
+    then
+        System.err.println("b229 " + $d);
+end
+
+rule "b230"
+    when
+        $d :Double(this == 230)
+    then
+        System.err.println("b230 " + $d);
+end
+
+rule "b231"
+    when
+        $d :Double(this == 231)
+    then
+        System.err.println("b231 " + $d);
+end
+
+rule "b232"
+    when
+        $d :Double(this == 232)
+    then
+        System.err.println("b232 " + $d);
+end
+
+rule "b233"
+    when
+        $d :Double(this == 233)
+    then
+        System.err.println("b233 " + $d);
+end
+
+rule "b234"
+    when
+        $d :Double(this == 234)
+    then
+        System.err.println("b234 " + $d);
+end
+
+rule "b235"
+    when
+        $d :Double(this == 235)
+    then
+        System.err.println("b235 " + $d);
+end
+
+rule "b236"
+    when
+        $d :Double(this == 236)
+    then
+        System.err.println("b236 " + $d);
+end
+
+rule "b237"
+    when
+        $d :Double(this == 237)
+    then
+        System.err.println("b237 " + $d);
+end
+
+rule "b238"
+    when
+        $d :Double(this == 238)
+    then
+        System.err.println("b238 " + $d);
+end
+
+rule "b239"
+    when
+        $d :Double(this == 239)
+    then
+        System.err.println("b239 " + $d);
+end
+
+rule "b240"
+    when
+        $d :Double(this == 240)
+    then
+        System.err.println("b240 " + $d);
+end
+
+rule "b241"
+    when
+        $d :Double(this == 241)
+    then
+        System.err.println("b241 " + $d);
+end
+
+rule "b242"
+    when
+        $d :Double(this == 242)
+    then
+        System.err.println("b242 " + $d);
+end
+
+rule "b243"
+    when
+        $d :Double(this == 243)
+    then
+        System.err.println("b243 " + $d);
+end
+
+rule "b244"
+    when
+        $d :Double(this == 244)
+    then
+        System.err.println("b244 " + $d);
+end
+
+rule "b245"
+    when
+        $d :Double(this == 245)
+    then
+        System.err.println("b245 " + $d);
+end
+
+rule "b246"
+    when
+        $d :Double(this == 246)
+    then
+        System.err.println("b246 " + $d);
+end
+
+rule "b247"
+    when
+        $d :Double(this == 247)
+    then
+        System.err.println("b247 " + $d);
+end
+
+rule "b248"
+    when
+        $d :Double(this == 248)
+    then
+        System.err.println("b248 " + $d);
+end
+
+rule "b249"
+    when
+        $d :Double(this == 249)
+    then
+        System.err.println("b249 " + $d);
+end
+
+rule "b250"
+    when
+        $d :Double(this == 250)
+    then
+        System.err.println("b250 " + $d);
+end
+
+rule "b251"
+    when
+        $d :Double(this == 251)
+    then
+        System.err.println("b251 " + $d);
+end
+
+rule "b252"
+    when
+        $d :Double(this == 252)
+    then
+        System.err.println("b252 " + $d);
+end
+
+rule "b253"
+    when
+        $d :Double(this == 253)
+    then
+        System.err.println("b253 " + $d);
+end
+
+rule "b254"
+    when
+        $d :Double(this == 254)
+    then
+        System.err.println("b254 " + $d);
+end
+
+rule "b255"
+    when
+        $d :Double(this == 255)
+    then
+        System.err.println("b255 " + $d);
+end
+
+rule "b256"
+    when
+        $d :Double(this == 256)
+    then
+        System.err.println("b256 " + $d);
+end
+
+rule "b257"
+    when
+        $d :Double(this == 257)
+    then
+        System.err.println("b257 " + $d);
+end
+
+rule "b258"
+    when
+        $d :Double(this == 258)
+    then
+        System.err.println("b258 " + $d);
+end
+
+rule "b259"
+    when
+        $d :Double(this == 259)
+    then
+        System.err.println("b259 " + $d);
+end
+
+rule "b260"
+    when
+        $d :Double(this == 260)
+    then
+        System.err.println("b260 " + $d);
+end
+
+rule "b261"
+    when
+        $d :Double(this == 261)
+    then
+        System.err.println("b261 " + $d);
+end
+
+rule "b262"
+    when
+        $d :Double(this == 262)
+    then
+        System.err.println("b262 " + $d);
+end
+
+rule "b263"
+    when
+        $d :Double(this == 263)
+    then
+        System.err.println("b263 " + $d);
+end
+
+rule "b264"
+    when
+        $d :Double(this == 264)
+    then
+        System.err.println("b264 " + $d);
+end
+
+rule "b265"
+    when
+        $d :Double(this == 265)
+    then
+        System.err.println("b265 " + $d);
+end
+
+rule "b266"
+    when
+        $d :Double(this == 266)
+    then
+        System.err.println("b266 " + $d);
+end
+
+rule "b267"
+    when
+        $d :Double(this == 267)
+    then
+        System.err.println("b267 " + $d);
+end
+
+rule "b268"
+    when
+        $d :Double(this == 268)
+    then
+        System.err.println("b268 " + $d);
+end
+
+rule "b269"
+    when
+        $d :Double(this == 269)
+    then
+        System.err.println("b269 " + $d);
+end
+
+rule "b270"
+    when
+        $d :Double(this == 270)
+    then
+        System.err.println("b270 " + $d);
+end
+
+rule "b271"
+    when
+        $d :Double(this == 271)
+    then
+        System.err.println("b271 " + $d);
+end
+
+rule "b272"
+    when
+        $d :Double(this == 272)
+    then
+        System.err.println("b272 " + $d);
+end
+
+rule "b273"
+    when
+        $d :Double(this == 273)
+    then
+        System.err.println("b273 " + $d);
+end
+
+rule "b274"
+    when
+        $d :Double(this == 274)
+    then
+        System.err.println("b274 " + $d);
+end
+
+rule "b275"
+    when
+        $d :Double(this == 275)
+    then
+        System.err.println("b275 " + $d);
+end
+
+rule "b276"
+    when
+        $d :Double(this == 276)
+    then
+        System.err.println("b276 " + $d);
+end
+
+rule "b277"
+    when
+        $d :Double(this == 277)
+    then
+        System.err.println("b277 " + $d);
+end
+
+rule "b278"
+    when
+        $d :Double(this == 278)
+    then
+        System.err.println("b278 " + $d);
+end
+
+rule "b279"
+    when
+        $d :Double(this == 279)
+    then
+        System.err.println("b279 " + $d);
+end
+
+rule "b280"
+    when
+        $d :Double(this == 280)
+    then
+        System.err.println("b280 " + $d);
+end
+
+rule "b281"
+    when
+        $d :Double(this == 281)
+    then
+        System.err.println("b281 " + $d);
+end
+
+rule "b282"
+    when
+        $d :Double(this == 282)
+    then
+        System.err.println("b282 " + $d);
+end
+
+rule "b283"
+    when
+        $d :Double(this == 283)
+    then
+        System.err.println("b283 " + $d);
+end
+
+rule "b284"
+    when
+        $d :Double(this == 284)
+    then
+        System.err.println("b284 " + $d);
+end
+
+rule "b285"
+    when
+        $d :Double(this == 285)
+    then
+        System.err.println("b285 " + $d);
+end
+
+rule "b286"
+    when
+        $d :Double(this == 286)
+    then
+        System.err.println("b286 " + $d);
+end
+
+rule "b287"
+    when
+        $d :Double(this == 287)
+    then
+        System.err.println("b287 " + $d);
+end
+
+rule "b288"
+    when
+        $d :Double(this == 288)
+    then
+        System.err.println("b288 " + $d);
+end
+
+rule "b289"
+    when
+        $d :Double(this == 289)
+    then
+        System.err.println("b289 " + $d);
+end
+
+rule "b290"
+    when
+        $d :Double(this == 290)
+    then
+        System.err.println("b290 " + $d);
+end
+
+rule "b291"
+    when
+        $d :Double(this == 291)
+    then
+        System.err.println("b291 " + $d);
+end
+
+rule "b292"
+    when
+        $d :Double(this == 292)
+    then
+        System.err.println("b292 " + $d);
+end
+
+rule "b293"
+    when
+        $d :Double(this == 293)
+    then
+        System.err.println("b293 " + $d);
+end
+
+rule "b294"
+    when
+        $d :Double(this == 294)
+    then
+        System.err.println("b294 " + $d);
+end
+
+rule "b295"
+    when
+        $d :Double(this == 295)
+    then
+        System.err.println("b295 " + $d);
+end
+
+rule "b296"
+    when
+        $d :Double(this == 296)
+    then
+        System.err.println("b296 " + $d);
+end
+
+rule "b297"
+    when
+        $d :Double(this == 297)
+    then
+        System.err.println("b297 " + $d);
+end
+
+rule "b298"
+    when
+        $d :Double(this == 298)
+    then
+        System.err.println("b298 " + $d);
+end
+
+rule "b299"
+    when
+        $d :Double(this == 299)
+    then
+        System.err.println("b299 " + $d);
+end
+
+rule "b300"
+    when
+        $d :Double(this == 300)
+    then
+        System.err.println("b300 " + $d);
+end
+
+rule "b301"
+    when
+        $d :Double(this == 301)
+    then
+        System.err.println("b301 " + $d);
+end
+
+rule "b302"
+    when
+        $d :Double(this == 302)
+    then
+        System.err.println("b302 " + $d);
+end
+
+rule "b303"
+    when
+        $d :Double(this == 303)
+    then
+        System.err.println("b303 " + $d);
+end
+
+rule "b304"
+    when
+        $d :Double(this == 304)
+    then
+        System.err.println("b304 " + $d);
+end
+
+rule "b305"
+    when
+        $d :Double(this == 305)
+    then
+        System.err.println("b305 " + $d);
+end
+
+rule "b306"
+    when
+        $d :Double(this == 306)
+    then
+        System.err.println("b306 " + $d);
+end
+
+rule "b307"
+    when
+        $d :Double(this == 307)
+    then
+        System.err.println("b307 " + $d);
+end
+
+rule "b308"
+    when
+        $d :Double(this == 308)
+    then
+        System.err.println("b308 " + $d);
+end
+
+rule "b309"
+    when
+        $d :Double(this == 309)
+    then
+        System.err.println("b309 " + $d);
+end
+
+rule "b310"
+    when
+        $d :Double(this == 310)
+    then
+        System.err.println("b310 " + $d);
+end
+
+rule "b311"
+    when
+        $d :Double(this == 311)
+    then
+        System.err.println("b311 " + $d);
+end
+
+rule "b312"
+    when
+        $d :Double(this == 312)
+    then
+        System.err.println("b312 " + $d);
+end
+
+rule "b313"
+    when
+        $d :Double(this == 313)
+    then
+        System.err.println("b313 " + $d);
+end
+
+rule "b314"
+    when
+        $d :Double(this == 314)
+    then
+        System.err.println("b314 " + $d);
+end
+
+rule "b315"
+    when
+        $d :Double(this == 315)
+    then
+        System.err.println("b315 " + $d);
+end
+
+rule "b316"
+    when
+        $d :Double(this == 316)
+    then
+        System.err.println("b316 " + $d);
+end
+
+rule "b317"
+    when
+        $d :Double(this == 317)
+    then
+        System.err.println("b317 " + $d);
+end
+
+rule "b318"
+    when
+        $d :Double(this == 318)
+    then
+        System.err.println("b318 " + $d);
+end
+
+rule "b319"
+    when
+        $d :Double(this == 319)
+    then
+        System.err.println("b319 " + $d);
+end
+
+rule "b320"
+    when
+        $d :Double(this == 320)
+    then
+        System.err.println("b320 " + $d);
+end
+
+rule "b321"
+    when
+        $d :Double(this == 321)
+    then
+        System.err.println("b321 " + $d);
+end
+
+rule "b322"
+    when
+        $d :Double(this == 322)
+    then
+        System.err.println("b322 " + $d);
+end
+
+rule "b323"
+    when
+        $d :Double(this == 323)
+    then
+        System.err.println("b323 " + $d);
+end
+
+rule "b324"
+    when
+        $d :Double(this == 324)
+    then
+        System.err.println("b324 " + $d);
+end
+
+rule "b325"
+    when
+        $d :Double(this == 325)
+    then
+        System.err.println("b325 " + $d);
+end
+
+rule "b326"
+    when
+        $d :Double(this == 326)
+    then
+        System.err.println("b326 " + $d);
+end
+
+rule "b327"
+    when
+        $d :Double(this == 327)
+    then
+        System.err.println("b327 " + $d);
+end
+
+rule "b328"
+    when
+        $d :Double(this == 328)
+    then
+        System.err.println("b328 " + $d);
+end
+
+rule "b329"
+    when
+        $d :Double(this == 329)
+    then
+        System.err.println("b329 " + $d);
+end
+
+rule "b330"
+    when
+        $d :Double(this == 330)
+    then
+        System.err.println("b330 " + $d);
+end
+
+rule "b331"
+    when
+        $d :Double(this == 331)
+    then
+        System.err.println("b331 " + $d);
+end
+
+rule "b332"
+    when
+        $d :Double(this == 332)
+    then
+        System.err.println("b332 " + $d);
+end
+
+rule "b333"
+    when
+        $d :Double(this == 333)
+    then
+        System.err.println("b333 " + $d);
+end
+
+rule "b334"
+    when
+        $d :Double(this == 334)
+    then
+        System.err.println("b334 " + $d);
+end
+
+rule "b335"
+    when
+        $d :Double(this == 335)
+    then
+        System.err.println("b335 " + $d);
+end
+
+rule "b336"
+    when
+        $d :Double(this == 336)
+    then
+        System.err.println("b336 " + $d);
+end
+
+rule "b337"
+    when
+        $d :Double(this == 337)
+    then
+        System.err.println("b337 " + $d);
+end
+
+rule "b338"
+    when
+        $d :Double(this == 338)
+    then
+        System.err.println("b338 " + $d);
+end
+
+rule "b339"
+    when
+        $d :Double(this == 339)
+    then
+        System.err.println("b339 " + $d);
+end
+
+rule "b340"
+    when
+        $d :Double(this == 340)
+    then
+        System.err.println("b340 " + $d);
+end
+
+rule "b341"
+    when
+        $d :Double(this == 341)
+    then
+        System.err.println("b341 " + $d);
+end
+
+rule "b342"
+    when
+        $d :Double(this == 342)
+    then
+        System.err.println("b342 " + $d);
+end
+
+rule "b343"
+    when
+        $d :Double(this == 343)
+    then
+        System.err.println("b343 " + $d);
+end
+
+rule "b344"
+    when
+        $d :Double(this == 344)
+    then
+        System.err.println("b344 " + $d);
+end
+
+rule "b345"
+    when
+        $d :Double(this == 345)
+    then
+        System.err.println("b345 " + $d);
+end
+
+rule "b346"
+    when
+        $d :Double(this == 346)
+    then
+        System.err.println("b346 " + $d);
+end
+
+rule "b347"
+    when
+        $d :Double(this == 347)
+    then
+        System.err.println("b347 " + $d);
+end
+
+rule "b348"
+    when
+        $d :Double(this == 348)
+    then
+        System.err.println("b348 " + $d);
+end
+
+rule "b349"
+    when
+        $d :Double(this == 349)
+    then
+        System.err.println("b349 " + $d);
+end
+
+rule "b350"
+    when
+        $d :Double(this == 350)
+    then
+        System.err.println("b350 " + $d);
+end
+
+rule "b351"
+    when
+        $d :Double(this == 351)
+    then
+        System.err.println("b351 " + $d);
+end
+
+rule "b352"
+    when
+        $d :Double(this == 352)
+    then
+        System.err.println("b352 " + $d);
+end
+
+rule "b353"
+    when
+        $d :Double(this == 353)
+    then
+        System.err.println("b353 " + $d);
+end
+
+rule "b354"
+    when
+        $d :Double(this == 354)
+    then
+        System.err.println("b354 " + $d);
+end
+
+rule "b355"
+    when
+        $d :Double(this == 355)
+    then
+        System.err.println("b355 " + $d);
+end
+
+rule "b356"
+    when
+        $d :Double(this == 356)
+    then
+        System.err.println("b356 " + $d);
+end
+
+rule "b357"
+    when
+        $d :Double(this == 357)
+    then
+        System.err.println("b357 " + $d);
+end
+
+rule "b358"
+    when
+        $d :Double(this == 358)
+    then
+        System.err.println("b358 " + $d);
+end
+
+rule "b359"
+    when
+        $d :Double(this == 359)
+    then
+        System.err.println("b359 " + $d);
+end
+
+rule "b360"
+    when
+        $d :Double(this == 360)
+    then
+        System.err.println("b360 " + $d);
+end
+
+rule "b361"
+    when
+        $d :Double(this == 361)
+    then
+        System.err.println("b361 " + $d);
+end
+
+rule "b362"
+    when
+        $d :Double(this == 362)
+    then
+        System.err.println("b362 " + $d);
+end
+
+rule "b363"
+    when
+        $d :Double(this == 363)
+    then
+        System.err.println("b363 " + $d);
+end
+
+rule "b364"
+    when
+        $d :Double(this == 364)
+    then
+        System.err.println("b364 " + $d);
+end
+
+rule "b365"
+    when
+        $d :Double(this == 365)
+    then
+        System.err.println("b365 " + $d);
+end
+
+rule "b366"
+    when
+        $d :Double(this == 366)
+    then
+        System.err.println("b366 " + $d);
+end
+
+rule "b367"
+    when
+        $d :Double(this == 367)
+    then
+        System.err.println("b367 " + $d);
+end
+
+rule "b368"
+    when
+        $d :Double(this == 368)
+    then
+        System.err.println("b368 " + $d);
+end
+
+rule "b369"
+    when
+        $d :Double(this == 369)
+    then
+        System.err.println("b369 " + $d);
+end
+
+rule "b370"
+    when
+        $d :Double(this == 370)
+    then
+        System.err.println("b370 " + $d);
+end
+
+rule "b371"
+    when
+        $d :Double(this == 371)
+    then
+        System.err.println("b371 " + $d);
+end
+
+rule "b372"
+    when
+        $d :Double(this == 372)
+    then
+        System.err.println("b372 " + $d);
+end
+
+rule "b373"
+    when
+        $d :Double(this == 373)
+    then
+        System.err.println("b373 " + $d);
+end
+
+rule "b374"
+    when
+        $d :Double(this == 374)
+    then
+        System.err.println("b374 " + $d);
+end
+
+rule "b375"
+    when
+        $d :Double(this == 375)
+    then
+        System.err.println("b375 " + $d);
+end
+
+rule "b376"
+    when
+        $d :Double(this == 376)
+    then
+        System.err.println("b376 " + $d);
+end
+
+rule "b377"
+    when
+        $d :Double(this == 377)
+    then
+        System.err.println("b377 " + $d);
+end
+
+rule "b378"
+    when
+        $d :Double(this == 378)
+    then
+        System.err.println("b378 " + $d);
+end
+
+rule "b379"
+    when
+        $d :Double(this == 379)
+    then
+        System.err.println("b379 " + $d);
+end
+
+rule "b380"
+    when
+        $d :Double(this == 380)
+    then
+        System.err.println("b380 " + $d);
+end
+
+rule "b381"
+    when
+        $d :Double(this == 381)
+    then
+        System.err.println("b381 " + $d);
+end
+
+rule "b382"
+    when
+        $d :Double(this == 382)
+    then
+        System.err.println("b382 " + $d);
+end
+
+rule "b383"
+    when
+        $d :Double(this == 383)
+    then
+        System.err.println("b383 " + $d);
+end
+
+rule "b384"
+    when
+        $d :Double(this == 384)
+    then
+        System.err.println("b384 " + $d);
+end
+
+rule "b385"
+    when
+        $d :Double(this == 385)
+    then
+        System.err.println("b385 " + $d);
+end
+
+rule "b386"
+    when
+        $d :Double(this == 386)
+    then
+        System.err.println("b386 " + $d);
+end
+
+rule "b387"
+    when
+        $d :Double(this == 387)
+    then
+        System.err.println("b387 " + $d);
+end
+
+rule "b388"
+    when
+        $d :Double(this == 388)
+    then
+        System.err.println("b388 " + $d);
+end
+
+rule "b389"
+    when
+        $d :Double(this == 389)
+    then
+        System.err.println("b389 " + $d);
+end
+
+rule "b390"
+    when
+        $d :Double(this == 390)
+    then
+        System.err.println("b390 " + $d);
+end
+
+rule "b391"
+    when
+        $d :Double(this == 391)
+    then
+        System.err.println("b391 " + $d);
+end
+
+rule "b392"
+    when
+        $d :Double(this == 392)
+    then
+        System.err.println("b392 " + $d);
+end
+
+rule "b393"
+    when
+        $d :Double(this == 393)
+    then
+        System.err.println("b393 " + $d);
+end
+
+rule "b394"
+    when
+        $d :Double(this == 394)
+    then
+        System.err.println("b394 " + $d);
+end
+
+rule "b395"
+    when
+        $d :Double(this == 395)
+    then
+        System.err.println("b395 " + $d);
+end
+
+rule "b396"
+    when
+        $d :Double(this == 396)
+    then
+        System.err.println("b396 " + $d);
+end
+
+rule "b397"
+    when
+        $d :Double(this == 397)
+    then
+        System.err.println("b397 " + $d);
+end
+
+rule "b398"
+    when
+        $d :Double(this == 398)
+    then
+        System.err.println("b398 " + $d);
+end
+
+rule "b399"
+    when
+        $d :Double(this == 399)
+    then
+        System.err.println("b399 " + $d);
+end
+
+rule "b400"
+    when
+        $d :Double(this == 400)
+    then
+        System.err.println("b400 " + $d);
+end
+
+rule "b401"
+    when
+        $d :Double(this == 401)
+    then
+        System.err.println("b401 " + $d);
+end
+
+rule "b402"
+    when
+        $d :Double(this == 402)
+    then
+        System.err.println("b402 " + $d);
+end
+
+rule "b403"
+    when
+        $d :Double(this == 403)
+    then
+        System.err.println("b403 " + $d);
+end
+
+rule "b404"
+    when
+        $d :Double(this == 404)
+    then
+        System.err.println("b404 " + $d);
+end
+
+rule "b405"
+    when
+        $d :Double(this == 405)
+    then
+        System.err.println("b405 " + $d);
+end
+
+rule "b406"
+    when
+        $d :Double(this == 406)
+    then
+        System.err.println("b406 " + $d);
+end
+
+rule "b407"
+    when
+        $d :Double(this == 407)
+    then
+        System.err.println("b407 " + $d);
+end
+
+rule "b408"
+    when
+        $d :Double(this == 408)
+    then
+        System.err.println("b408 " + $d);
+end
+
+rule "b409"
+    when
+        $d :Double(this == 409)
+    then
+        System.err.println("b409 " + $d);
+end
+
+rule "b410"
+    when
+        $d :Double(this == 410)
+    then
+        System.err.println("b410 " + $d);
+end
+
+rule "b411"
+    when
+        $d :Double(this == 411)
+    then
+        System.err.println("b411 " + $d);
+end
+
+rule "b412"
+    when
+        $d :Double(this == 412)
+    then
+        System.err.println("b412 " + $d);
+end
+
+rule "b413"
+    when
+        $d :Double(this == 413)
+    then
+        System.err.println("b413 " + $d);
+end
+
+rule "b414"
+    when
+        $d :Double(this == 414)
+    then
+        System.err.println("b414 " + $d);
+end
+
+rule "b415"
+    when
+        $d :Double(this == 415)
+    then
+        System.err.println("b415 " + $d);
+end
+
+rule "b416"
+    when
+        $d :Double(this == 416)
+    then
+        System.err.println("b416 " + $d);
+end
+
+rule "b417"
+    when
+        $d :Double(this == 417)
+    then
+        System.err.println("b417 " + $d);
+end
+
+rule "b418"
+    when
+        $d :Double(this == 418)
+    then
+        System.err.println("b418 " + $d);
+end
+
+rule "b419"
+    when
+        $d :Double(this == 419)
+    then
+        System.err.println("b419 " + $d);
+end
+
+rule "b420"
+    when
+        $d :Double(this == 420)
+    then
+        System.err.println("b420 " + $d);
+end
+
+rule "b421"
+    when
+        $d :Double(this == 421)
+    then
+        System.err.println("b421 " + $d);
+end
+
+rule "b422"
+    when
+        $d :Double(this == 422)
+    then
+        System.err.println("b422 " + $d);
+end
+
+rule "b423"
+    when
+        $d :Double(this == 423)
+    then
+        System.err.println("b423 " + $d);
+end
+
+rule "b424"
+    when
+        $d :Double(this == 424)
+    then
+        System.err.println("b424 " + $d);
+end
+
+rule "b425"
+    when
+        $d :Double(this == 425)
+    then
+        System.err.println("b425 " + $d);
+end
+
+rule "b426"
+    when
+        $d :Double(this == 426)
+    then
+        System.err.println("b426 " + $d);
+end
+
+rule "b427"
+    when
+        $d :Double(this == 427)
+    then
+        System.err.println("b427 " + $d);
+end
+
+rule "b428"
+    when
+        $d :Double(this == 428)
+    then
+        System.err.println("b428 " + $d);
+end
+
+rule "b429"
+    when
+        $d :Double(this == 429)
+    then
+        System.err.println("b429 " + $d);
+end
+
+rule "b430"
+    when
+        $d :Double(this == 430)
+    then
+        System.err.println("b430 " + $d);
+end
+
+rule "b431"
+    when
+        $d :Double(this == 431)
+    then
+        System.err.println("b431 " + $d);
+end
+
+rule "b432"
+    when
+        $d :Double(this == 432)
+    then
+        System.err.println("b432 " + $d);
+end
+
+rule "b433"
+    when
+        $d :Double(this == 433)
+    then
+        System.err.println("b433 " + $d);
+end
+
+rule "b434"
+    when
+        $d :Double(this == 434)
+    then
+        System.err.println("b434 " + $d);
+end
+
+rule "b435"
+    when
+        $d :Double(this == 435)
+    then
+        System.err.println("b435 " + $d);
+end
+
+rule "b436"
+    when
+        $d :Double(this == 436)
+    then
+        System.err.println("b436 " + $d);
+end
+
+rule "b437"
+    when
+        $d :Double(this == 437)
+    then
+        System.err.println("b437 " + $d);
+end
+
+rule "b438"
+    when
+        $d :Double(this == 438)
+    then
+        System.err.println("b438 " + $d);
+end
+
+rule "b439"
+    when
+        $d :Double(this == 439)
+    then
+        System.err.println("b439 " + $d);
+end
+
+rule "b440"
+    when
+        $d :Double(this == 440)
+    then
+        System.err.println("b440 " + $d);
+end
+
+rule "b441"
+    when
+        $d :Double(this == 441)
+    then
+        System.err.println("b441 " + $d);
+end
+
+rule "b442"
+    when
+        $d :Double(this == 442)
+    then
+        System.err.println("b442 " + $d);
+end
+
+rule "b443"
+    when
+        $d :Double(this == 443)
+    then
+        System.err.println("b443 " + $d);
+end
+
+rule "b444"
+    when
+        $d :Double(this == 444)
+    then
+        System.err.println("b444 " + $d);
+end
+
+rule "b445"
+    when
+        $d :Double(this == 445)
+    then
+        System.err.println("b445 " + $d);
+end
+
+rule "b446"
+    when
+        $d :Double(this == 446)
+    then
+        System.err.println("b446 " + $d);
+end
+
+rule "b447"
+    when
+        $d :Double(this == 447)
+    then
+        System.err.println("b447 " + $d);
+end
+
+rule "b448"
+    when
+        $d :Double(this == 448)
+    then
+        System.err.println("b448 " + $d);
+end
+
+rule "b449"
+    when
+        $d :Double(this == 449)
+    then
+        System.err.println("b449 " + $d);
+end
+
+rule "b450"
+    when
+        $d :Double(this == 450)
+    then
+        System.err.println("b450 " + $d);
+end
+
+rule "b451"
+    when
+        $d :Double(this == 451)
+    then
+        System.err.println("b451 " + $d);
+end
+
+rule "b452"
+    when
+        $d :Double(this == 452)
+    then
+        System.err.println("b452 " + $d);
+end
+
+rule "b453"
+    when
+        $d :Double(this == 453)
+    then
+        System.err.println("b453 " + $d);
+end
+
+rule "b454"
+    when
+        $d :Double(this == 454)
+    then
+        System.err.println("b454 " + $d);
+end
+
+rule "b455"
+    when
+        $d :Double(this == 455)
+    then
+        System.err.println("b455 " + $d);
+end
+
+rule "b456"
+    when
+        $d :Double(this == 456)
+    then
+        System.err.println("b456 " + $d);
+end
+
+rule "b457"
+    when
+        $d :Double(this == 457)
+    then
+        System.err.println("b457 " + $d);
+end
+
+rule "b458"
+    when
+        $d :Double(this == 458)
+    then
+        System.err.println("b458 " + $d);
+end
+
+rule "b459"
+    when
+        $d :Double(this == 459)
+    then
+        System.err.println("b459 " + $d);
+end
+
+rule "b460"
+    when
+        $d :Double(this == 460)
+    then
+        System.err.println("b460 " + $d);
+end
+
+rule "b461"
+    when
+        $d :Double(this == 461)
+    then
+        System.err.println("b461 " + $d);
+end
+
+rule "b462"
+    when
+        $d :Double(this == 462)
+    then
+        System.err.println("b462 " + $d);
+end
+
+rule "b463"
+    when
+        $d :Double(this == 463)
+    then
+        System.err.println("b463 " + $d);
+end
+
+rule "b464"
+    when
+        $d :Double(this == 464)
+    then
+        System.err.println("b464 " + $d);
+end
+
+rule "b465"
+    when
+        $d :Double(this == 465)
+    then
+        System.err.println("b465 " + $d);
+end
+
+rule "b466"
+    when
+        $d :Double(this == 466)
+    then
+        System.err.println("b466 " + $d);
+end
+
+rule "b467"
+    when
+        $d :Double(this == 467)
+    then
+        System.err.println("b467 " + $d);
+end
+
+rule "b468"
+    when
+        $d :Double(this == 468)
+    then
+        System.err.println("b468 " + $d);
+end
+
+rule "b469"
+    when
+        $d :Double(this == 469)
+    then
+        System.err.println("b469 " + $d);
+end
+
+rule "b470"
+    when
+        $d :Double(this == 470)
+    then
+        System.err.println("b470 " + $d);
+end
+
+rule "b471"
+    when
+        $d :Double(this == 471)
+    then
+        System.err.println("b471 " + $d);
+end
+
+rule "b472"
+    when
+        $d :Double(this == 472)
+    then
+        System.err.println("b472 " + $d);
+end
+
+rule "b473"
+    when
+        $d :Double(this == 473)
+    then
+        System.err.println("b473 " + $d);
+end
+
+rule "b474"
+    when
+        $d :Double(this == 474)
+    then
+        System.err.println("b474 " + $d);
+end
+
+rule "b475"
+    when
+        $d :Double(this == 475)
+    then
+        System.err.println("b475 " + $d);
+end
+
+rule "b476"
+    when
+        $d :Double(this == 476)
+    then
+        System.err.println("b476 " + $d);
+end
+
+rule "b477"
+    when
+        $d :Double(this == 477)
+    then
+        System.err.println("b477 " + $d);
+end
+
+rule "b478"
+    when
+        $d :Double(this == 478)
+    then
+        System.err.println("b478 " + $d);
+end
+
+rule "b479"
+    when
+        $d :Double(this == 479)
+    then
+        System.err.println("b479 " + $d);
+end
+
+rule "b480"
+    when
+        $d :Double(this == 480)
+    then
+        System.err.println("b480 " + $d);
+end
+
+rule "b481"
+    when
+        $d :Double(this == 481)
+    then
+        System.err.println("b481 " + $d);
+end
+
+rule "b482"
+    when
+        $d :Double(this == 482)
+    then
+        System.err.println("b482 " + $d);
+end
+
+rule "b483"
+    when
+        $d :Double(this == 483)
+    then
+        System.err.println("b483 " + $d);
+end
+
+rule "b484"
+    when
+        $d :Double(this == 484)
+    then
+        System.err.println("b484 " + $d);
+end
+
+rule "b485"
+    when
+        $d :Double(this == 485)
+    then
+        System.err.println("b485 " + $d);
+end
+
+rule "b486"
+    when
+        $d :Double(this == 486)
+    then
+        System.err.println("b486 " + $d);
+end
+
+rule "b487"
+    when
+        $d :Double(this == 487)
+    then
+        System.err.println("b487 " + $d);
+end
+
+rule "b488"
+    when
+        $d :Double(this == 488)
+    then
+        System.err.println("b488 " + $d);
+end
+
+rule "b489"
+    when
+        $d :Double(this == 489)
+    then
+        System.err.println("b489 " + $d);
+end
+
+rule "b490"
+    when
+        $d :Double(this == 490)
+    then
+        System.err.println("b490 " + $d);
+end
+
+rule "b491"
+    when
+        $d :Double(this == 491)
+    then
+        System.err.println("b491 " + $d);
+end
+
+rule "b492"
+    when
+        $d :Double(this == 492)
+    then
+        System.err.println("b492 " + $d);
+end
+
+rule "b493"
+    when
+        $d :Double(this == 493)
+    then
+        System.err.println("b493 " + $d);
+end
+
+rule "b494"
+    when
+        $d :Double(this == 494)
+    then
+        System.err.println("b494 " + $d);
+end
+
+rule "b495"
+    when
+        $d :Double(this == 495)
+    then
+        System.err.println("b495 " + $d);
+end
+
+rule "b496"
+    when
+        $d :Double(this == 496)
+    then
+        System.err.println("b496 " + $d);
+end
+
+rule "b497"
+    when
+        $d :Double(this == 497)
+    then
+        System.err.println("b497 " + $d);
+end
+
+rule "b498"
+    when
+        $d :Double(this == 498)
+    then
+        System.err.println("b498 " + $d);
+end
+
+rule "b499"
+    when
+        $d :Double(this == 499)
+    then
+        System.err.println("b499 " + $d);
+end
+
+rule "b500"
+    when
+        $d :Double(this == 500)
+    then
+        System.err.println("b500 " + $d);
+end
+
+rule "b501"
+    when
+        $d :Double(this == 501)
+    then
+        System.err.println("b501 " + $d);
+end
+
+rule "b502"
+    when
+        $d :Double(this == 502)
+    then
+        System.err.println("b502 " + $d);
+end
+
+rule "b503"
+    when
+        $d :Double(this == 503)
+    then
+        System.err.println("b503 " + $d);
+end
+
+rule "b504"
+    when
+        $d :Double(this == 504)
+    then
+        System.err.println("b504 " + $d);
+end
+
+rule "b505"
+    when
+        $d :Double(this == 505)
+    then
+        System.err.println("b505 " + $d);
+end
+
+rule "b506"
+    when
+        $d :Double(this == 506)
+    then
+        System.err.println("b506 " + $d);
+end
+
+rule "b507"
+    when
+        $d :Double(this == 507)
+    then
+        System.err.println("b507 " + $d);
+end
+
+rule "b508"
+    when
+        $d :Double(this == 508)
+    then
+        System.err.println("b508 " + $d);
+end
+
+rule "b509"
+    when
+        $d :Double(this == 509)
+    then
+        System.err.println("b509 " + $d);
+end
+
+rule "b510"
+    when
+        $d :Double(this == 510)
+    then
+        System.err.println("b510 " + $d);
+end
+
+rule "b511"
+    when
+        $d :Double(this == 511)
+    then
+        System.err.println("b511 " + $d);
+end
+
+rule "b512"
+    when
+        $d :Double(this == 512)
+    then
+        System.err.println("b512 " + $d);
+end
+
+rule "b513"
+    when
+        $d :Double(this == 513)
+    then
+        System.err.println("b513 " + $d);
+end
+
+rule "b514"
+    when
+        $d :Double(this == 514)
+    then
+        System.err.println("b514 " + $d);
+end
+
+rule "b515"
+    when
+        $d :Double(this == 515)
+    then
+        System.err.println("b515 " + $d);
+end
+
+rule "b516"
+    when
+        $d :Double(this == 516)
+    then
+        System.err.println("b516 " + $d);
+end
+
+rule "b517"
+    when
+        $d :Double(this == 517)
+    then
+        System.err.println("b517 " + $d);
+end
+
+rule "b518"
+    when
+        $d :Double(this == 518)
+    then
+        System.err.println("b518 " + $d);
+end
+
+rule "b519"
+    when
+        $d :Double(this == 519)
+    then
+        System.err.println("b519 " + $d);
+end
+
+rule "b520"
+    when
+        $d :Double(this == 520)
+    then
+        System.err.println("b520 " + $d);
+end
+
+rule "b521"
+    when
+        $d :Double(this == 521)
+    then
+        System.err.println("b521 " + $d);
+end
+
+rule "b522"
+    when
+        $d :Double(this == 522)
+    then
+        System.err.println("b522 " + $d);
+end
+
+rule "b523"
+    when
+        $d :Double(this == 523)
+    then
+        System.err.println("b523 " + $d);
+end
+
+rule "b524"
+    when
+        $d :Double(this == 524)
+    then
+        System.err.println("b524 " + $d);
+end
+
+rule "b525"
+    when
+        $d :Double(this == 525)
+    then
+        System.err.println("b525 " + $d);
+end
+
+rule "b526"
+    when
+        $d :Double(this == 526)
+    then
+        System.err.println("b526 " + $d);
+end
+
+rule "b527"
+    when
+        $d :Double(this == 527)
+    then
+        System.err.println("b527 " + $d);
+end
+
+rule "b528"
+    when
+        $d :Double(this == 528)
+    then
+        System.err.println("b528 " + $d);
+end
+
+rule "b529"
+    when
+        $d :Double(this == 529)
+    then
+        System.err.println("b529 " + $d);
+end
+
+rule "b530"
+    when
+        $d :Double(this == 530)
+    then
+        System.err.println("b530 " + $d);
+end
+
+rule "b531"
+    when
+        $d :Double(this == 531)
+    then
+        System.err.println("b531 " + $d);
+end
+
+rule "b532"
+    when
+        $d :Double(this == 532)
+    then
+        System.err.println("b532 " + $d);
+end
+
+rule "b533"
+    when
+        $d :Double(this == 533)
+    then
+        System.err.println("b533 " + $d);
+end
+
+rule "b534"
+    when
+        $d :Double(this == 534)
+    then
+        System.err.println("b534 " + $d);
+end
+
+rule "b535"
+    when
+        $d :Double(this == 535)
+    then
+        System.err.println("b535 " + $d);
+end
+
+rule "b536"
+    when
+        $d :Double(this == 536)
+    then
+        System.err.println("b536 " + $d);
+end
+
+rule "b537"
+    when
+        $d :Double(this == 537)
+    then
+        System.err.println("b537 " + $d);
+end
+
+rule "b538"
+    when
+        $d :Double(this == 538)
+    then
+        System.err.println("b538 " + $d);
+end
+
+rule "b539"
+    when
+        $d :Double(this == 539)
+    then
+        System.err.println("b539 " + $d);
+end
+
+rule "b540"
+    when
+        $d :Double(this == 540)
+    then
+        System.err.println("b540 " + $d);
+end
+
+rule "b541"
+    when
+        $d :Double(this == 541)
+    then
+        System.err.println("b541 " + $d);
+end
+
+rule "b542"
+    when
+        $d :Double(this == 542)
+    then
+        System.err.println("b542 " + $d);
+end
+
+rule "b543"
+    when
+        $d :Double(this == 543)
+    then
+        System.err.println("b543 " + $d);
+end
+
+rule "b544"
+    when
+        $d :Double(this == 544)
+    then
+        System.err.println("b544 " + $d);
+end
+
+rule "b545"
+    when
+        $d :Double(this == 545)
+    then
+        System.err.println("b545 " + $d);
+end
+
+rule "b546"
+    when
+        $d :Double(this == 546)
+    then
+        System.err.println("b546 " + $d);
+end
+
+rule "b547"
+    when
+        $d :Double(this == 547)
+    then
+        System.err.println("b547 " + $d);
+end
+
+rule "b548"
+    when
+        $d :Double(this == 548)
+    then
+        System.err.println("b548 " + $d);
+end
+
+rule "b549"
+    when
+        $d :Double(this == 549)
+    then
+        System.err.println("b549 " + $d);
+end
+
+rule "b550"
+    when
+        $d :Double(this == 550)
+    then
+        System.err.println("b550 " + $d);
+end
+
+rule "b551"
+    when
+        $d :Double(this == 551)
+    then
+        System.err.println("b551 " + $d);
+end
+
+rule "b552"
+    when
+        $d :Double(this == 552)
+    then
+        System.err.println("b552 " + $d);
+end
+
+rule "b553"
+    when
+        $d :Double(this == 553)
+    then
+        System.err.println("b553 " + $d);
+end
+
+rule "b554"
+    when
+        $d :Double(this == 554)
+    then
+        System.err.println("b554 " + $d);
+end
+
+rule "b555"
+    when
+        $d :Double(this == 555)
+    then
+        System.err.println("b555 " + $d);
+end
+
+rule "b556"
+    when
+        $d :Double(this == 556)
+    then
+        System.err.println("b556 " + $d);
+end
+
+rule "b557"
+    when
+        $d :Double(this == 557)
+    then
+        System.err.println("b557 " + $d);
+end
+
+rule "b558"
+    when
+        $d :Double(this == 558)
+    then
+        System.err.println("b558 " + $d);
+end
+
+rule "b559"
+    when
+        $d :Double(this == 559)
+    then
+        System.err.println("b559 " + $d);
+end
+
+rule "b560"
+    when
+        $d :Double(this == 560)
+    then
+        System.err.println("b560 " + $d);
+end
+
+rule "b561"
+    when
+        $d :Double(this == 561)
+    then
+        System.err.println("b561 " + $d);
+end
+
+rule "b562"
+    when
+        $d :Double(this == 562)
+    then
+        System.err.println("b562 " + $d);
+end
+
+rule "b563"
+    when
+        $d :Double(this == 563)
+    then
+        System.err.println("b563 " + $d);
+end
+
+rule "b564"
+    when
+        $d :Double(this == 564)
+    then
+        System.err.println("b564 " + $d);
+end
+
+rule "b565"
+    when
+        $d :Double(this == 565)
+    then
+        System.err.println("b565 " + $d);
+end
+
+rule "b566"
+    when
+        $d :Double(this == 566)
+    then
+        System.err.println("b566 " + $d);
+end
+
+rule "b567"
+    when
+        $d :Double(this == 567)
+    then
+        System.err.println("b567 " + $d);
+end
+
+rule "b568"
+    when
+        $d :Double(this == 568)
+    then
+        System.err.println("b568 " + $d);
+end
+
+rule "b569"
+    when
+        $d :Double(this == 569)
+    then
+        System.err.println("b569 " + $d);
+end
+
+rule "b570"
+    when
+        $d :Double(this == 570)
+    then
+        System.err.println("b570 " + $d);
+end
+
+rule "b571"
+    when
+        $d :Double(this == 571)
+    then
+        System.err.println("b571 " + $d);
+end
+
+rule "b572"
+    when
+        $d :Double(this == 572)
+    then
+        System.err.println("b572 " + $d);
+end
+
+rule "b573"
+    when
+        $d :Double(this == 573)
+    then
+        System.err.println("b573 " + $d);
+end
+
+rule "b574"
+    when
+        $d :Double(this == 574)
+    then
+        System.err.println("b574 " + $d);
+end
+
+rule "b575"
+    when
+        $d :Double(this == 575)
+    then
+        System.err.println("b575 " + $d);
+end
+
+rule "b576"
+    when
+        $d :Double(this == 576)
+    then
+        System.err.println("b576 " + $d);
+end
+
+rule "b577"
+    when
+        $d :Double(this == 577)
+    then
+        System.err.println("b577 " + $d);
+end
+
+rule "b578"
+    when
+        $d :Double(this == 578)
+    then
+        System.err.println("b578 " + $d);
+end
+
+rule "b579"
+    when
+        $d :Double(this == 579)
+    then
+        System.err.println("b579 " + $d);
+end
+
+rule "b580"
+    when
+        $d :Double(this == 580)
+    then
+        System.err.println("b580 " + $d);
+end
+
+rule "b581"
+    when
+        $d :Double(this == 581)
+    then
+        System.err.println("b581 " + $d);
+end
+
+rule "b582"
+    when
+        $d :Double(this == 582)
+    then
+        System.err.println("b582 " + $d);
+end
+
+rule "b583"
+    when
+        $d :Double(this == 583)
+    then
+        System.err.println("b583 " + $d);
+end
+
+rule "b584"
+    when
+        $d :Double(this == 584)
+    then
+        System.err.println("b584 " + $d);
+end
+
+rule "b585"
+    when
+        $d :Double(this == 585)
+    then
+        System.err.println("b585 " + $d);
+end
+
+rule "b586"
+    when
+        $d :Double(this == 586)
+    then
+        System.err.println("b586 " + $d);
+end
+
+rule "b587"
+    when
+        $d :Double(this == 587)
+    then
+        System.err.println("b587 " + $d);
+end
+
+rule "b588"
+    when
+        $d :Double(this == 588)
+    then
+        System.err.println("b588 " + $d);
+end
+
+rule "b589"
+    when
+        $d :Double(this == 589)
+    then
+        System.err.println("b589 " + $d);
+end
+
+rule "b590"
+    when
+        $d :Double(this == 590)
+    then
+        System.err.println("b590 " + $d);
+end
+
+rule "b591"
+    when
+        $d :Double(this == 591)
+    then
+        System.err.println("b591 " + $d);
+end
+
+rule "b592"
+    when
+        $d :Double(this == 592)
+    then
+        System.err.println("b592 " + $d);
+end
+
+rule "b593"
+    when
+        $d :Double(this == 593)
+    then
+        System.err.println("b593 " + $d);
+end
+
+rule "b594"
+    when
+        $d :Double(this == 594)
+    then
+        System.err.println("b594 " + $d);
+end
+
+rule "b595"
+    when
+        $d :Double(this == 595)
+    then
+        System.err.println("b595 " + $d);
+end
+
+rule "b596"
+    when
+        $d :Double(this == 596)
+    then
+        System.err.println("b596 " + $d);
+end
+
+rule "b597"
+    when
+        $d :Double(this == 597)
+    then
+        System.err.println("b597 " + $d);
+end
+
+rule "b598"
+    when
+        $d :Double(this == 598)
+    then
+        System.err.println("b598 " + $d);
+end
+
+rule "b599"
+    when
+        $d :Double(this == 599)
+    then
+        System.err.println("b599 " + $d);
+end
+
+rule "b600"
+    when
+        $d :Double(this == 600)
+    then
+        System.err.println("b600 " + $d);
+end
+
+rule "b601"
+    when
+        $d :Double(this == 601)
+    then
+        System.err.println("b601 " + $d);
+end
+
+rule "b602"
+    when
+        $d :Double(this == 602)
+    then
+        System.err.println("b602 " + $d);
+end
+
+rule "b603"
+    when
+        $d :Double(this == 603)
+    then
+        System.err.println("b603 " + $d);
+end
+
+rule "b604"
+    when
+        $d :Double(this == 604)
+    then
+        System.err.println("b604 " + $d);
+end
+
+rule "b605"
+    when
+        $d :Double(this == 605)
+    then
+        System.err.println("b605 " + $d);
+end
+
+rule "b606"
+    when
+        $d :Double(this == 606)
+    then
+        System.err.println("b606 " + $d);
+end
+
+rule "b607"
+    when
+        $d :Double(this == 607)
+    then
+        System.err.println("b607 " + $d);
+end
+
+rule "b608"
+    when
+        $d :Double(this == 608)
+    then
+        System.err.println("b608 " + $d);
+end
+
+rule "b609"
+    when
+        $d :Double(this == 609)
+    then
+        System.err.println("b609 " + $d);
+end
+
+rule "b610"
+    when
+        $d :Double(this == 610)
+    then
+        System.err.println("b610 " + $d);
+end
+
+rule "b611"
+    when
+        $d :Double(this == 611)
+    then
+        System.err.println("b611 " + $d);
+end
+
+rule "b612"
+    when
+        $d :Double(this == 612)
+    then
+        System.err.println("b612 " + $d);
+end
+
+rule "b613"
+    when
+        $d :Double(this == 613)
+    then
+        System.err.println("b613 " + $d);
+end
+
+rule "b614"
+    when
+        $d :Double(this == 614)
+    then
+        System.err.println("b614 " + $d);
+end
+
+rule "b615"
+    when
+        $d :Double(this == 615)
+    then
+        System.err.println("b615 " + $d);
+end
+
+rule "b616"
+    when
+        $d :Double(this == 616)
+    then
+        System.err.println("b616 " + $d);
+end
+
+rule "b617"
+    when
+        $d :Double(this == 617)
+    then
+        System.err.println("b617 " + $d);
+end
+
+rule "b618"
+    when
+        $d :Double(this == 618)
+    then
+        System.err.println("b618 " + $d);
+end
+
+rule "b619"
+    when
+        $d :Double(this == 619)
+    then
+        System.err.println("b619 " + $d);
+end
+
+rule "b620"
+    when
+        $d :Double(this == 620)
+    then
+        System.err.println("b620 " + $d);
+end
+
+rule "b621"
+    when
+        $d :Double(this == 621)
+    then
+        System.err.println("b621 " + $d);
+end
+
+rule "b622"
+    when
+        $d :Double(this == 622)
+    then
+        System.err.println("b622 " + $d);
+end
+
+rule "b623"
+    when
+        $d :Double(this == 623)
+    then
+        System.err.println("b623 " + $d);
+end
+
+rule "b624"
+    when
+        $d :Double(this == 624)
+    then
+        System.err.println("b624 " + $d);
+end
+
+rule "b625"
+    when
+        $d :Double(this == 625)
+    then
+        System.err.println("b625 " + $d);
+end
+
+rule "b626"
+    when
+        $d :Double(this == 626)
+    then
+        System.err.println("b626 " + $d);
+end
+
+rule "b627"
+    when
+        $d :Double(this == 627)
+    then
+        System.err.println("b627 " + $d);
+end
+
+rule "b628"
+    when
+        $d :Double(this == 628)
+    then
+        System.err.println("b628 " + $d);
+end
+
+rule "b629"
+    when
+        $d :Double(this == 629)
+    then
+        System.err.println("b629 " + $d);
+end
+
+rule "b630"
+    when
+        $d :Double(this == 630)
+    then
+        System.err.println("b630 " + $d);
+end
+
+rule "b631"
+    when
+        $d :Double(this == 631)
+    then
+        System.err.println("b631 " + $d);
+end
+
+rule "b632"
+    when
+        $d :Double(this == 632)
+    then
+        System.err.println("b632 " + $d);
+end
+
+rule "b633"
+    when
+        $d :Double(this == 633)
+    then
+        System.err.println("b633 " + $d);
+end
+
+rule "b634"
+    when
+        $d :Double(this == 634)
+    then
+        System.err.println("b634 " + $d);
+end
+
+rule "b635"
+    when
+        $d :Double(this == 635)
+    then
+        System.err.println("b635 " + $d);
+end
+
+rule "b636"
+    when
+        $d :Double(this == 636)
+    then
+        System.err.println("b636 " + $d);
+end
+
+rule "b637"
+    when
+        $d :Double(this == 637)
+    then
+        System.err.println("b637 " + $d);
+end
+
+rule "b638"
+    when
+        $d :Double(this == 638)
+    then
+        System.err.println("b638 " + $d);
+end
+
+rule "b639"
+    when
+        $d :Double(this == 639)
+    then
+        System.err.println("b639 " + $d);
+end
+
+rule "b640"
+    when
+        $d :Double(this == 640)
+    then
+        System.err.println("b640 " + $d);
+end
+
+rule "b641"
+    when
+        $d :Double(this == 641)
+    then
+        System.err.println("b641 " + $d);
+end
+
+rule "b642"
+    when
+        $d :Double(this == 642)
+    then
+        System.err.println("b642 " + $d);
+end
+
+rule "b643"
+    when
+        $d :Double(this == 643)
+    then
+        System.err.println("b643 " + $d);
+end
+
+rule "b644"
+    when
+        $d :Double(this == 644)
+    then
+        System.err.println("b644 " + $d);
+end
+
+rule "b645"
+    when
+        $d :Double(this == 645)
+    then
+        System.err.println("b645 " + $d);
+end
+
+rule "b646"
+    when
+        $d :Double(this == 646)
+    then
+        System.err.println("b646 " + $d);
+end
+
+rule "b647"
+    when
+        $d :Double(this == 647)
+    then
+        System.err.println("b647 " + $d);
+end
+
+rule "b648"
+    when
+        $d :Double(this == 648)
+    then
+        System.err.println("b648 " + $d);
+end
+
+rule "b649"
+    when
+        $d :Double(this == 649)
+    then
+        System.err.println("b649 " + $d);
+end
+
+rule "b650"
+    when
+        $d :Double(this == 650)
+    then
+        System.err.println("b650 " + $d);
+end
+
+rule "b651"
+    when
+        $d :Double(this == 651)
+    then
+        System.err.println("b651 " + $d);
+end
+
+rule "b652"
+    when
+        $d :Double(this == 652)
+    then
+        System.err.println("b652 " + $d);
+end
+
+rule "b653"
+    when
+        $d :Double(this == 653)
+    then
+        System.err.println("b653 " + $d);
+end
+
+rule "b654"
+    when
+        $d :Double(this == 654)
+    then
+        System.err.println("b654 " + $d);
+end
+
+rule "b655"
+    when
+        $d :Double(this == 655)
+    then
+        System.err.println("b655 " + $d);
+end
+
+rule "b656"
+    when
+        $d :Double(this == 656)
+    then
+        System.err.println("b656 " + $d);
+end
+
+rule "b657"
+    when
+        $d :Double(this == 657)
+    then
+        System.err.println("b657 " + $d);
+end
+
+rule "b658"
+    when
+        $d :Double(this == 658)
+    then
+        System.err.println("b658 " + $d);
+end
+
+rule "b659"
+    when
+        $d :Double(this == 659)
+    then
+        System.err.println("b659 " + $d);
+end
+
+rule "b660"
+    when
+        $d :Double(this == 660)
+    then
+        System.err.println("b660 " + $d);
+end
+
+rule "b661"
+    when
+        $d :Double(this == 661)
+    then
+        System.err.println("b661 " + $d);
+end
+
+rule "b662"
+    when
+        $d :Double(this == 662)
+    then
+        System.err.println("b662 " + $d);
+end
+
+rule "b663"
+    when
+        $d :Double(this == 663)
+    then
+        System.err.println("b663 " + $d);
+end
+
+rule "b664"
+    when
+        $d :Double(this == 664)
+    then
+        System.err.println("b664 " + $d);
+end
+
+rule "b665"
+    when
+        $d :Double(this == 665)
+    then
+        System.err.println("b665 " + $d);
+end
+
+rule "b666"
+    when
+        $d :Double(this == 666)
+    then
+        System.err.println("b666 " + $d);
+end
+
+rule "b667"
+    when
+        $d :Double(this == 667)
+    then
+        System.err.println("b667 " + $d);
+end
+
+rule "b668"
+    when
+        $d :Double(this == 668)
+    then
+        System.err.println("b668 " + $d);
+end
+
+rule "b669"
+    when
+        $d :Double(this == 669)
+    then
+        System.err.println("b669 " + $d);
+end
+
+rule "b670"
+    when
+        $d :Double(this == 670)
+    then
+        System.err.println("b670 " + $d);
+end
+
+rule "b671"
+    when
+        $d :Double(this == 671)
+    then
+        System.err.println("b671 " + $d);
+end
+
+rule "b672"
+    when
+        $d :Double(this == 672)
+    then
+        System.err.println("b672 " + $d);
+end
+
+rule "b673"
+    when
+        $d :Double(this == 673)
+    then
+        System.err.println("b673 " + $d);
+end
+
+rule "b674"
+    when
+        $d :Double(this == 674)
+    then
+        System.err.println("b674 " + $d);
+end
+
+rule "b675"
+    when
+        $d :Double(this == 675)
+    then
+        System.err.println("b675 " + $d);
+end
+
+rule "b676"
+    when
+        $d :Double(this == 676)
+    then
+        System.err.println("b676 " + $d);
+end
+
+rule "b677"
+    when
+        $d :Double(this == 677)
+    then
+        System.err.println("b677 " + $d);
+end
+
+rule "b678"
+    when
+        $d :Double(this == 678)
+    then
+        System.err.println("b678 " + $d);
+end
+
+rule "b679"
+    when
+        $d :Double(this == 679)
+    then
+        System.err.println("b679 " + $d);
+end
+
+rule "b680"
+    when
+        $d :Double(this == 680)
+    then
+        System.err.println("b680 " + $d);
+end
+
+rule "b681"
+    when
+        $d :Double(this == 681)
+    then
+        System.err.println("b681 " + $d);
+end
+
+rule "b682"
+    when
+        $d :Double(this == 682)
+    then
+        System.err.println("b682 " + $d);
+end
+
+rule "b683"
+    when
+        $d :Double(this == 683)
+    then
+        System.err.println("b683 " + $d);
+end
+
+rule "b684"
+    when
+        $d :Double(this == 684)
+    then
+        System.err.println("b684 " + $d);
+end
+
+rule "b685"
+    when
+        $d :Double(this == 685)
+    then
+        System.err.println("b685 " + $d);
+end
+
+rule "b686"
+    when
+        $d :Double(this == 686)
+    then
+        System.err.println("b686 " + $d);
+end
+
+rule "b687"
+    when
+        $d :Double(this == 687)
+    then
+        System.err.println("b687 " + $d);
+end
+
+rule "b688"
+    when
+        $d :Double(this == 688)
+    then
+        System.err.println("b688 " + $d);
+end
+
+rule "b689"
+    when
+        $d :Double(this == 689)
+    then
+        System.err.println("b689 " + $d);
+end
+
+rule "b690"
+    when
+        $d :Double(this == 690)
+    then
+        System.err.println("b690 " + $d);
+end
+
+rule "b691"
+    when
+        $d :Double(this == 691)
+    then
+        System.err.println("b691 " + $d);
+end
+
+rule "b692"
+    when
+        $d :Double(this == 692)
+    then
+        System.err.println("b692 " + $d);
+end
+
+rule "b693"
+    when
+        $d :Double(this == 693)
+    then
+        System.err.println("b693 " + $d);
+end
+
+rule "b694"
+    when
+        $d :Double(this == 694)
+    then
+        System.err.println("b694 " + $d);
+end
+
+rule "b695"
+    when
+        $d :Double(this == 695)
+    then
+        System.err.println("b695 " + $d);
+end
+
+rule "b696"
+    when
+        $d :Double(this == 696)
+    then
+        System.err.println("b696 " + $d);
+end
+
+rule "b697"
+    when
+        $d :Double(this == 697)
+    then
+        System.err.println("b697 " + $d);
+end
+
+rule "b698"
+    when
+        $d :Double(this == 698)
+    then
+        System.err.println("b698 " + $d);
+end
+
+rule "b699"
+    when
+        $d :Double(this == 699)
+    then
+        System.err.println("b699 " + $d);
+end
+
+rule "b700"
+    when
+        $d :Double(this == 700)
+    then
+        System.err.println("b700 " + $d);
+end
+
+rule "b701"
+    when
+        $d :Double(this == 701)
+    then
+        System.err.println("b701 " + $d);
+end
+
+rule "b702"
+    when
+        $d :Double(this == 702)
+    then
+        System.err.println("b702 " + $d);
+end
+
+rule "b703"
+    when
+        $d :Double(this == 703)
+    then
+        System.err.println("b703 " + $d);
+end
+
+rule "b704"
+    when
+        $d :Double(this == 704)
+    then
+        System.err.println("b704 " + $d);
+end
+
+rule "b705"
+    when
+        $d :Double(this == 705)
+    then
+        System.err.println("b705 " + $d);
+end
+
+rule "b706"
+    when
+        $d :Double(this == 706)
+    then
+        System.err.println("b706 " + $d);
+end
+
+rule "b707"
+    when
+        $d :Double(this == 707)
+    then
+        System.err.println("b707 " + $d);
+end
+
+rule "b708"
+    when
+        $d :Double(this == 708)
+    then
+        System.err.println("b708 " + $d);
+end
+
+rule "b709"
+    when
+        $d :Double(this == 709)
+    then
+        System.err.println("b709 " + $d);
+end
+
+rule "b710"
+    when
+        $d :Double(this == 710)
+    then
+        System.err.println("b710 " + $d);
+end
+
+rule "b711"
+    when
+        $d :Double(this == 711)
+    then
+        System.err.println("b711 " + $d);
+end
+
+rule "b712"
+    when
+        $d :Double(this == 712)
+    then
+        System.err.println("b712 " + $d);
+end
+
+rule "b713"
+    when
+        $d :Double(this == 713)
+    then
+        System.err.println("b713 " + $d);
+end
+
+rule "b714"
+    when
+        $d :Double(this == 714)
+    then
+        System.err.println("b714 " + $d);
+end
+
+rule "b715"
+    when
+        $d :Double(this == 715)
+    then
+        System.err.println("b715 " + $d);
+end
+
+rule "b716"
+    when
+        $d :Double(this == 716)
+    then
+        System.err.println("b716 " + $d);
+end
+
+rule "b717"
+    when
+        $d :Double(this == 717)
+    then
+        System.err.println("b717 " + $d);
+end
+
+rule "b718"
+    when
+        $d :Double(this == 718)
+    then
+        System.err.println("b718 " + $d);
+end
+
+rule "b719"
+    when
+        $d :Double(this == 719)
+    then
+        System.err.println("b719 " + $d);
+end
+
+rule "b720"
+    when
+        $d :Double(this == 720)
+    then
+        System.err.println("b720 " + $d);
+end
+
+rule "b721"
+    when
+        $d :Double(this == 721)
+    then
+        System.err.println("b721 " + $d);
+end
+
+rule "b722"
+    when
+        $d :Double(this == 722)
+    then
+        System.err.println("b722 " + $d);
+end
+
+rule "b723"
+    when
+        $d :Double(this == 723)
+    then
+        System.err.println("b723 " + $d);
+end
+
+rule "b724"
+    when
+        $d :Double(this == 724)
+    then
+        System.err.println("b724 " + $d);
+end
+
+rule "b725"
+    when
+        $d :Double(this == 725)
+    then
+        System.err.println("b725 " + $d);
+end
+
+rule "b726"
+    when
+        $d :Double(this == 726)
+    then
+        System.err.println("b726 " + $d);
+end
+
+rule "b727"
+    when
+        $d :Double(this == 727)
+    then
+        System.err.println("b727 " + $d);
+end
+
+rule "b728"
+    when
+        $d :Double(this == 728)
+    then
+        System.err.println("b728 " + $d);
+end
+
+rule "b729"
+    when
+        $d :Double(this == 729)
+    then
+        System.err.println("b729 " + $d);
+end
+
+rule "b730"
+    when
+        $d :Double(this == 730)
+    then
+        System.err.println("b730 " + $d);
+end
+
+rule "b731"
+    when
+        $d :Double(this == 731)
+    then
+        System.err.println("b731 " + $d);
+end
+
+rule "b732"
+    when
+        $d :Double(this == 732)
+    then
+        System.err.println("b732 " + $d);
+end
+
+rule "b733"
+    when
+        $d :Double(this == 733)
+    then
+        System.err.println("b733 " + $d);
+end
+
+rule "b734"
+    when
+        $d :Double(this == 734)
+    then
+        System.err.println("b734 " + $d);
+end
+
+rule "b735"
+    when
+        $d :Double(this == 735)
+    then
+        System.err.println("b735 " + $d);
+end
+
+rule "b736"
+    when
+        $d :Double(this == 736)
+    then
+        System.err.println("b736 " + $d);
+end
+
+rule "b737"
+    when
+        $d :Double(this == 737)
+    then
+        System.err.println("b737 " + $d);
+end
+
+rule "b738"
+    when
+        $d :Double(this == 738)
+    then
+        System.err.println("b738 " + $d);
+end
+
+rule "b739"
+    when
+        $d :Double(this == 739)
+    then
+        System.err.println("b739 " + $d);
+end
+
+rule "b740"
+    when
+        $d :Double(this == 740)
+    then
+        System.err.println("b740 " + $d);
+end
+
+rule "b741"
+    when
+        $d :Double(this == 741)
+    then
+        System.err.println("b741 " + $d);
+end
+
+rule "b742"
+    when
+        $d :Double(this == 742)
+    then
+        System.err.println("b742 " + $d);
+end
+
+rule "b743"
+    when
+        $d :Double(this == 743)
+    then
+        System.err.println("b743 " + $d);
+end
+
+rule "b744"
+    when
+        $d :Double(this == 744)
+    then
+        System.err.println("b744 " + $d);
+end
+
+rule "b745"
+    when
+        $d :Double(this == 745)
+    then
+        System.err.println("b745 " + $d);
+end
+
+rule "b746"
+    when
+        $d :Double(this == 746)
+    then
+        System.err.println("b746 " + $d);
+end
+
+rule "b747"
+    when
+        $d :Double(this == 747)
+    then
+        System.err.println("b747 " + $d);
+end
+
+rule "b748"
+    when
+        $d :Double(this == 748)
+    then
+        System.err.println("b748 " + $d);
+end
+
+rule "b749"
+    when
+        $d :Double(this == 749)
+    then
+        System.err.println("b749 " + $d);
+end
+
+rule "b750"
+    when
+        $d :Double(this == 750)
+    then
+        System.err.println("b750 " + $d);
+end
+
+rule "b751"
+    when
+        $d :Double(this == 751)
+    then
+        System.err.println("b751 " + $d);
+end
+
+rule "b752"
+    when
+        $d :Double(this == 752)
+    then
+        System.err.println("b752 " + $d);
+end
+
+rule "b753"
+    when
+        $d :Double(this == 753)
+    then
+        System.err.println("b753 " + $d);
+end
+
+rule "b754"
+    when
+        $d :Double(this == 754)
+    then
+        System.err.println("b754 " + $d);
+end
+
+rule "b755"
+    when
+        $d :Double(this == 755)
+    then
+        System.err.println("b755 " + $d);
+end
+
+rule "b756"
+    when
+        $d :Double(this == 756)
+    then
+        System.err.println("b756 " + $d);
+end
+
+rule "b757"
+    when
+        $d :Double(this == 757)
+    then
+        System.err.println("b757 " + $d);
+end
+
+rule "b758"
+    when
+        $d :Double(this == 758)
+    then
+        System.err.println("b758 " + $d);
+end
+
+rule "b759"
+    when
+        $d :Double(this == 759)
+    then
+        System.err.println("b759 " + $d);
+end
+
+rule "b760"
+    when
+        $d :Double(this == 760)
+    then
+        System.err.println("b760 " + $d);
+end
+
+rule "b761"
+    when
+        $d :Double(this == 761)
+    then
+        System.err.println("b761 " + $d);
+end
+
+rule "b762"
+    when
+        $d :Double(this == 762)
+    then
+        System.err.println("b762 " + $d);
+end
+
+rule "b763"
+    when
+        $d :Double(this == 763)
+    then
+        System.err.println("b763 " + $d);
+end
+
+rule "b764"
+    when
+        $d :Double(this == 764)
+    then
+        System.err.println("b764 " + $d);
+end
+
+rule "b765"
+    when
+        $d :Double(this == 765)
+    then
+        System.err.println("b765 " + $d);
+end
+
+rule "b766"
+    when
+        $d :Double(this == 766)
+    then
+        System.err.println("b766 " + $d);
+end
+
+rule "b767"
+    when
+        $d :Double(this == 767)
+    then
+        System.err.println("b767 " + $d);
+end
+
+rule "b768"
+    when
+        $d :Double(this == 768)
+    then
+        System.err.println("b768 " + $d);
+end
+
+rule "b769"
+    when
+        $d :Double(this == 769)
+    then
+        System.err.println("b769 " + $d);
+end
+
+rule "b770"
+    when
+        $d :Double(this == 770)
+    then
+        System.err.println("b770 " + $d);
+end
+
+rule "b771"
+    when
+        $d :Double(this == 771)
+    then
+        System.err.println("b771 " + $d);
+end
+
+rule "b772"
+    when
+        $d :Double(this == 772)
+    then
+        System.err.println("b772 " + $d);
+end
+
+rule "b773"
+    when
+        $d :Double(this == 773)
+    then
+        System.err.println("b773 " + $d);
+end
+
+rule "b774"
+    when
+        $d :Double(this == 774)
+    then
+        System.err.println("b774 " + $d);
+end
+
+rule "b775"
+    when
+        $d :Double(this == 775)
+    then
+        System.err.println("b775 " + $d);
+end
+
+rule "b776"
+    when
+        $d :Double(this == 776)
+    then
+        System.err.println("b776 " + $d);
+end
+
+rule "b777"
+    when
+        $d :Double(this == 777)
+    then
+        System.err.println("b777 " + $d);
+end
+
+rule "b778"
+    when
+        $d :Double(this == 778)
+    then
+        System.err.println("b778 " + $d);
+end
+
+rule "b779"
+    when
+        $d :Double(this == 779)
+    then
+        System.err.println("b779 " + $d);
+end
+
+rule "b780"
+    when
+        $d :Double(this == 780)
+    then
+        System.err.println("b780 " + $d);
+end
+
+rule "b781"
+    when
+        $d :Double(this == 781)
+    then
+        System.err.println("b781 " + $d);
+end
+
+rule "b782"
+    when
+        $d :Double(this == 782)
+    then
+        System.err.println("b782 " + $d);
+end
+
+rule "b783"
+    when
+        $d :Double(this == 783)
+    then
+        System.err.println("b783 " + $d);
+end
+
+rule "b784"
+    when
+        $d :Double(this == 784)
+    then
+        System.err.println("b784 " + $d);
+end
+
+rule "b785"
+    when
+        $d :Double(this == 785)
+    then
+        System.err.println("b785 " + $d);
+end
+
+rule "b786"
+    when
+        $d :Double(this == 786)
+    then
+        System.err.println("b786 " + $d);
+end
+
+rule "b787"
+    when
+        $d :Double(this == 787)
+    then
+        System.err.println("b787 " + $d);
+end
+
+rule "b788"
+    when
+        $d :Double(this == 788)
+    then
+        System.err.println("b788 " + $d);
+end
+
+rule "b789"
+    when
+        $d :Double(this == 789)
+    then
+        System.err.println("b789 " + $d);
+end
+
+rule "b790"
+    when
+        $d :Double(this == 790)
+    then
+        System.err.println("b790 " + $d);
+end
+
+rule "b791"
+    when
+        $d :Double(this == 791)
+    then
+        System.err.println("b791 " + $d);
+end
+
+rule "b792"
+    when
+        $d :Double(this == 792)
+    then
+        System.err.println("b792 " + $d);
+end
+
+rule "b793"
+    when
+        $d :Double(this == 793)
+    then
+        System.err.println("b793 " + $d);
+end
+
+rule "b794"
+    when
+        $d :Double(this == 794)
+    then
+        System.err.println("b794 " + $d);
+end
+
+rule "b795"
+    when
+        $d :Double(this == 795)
+    then
+        System.err.println("b795 " + $d);
+end
+
+rule "b796"
+    when
+        $d :Double(this == 796)
+    then
+        System.err.println("b796 " + $d);
+end
+
+rule "b797"
+    when
+        $d :Double(this == 797)
+    then
+        System.err.println("b797 " + $d);
+end
+
+rule "b798"
+    when
+        $d :Double(this == 798)
+    then
+        System.err.println("b798 " + $d);
+end
+
+rule "b799"
+    when
+        $d :Double(this == 799)
+    then
+        System.err.println("b799 " + $d);
+end
+
+rule "b800"
+    when
+        $d :Double(this == 800)
+    then
+        System.err.println("b800 " + $d);
+end
+
+rule "b801"
+    when
+        $d :Double(this == 801)
+    then
+        System.err.println("b801 " + $d);
+end
+
+rule "b802"
+    when
+        $d :Double(this == 802)
+    then
+        System.err.println("b802 " + $d);
+end
+
+rule "b803"
+    when
+        $d :Double(this == 803)
+    then
+        System.err.println("b803 " + $d);
+end
+
+rule "b804"
+    when
+        $d :Double(this == 804)
+    then
+        System.err.println("b804 " + $d);
+end
+
+rule "b805"
+    when
+        $d :Double(this == 805)
+    then
+        System.err.println("b805 " + $d);
+end
+
+rule "b806"
+    when
+        $d :Double(this == 806)
+    then
+        System.err.println("b806 " + $d);
+end
+
+rule "b807"
+    when
+        $d :Double(this == 807)
+    then
+        System.err.println("b807 " + $d);
+end
+
+rule "b808"
+    when
+        $d :Double(this == 808)
+    then
+        System.err.println("b808 " + $d);
+end
+
+rule "b809"
+    when
+        $d :Double(this == 809)
+    then
+        System.err.println("b809 " + $d);
+end
+
+rule "b810"
+    when
+        $d :Double(this == 810)
+    then
+        System.err.println("b810 " + $d);
+end
+
+rule "b811"
+    when
+        $d :Double(this == 811)
+    then
+        System.err.println("b811 " + $d);
+end
+
+rule "b812"
+    when
+        $d :Double(this == 812)
+    then
+        System.err.println("b812 " + $d);
+end
+
+rule "b813"
+    when
+        $d :Double(this == 813)
+    then
+        System.err.println("b813 " + $d);
+end
+
+rule "b814"
+    when
+        $d :Double(this == 814)
+    then
+        System.err.println("b814 " + $d);
+end
+
+rule "b815"
+    when
+        $d :Double(this == 815)
+    then
+        System.err.println("b815 " + $d);
+end
+
+rule "b816"
+    when
+        $d :Double(this == 816)
+    then
+        System.err.println("b816 " + $d);
+end
+
+rule "b817"
+    when
+        $d :Double(this == 817)
+    then
+        System.err.println("b817 " + $d);
+end
+
+rule "b818"
+    when
+        $d :Double(this == 818)
+    then
+        System.err.println("b818 " + $d);
+end
+
+rule "b819"
+    when
+        $d :Double(this == 819)
+    then
+        System.err.println("b819 " + $d);
+end
+
+rule "b820"
+    when
+        $d :Double(this == 820)
+    then
+        System.err.println("b820 " + $d);
+end
+
+rule "b821"
+    when
+        $d :Double(this == 821)
+    then
+        System.err.println("b821 " + $d);
+end
+
+rule "b822"
+    when
+        $d :Double(this == 822)
+    then
+        System.err.println("b822 " + $d);
+end
+
+rule "b823"
+    when
+        $d :Double(this == 823)
+    then
+        System.err.println("b823 " + $d);
+end
+
+rule "b824"
+    when
+        $d :Double(this == 824)
+    then
+        System.err.println("b824 " + $d);
+end
+
+rule "b825"
+    when
+        $d :Double(this == 825)
+    then
+        System.err.println("b825 " + $d);
+end
+
+rule "b826"
+    when
+        $d :Double(this == 826)
+    then
+        System.err.println("b826 " + $d);
+end
+
+rule "b827"
+    when
+        $d :Double(this == 827)
+    then
+        System.err.println("b827 " + $d);
+end
+
+rule "b828"
+    when
+        $d :Double(this == 828)
+    then
+        System.err.println("b828 " + $d);
+end
+
+rule "b829"
+    when
+        $d :Double(this == 829)
+    then
+        System.err.println("b829 " + $d);
+end
+
+rule "b830"
+    when
+        $d :Double(this == 830)
+    then
+        System.err.println("b830 " + $d);
+end
+
+rule "b831"
+    when
+        $d :Double(this == 831)
+    then
+        System.err.println("b831 " + $d);
+end
+
+rule "b832"
+    when
+        $d :Double(this == 832)
+    then
+        System.err.println("b832 " + $d);
+end
+
+rule "b833"
+    when
+        $d :Double(this == 833)
+    then
+        System.err.println("b833 " + $d);
+end
+
+rule "b834"
+    when
+        $d :Double(this == 834)
+    then
+        System.err.println("b834 " + $d);
+end
+
+rule "b835"
+    when
+        $d :Double(this == 835)
+    then
+        System.err.println("b835 " + $d);
+end
+
+rule "b836"
+    when
+        $d :Double(this == 836)
+    then
+        System.err.println("b836 " + $d);
+end
+
+rule "b837"
+    when
+        $d :Double(this == 837)
+    then
+        System.err.println("b837 " + $d);
+end
+
+rule "b838"
+    when
+        $d :Double(this == 838)
+    then
+        System.err.println("b838 " + $d);
+end
+
+rule "b839"
+    when
+        $d :Double(this == 839)
+    then
+        System.err.println("b839 " + $d);
+end
+
+rule "b840"
+    when
+        $d :Double(this == 840)
+    then
+        System.err.println("b840 " + $d);
+end
+
+rule "b841"
+    when
+        $d :Double(this == 841)
+    then
+        System.err.println("b841 " + $d);
+end
+
+rule "b842"
+    when
+        $d :Double(this == 842)
+    then
+        System.err.println("b842 " + $d);
+end
+
+rule "b843"
+    when
+        $d :Double(this == 843)
+    then
+        System.err.println("b843 " + $d);
+end
+
+rule "b844"
+    when
+        $d :Double(this == 844)
+    then
+        System.err.println("b844 " + $d);
+end
+
+rule "b845"
+    when
+        $d :Double(this == 845)
+    then
+        System.err.println("b845 " + $d);
+end
+
+rule "b846"
+    when
+        $d :Double(this == 846)
+    then
+        System.err.println("b846 " + $d);
+end
+
+rule "b847"
+    when
+        $d :Double(this == 847)
+    then
+        System.err.println("b847 " + $d);
+end
+
+rule "b848"
+    when
+        $d :Double(this == 848)
+    then
+        System.err.println("b848 " + $d);
+end
+
+rule "b849"
+    when
+        $d :Double(this == 849)
+    then
+        System.err.println("b849 " + $d);
+end
+
+rule "b850"
+    when
+        $d :Double(this == 850)
+    then
+        System.err.println("b850 " + $d);
+end
+
+rule "b851"
+    when
+        $d :Double(this == 851)
+    then
+        System.err.println("b851 " + $d);
+end
+
+rule "b852"
+    when
+        $d :Double(this == 852)
+    then
+        System.err.println("b852 " + $d);
+end
+
+rule "b853"
+    when
+        $d :Double(this == 853)
+    then
+        System.err.println("b853 " + $d);
+end
+
+rule "b854"
+    when
+        $d :Double(this == 854)
+    then
+        System.err.println("b854 " + $d);
+end
+
+rule "b855"
+    when
+        $d :Double(this == 855)
+    then
+        System.err.println("b855 " + $d);
+end
+
+rule "b856"
+    when
+        $d :Double(this == 856)
+    then
+        System.err.println("b856 " + $d);
+end
+
+rule "b857"
+    when
+        $d :Double(this == 857)
+    then
+        System.err.println("b857 " + $d);
+end
+
+rule "b858"
+    when
+        $d :Double(this == 858)
+    then
+        System.err.println("b858 " + $d);
+end
+
+rule "b859"
+    when
+        $d :Double(this == 859)
+    then
+        System.err.println("b859 " + $d);
+end
+
+rule "b860"
+    when
+        $d :Double(this == 860)
+    then
+        System.err.println("b860 " + $d);
+end
+
+rule "b861"
+    when
+        $d :Double(this == 861)
+    then
+        System.err.println("b861 " + $d);
+end
+
+rule "b862"
+    when
+        $d :Double(this == 862)
+    then
+        System.err.println("b862 " + $d);
+end
+
+rule "b863"
+    when
+        $d :Double(this == 863)
+    then
+        System.err.println("b863 " + $d);
+end
+
+rule "b864"
+    when
+        $d :Double(this == 864)
+    then
+        System.err.println("b864 " + $d);
+end
+
+rule "b865"
+    when
+        $d :Double(this == 865)
+    then
+        System.err.println("b865 " + $d);
+end
+
+rule "b866"
+    when
+        $d :Double(this == 866)
+    then
+        System.err.println("b866 " + $d);
+end
+
+rule "b867"
+    when
+        $d :Double(this == 867)
+    then
+        System.err.println("b867 " + $d);
+end
+
+rule "b868"
+    when
+        $d :Double(this == 868)
+    then
+        System.err.println("b868 " + $d);
+end
+
+rule "b869"
+    when
+        $d :Double(this == 869)
+    then
+        System.err.println("b869 " + $d);
+end
+
+rule "b870"
+    when
+        $d :Double(this == 870)
+    then
+        System.err.println("b870 " + $d);
+end
+
+rule "b871"
+    when
+        $d :Double(this == 871)
+    then
+        System.err.println("b871 " + $d);
+end
+
+rule "b872"
+    when
+        $d :Double(this == 872)
+    then
+        System.err.println("b872 " + $d);
+end
+
+rule "b873"
+    when
+        $d :Double(this == 873)
+    then
+        System.err.println("b873 " + $d);
+end
+
+rule "b874"
+    when
+        $d :Double(this == 874)
+    then
+        System.err.println("b874 " + $d);
+end
+
+rule "b875"
+    when
+        $d :Double(this == 875)
+    then
+        System.err.println("b875 " + $d);
+end
+
+rule "b876"
+    when
+        $d :Double(this == 876)
+    then
+        System.err.println("b876 " + $d);
+end
+
+rule "b877"
+    when
+        $d :Double(this == 877)
+    then
+        System.err.println("b877 " + $d);
+end
+
+rule "b878"
+    when
+        $d :Double(this == 878)
+    then
+        System.err.println("b878 " + $d);
+end
+
+rule "b879"
+    when
+        $d :Double(this == 879)
+    then
+        System.err.println("b879 " + $d);
+end
+
+rule "b880"
+    when
+        $d :Double(this == 880)
+    then
+        System.err.println("b880 " + $d);
+end
+
+rule "b881"
+    when
+        $d :Double(this == 881)
+    then
+        System.err.println("b881 " + $d);
+end
+
+rule "b882"
+    when
+        $d :Double(this == 882)
+    then
+        System.err.println("b882 " + $d);
+end
+
+rule "b883"
+    when
+        $d :Double(this == 883)
+    then
+        System.err.println("b883 " + $d);
+end
+
+rule "b884"
+    when
+        $d :Double(this == 884)
+    then
+        System.err.println("b884 " + $d);
+end
+
+rule "b885"
+    when
+        $d :Double(this == 885)
+    then
+        System.err.println("b885 " + $d);
+end
+
+rule "b886"
+    when
+        $d :Double(this == 886)
+    then
+        System.err.println("b886 " + $d);
+end
+
+rule "b887"
+    when
+        $d :Double(this == 887)
+    then
+        System.err.println("b887 " + $d);
+end
+
+rule "b888"
+    when
+        $d :Double(this == 888)
+    then
+        System.err.println("b888 " + $d);
+end
+
+rule "b889"
+    when
+        $d :Double(this == 889)
+    then
+        System.err.println("b889 " + $d);
+end
+
+rule "b890"
+    when
+        $d :Double(this == 890)
+    then
+        System.err.println("b890 " + $d);
+end
+
+rule "b891"
+    when
+        $d :Double(this == 891)
+    then
+        System.err.println("b891 " + $d);
+end
+
+rule "b892"
+    when
+        $d :Double(this == 892)
+    then
+        System.err.println("b892 " + $d);
+end
+
+rule "b893"
+    when
+        $d :Double(this == 893)
+    then
+        System.err.println("b893 " + $d);
+end
+
+rule "b894"
+    when
+        $d :Double(this == 894)
+    then
+        System.err.println("b894 " + $d);
+end
+
+rule "b895"
+    when
+        $d :Double(this == 895)
+    then
+        System.err.println("b895 " + $d);
+end
+
+rule "b896"
+    when
+        $d :Double(this == 896)
+    then
+        System.err.println("b896 " + $d);
+end
+
+rule "b897"
+    when
+        $d :Double(this == 897)
+    then
+        System.err.println("b897 " + $d);
+end
+
+rule "b898"
+    when
+        $d :Double(this == 898)
+    then
+        System.err.println("b898 " + $d);
+end
+
+rule "b899"
+    when
+        $d :Double(this == 899)
+    then
+        System.err.println("b899 " + $d);
+end
+
+rule "b900"
+    when
+        $d :Double(this == 900)
+    then
+        System.err.println("b900 " + $d);
+end
+
+rule "b901"
+    when
+        $d :Double(this == 901)
+    then
+        System.err.println("b901 " + $d);
+end
+
+rule "b902"
+    when
+        $d :Double(this == 902)
+    then
+        System.err.println("b902 " + $d);
+end
+
+rule "b903"
+    when
+        $d :Double(this == 903)
+    then
+        System.err.println("b903 " + $d);
+end
+
+rule "b904"
+    when
+        $d :Double(this == 904)
+    then
+        System.err.println("b904 " + $d);
+end
+
+rule "b905"
+    when
+        $d :Double(this == 905)
+    then
+        System.err.println("b905 " + $d);
+end
+
+rule "b906"
+    when
+        $d :Double(this == 906)
+    then
+        System.err.println("b906 " + $d);
+end
+
+rule "b907"
+    when
+        $d :Double(this == 907)
+    then
+        System.err.println("b907 " + $d);
+end
+
+rule "b908"
+    when
+        $d :Double(this == 908)
+    then
+        System.err.println("b908 " + $d);
+end
+
+rule "b909"
+    when
+        $d :Double(this == 909)
+    then
+        System.err.println("b909 " + $d);
+end
+
+rule "b910"
+    when
+        $d :Double(this == 910)
+    then
+        System.err.println("b910 " + $d);
+end
+
+rule "b911"
+    when
+        $d :Double(this == 911)
+    then
+        System.err.println("b911 " + $d);
+end
+
+rule "b912"
+    when
+        $d :Double(this == 912)
+    then
+        System.err.println("b912 " + $d);
+end
+
+rule "b913"
+    when
+        $d :Double(this == 913)
+    then
+        System.err.println("b913 " + $d);
+end
+
+rule "b914"
+    when
+        $d :Double(this == 914)
+    then
+        System.err.println("b914 " + $d);
+end
+
+rule "b915"
+    when
+        $d :Double(this == 915)
+    then
+        System.err.println("b915 " + $d);
+end
+
+rule "b916"
+    when
+        $d :Double(this == 916)
+    then
+        System.err.println("b916 " + $d);
+end
+
+rule "b917"
+    when
+        $d :Double(this == 917)
+    then
+        System.err.println("b917 " + $d);
+end
+
+rule "b918"
+    when
+        $d :Double(this == 918)
+    then
+        System.err.println("b918 " + $d);
+end
+
+rule "b919"
+    when
+        $d :Double(this == 919)
+    then
+        System.err.println("b919 " + $d);
+end
+
+rule "b920"
+    when
+        $d :Double(this == 920)
+    then
+        System.err.println("b920 " + $d);
+end
+
+rule "b921"
+    when
+        $d :Double(this == 921)
+    then
+        System.err.println("b921 " + $d);
+end
+
+rule "b922"
+    when
+        $d :Double(this == 922)
+    then
+        System.err.println("b922 " + $d);
+end
+
+rule "b923"
+    when
+        $d :Double(this == 923)
+    then
+        System.err.println("b923 " + $d);
+end
+
+rule "b924"
+    when
+        $d :Double(this == 924)
+    then
+        System.err.println("b924 " + $d);
+end
+
+rule "b925"
+    when
+        $d :Double(this == 925)
+    then
+        System.err.println("b925 " + $d);
+end
+
+rule "b926"
+    when
+        $d :Double(this == 926)
+    then
+        System.err.println("b926 " + $d);
+end
+
+rule "b927"
+    when
+        $d :Double(this == 927)
+    then
+        System.err.println("b927 " + $d);
+end
+
+rule "b928"
+    when
+        $d :Double(this == 928)
+    then
+        System.err.println("b928 " + $d);
+end
+
+rule "b929"
+    when
+        $d :Double(this == 929)
+    then
+        System.err.println("b929 " + $d);
+end
+
+rule "b930"
+    when
+        $d :Double(this == 930)
+    then
+        System.err.println("b930 " + $d);
+end
+
+rule "b931"
+    when
+        $d :Double(this == 931)
+    then
+        System.err.println("b931 " + $d);
+end
+
+rule "b932"
+    when
+        $d :Double(this == 932)
+    then
+        System.err.println("b932 " + $d);
+end
+
+rule "b933"
+    when
+        $d :Double(this == 933)
+    then
+        System.err.println("b933 " + $d);
+end
+
+rule "b934"
+    when
+        $d :Double(this == 934)
+    then
+        System.err.println("b934 " + $d);
+end
+
+rule "b935"
+    when
+        $d :Double(this == 935)
+    then
+        System.err.println("b935 " + $d);
+end
+
+rule "b936"
+    when
+        $d :Double(this == 936)
+    then
+        System.err.println("b936 " + $d);
+end
+
+rule "b937"
+    when
+        $d :Double(this == 937)
+    then
+        System.err.println("b937 " + $d);
+end
+
+rule "b938"
+    when
+        $d :Double(this == 938)
+    then
+        System.err.println("b938 " + $d);
+end
+
+rule "b939"
+    when
+        $d :Double(this == 939)
+    then
+        System.err.println("b939 " + $d);
+end
+
+rule "b940"
+    when
+        $d :Double(this == 940)
+    then
+        System.err.println("b940 " + $d);
+end
+
+rule "b941"
+    when
+        $d :Double(this == 941)
+    then
+        System.err.println("b941 " + $d);
+end
+
+rule "b942"
+    when
+        $d :Double(this == 942)
+    then
+        System.err.println("b942 " + $d);
+end
+
+rule "b943"
+    when
+        $d :Double(this == 943)
+    then
+        System.err.println("b943 " + $d);
+end
+
+rule "b944"
+    when
+        $d :Double(this == 944)
+    then
+        System.err.println("b944 " + $d);
+end
+
+rule "b945"
+    when
+        $d :Double(this == 945)
+    then
+        System.err.println("b945 " + $d);
+end
+
+rule "b946"
+    when
+        $d :Double(this == 946)
+    then
+        System.err.println("b946 " + $d);
+end
+
+rule "b947"
+    when
+        $d :Double(this == 947)
+    then
+        System.err.println("b947 " + $d);
+end
+
+rule "b948"
+    when
+        $d :Double(this == 948)
+    then
+        System.err.println("b948 " + $d);
+end
+
+rule "b949"
+    when
+        $d :Double(this == 949)
+    then
+        System.err.println("b949 " + $d);
+end
+
+rule "b950"
+    when
+        $d :Double(this == 950)
+    then
+        System.err.println("b950 " + $d);
+end
+
+rule "b951"
+    when
+        $d :Double(this == 951)
+    then
+        System.err.println("b951 " + $d);
+end
+
+rule "b952"
+    when
+        $d :Double(this == 952)
+    then
+        System.err.println("b952 " + $d);
+end
+
+rule "b953"
+    when
+        $d :Double(this == 953)
+    then
+        System.err.println("b953 " + $d);
+end
+
+rule "b954"
+    when
+        $d :Double(this == 954)
+    then
+        System.err.println("b954 " + $d);
+end
+
+rule "b955"
+    when
+        $d :Double(this == 955)
+    then
+        System.err.println("b955 " + $d);
+end
+
+rule "b956"
+    when
+        $d :Double(this == 956)
+    then
+        System.err.println("b956 " + $d);
+end
+
+rule "b957"
+    when
+        $d :Double(this == 957)
+    then
+        System.err.println("b957 " + $d);
+end
+
+rule "b958"
+    when
+        $d :Double(this == 958)
+    then
+        System.err.println("b958 " + $d);
+end
+
+rule "b959"
+    when
+        $d :Double(this == 959)
+    then
+        System.err.println("b959 " + $d);
+end
+
+rule "b960"
+    when
+        $d :Double(this == 960)
+    then
+        System.err.println("b960 " + $d);
+end
+
+rule "b961"
+    when
+        $d :Double(this == 961)
+    then
+        System.err.println("b961 " + $d);
+end
+
+rule "b962"
+    when
+        $d :Double(this == 962)
+    then
+        System.err.println("b962 " + $d);
+end
+
+rule "b963"
+    when
+        $d :Double(this == 963)
+    then
+        System.err.println("b963 " + $d);
+end
+
+rule "b964"
+    when
+        $d :Double(this == 964)
+    then
+        System.err.println("b964 " + $d);
+end
+
+rule "b965"
+    when
+        $d :Double(this == 965)
+    then
+        System.err.println("b965 " + $d);
+end
+
+rule "b966"
+    when
+        $d :Double(this == 966)
+    then
+        System.err.println("b966 " + $d);
+end
+
+rule "b967"
+    when
+        $d :Double(this == 967)
+    then
+        System.err.println("b967 " + $d);
+end
+
+rule "b968"
+    when
+        $d :Double(this == 968)
+    then
+        System.err.println("b968 " + $d);
+end
+
+rule "b969"
+    when
+        $d :Double(this == 969)
+    then
+        System.err.println("b969 " + $d);
+end
+
+rule "b970"
+    when
+        $d :Double(this == 970)
+    then
+        System.err.println("b970 " + $d);
+end
+
+rule "b971"
+    when
+        $d :Double(this == 971)
+    then
+        System.err.println("b971 " + $d);
+end
+
+rule "b972"
+    when
+        $d :Double(this == 972)
+    then
+        System.err.println("b972 " + $d);
+end
+
+rule "b973"
+    when
+        $d :Double(this == 973)
+    then
+        System.err.println("b973 " + $d);
+end
+
+rule "b974"
+    when
+        $d :Double(this == 974)
+    then
+        System.err.println("b974 " + $d);
+end
+
+rule "b975"
+    when
+        $d :Double(this == 975)
+    then
+        System.err.println("b975 " + $d);
+end
+
+rule "b976"
+    when
+        $d :Double(this == 976)
+    then
+        System.err.println("b976 " + $d);
+end
+
+rule "b977"
+    when
+        $d :Double(this == 977)
+    then
+        System.err.println("b977 " + $d);
+end
+
+rule "b978"
+    when
+        $d :Double(this == 978)
+    then
+        System.err.println("b978 " + $d);
+end
+
+rule "b979"
+    when
+        $d :Double(this == 979)
+    then
+        System.err.println("b979 " + $d);
+end
+
+rule "b980"
+    when
+        $d :Double(this == 980)
+    then
+        System.err.println("b980 " + $d);
+end
+
+rule "b981"
+    when
+        $d :Double(this == 981)
+    then
+        System.err.println("b981 " + $d);
+end
+
+rule "b982"
+    when
+        $d :Double(this == 982)
+    then
+        System.err.println("b982 " + $d);
+end
+
+rule "b983"
+    when
+        $d :Double(this == 983)
+    then
+        System.err.println("b983 " + $d);
+end
+
+rule "b984"
+    when
+        $d :Double(this == 984)
+    then
+        System.err.println("b984 " + $d);
+end
+
+rule "b985"
+    when
+        $d :Double(this == 985)
+    then
+        System.err.println("b985 " + $d);
+end
+
+rule "b986"
+    when
+        $d :Double(this == 986)
+    then
+        System.err.println("b986 " + $d);
+end
+
+rule "b987"
+    when
+        $d :Double(this == 987)
+    then
+        System.err.println("b987 " + $d);
+end
+
+rule "b988"
+    when
+        $d :Double(this == 988)
+    then
+        System.err.println("b988 " + $d);
+end
+
+rule "b989"
+    when
+        $d :Double(this == 989)
+    then
+        System.err.println("b989 " + $d);
+end
+
+rule "b990"
+    when
+        $d :Double(this == 990)
+    then
+        System.err.println("b990 " + $d);
+end
+
+rule "b991"
+    when
+        $d :Double(this == 991)
+    then
+        System.err.println("b991 " + $d);
+end
+
+rule "b992"
+    when
+        $d :Double(this == 992)
+    then
+        System.err.println("b992 " + $d);
+end
+
+rule "b993"
+    when
+        $d :Double(this == 993)
+    then
+        System.err.println("b993 " + $d);
+end
+
+rule "b994"
+    when
+        $d :Double(this == 994)
+    then
+        System.err.println("b994 " + $d);
+end
+
+rule "b995"
+    when
+        $d :Double(this == 995)
+    then
+        System.err.println("b995 " + $d);
+end
+
+rule "b996"
+    when
+        $d :Double(this == 996)
+    then
+        System.err.println("b996 " + $d);
+end
+
+rule "b997"
+    when
+        $d :Double(this == 997)
+    then
+        System.err.println("b997 " + $d);
+end
+
+rule "b998"
+    when
+        $d :Double(this == 998)
+    then
+        System.err.println("b998 " + $d);
+end
+
+rule "b999"
+    when
+        $d :Double(this == 999)
+    then
+        System.err.println("b999 " + $d);
+end
+
+rule "b1000"
+    when
+        $d :Double(this == 1000)
+    then
+        System.err.println("b1000 " + $d);
+end
+

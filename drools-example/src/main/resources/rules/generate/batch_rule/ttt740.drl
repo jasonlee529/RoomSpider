@@ -1,0 +1,707 @@
+rule "bath_rule_740__0"
+    when
+        $d :Double(this == 0)
+    then
+        System.err.println("bath_rule_740__0 " + $d);
+end
+
+rule "bath_rule_740__1"
+    when
+        $d :Double(this == 1)
+    then
+        System.err.println("bath_rule_740__1 " + $d);
+end
+
+rule "bath_rule_740__2"
+    when
+        $d :Double(this == 2)
+    then
+        System.err.println("bath_rule_740__2 " + $d);
+end
+
+rule "bath_rule_740__3"
+    when
+        $d :Double(this == 3)
+    then
+        System.err.println("bath_rule_740__3 " + $d);
+end
+
+rule "bath_rule_740__4"
+    when
+        $d :Double(this == 4)
+    then
+        System.err.println("bath_rule_740__4 " + $d);
+end
+
+rule "bath_rule_740__5"
+    when
+        $d :Double(this == 5)
+    then
+        System.err.println("bath_rule_740__5 " + $d);
+end
+
+rule "bath_rule_740__6"
+    when
+        $d :Double(this == 6)
+    then
+        System.err.println("bath_rule_740__6 " + $d);
+end
+
+rule "bath_rule_740__7"
+    when
+        $d :Double(this == 7)
+    then
+        System.err.println("bath_rule_740__7 " + $d);
+end
+
+rule "bath_rule_740__8"
+    when
+        $d :Double(this == 8)
+    then
+        System.err.println("bath_rule_740__8 " + $d);
+end
+
+rule "bath_rule_740__9"
+    when
+        $d :Double(this == 9)
+    then
+        System.err.println("bath_rule_740__9 " + $d);
+end
+
+rule "bath_rule_740__10"
+    when
+        $d :Double(this == 10)
+    then
+        System.err.println("bath_rule_740__10 " + $d);
+end
+
+rule "bath_rule_740__11"
+    when
+        $d :Double(this == 11)
+    then
+        System.err.println("bath_rule_740__11 " + $d);
+end
+
+rule "bath_rule_740__12"
+    when
+        $d :Double(this == 12)
+    then
+        System.err.println("bath_rule_740__12 " + $d);
+end
+
+rule "bath_rule_740__13"
+    when
+        $d :Double(this == 13)
+    then
+        System.err.println("bath_rule_740__13 " + $d);
+end
+
+rule "bath_rule_740__14"
+    when
+        $d :Double(this == 14)
+    then
+        System.err.println("bath_rule_740__14 " + $d);
+end
+
+rule "bath_rule_740__15"
+    when
+        $d :Double(this == 15)
+    then
+        System.err.println("bath_rule_740__15 " + $d);
+end
+
+rule "bath_rule_740__16"
+    when
+        $d :Double(this == 16)
+    then
+        System.err.println("bath_rule_740__16 " + $d);
+end
+
+rule "bath_rule_740__17"
+    when
+        $d :Double(this == 17)
+    then
+        System.err.println("bath_rule_740__17 " + $d);
+end
+
+rule "bath_rule_740__18"
+    when
+        $d :Double(this == 18)
+    then
+        System.err.println("bath_rule_740__18 " + $d);
+end
+
+rule "bath_rule_740__19"
+    when
+        $d :Double(this == 19)
+    then
+        System.err.println("bath_rule_740__19 " + $d);
+end
+
+rule "bath_rule_740__20"
+    when
+        $d :Double(this == 20)
+    then
+        System.err.println("bath_rule_740__20 " + $d);
+end
+
+rule "bath_rule_740__21"
+    when
+        $d :Double(this == 21)
+    then
+        System.err.println("bath_rule_740__21 " + $d);
+end
+
+rule "bath_rule_740__22"
+    when
+        $d :Double(this == 22)
+    then
+        System.err.println("bath_rule_740__22 " + $d);
+end
+
+rule "bath_rule_740__23"
+    when
+        $d :Double(this == 23)
+    then
+        System.err.println("bath_rule_740__23 " + $d);
+end
+
+rule "bath_rule_740__24"
+    when
+        $d :Double(this == 24)
+    then
+        System.err.println("bath_rule_740__24 " + $d);
+end
+
+rule "bath_rule_740__25"
+    when
+        $d :Double(this == 25)
+    then
+        System.err.println("bath_rule_740__25 " + $d);
+end
+
+rule "bath_rule_740__26"
+    when
+        $d :Double(this == 26)
+    then
+        System.err.println("bath_rule_740__26 " + $d);
+end
+
+rule "bath_rule_740__27"
+    when
+        $d :Double(this == 27)
+    then
+        System.err.println("bath_rule_740__27 " + $d);
+end
+
+rule "bath_rule_740__28"
+    when
+        $d :Double(this == 28)
+    then
+        System.err.println("bath_rule_740__28 " + $d);
+end
+
+rule "bath_rule_740__29"
+    when
+        $d :Double(this == 29)
+    then
+        System.err.println("bath_rule_740__29 " + $d);
+end
+
+rule "bath_rule_740__30"
+    when
+        $d :Double(this == 30)
+    then
+        System.err.println("bath_rule_740__30 " + $d);
+end
+
+rule "bath_rule_740__31"
+    when
+        $d :Double(this == 31)
+    then
+        System.err.println("bath_rule_740__31 " + $d);
+end
+
+rule "bath_rule_740__32"
+    when
+        $d :Double(this == 32)
+    then
+        System.err.println("bath_rule_740__32 " + $d);
+end
+
+rule "bath_rule_740__33"
+    when
+        $d :Double(this == 33)
+    then
+        System.err.println("bath_rule_740__33 " + $d);
+end
+
+rule "bath_rule_740__34"
+    when
+        $d :Double(this == 34)
+    then
+        System.err.println("bath_rule_740__34 " + $d);
+end
+
+rule "bath_rule_740__35"
+    when
+        $d :Double(this == 35)
+    then
+        System.err.println("bath_rule_740__35 " + $d);
+end
+
+rule "bath_rule_740__36"
+    when
+        $d :Double(this == 36)
+    then
+        System.err.println("bath_rule_740__36 " + $d);
+end
+
+rule "bath_rule_740__37"
+    when
+        $d :Double(this == 37)
+    then
+        System.err.println("bath_rule_740__37 " + $d);
+end
+
+rule "bath_rule_740__38"
+    when
+        $d :Double(this == 38)
+    then
+        System.err.println("bath_rule_740__38 " + $d);
+end
+
+rule "bath_rule_740__39"
+    when
+        $d :Double(this == 39)
+    then
+        System.err.println("bath_rule_740__39 " + $d);
+end
+
+rule "bath_rule_740__40"
+    when
+        $d :Double(this == 40)
+    then
+        System.err.println("bath_rule_740__40 " + $d);
+end
+
+rule "bath_rule_740__41"
+    when
+        $d :Double(this == 41)
+    then
+        System.err.println("bath_rule_740__41 " + $d);
+end
+
+rule "bath_rule_740__42"
+    when
+        $d :Double(this == 42)
+    then
+        System.err.println("bath_rule_740__42 " + $d);
+end
+
+rule "bath_rule_740__43"
+    when
+        $d :Double(this == 43)
+    then
+        System.err.println("bath_rule_740__43 " + $d);
+end
+
+rule "bath_rule_740__44"
+    when
+        $d :Double(this == 44)
+    then
+        System.err.println("bath_rule_740__44 " + $d);
+end
+
+rule "bath_rule_740__45"
+    when
+        $d :Double(this == 45)
+    then
+        System.err.println("bath_rule_740__45 " + $d);
+end
+
+rule "bath_rule_740__46"
+    when
+        $d :Double(this == 46)
+    then
+        System.err.println("bath_rule_740__46 " + $d);
+end
+
+rule "bath_rule_740__47"
+    when
+        $d :Double(this == 47)
+    then
+        System.err.println("bath_rule_740__47 " + $d);
+end
+
+rule "bath_rule_740__48"
+    when
+        $d :Double(this == 48)
+    then
+        System.err.println("bath_rule_740__48 " + $d);
+end
+
+rule "bath_rule_740__49"
+    when
+        $d :Double(this == 49)
+    then
+        System.err.println("bath_rule_740__49 " + $d);
+end
+
+rule "bath_rule_740__50"
+    when
+        $d :Double(this == 50)
+    then
+        System.err.println("bath_rule_740__50 " + $d);
+end
+
+rule "bath_rule_740__51"
+    when
+        $d :Double(this == 51)
+    then
+        System.err.println("bath_rule_740__51 " + $d);
+end
+
+rule "bath_rule_740__52"
+    when
+        $d :Double(this == 52)
+    then
+        System.err.println("bath_rule_740__52 " + $d);
+end
+
+rule "bath_rule_740__53"
+    when
+        $d :Double(this == 53)
+    then
+        System.err.println("bath_rule_740__53 " + $d);
+end
+
+rule "bath_rule_740__54"
+    when
+        $d :Double(this == 54)
+    then
+        System.err.println("bath_rule_740__54 " + $d);
+end
+
+rule "bath_rule_740__55"
+    when
+        $d :Double(this == 55)
+    then
+        System.err.println("bath_rule_740__55 " + $d);
+end
+
+rule "bath_rule_740__56"
+    when
+        $d :Double(this == 56)
+    then
+        System.err.println("bath_rule_740__56 " + $d);
+end
+
+rule "bath_rule_740__57"
+    when
+        $d :Double(this == 57)
+    then
+        System.err.println("bath_rule_740__57 " + $d);
+end
+
+rule "bath_rule_740__58"
+    when
+        $d :Double(this == 58)
+    then
+        System.err.println("bath_rule_740__58 " + $d);
+end
+
+rule "bath_rule_740__59"
+    when
+        $d :Double(this == 59)
+    then
+        System.err.println("bath_rule_740__59 " + $d);
+end
+
+rule "bath_rule_740__60"
+    when
+        $d :Double(this == 60)
+    then
+        System.err.println("bath_rule_740__60 " + $d);
+end
+
+rule "bath_rule_740__61"
+    when
+        $d :Double(this == 61)
+    then
+        System.err.println("bath_rule_740__61 " + $d);
+end
+
+rule "bath_rule_740__62"
+    when
+        $d :Double(this == 62)
+    then
+        System.err.println("bath_rule_740__62 " + $d);
+end
+
+rule "bath_rule_740__63"
+    when
+        $d :Double(this == 63)
+    then
+        System.err.println("bath_rule_740__63 " + $d);
+end
+
+rule "bath_rule_740__64"
+    when
+        $d :Double(this == 64)
+    then
+        System.err.println("bath_rule_740__64 " + $d);
+end
+
+rule "bath_rule_740__65"
+    when
+        $d :Double(this == 65)
+    then
+        System.err.println("bath_rule_740__65 " + $d);
+end
+
+rule "bath_rule_740__66"
+    when
+        $d :Double(this == 66)
+    then
+        System.err.println("bath_rule_740__66 " + $d);
+end
+
+rule "bath_rule_740__67"
+    when
+        $d :Double(this == 67)
+    then
+        System.err.println("bath_rule_740__67 " + $d);
+end
+
+rule "bath_rule_740__68"
+    when
+        $d :Double(this == 68)
+    then
+        System.err.println("bath_rule_740__68 " + $d);
+end
+
+rule "bath_rule_740__69"
+    when
+        $d :Double(this == 69)
+    then
+        System.err.println("bath_rule_740__69 " + $d);
+end
+
+rule "bath_rule_740__70"
+    when
+        $d :Double(this == 70)
+    then
+        System.err.println("bath_rule_740__70 " + $d);
+end
+
+rule "bath_rule_740__71"
+    when
+        $d :Double(this == 71)
+    then
+        System.err.println("bath_rule_740__71 " + $d);
+end
+
+rule "bath_rule_740__72"
+    when
+        $d :Double(this == 72)
+    then
+        System.err.println("bath_rule_740__72 " + $d);
+end
+
+rule "bath_rule_740__73"
+    when
+        $d :Double(this == 73)
+    then
+        System.err.println("bath_rule_740__73 " + $d);
+end
+
+rule "bath_rule_740__74"
+    when
+        $d :Double(this == 74)
+    then
+        System.err.println("bath_rule_740__74 " + $d);
+end
+
+rule "bath_rule_740__75"
+    when
+        $d :Double(this == 75)
+    then
+        System.err.println("bath_rule_740__75 " + $d);
+end
+
+rule "bath_rule_740__76"
+    when
+        $d :Double(this == 76)
+    then
+        System.err.println("bath_rule_740__76 " + $d);
+end
+
+rule "bath_rule_740__77"
+    when
+        $d :Double(this == 77)
+    then
+        System.err.println("bath_rule_740__77 " + $d);
+end
+
+rule "bath_rule_740__78"
+    when
+        $d :Double(this == 78)
+    then
+        System.err.println("bath_rule_740__78 " + $d);
+end
+
+rule "bath_rule_740__79"
+    when
+        $d :Double(this == 79)
+    then
+        System.err.println("bath_rule_740__79 " + $d);
+end
+
+rule "bath_rule_740__80"
+    when
+        $d :Double(this == 80)
+    then
+        System.err.println("bath_rule_740__80 " + $d);
+end
+
+rule "bath_rule_740__81"
+    when
+        $d :Double(this == 81)
+    then
+        System.err.println("bath_rule_740__81 " + $d);
+end
+
+rule "bath_rule_740__82"
+    when
+        $d :Double(this == 82)
+    then
+        System.err.println("bath_rule_740__82 " + $d);
+end
+
+rule "bath_rule_740__83"
+    when
+        $d :Double(this == 83)
+    then
+        System.err.println("bath_rule_740__83 " + $d);
+end
+
+rule "bath_rule_740__84"
+    when
+        $d :Double(this == 84)
+    then
+        System.err.println("bath_rule_740__84 " + $d);
+end
+
+rule "bath_rule_740__85"
+    when
+        $d :Double(this == 85)
+    then
+        System.err.println("bath_rule_740__85 " + $d);
+end
+
+rule "bath_rule_740__86"
+    when
+        $d :Double(this == 86)
+    then
+        System.err.println("bath_rule_740__86 " + $d);
+end
+
+rule "bath_rule_740__87"
+    when
+        $d :Double(this == 87)
+    then
+        System.err.println("bath_rule_740__87 " + $d);
+end
+
+rule "bath_rule_740__88"
+    when
+        $d :Double(this == 88)
+    then
+        System.err.println("bath_rule_740__88 " + $d);
+end
+
+rule "bath_rule_740__89"
+    when
+        $d :Double(this == 89)
+    then
+        System.err.println("bath_rule_740__89 " + $d);
+end
+
+rule "bath_rule_740__90"
+    when
+        $d :Double(this == 90)
+    then
+        System.err.println("bath_rule_740__90 " + $d);
+end
+
+rule "bath_rule_740__91"
+    when
+        $d :Double(this == 91)
+    then
+        System.err.println("bath_rule_740__91 " + $d);
+end
+
+rule "bath_rule_740__92"
+    when
+        $d :Double(this == 92)
+    then
+        System.err.println("bath_rule_740__92 " + $d);
+end
+
+rule "bath_rule_740__93"
+    when
+        $d :Double(this == 93)
+    then
+        System.err.println("bath_rule_740__93 " + $d);
+end
+
+rule "bath_rule_740__94"
+    when
+        $d :Double(this == 94)
+    then
+        System.err.println("bath_rule_740__94 " + $d);
+end
+
+rule "bath_rule_740__95"
+    when
+        $d :Double(this == 95)
+    then
+        System.err.println("bath_rule_740__95 " + $d);
+end
+
+rule "bath_rule_740__96"
+    when
+        $d :Double(this == 96)
+    then
+        System.err.println("bath_rule_740__96 " + $d);
+end
+
+rule "bath_rule_740__97"
+    when
+        $d :Double(this == 97)
+    then
+        System.err.println("bath_rule_740__97 " + $d);
+end
+
+rule "bath_rule_740__98"
+    when
+        $d :Double(this == 98)
+    then
+        System.err.println("bath_rule_740__98 " + $d);
+end
+
+rule "bath_rule_740__99"
+    when
+        $d :Double(this == 99)
+    then
+        System.err.println("bath_rule_740__99 " + $d);
+end
+
+rule "bath_rule_740__100"
+    when
+        $d :Double(this == 100)
+    then
+        System.err.println("bath_rule_740__100 " + $d);
+end
+

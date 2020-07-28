@@ -4,5 +4,12 @@ rule "b"
     when
         $d : Double(this == 2);
     then
-        System.err.println("b" + $d);
+        System.err.println("b " + $d);
+end
+
+rule "b0"
+    when
+        $d :Double()
+    then
+        System.err.println("b0 " + $d);
 end
