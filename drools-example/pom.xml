@@ -19,6 +19,7 @@
     </properties>
     <dependencies>
         <dependency>
+<<<<<<< HEAD
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-client</artifactId>
             <version>${resteasy.jaxrs.version}</version>
@@ -73,6 +74,12 @@
         </dependency>
 
 
+=======
+            <groupId>com.alibaba</groupId>
+            <artifactId>QLExpress</artifactId>
+            <version>3.2.4</version>
+        </dependency>
+>>>>>>> 3e44ca4c7c8a691f76b18e917ff4ce3f01bdfc51
         <dependency>
             <groupId>com.github.hongwen1993</groupId>
             <artifactId>fast-drools-spring-boot-starter</artifactId>
