@@ -3,6 +3,9 @@ package cn.infisa.tools.drools;
 import com.drools.core.KieTemplate;
 import com.example.demo03.Demo03Application;
 import com.supermy.rules.pojo.Vip;
+import lombok.extern.slf4j.Slf4j;
+import org.drools.core.common.DefaultAgenda;
+import org.drools.core.spi.Activation;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +20,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Demo03Application.class)
+@Slf4j
 public class Test1 {
     @Autowired
     private KieTemplate kieTemplate;
@@ -84,6 +88,7 @@ public class Test1 {
 
     @Test
     public void test6() {
+        long start  = System.currentTimeMillis();
         List<String> files = new ArrayList<>();
         for (int i = 1; i < 10; i++) {
             files.add("ttt" + i + ".drl");
@@ -93,6 +98,14 @@ public class Test1 {
             kieSession.insert((double) i);
         }
         kieSession.fireAllRules();
+        long end = System.currentTimeMillis();
+        log.info(" 耗时： "+(end-start)+"ms");
+        DefaultAgenda defaultAgenda= (DefaultAgenda) kieSession.getAgenda();
+        log.info(defaultAgenda.toString());
+        for( Activation activation: defaultAgenda.getActivations()) {
+            log.info(activation.toString());
+        }
+        log.info(defaultAgenda.getActivations().length+"");
     }
     @Test
     public void test7() {
@@ -108,6 +121,39 @@ public class Test1 {
     }
     @Test
     public void test8() {
+        long start  = System.currentTimeMillis();
+        List<String> files = new ArrayList<>();
+        for (int i = 1; i < 200; i++) {
+            files.add("ttt" + i + ".drl");
+        }
+        KieSession kieSession = kieTemplate.getKieSession(files.toArray(new String[]{}));
+        for (int i = 1; i <= 10000; i++) {
+            kieSession.insert((double) i);
+        }
+        kieSession.fireAllRules();
+        long end = System.currentTimeMillis();
+        log.info(" 耗时： "+(end-start)+"ms");
+
+    }
+    @Test
+    public void test9() {
+        long start  = System.currentTimeMillis();
+        List<String> files = new ArrayList<>();
+        for (int i = 1; i < 400; i++) {
+            files.add("ttt" + i + ".drl");
+        }
+        KieSession kieSession = kieTemplate.getKieSession(files.toArray(new String[]{}));
+        for (int i = 1; i <= 10000; i++) {
+            kieSession.insert((double) i);
+        }
+        kieSession.fireAllRules();
+        long end = System.currentTimeMillis();
+
+        log.info(" 耗时： "+(end-start)/1000+"s");
+
+    }
+    @Test
+    public void test10() {
         List<String> files = new ArrayList<>();
         for (int i = 1; i < 1000; i++) {
             files.add("ttt" + i + ".drl");

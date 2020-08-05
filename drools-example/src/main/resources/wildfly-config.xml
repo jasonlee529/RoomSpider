@@ -1,0 +1,20 @@
+<configuration>
+    <authentication-client xmlns="urn:elytron:1.0">
+        <authentication-rules>
+            <rule use-configuration="default"/>
+        </authentication-rules>
+        <authentication-configurations>
+            <configuration name="default">
+                <sasl-mechanism-selector selector="DIGEST-MD5"/>
+                <set-mechanism-properties>
+                    <property key="wildfly.sasl.local-user.quiet-auth" value="true"/>
+                </set-mechanism-properties>
+            </configuration>
+        </authentication-configurations>
+    </authentication-client>
+    <endpoint xmlns="urn:jboss-remoting:5.0">
+        <connections>
+            <connection destination="remote+http://192.168.1.217:8080" read-timeout="50" write-timeout="50" heartbeat-interval="10000"/>
+        </connections>
+    </endpoint>
+</configuration>
