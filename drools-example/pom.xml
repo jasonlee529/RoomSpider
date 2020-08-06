@@ -9,7 +9,7 @@
         <version>2.1.8.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    
+
     <groupId>cn.infisa.tools</groupId>
     <artifactId>drools-example</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -19,7 +19,16 @@
     </properties>
     <dependencies>
         <dependency>
-<<<<<<< HEAD
+            <groupId>com.guahao.ai.platform</groupId>
+            <artifactId>cdss-common</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.guahao.ai.platform</groupId>
+            <artifactId>cdss-manager</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-client</artifactId>
             <version>${resteasy.jaxrs.version}</version>
@@ -73,13 +82,11 @@
             <version>${wildfly-elytron.version}</version>
         </dependency>
 
-
-=======
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>QLExpress</artifactId>
             <version>3.2.4</version>
         </dependency>
->>>>>>> 3e44ca4c7c8a691f76b18e917ff4ce3f01bdfc51
         <dependency>
             <groupId>com.github.hongwen1993</groupId>
             <artifactId>fast-drools-spring-boot-starter</artifactId>
@@ -104,6 +111,12 @@
             <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
+    <repositories>
+        <repository>
+            <id>weiyi-nexus</id>
+            <url>http://nexus.guahao-inc.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>
