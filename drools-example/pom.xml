@@ -15,7 +15,7 @@
     <version>1.0-SNAPSHOT</version>
     <properties>
         <wildfly-elytron.version>1.12.0.Final</wildfly-elytron.version>
-        <resteasy.jaxrs.version>3.13.0.Final</resteasy.jaxrs.version>
+        <resteasy.jaxrs.version>4.5.7.Final</resteasy.jaxrs.version>
     </properties>
     <dependencies>
         <dependency>
