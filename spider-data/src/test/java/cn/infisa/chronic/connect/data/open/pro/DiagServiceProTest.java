@@ -52,7 +52,7 @@ public class DiagServiceProTest {
 //    Map data = new HashMap();
     String dto = "{\"hospStdId\":\"123\",\"visitId\":\"diag\",\"patientId\":\"diag\",\"doctorId\":\"diag\",\"type\":\"diag\"}";
     //    String data = "{\"patient\":{\"visitId\":\"vistId\",\"hospStdId\":\"hospStdId\",\"patientId\":\"patientId\",\"doctorId\":\"doctorId\",\"name\":\"name\",\"age\":\"66\",\"sex\":\"男\",\"idNo\":\"12345\"},\"diags\":[{\"diseaseCode\":\"1\",\"diseaseName\":\"高血压\"},{\"diseaseCode\":\"2\",\"diseaseName\":\"糖尿病\"}]}";
-    String data="{\"patient\":{\"visitId\":\"874e4ce0-2b48-4977-8b4e-cc075be84d9f\",\"doctorId\":\"1001\",\"patientId\":\"00009659\",\"sex\":\"男\",\"clinicNo\":\"1912023400\",\"name\":\"于                新\",\"idNo\":\"110101199003077491\",\"age\":\"30\"},\"diags\":[{\"diseaseName\":\"慢性骨髓增殖性肿瘤\",\"diseaseCode\":\"D47.100x004\"},{\"diseaseName\":\"肝硬化\",\"diseaseCode\":\"K74.100\"}]}";
+    String data = "{\"patient\":{\"visitId\":\"874e4ce0-2b48-4977-8b4e-cc075be84d9f\",\"doctorId\":\"1001\",\"patientId\":\"00009659\",\"sex\":\"男\",\"clinicNo\":\"1912023400\",\"name\":\"于                新\",\"idNo\":\"110101199003077491\",\"age\":\"30\"},\"diags\":[{\"diseaseName\":\"慢性骨髓增殖性肿瘤\",\"diseaseCode\":\"D47.100x004\"},{\"diseaseName\":\"肝硬化\",\"diseaseCode\":\"K74.100\"}]}";
     /**
      * 测试环境：
      * http://t.gw.api.guahao-inc.com/router/rest  对应测试环境分配appkey/appsecret
@@ -60,19 +60,22 @@ public class DiagServiceProTest {
      * 线上环境：
      * http://gw.api.guahao.com/router/rest        对应线上环境分配appkey/appsecret
      */
-    private String host="https://openapi.guahao.com/router/rest";
+    private String host = "https://openapi.guahao.com/router/rest";
 
 
     @Before
     public void setUp() {
-        data="{ \"patient\": {\n" +
+        data = "{ \"patient\": {\n" +
                 "        \"sex\": \"女\",\n" +
                 "        \"idNo\": \"120101194603204027\",\n" +
                 "        \"age\": \"74\",\n" +
                 "        \"name\": \"贾淑霞\"\n" +
                 "    },\"diags\":[{\"diseaseName\":\"习惯性便秘\",\"diseaseCode\":\"K59.001\"},{\"diseaseName\":\"（新）原发性高血压\",\"diseaseCode\":\"I10.x09\"}]}";
-        dto="{\"visitId\":\"61422FCC-7AB4-443E-B922-520318B4F4B9\",\"doctorId\":\"183686CC-F04D-44D8-904B-4978F99FC80C\",\"patientId\":\"406E338B-4223-43FB-AF44-ACA1434920A3\",\"hospStdId\":\"40121578-2\",\"type\":\"diag\"}";
-        timestamp="20200714092123";
+        dto = "{\"visitId\":\"61422FCC-7AB4-443E-B922-520318B4F4B9\",\"doctorId\":\"183686CC-F04D-44D8-904B-4978F99FC80C\",\"patientId\":\"406E338B-4223-43FB-AF44-ACA1434920A3\",\"hospStdId\":\"40121578-2\",\"type\":\"diag\"}";
+        timestamp = "20200714092123";
+        data = "{\"patient\":{\"sex\":\"女\",\"idNo\":\"35454545415\",\"age\":\"3\",\"Name\":\"545\"},\"diags\":[{\"diseaseName\":\"上呼吸道感染\",\"diseaseCode\":\"J06.900x003\"}]}";
+        dto = "{\"visitId\":\"9E55BB4E-32AB-4602-84AE-7CF80F479870\",\"doctorId\":\"\",\"patientId\":\"15c1602a-a0f0-4208-9c99-71dcbe85a1bf\",\"hospStdId\":\"40121578-2\",\"type\":\"diag\"}";
+        timestamp = "20200719025458";
         /**
          * 所有的非空系统参数和请求参数（签名sign和图片参数除外）放入Map中
          */

@@ -1,8 +1,0 @@
-package com.example.demo02
-
-rule "c"
-    when
-        $d : Double(this == 3);
-    then
-        System.err.println("c" + $d);
-end
