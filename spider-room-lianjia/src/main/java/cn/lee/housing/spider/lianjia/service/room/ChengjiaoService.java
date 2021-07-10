@@ -8,6 +8,7 @@ import cn.lee.housing.spider.lianjia.spider.MySpider;
 import cn.lee.housing.spider.lianjia.spider.pipeline.room.ChengjiaoPipeline;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ChengjiaoProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ChengjiaoProcessorFactory;
+import cn.lee.housing.spider.lianjia.spider.proxy.B_ProxyProvider;
 import cn.lee.housing.spider.lianjia.spider.proxy.CustomeProxyProvider;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class ChengjiaoService {
     @Autowired
     private ChengjiaoProcessorFactory factory;
     @Autowired
-    private CustomeProxyProvider proxyProvider;
+    private B_ProxyProvider proxyProvider;
 
     @Autowired
     private TaskService taskService;

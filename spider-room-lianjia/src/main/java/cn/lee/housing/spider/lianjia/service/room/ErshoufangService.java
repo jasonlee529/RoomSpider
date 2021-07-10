@@ -9,6 +9,7 @@ import cn.lee.housing.spider.lianjia.spider.pipeline.room.ErshoufangPipeline;
 import cn.lee.housing.spider.lianjia.spider.processor.room.BaojiaProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ErshoufangProcessor;
 import cn.lee.housing.spider.lianjia.spider.processor.room.ErshoufangProcessorFactory;
+import cn.lee.housing.spider.lianjia.spider.proxy.B_ProxyProvider;
 import cn.lee.housing.spider.lianjia.spider.proxy.CustomeProxyProvider;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class ErshoufangService {
     @Autowired
     private ErshoufangPipeline pipeline;
     @Autowired
-    private CustomeProxyProvider proxyProvider;
+    private B_ProxyProvider proxyProvider;
     @Autowired
     private ErshoufangProcessorFactory factory;
 

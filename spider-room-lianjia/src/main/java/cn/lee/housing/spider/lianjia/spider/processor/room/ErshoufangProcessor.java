@@ -33,7 +33,7 @@ public class ErshoufangProcessor implements PageProcessor {
     private ErshoufangService service;
     private String county = "";
 
-    public final static String START_URL = "https://bj.lianjia.com/ershoufang/co32";
+    public final static String START_URL = "https://bj.lianjia.com/ershoufang";
     private final Pattern pageOnePattern = Pattern.compile("/pg\\d+");
 
     private final Pattern numberPattern = Pattern.compile("/\\d+");

@@ -36,7 +36,7 @@ public class B_ProxyProvider implements ProxyProvider, InitializingBean {
 
     @Value("${proxy.b_proxy.get}")
     private String proxyUrl;
-    @Value("${proxy.b_prxy.delete}")
+    @Value("${proxy.b_proxy.delete}")
     private String deleteUrl;
 
     HttpClient client = null;
@@ -72,7 +72,7 @@ public class B_ProxyProvider implements ProxyProvider, InitializingBean {
                 HttpEntity he = response.getEntity();
                 String respContent = EntityUtils.toString(he, "UTF-8");
                 JSONObject jsonObject = JSON.parseObject(respContent);
-                String host = jsonObject.getJSONObject("data").getString("proxy");  //取出json数组中的某一个属性
+                String host = jsonObject.getJSONObject("data").getString("host");  //取出json数组中的某一个属性
                 String port = jsonObject.getJSONObject("data").getString("port");  //取出json数组中的某一个属性
                 System.out.println("代理IP: " + host);
                 if (StringUtils.isNotBlank(host)) {
