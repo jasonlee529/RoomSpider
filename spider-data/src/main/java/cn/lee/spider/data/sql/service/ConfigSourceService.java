@@ -26,7 +26,7 @@ public class ConfigSourceService {
 
 
     public SqlResult findOne(Long id, Map model) {
-        ConfigSource config = dao.findOne(id);
+        ConfigSource config = dao.findById(id).get();
         String sqlTpl = config.getSqlTpl();
         String sql = FreeMarkerUtils.mergeTemplateFromString(sqlTpl, model);
         List<Map<String, Object>> reslt = jdbcTemplate.queryForList(sql);
